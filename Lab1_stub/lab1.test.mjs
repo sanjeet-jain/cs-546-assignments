@@ -1,7 +1,4 @@
 import * as lab1 from "./lab1.mjs";
-//TODO: Write and call each function in lab1.js 5 times each, passing in different input
-// Assumption : we are passing only valid inputs to all functions
-
 // testing question 1
 console.log(lab1.questionOne([])); // returns { '0': true }
 console.log(lab1.questionOne([0, 0])); // returns { '0': true }
@@ -58,5 +55,13 @@ console.log(
 //should return and then log  [ 'aasd', 'b12', 'c124' ], [ '' ], [ 'j412', 'b421', 'c412' ], [ '1', '2', '3'
 
 console.log(lab1.questionFour(``)); // should return [ [ '' ] ]
+console.log(
+  lab1.questionFour(`a,b,c,d,e,f,g
+this,is,my,abc's,
+
+and, i,left , a white,space, there ,
+the above line has a comma at the end and this is a sentence 
+numbers,1,3,45,5`)
+);
 
 console.log();

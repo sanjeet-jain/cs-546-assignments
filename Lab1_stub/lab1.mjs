@@ -9,9 +9,11 @@ export const questionOne = (arr) => {
   //loop through numbers 2 to the the sum-1 and check if its divisible by any number other than itself and 1
   for (let i = 2; i < sum; i++) {
     if (sum % i == 0) {
+      // if divisible then not prime
       return { [sum]: false };
     }
   }
+  // not divisible so it is prime
   return { [sum]: true };
 };
 
