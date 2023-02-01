@@ -32,15 +32,14 @@ export const questionThree = (obj1, obj2) => {
 
   let arrA = Object.keys(obj1);
   let arrB = Object.keys(obj2);
-  // we find the common keys of both key lists
-  // then we find the uncommon ones
-  // we convert both lists to object of format key:true or key:false and then combine them
   let result = new Object();
+  // we find the common keys of both key lists and append to result object with flag true
   arrA
     .filter((x) => arrB.includes(x))
     .forEach((element) => {
       result[element] = true;
     });
+  // then we find the uncommon ones and append to result object with flag false
   arrA
     .filter((x) => !arrB.includes(x))
     .concat(arrB.filter((x) => !arrA.includes(x)))
@@ -52,8 +51,14 @@ export const questionThree = (obj1, obj2) => {
 
 export const questionFour = (string) => {
   // Implement question 4 here
-
-  return; //return result
+  let initialArr = string.split("\n");
+  for (let i = 0; i < initialArr.length; i++) {
+    initialArr[i] = initialArr[i].split(",");
+    for (let j = 0; j < initialArr[i].length; j++) {
+      initialArr[i][j] = initialArr[i][j].trim();
+    }
+  }
+  return initialArr; //return result
 };
 
 export const studentInfo = {

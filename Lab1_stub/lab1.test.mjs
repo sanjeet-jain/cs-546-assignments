@@ -39,4 +39,24 @@ Jared,Bass,cs115
 Shudong,Hao,cs570`)
 );
 //should return and then log [["Patrick", "Hill", "cs546"],["Jared", "Bass", "cs115"], ["Shudong", "Hao", "cs570"]]
+
+// test case for whitespace cleanup as well
+console.log(
+  lab1.questionFour(` a,b,c
+            j,      b,      c
+    S , H ,c    `)
+);
+//should return and then log [ [ 'a', 'b', 'c' ], [ 'j', 'b', 'c' ], [ 'S', 'H', 'c' ] ]
+
+// test case that should allow an empty array for an empty row
+console.log(
+  lab1.questionFour(` aasd,b12,c124
+
+              j412,      b421,      c412
+      1 , 2 ,3    `)
+);
+//should return and then log  [ 'aasd', 'b12', 'c124' ], [ '' ], [ 'j412', 'b421', 'c412' ], [ '1', '2', '3'
+
+console.log(lab1.questionFour(``)); // should return [ [ '' ] ]
+
 console.log();
