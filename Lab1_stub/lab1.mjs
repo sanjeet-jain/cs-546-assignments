@@ -22,7 +22,7 @@ export const questionTwo = (numArray) => {
   for (let i = 0; i < numArray.length - 1; i++) {
     if (numArray[i] > numArray[i + 1]) {
       // since we have found first occurence we return indices and false flag
-      return [i, i + 1, false];
+      return [false, i, i + 1];
     }
   }
   // no occurence found so its sorted
