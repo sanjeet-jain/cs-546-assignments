@@ -11,6 +11,8 @@ export let sortAndFilter = (
   filterByTerm
 ) => {
   helper.validateInputForSortAndFilter(array);
+  // sorting logic
+  return "correct array"; //temp output
 };
 
 export let merge = (...args) => {
