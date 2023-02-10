@@ -25,7 +25,25 @@ export let sortAndFilter = (
   helper.validateSortByFieldArray(sortBy1, sortBy2, arrayKeys);
   helper.validateFilters(filterBy, filterByTerm, array);
   // sorting logic
-  array;
+  array.sort((a, b) => {
+    let fa = a[sortBy1[0]].toLowerCase();
+    let fb = b[sortBy1[0]].toLowerCase();
+    let fc = a[sortBy2[0]].toLowerCase();
+    let fd = b[sortBy2[0]].toLowerCase();
+    if (fa < fb) {
+      return -1;
+    }
+    if (fa > fb) {
+      return 1;
+    }
+    if (fc < fd) {
+      return -1;
+    }
+    if (fc > fd) {
+      return 1;
+    }
+    return 0;
+  });
   //filtering logic
 
   return array; //temp output

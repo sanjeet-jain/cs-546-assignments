@@ -66,7 +66,7 @@ This file will export 3 functions, each of which will pertain to arrays.
 
 ## output must be of format:
 
-* [ ] output: [{name: 'Greg', age: '22', location: 'New York', role: 'Student'},
+* [ ] output: [{name: 'Greg', age: '22', location: 'New York', role: 'Student'},...]
 
 ## Example:
 

@@ -140,14 +140,6 @@ export function validateSortByFieldArray(sortBy1, sortBy2, arrayKeys) {
   if (sortBy1.length !== 2) {
     throw "Error: sort by Array 1 length must be 2";
   }
-  checkIfItemsAreString(sortBy1, "sort by array");
-  if (!arrayKeys.includes(sortBy1[0])) {
-    throw "Error: sort by 1 field passed doesnt exist in object array keys";
-  }
-  if (!["asc", "desc"].includes(sortBy1[1])) {
-    throw "Error: sort by 1 order field should be asc or desc";
-  }
-
   //check sort by 2
   errorIfNotArray(sortBy2, "sort by array 2");
   errorIfNullOrEmpty(sortBy2, "sort by array 2");
@@ -156,17 +148,25 @@ export function validateSortByFieldArray(sortBy1, sortBy2, arrayKeys) {
     throw "Error: sort by Array 2 length must be 2";
   }
   checkIfItemsAreString(sortBy2, "sort by array");
+  //cleanup sort by arrays
+  for (let i in sortBy1) {
+    sortBy1[i] = sortBy1[i].trim();
+    sortBy2[i] = sortBy2[i].trim();
+  }
+
+  checkIfItemsAreString(sortBy1, "sort by array");
+  if (!arrayKeys.includes(sortBy1[0])) {
+    throw "Error: sort by 1 field passed doesnt exist in object array keys";
+  }
+  if (!["asc", "desc"].includes(sortBy1[1])) {
+    throw "Error: sort by 1 order field should be asc or desc";
+  }
+
   if (!arrayKeys.includes(sortBy2[0])) {
     throw "Error: sort by 2 field passed doesnt exist in object array keys";
   }
   if (!["asc", "desc"].includes(sortBy2[1])) {
     throw "Error: sort by 2 order field should be asc or desc";
-  }
-
-  //cleanup sort by arrays
-  for (let i in sortBy1) {
-    sortBy1[i] = sortBy1[i].trim();
-    sortBy2[i] = sortBy2[i].trim();
   }
 }
 
@@ -180,6 +180,9 @@ export function validateFilters(filterBy, filterByTerm, array) {
   if (!isNonEmptyString(filterByTerm, false)) {
     throw "Error: filterByTerm isnt a valid non empty string";
   }
+  //cleanup filterBy and filterByTerm
+  filterBy = filterBy.trim();
+  filterByTerm = filterByTerm.trim();
   const arrayKeys = Object.keys(array[0]);
   if (!arrayKeys.includes(filterBy)) {
     throw "Error: filterBy key doesnt exist in object array";
@@ -192,9 +195,6 @@ export function validateFilters(filterBy, filterByTerm, array) {
   if (!filterByTermFound) {
     throw "Error: filterByTerm key doesnt exist in object array";
   }
-  //cleanup filterBy and filterByTerm
-  filterBy = filterBy.trim();
-  filterByTerm = filterByTerm.trim();
 }
 
 // export function validateInputForMerge(input){

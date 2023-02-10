@@ -18,12 +18,12 @@ for (let people of [
   [{ abc: "Ryan", age: "22" }],
   //all objects dont have same keys
   [
-    { Name: "Ryan", Age: "22", Location: "Hoboken", Role: "Student" },
+    { Name: "Ryan", Age: "22", Location: "Hoboken1", Role: "Student" },
     { name: "Ryan", age: "22", location: "Hoboken", role: "Student" },
   ],
   //VALID
   [
-    { name: "Ryan", age: "22", location: "Hoboken", role: "Student" },
+    { name: "Ryan", age: "22", location: "Hoboken1", role: "Student" },
     { name: "Ryan", age: "22", location: "Hoboken", role: "Student" },
   ],
 ]) {
@@ -74,7 +74,7 @@ for (let people of [
   //valid
   [
     { name: "Matt", age: "21", location: "New York", role: "Student" },
-    { name: "Matt", age: "21", location: "New York", role: "Student" },
+    { name: "Matt", age: "21", location: "New Jersey", role: "Student" },
   ],
 ]) {
   try {
@@ -105,7 +105,7 @@ console.log();
 
 let people = [
   { name: "Matt", age: "21", location: "New York", role: "Student" },
-  { name: "Matt", age: "21", location: "New York", role: "Student" },
+  { name: "Matt", age: "21", location: "New Jersey", role: "Student" },
 ];
 /* #region sortByField1 and sortByField2 Correctness*/
 
@@ -243,7 +243,7 @@ for (let filterByTerm of [
 }
 
 /* #endregion */
-console.log();
+console.log("filterBy and filterByTerm Correctness");
 
 /* #region Array cleanup*/
 
@@ -260,7 +260,7 @@ try {
         {
           name: "    Matt ",
           " age    ": " 21         ",
-          location: "New York",
+          location: "New Jersey",
           role: "Student",
         },
       ],
