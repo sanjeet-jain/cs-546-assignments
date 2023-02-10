@@ -2,7 +2,7 @@
       using the ES6 exports syntax. 
       DO NOT CHANGE THE FUNCTION NAMES
 */
-import * as helper from "./helpers.js";
+import { arrayUtils } from "./helpers.js";
 
 //commenting reference from https://javascript.info/comments
 /**
@@ -21,9 +21,9 @@ export let sortAndFilter = (
   filterBy,
   filterByTerm
 ) => {
-  let arrayKeys = helper.validateObjectArray(array);
-  helper.validateSortByFieldArray(sortBy1, sortBy2, arrayKeys);
-  let filterArray = helper.validateFilters(filterBy, filterByTerm, array);
+  let arrayKeys = arrayUtils.validateObjectArray(array);
+  arrayUtils.validateSortByFieldArray(sortBy1, sortBy2, arrayKeys);
+  let filterArray = arrayUtils.validateFilters(filterBy, filterByTerm, array);
   filterBy = filterArray[0];
   filterByTerm = filterArray[1];
   // sorting logic
@@ -60,7 +60,7 @@ export let sortAndFilter = (
  */
 export let merge = (...args) => {
   //this function takes in a variable number of arrays that's what the ...args signifies
-  let temp = helper.validateInputForMerge(args);
+  let temp = arrayUtils.validateInputForMerge(args);
   //separate the arrays
   let numberList = temp.filter((x) => {
     return typeof x === "number";
@@ -87,7 +87,7 @@ export let merge = (...args) => {
 export let matrixMultiply = (...args) => {
   //this function takes in a variable number of arrays that's what the ...args signifies
   let m1 = [];
-  if (helper.validateInputForMatrixMultiply(args)) {
+  if (arrayUtils.validateInputForMatrixMultiply(args)) {
     //matrix multiplication
     args.forEach((matrix) => {
       if (m1.length == []) {

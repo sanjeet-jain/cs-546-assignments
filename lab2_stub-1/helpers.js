@@ -13,14 +13,6 @@ Created by https://sanjeet-jain.github.io/
                    ______    
 */
 
-export {
-  validateObjectArray,
-  validateInputForMatrixMultiply,
-  validateInputForMerge,
-  validateSortByFieldArray,
-  validateFilters,
-};
-
 /**
  * function check if input is null.
  * @param input an input value to check if its null.
@@ -166,197 +158,202 @@ function checkIfItemsAreString(element, elementName = "") {
   }
 }
 
-/**
- * function check if input is valid for sort and filter.
- * @param {Array} input an input array value to check if its valid.
- */
-function validateObjectArray(input) {
-  errorIfNotArray(input, "object array");
-  errorIfNullOrEmpty(input);
-  if (input.length < 2) {
-    throw "Error: objects array length must be greater than 1";
-  }
-  validateArrElements(input, 4, "object", "object array");
-  input.forEach((element) => {
-    checkIfItemsAreString(element, "object array");
-  });
+const arrayUtils = {
+  /**
+   * function check if input is valid for sort and filter.
+   * @param {Array} input an input array value to check if its valid.
+   */
+  validateObjectArray(input) {
+    errorIfNotArray(input, "object array");
+    errorIfNullOrEmpty(input);
+    if (input.length < 2) {
+      throw "Error: objects array length must be greater than 1";
+    }
+    validateArrElements(input, 4, "object", "object array");
+    input.forEach((element) => {
+      checkIfItemsAreString(element, "object array");
+    });
 
-  //cleanup values
-  input.forEach((element) => {
-    Object.keys(element).forEach((k) => (element[k] = element[k].trim()));
-  });
+    //cleanup values
+    input.forEach((element) => {
+      Object.keys(element).forEach((k) => (element[k] = element[k].trim()));
+    });
 
-  //cleanup keys
-  //reference from https://medium.com/@svchaibasa/how-to-remove-extra-whitespace-from-json-object-keys-in-javascript-816204584ae8
-  input.forEach((element) => {
-    Object.keys(element).forEach((k) => {
-      if (k !== k.trim()) {
-        element[k.trim()] = element[k];
-        delete element[k];
+    //cleanup keys
+    //reference from https://medium.com/@svchaibasa/how-to-remove-extra-whitespace-from-json-object-keys-in-javascript-816204584ae8
+    input.forEach((element) => {
+      Object.keys(element).forEach((k) => {
+        if (k !== k.trim()) {
+          element[k.trim()] = element[k];
+          delete element[k];
+        }
+      });
+    });
+
+    const arrayKeys = Object.keys(input[0]);
+    input.forEach((element) => {
+      let elementKeys = Object.keys(element);
+      if (
+        !elementKeys.every((key) => {
+          return arrayKeys.includes(key);
+        })
+      ) {
+        throw "Error: array with objects doesnt have same keys ";
       }
     });
-  });
 
-  const arrayKeys = Object.keys(input[0]);
-  input.forEach((element) => {
-    let elementKeys = Object.keys(element);
+    return arrayKeys;
+  },
+
+  /**
+   * function check if sortBy1, sortBy2, is valid for sort and filter.
+   * it takes 2 arrays as input,
+   * the both array has 2 strings of format [sortByField, order]
+   * sortbyfield is one of the keys of the objects in the array
+   * order can only be asc or desc
+   * 2nd term is checked against the object values in the array
+   * @param {Array} sortBy1 an input array value to check if its valid.
+   * @param {Array} sortBy2
+   * @param {Array} array
+   */
+  validateSortByFieldArray(sortBy1, sortBy2, arrayKeys) {
+    //check sort by 1
+    errorIfNotArray(sortBy1, "sort by array 1");
+    errorIfNullOrEmpty(sortBy1, "sort by array 1");
+    if (sortBy1.length !== 2) {
+      throw "Error: sort by Array 1 length must be 2";
+    }
+    //check sort by 2
+    errorIfNotArray(sortBy2, "sort by array 2");
+    errorIfNullOrEmpty(sortBy2, "sort by array 2");
+
+    if (sortBy2.length !== 2) {
+      throw "Error: sort by Array 2 length must be 2";
+    }
+    checkIfItemsAreString(sortBy1, "sort by array");
+    checkIfItemsAreString(sortBy2, "sort by array");
+    //cleanup sort by arrays
+    for (let i in sortBy1) {
+      sortBy1[i] = sortBy1[i].trim();
+      sortBy2[i] = sortBy2[i].trim();
+    }
+
+    if (!arrayKeys.includes(sortBy1[0])) {
+      throw "Error: sort by 1 field passed doesnt exist in object array keys";
+    }
+    if (!["asc", "desc"].includes(sortBy1[1])) {
+      throw "Error: sort by 1 order field should be asc or desc";
+    }
+
+    if (!arrayKeys.includes(sortBy2[0])) {
+      throw "Error: sort by 2 field passed doesnt exist in object array keys";
+    }
+    if (!["asc", "desc"].includes(sortBy2[1])) {
+      throw "Error: sort by 2 order field should be asc or desc";
+    }
+  },
+
+  /**
+   * function check if filterBy, filterByTerm, is valid for sort and filter.
+   * it takes 2 terms as input, checks the first term if its present in the object keys
+   * 2nd term is checked against the object values in the array
+   * @param {String} filterBy
+   * @param {String} filterByTerm
+   * @param {Array} array
+   */
+  validateFilters(filterBy, filterByTerm, array) {
+    errorIfNullOrEmpty(filterBy, "filterBy");
+    errorIfNullOrEmpty(filterByTerm, "filterByTerm");
+
+    if (!isNonEmptyString(filterBy, false)) {
+      throw "Error: filterBy isnt a valid non empty string";
+    }
+    if (!isNonEmptyString(filterByTerm, false)) {
+      throw "Error: filterByTerm isnt a valid non empty string";
+    }
+    //cleanup filterBy and filterByTerm
+    filterBy = filterBy.trim();
+    filterByTerm = filterByTerm.trim();
+    const arrayKeys = Object.keys(array[0]);
+    if (!arrayKeys.includes(filterBy)) {
+      throw "Error: filterBy key doesnt exist in object array";
+    }
+
+    let filterByTermFound = Object.values(...array).includes(filterByTerm);
+    if (!filterByTermFound) {
+      throw "Error: filterByTerm key doesnt exist in object array";
+    }
+    return [filterBy, filterByTerm];
+  },
+  /**
+   * function to flatten the input array and validate it
+   * @param {Array} input
+   * @returns {Array} returns flattened and validated array
+   */
+  validateInputForMerge(input) {
+    errorIfNotArray(input);
+    errorIfNullOrEmpty(input, "merge args");
+    validateArrElements(input, 0, "array", "merge args", true);
+    //spaces are intentional so no need to cleanup
+    let temp = input.flat(Infinity);
+    return temp;
+  },
+
+  /**
+   * function to check if input has a set of matrices and validate matrix multiplication
+   * throws an error if any of the validation fails
+   * returns true if matrix multiplication is possible else false
+   * @param {Array} input
+   * @returns {boolean}
+   */
+  validateInputForMatrixMultiply(input) {
+    errorIfNotArray(input);
+    errorIfNullOrEmpty(input, "matrix args");
+    if (input.length < 2) {
+      return false;
+    }
+    input.forEach((element) => {
+      validateArrElements(
+        element,
+        element[0].length,
+        "array",
+        "matrix args",
+        true
+      );
+    });
+    let temp = input.flat(Infinity);
     if (
-      !elementKeys.every((key) => {
-        return arrayKeys.includes(key);
+      !temp.every((x) => {
+        return typeof x === "number" && !isNull(x);
       })
     ) {
-      throw "Error: array with objects doesnt have same keys ";
+      return false;
     }
-  });
 
-  return arrayKeys;
-}
+    let currRow = 0;
+    let currCol = 0;
+    let prevRow = 0;
+    let prevCol = 0;
 
-/**
- * function check if sortBy1, sortBy2, is valid for sort and filter.
- * it takes 2 arrays as input,
- * the both array has 2 strings of format [sortByField, order]
- * sortbyfield is one of the keys of the objects in the array
- * order can only be asc or desc
- * 2nd term is checked against the object values in the array
- * @param {Array} sortBy1 an input array value to check if its valid.
- * @param {Array} sortBy2
- * @param {Array} array
- */
-function validateSortByFieldArray(sortBy1, sortBy2, arrayKeys) {
-  //check sort by 1
-  errorIfNotArray(sortBy1, "sort by array 1");
-  errorIfNullOrEmpty(sortBy1, "sort by array 1");
-  if (sortBy1.length !== 2) {
-    throw "Error: sort by Array 1 length must be 2";
-  }
-  //check sort by 2
-  errorIfNotArray(sortBy2, "sort by array 2");
-  errorIfNullOrEmpty(sortBy2, "sort by array 2");
-
-  if (sortBy2.length !== 2) {
-    throw "Error: sort by Array 2 length must be 2";
-  }
-  checkIfItemsAreString(sortBy1, "sort by array");
-  checkIfItemsAreString(sortBy2, "sort by array");
-  //cleanup sort by arrays
-  for (let i in sortBy1) {
-    sortBy1[i] = sortBy1[i].trim();
-    sortBy2[i] = sortBy2[i].trim();
-  }
-
-  if (!arrayKeys.includes(sortBy1[0])) {
-    throw "Error: sort by 1 field passed doesnt exist in object array keys";
-  }
-  if (!["asc", "desc"].includes(sortBy1[1])) {
-    throw "Error: sort by 1 order field should be asc or desc";
-  }
-
-  if (!arrayKeys.includes(sortBy2[0])) {
-    throw "Error: sort by 2 field passed doesnt exist in object array keys";
-  }
-  if (!["asc", "desc"].includes(sortBy2[1])) {
-    throw "Error: sort by 2 order field should be asc or desc";
-  }
-}
-
-/**
- * function check if filterBy, filterByTerm, is valid for sort and filter.
- * it takes 2 terms as input, checks the first term if its present in the object keys
- * 2nd term is checked against the object values in the array
- * @param {String} filterBy
- * @param {String} filterByTerm
- * @param {Array} array
- */
-function validateFilters(filterBy, filterByTerm, array) {
-  errorIfNullOrEmpty(filterBy, "filterBy");
-  errorIfNullOrEmpty(filterByTerm, "filterByTerm");
-
-  if (!isNonEmptyString(filterBy, false)) {
-    throw "Error: filterBy isnt a valid non empty string";
-  }
-  if (!isNonEmptyString(filterByTerm, false)) {
-    throw "Error: filterByTerm isnt a valid non empty string";
-  }
-  //cleanup filterBy and filterByTerm
-  filterBy = filterBy.trim();
-  filterByTerm = filterByTerm.trim();
-  const arrayKeys = Object.keys(array[0]);
-  if (!arrayKeys.includes(filterBy)) {
-    throw "Error: filterBy key doesnt exist in object array";
-  }
-
-  let filterByTermFound = Object.values(...array).includes(filterByTerm);
-  if (!filterByTermFound) {
-    throw "Error: filterByTerm key doesnt exist in object array";
-  }
-  return [filterBy, filterByTerm];
-}
-
-/**
- * function to flatten the input array and validate it
- * @param {Array} input
- * @returns {Array} returns flattened and validated array
- */
-function validateInputForMerge(input) {
-  errorIfNotArray(input);
-  errorIfNullOrEmpty(input, "merge args");
-  validateArrElements(input, 0, "array", "merge args", true);
-  //spaces are intentional so no need to cleanup
-  let temp = input.flat(Infinity);
-  return temp;
-}
-
-/**
- * function to check if input has a set of matrices and validate matrix multiplication
- * throws an error if any of the validation fails
- * returns true if matrix multiplication is possible else false
- * @param {Array} input
- * @returns {boolean}
- */
-function validateInputForMatrixMultiply(input) {
-  errorIfNotArray(input);
-  errorIfNullOrEmpty(input, "matrix args");
-  if (input.length < 2) {
-    return false;
-  }
-  input.forEach((element) => {
-    validateArrElements(
-      element,
-      element[0].length,
-      "array",
-      "matrix args",
-      true
-    );
-  });
-  let temp = input.flat(Infinity);
-  if (
-    !temp.every((x) => {
-      return typeof x === "number" && !isNull(x);
-    })
-  ) {
-    return false;
-  }
-
-  let currRow = 0;
-  let currCol = 0;
-  let prevRow = 0;
-  let prevCol = 0;
-
-  let isValid = true;
-  input.forEach((element) => {
-    if (prevRow === 0 && prevCol === 0) {
-      prevRow = element.length;
-      prevCol = element[0].length;
-    } else {
-      currRow = element.length;
-      currCol = element[0].length;
-      if (prevCol === currRow) {
-        prevCol = currCol;
+    let isValid = true;
+    input.forEach((element) => {
+      if (prevRow === 0 && prevCol === 0) {
+        prevRow = element.length;
+        prevCol = element[0].length;
       } else {
-        isValid = false;
+        currRow = element.length;
+        currCol = element[0].length;
+        if (prevCol === currRow) {
+          prevCol = currCol;
+        } else {
+          isValid = false;
+        }
       }
-    }
-  });
-  return true && isValid;
-}
+    });
+    return true && isValid;
+  },
+};
+
+const stringUtils = {};
+
+export { arrayUtils, stringUtils };
