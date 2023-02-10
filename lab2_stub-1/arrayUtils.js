@@ -45,7 +45,9 @@ export let sortAndFilter = (
     return 0;
   });
   //filtering logic
-
+  array.filter((x) => {
+    return x[filterBy] === filterByTerm;
+  });
   return array; //temp output
 };
 

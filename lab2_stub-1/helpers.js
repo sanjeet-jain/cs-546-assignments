@@ -147,6 +147,7 @@ export function validateSortByFieldArray(sortBy1, sortBy2, arrayKeys) {
   if (sortBy2.length !== 2) {
     throw "Error: sort by Array 2 length must be 2";
   }
+  checkIfItemsAreString(sortBy1, "sort by array");
   checkIfItemsAreString(sortBy2, "sort by array");
   //cleanup sort by arrays
   for (let i in sortBy1) {
@@ -154,7 +155,6 @@ export function validateSortByFieldArray(sortBy1, sortBy2, arrayKeys) {
     sortBy2[i] = sortBy2[i].trim();
   }
 
-  checkIfItemsAreString(sortBy1, "sort by array");
   if (!arrayKeys.includes(sortBy1[0])) {
     throw "Error: sort by 1 field passed doesnt exist in object array keys";
   }
@@ -188,10 +188,7 @@ export function validateFilters(filterBy, filterByTerm, array) {
     throw "Error: filterBy key doesnt exist in object array";
   }
 
-  let filterByTermFound = false;
-  array.forEach((element) => {
-    filterByTermFound = Object.values(element).includes(filterByTerm);
-  });
+  let filterByTermFound = Object.values(...array).includes(filterByTerm);
   if (!filterByTermFound) {
     throw "Error: filterByTerm key doesnt exist in object array";
   }

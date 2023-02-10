@@ -36,7 +36,7 @@ This file will export 3 functions, each of which will pertain to arrays.
 
 * [x] An array of objects
 * [x] An array with a key to sort a field first on and the order of the sort (ascending/descending) ,
-* [ ] An array with a key to sort a field second on and the order of the sort (ascending/descending),
+* [x] An array with a key to sort a field second on and the order of the sort (ascending/descending),
 * [ ] A key to filter by
 * [ ] A value to be filtered, this function must return an array sorted by the sortByField1 in the order given first and then by the sortByField2 key in the order given and filtered by the filterBy key.
 
