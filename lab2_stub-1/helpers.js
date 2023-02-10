@@ -3,7 +3,7 @@
 */
 
 /**
- * funtion check if input is null.
+ * function check if input is null.
  * @param input an input value to check if its null.
  * @returns {boolean} returns true if input is null type
  */
@@ -19,7 +19,7 @@ function isNull(input) {
 }
 
 /**
- * funtion check if input is empty.
+ * function check if input is empty.
  * @param input an input value to check if its empty.
  * @returns {boolean} returns true if input is empty type
  */
@@ -47,44 +47,61 @@ function errorIfNotArray(input, arrayName = "") {
 }
 
 /**
- * funtion check if input array is of correct length and has correct type of items within it
+ * function check if input array is of correct length and has correct type of items within it
  * @param {Array}input an input array to be checked
- * @param {number}length input array length to  be checked against
- * @param {string}type  string input to check for the type of items within the array
+ * @param {number}length length of items inside the array
+ * @param {string}type  string input to check for the type of items within the array ( if "array" passed then checks for nested arrays as well and only allows strings or numbers within nested arrays )
  * @param {string?}arrayName string input containing array name for messages
  */
 function validateArrElements(input, length, type, arrayName = "") {
   input.forEach((element) => {
-    if (isEmpty(element) || isNull(element)) {
+    if (isNull(element) || isEmpty(element)) {
       throw "Error: an item within the " + arrayName + " is empty or null";
     }
-    if (typeof element !== type) {
+    if (type === "array") {
+      if (Array.isArray(element)) {
+        errorIfNotArray(element, arrayName);
+        errorIfNullOrEmpty(element);
+        //recursive call to check deeper
+        validateArrElements(element, 0, "array", arrayName);
+      } else if (typeof element === "string") {
+        isNonEmptyString(element, true);
+      } else if (typeof element === "number") {
+        errorIfNullOrEmpty(element);
+      } else {
+        throw (
+          "Error: an element within " + arrayName + " is not a number or string"
+        );
+      }
+    } else if (typeof element !== type) {
       throw "Error:" + arrayName + " items arent " + type;
     }
-    let elementKeys = Object.keys(element);
-    if (elementKeys.length !== length) {
-      throw "Error: " + arrayName + " of incorrect length";
+    if (length > 0) {
+      let elementKeys = Object.keys(element);
+      if (elementKeys.length !== length) {
+        throw "Error: " + arrayName + " of incorrect length";
+      }
     }
   });
 }
 
 /**
- * funtion check if input is a non empty string (not whitespace).
+ * function check if input is a non empty string (not whitespace).
  * @param {any|string}value an input string value to check if its not empty
- * @param {boolean}spaces? boolean value whether to allow spcaes or no for the non empty check , if passed false treats spaces as empty string
+ * @param {boolean}allowSpaces? boolean value whether to allow spcaes or no for the non empty check , if passed false treats spaces as empty string
  * @return {boolean}
  */
-function isNonEmptyString(value, spaces = true) {
+function isNonEmptyString(value, allowSpaces = true) {
   if (typeof value === "string") {
-    return spaces ? !isEmpty(value) : !isEmpty(value.trim());
+    return allowSpaces ? !isEmpty(value) : !isEmpty(value.trim());
   } else {
     return false;
   }
 }
 
 /**
- * funtion check if all items within the element input are strings.
- * throws an error if the input doesnt contain strings within it
+ * function check if all items within the element input are strings.
+ * throws an error if the input doesn't contain strings within it
  * @param {Array | Object} element an input array value to check if its valid.
  * @param {string?} element an input array value to check if its valid.
  */
@@ -107,7 +124,7 @@ function checkIfItemsAreString(element, elementName = "") {
 }
 
 /**
- * funtion check if input is valid for sort and filter.
+ * function check if input is valid for sort and filter.
  * @param {Array} input an input array value to check if its valid.
  */
 export function validateObjectArray(input) {
@@ -153,7 +170,7 @@ export function validateObjectArray(input) {
 }
 
 /**
- * funtion check if sortBy1, sortBy2, is valid for sort and filter.
+ * function check if sortBy1, sortBy2, is valid for sort and filter.
  * it takes 2 arrays as input,
  * the both array has 2 strings of format [sortByField, order]
  * sortbyfield is one of the keys of the objects in the array
@@ -201,7 +218,7 @@ export function validateSortByFieldArray(sortBy1, sortBy2, arrayKeys) {
 }
 
 /**
- * funtion check if filterBy, filterByTerm, is valid for sort and filter.
+ * function check if filterBy, filterByTerm, is valid for sort and filter.
  * it takes 2 terms as input, checks the first term if its present in the object keys
  * 2nd term is checked against the object values in the array
  * @param {String} filterBy
@@ -233,12 +250,19 @@ export function validateFilters(filterBy, filterByTerm, array) {
   return [filterBy, filterByTerm];
 }
 
-// export function validateInputForMerge(input){
-//     let isValid = False;
-//     if(input)
-
-//     return isValid
-// }
+/**
+ * function to flatten the input array and validate it
+ * @param {Array} input
+ * @returns {Array} returns flattened and validated array
+ */
+export function validateInputForMerge(input) {
+  errorIfNotArray(input);
+  errorIfNullOrEmpty(input, "merge args");
+  validateArrElements(input, 0, "array", "merge args");
+  //spaces are intentional so no need to cleanup
+  let temp = input.flat(Infinity);
+  return temp;
+}
 
 // export function validateInputForMatrixMultiply(input){
 //     let isValid = False;

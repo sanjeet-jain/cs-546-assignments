@@ -126,21 +126,21 @@ This file will export 3 functions, each of which will pertain to arrays.
 
 # merge(...args)
 
-* [ ] For this function, you will have to take into account a variable number of input parameters. You will take in arrays as input. You will merge the arrays into one array. You will sort that array numerically first, and then alphabetically (if there are strings in the array). If you called merge([3,0,1,2,4], [1,2,8,15], [6,3,10,25,29]) You would return: [0,1,1,2,2,3,3,4,6,8,10,15,25,29] If you called merge([3,0,"Lab2",2,"Aiden"], ["CS-546" ,"Computer Science",8,15], [6,3,"Patrick",25,29]) You would return: [0,2,3,3,6,8,15,25,29,"Aiden","CS-546","Computer Science", "Lab2", "Patrick"]
-* [ ] For the elements that are strings, you will use the ASCII sort order to sort them For example: If you called merge([3,0,"Lab2",2,"Aiden"], ["CS-546" ,"Computer Science",8,15], [6,3,"!Patrick",25,29]) You would return: [0,2,3,3,6,8,15,25,29,"!Patrick","Aiden","CS-546","Computer Science", "Lab2"]
-* [ ] You must also account for nested array cases For example: If you called
+* [x] For this function, you will have to take into account a variable number of input parameters. You will take in arrays as input. You will merge the arrays into one array. You will sort that array numerically first, and then alphabetically (if there are strings in the array). If you called merge([3,0,1,2,4], [1,2,8,15], [6,3,10,25,29]) You would return: [0,1,1,2,2,3,3,4,6,8,10,15,25,29] If you called merge([3,0,"Lab2",2,"Aiden"], ["CS-546" ,"Computer Science",8,15], [6,3,"Patrick",25,29]) You would return: [0,2,3,3,6,8,15,25,29,"Aiden","CS-546","Computer Science", "Lab2", "Patrick"]
+* [x] For the elements that are strings, you will use the ASCII sort order to sort them For example: If you called merge([3,0,"Lab2",2,"Aiden"], ["CS-546" ,"Computer Science",8,15], [6,3,"!Patrick",25,29]) You would return: [0,2,3,3,6,8,15,25,29,"!Patrick","Aiden","CS-546","Computer Science", "Lab2"]
+* [x] You must also account for nested array cases For example: If you called
     merge(["bar", 0, 1, [[[5, "foo"]]]], [7, "buzz", ["fizz", 8]])
     You would return:
     [0, 1, 5, 7, 8, "bar", "buzz", "fizz", "foo"]
 
 You must check:
 
-* [ ] At least one array is supplied as input
-* [ ] That each input is an array
-* [ ] Each array is of the proper type (meaning, it's an array)
-* [ ] Each array is not empty and has at least one element
-* [ ] Each array element is either a string, number or an array that has either strings or numbers as elements. You will need to flatten the array first (strings with just spaces are allowed as a space can be sorted using the ASCII sort order method)
-* [ ] If any of those conditions fail, you will throw an error.
+* [x] At least one array is supplied as input
+* [x] That each input is an array
+* [x] Each array is of the proper type (meaning, it's an array)
+* [x] Each array is not empty and has at least one element
+* [x] Each array element is either a string, number or an array that has either strings or numbers as elements. You will need to flatten the array first (strings with just spaces are allowed as a space can be sorted using the ASCII sort order method)
+* [x] If any of those conditions fail, you will throw an error.
 
 # matrixMultiply(...args)
 

@@ -55,6 +55,28 @@ export let sortAndFilter = (
 
 export let merge = (...args) => {
   //this function takes in a variable number of arrays that's what the ...args signifies
+  let temp = helper.validateInputForMerge(args);
+  //separate the arrays
+  let numberList = temp.filter((x) => {
+    return typeof x === "number";
+  });
+
+  let strList = temp.filter((x) => {
+    return typeof x === "string";
+  });
+
+  numberList.sort((fa, fb) => {
+    if (fa < fb) {
+      return -1;
+    }
+    if (fa > fb) {
+      return 1;
+    }
+    return 0;
+  });
+  strList.sort();
+  temp = numberList.concat(strList);
+  return temp;
 };
 
 export let matrixMultiply = (...args) => {
