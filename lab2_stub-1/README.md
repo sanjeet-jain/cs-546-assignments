@@ -194,16 +194,16 @@ Go hang a salami, I’m a lasagna hog.
 Poor Dan is in a droop
 For each string element in the array, you will:
 
-* [ ] Lowercase the text
-* [ ] Strip all non alphanumeric text; this includes spaces.
+* [x] Lowercase the text
+* [x] Strip all non alphanumeric text; this includes spaces.
 
 For example, Hello, 2 the world! becomes hello, 2 the world! when lowercased and then hello2theworld when stripped of all non alphanumeric text 3.
 
-* [ ] Determine whether or not the text is a palindrome
+* [x] Determine whether or not the text is a palindrome
 
 ## You must check:
 
-* [ ] That the array exists
+* [x] That the array exists
 * [ ] The array is of the proper type (meaning, it's an array)
 * [ ] The array is not empty
 * [ ] Each array element in the array is a string (No strings with empty spaces)

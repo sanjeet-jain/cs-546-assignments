@@ -1,7 +1,7 @@
 /* TODO: Import the functions from your three modules here and write two test cases for each function.. You should have a total of 18 test cases. 
 do not forget that you need to create the package.json and add the start command to run app.js as the starting script*/
 
-/* #region ArrayUtils  */
+// /* #region ArrayUtils  */
 import { sortAndFilter, merge, matrixMultiply } from "./arrayUtils.js";
 
 /* #region  matrix multiply */
@@ -615,5 +615,52 @@ try {
 /* #endregion */
 
 /* #region  StringUtil.js */
+import { palindromes, censorWords, distance } from "./stringUtils.js";
+console.log(
+  palindromes([
+    "Madam",
+    "Loot",
+    "Was it a cat I saw?",
+    "Poor Dan is in a droop",
+    "Anna",
+    "Nope",
+  ])
+);
 
+//invalid
+try {
+  console.log(palindromes());
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(palindromes("hi"));
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(palindromes(" "));
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(palindromes(1));
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(palindromes([]));
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(palindromes([""]));
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(palindromes([" "]));
+} catch (error) {
+  console.log(error);
+}
 /* #endregion */
