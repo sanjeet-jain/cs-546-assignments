@@ -31,50 +31,135 @@ function isEmpty(input) {
   }
   return false;
 }
+function errorIfNullOrEmpty(input, arrayName = "") {
+  if (isNull(input) || isEmpty(input)) {
+    throw "Error: the " + arrayName + " is null or empty!";
+  }
+}
+
+function errorIfNotArray(input, arrayName = "") {
+  if (!Array.isArray(input)) {
+    throw "Error: " + arrayName + " not an array";
+  }
+}
+
+function validateArrElements(input, length, type, arrayName = "") {
+  input.forEach((element) => {
+    if (isEmpty(element) || isNull(element)) {
+      throw "Error: an item within the " + arrayName + " is empty or null";
+    }
+    if (typeof element !== type) {
+      throw "Error:" + arrayName + " items arent " + type;
+    }
+    let elementKeys = Object.keys(element);
+    if (elementKeys.length !== length) {
+      throw "Error: " + arrayName + " of incorrect length";
+    }
+  });
+}
+
+/**
+ * funtion check if input is a non empty string (not whitespace).
+ * @param input an input string value to check if its not empty and not a whitespace.
+ */
+function isNonEmptyString(value, spaces = true) {
+  return typeof value === "string" && spaces
+    ? !isEmpty(value)
+    : !isEmpty(value.trim());
+}
+function checkIfItemsAreString(element, elementName = "") {
+  let temp;
+  if (typeof element === "object") {
+    temp = Object.values(element);
+  } else if (Array.isArray(element)) {
+    temp = element;
+  } else {
+  }
+  if (
+    !temp.every((value) => {
+      return isNonEmptyString(value, false);
+    })
+  ) {
+    throw "Error: Incorrect string values for " + elementName;
+  }
+}
 
 /**
  * funtion check if input is valid for sort and filter.
  * @param input[] an input array value to check if its valid.
  */
-export function validateInputForSortAndFilter(input) {
-  let isValid = false;
-  if (isNull(input) || isEmpty(input)) {
-    throw "Error: the input array is null or empty!";
-  }
-  if (!Array.isArray(input)) {
-    throw "Error: not an array";
-  }
+export function validateObjectArray(input) {
+  errorIfNotArray(input, "object array");
+  errorIfNullOrEmpty(input);
   if (input.length < 2) {
     throw "Error: objects array length must be greater than 1";
   }
-  input.forEach((element) => {
-    if (isEmpty(element) || isNull(element)) {
-      throw "Error: object within the array is empty or null";
-    }
-    if (typeof element !== "object") {
-      throw "Error: all array items arent objects";
-    }
-    let elementKeys = Object.keys(element);
-    if (elementKeys.length !== 4) {
-      throw "Error: array with objects doesnt exist";
-    }
-  });
-  const peopleArrayKeys = Object.keys(input[0]);
+  validateArrElements(input, 4, "object", "object array");
+
+  const arrayKeys = Object.keys(input[0]);
   input.forEach((element) => {
     let elementKeys = Object.keys(element);
     if (
       !elementKeys.every((key) => {
-        return peopleArrayKeys.includes(key);
+        return arrayKeys.includes(key);
       })
     ) {
       throw "Error: array with objects doesnt have same keys ";
     }
-    if (
-      !Object.values(element).every((value) => {
-        return typeof value === "string" && !isEmpty(value.trim());
-      })
-    ) {
-      throw "Error: not all objects have correct string values";
+    checkIfItemsAreString(element, "object array");
+  });
+  return arrayKeys;
+}
+
+export function validateSortByFieldArray(input, arrayKeys) {
+  errorIfNotArray(input, "sort by array");
+  errorIfNullOrEmpty(input, "sort by array");
+  if (input.length !== 2) {
+    throw "Error: sort by Array length must be 2";
+  }
+  checkIfItemsAreString(input, "sort by array");
+  if (!arrayKeys.includes(input[0])) {
+    throw "Error: sort by field passed doesnt exist in object array keys";
+  }
+  if (!["asc", "desc"].includes(input[1])) {
+    throw "Error: sort by order field should be asc or desc";
+  }
+}
+
+export function validateFilters(filterBy, filterByTerm, array) {
+  errorIfNullOrEmpty(filterBy, "filterBy");
+  errorIfNullOrEmpty(filterByTerm, "filterByTerm");
+
+  if (!isNonEmptyString(filterBy, false)) {
+    throw "Error: filterBy isnt a valid non empty string";
+  }
+  if (!isNonEmptyString(filterByTerm, false)) {
+    throw "Error: filterByTerm isnt a valid non empty string";
+  }
+  const arrayKeys = Object.keys(array[0]);
+  if (!arrayKeys.includes(filterBy)) {
+    throw "Error: filterBy key doesnt exist in object array";
+  }
+
+  let filterByTermFound = false;
+  array.forEach((element) => {
+    filterByTermFound = Object.values(element).includes(filterByTerm);
+  });
+  if (!filterByTermFound) {
+    throw "Error: filterByTerm key doesnt exist in object array";
+  }
+}
+
+export function cleanupForSortAndFilter(
+  array,
+  sortBy1,
+  sortBy2,
+  filterBy,
+  filterByTerm
+) {
+  array.forEach((element) => {
+    for (let values in element) {
+      values = values.trim();
     }
   });
 }

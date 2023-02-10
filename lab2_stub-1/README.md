@@ -28,14 +28,13 @@ Here's an example of a valid package.json:
 
 # arrayUtils.js
 
-* [ ] This file will export 3 functions, each of which will pertain to arrays.
-* [ ] sortAndFilter(array, [sortByField1, order],
-* [ ] [sortByField2, order], f
-* [ ] ilterBy, filterByTerm)
+This file will export 3 functions, each of which will pertain to arrays.
+
+## sortAndFilter(array, [sortByField1, order],[sortByField2, order], filterBy, filterByTerm)
 
 ## Given:
 
-* [ ] An array of objects
+* [x] An array of objects
 * [ ] An array with a key to sort a field first on and the order of the sort (ascending/descending) ,
 * [ ] An array with a key to sort a field second on and the order of the sort (ascending/descending),
 * [ ] A key to filter by
@@ -51,19 +50,19 @@ Here's an example of a valid package.json:
 * [x] all objects in the array parameter have all the same keys.
 * [x] all values for for all keys in each object in the array parameter are strings (not just empty spaces)
 * [ ] the 2nd array parameter [sortByField1, order] exists.
-* [ ] the 2nd array parameter [sortByField1, order] is not empty.
-* [ ] the 2nd array parameter [sortByField1, order] has two and only two elements.
-* [ ] Each element in the 2nd array parameter [sortByField1, order] are strings (not just empty spaces)
-* [ ] the 2nd array parameter [sortByField1, order] index 0 is a key that exists as a key in the array of objects and each object in the array of objects passed in as the first input parameter has that key.
-* [ ] the 2nd array parameter [sortByField1, order] index 1 is either one of these values "asc" for ascending or "desc" for descending. This element can ONLY have a value of "asc" or "desc"
-* [ ] the 3rd array parameter [sortByField2, order] exists.
-* [ ] the 3rd array parameter [sortByField2, order] is not empty.
-* [ ] the 3rd array parameter [sortByField2, order] has two and only two elements.
-* [ ] Each element in the 3rd array parameter [sortByField2, order] are strings (not just empty spaces)
-* [ ] the 3rd array parameter [sortByField2, order] index 0 is a key that exists as a key in the array of objects and each object in the array of objects passed in as the first input parameter has that key.
-* [ ] the 3rd array parameter [sortByField2, order] index 1 is either one of these values "asc" for ascending or "desc" for descending. This element can ONLY have a value of "asc" or "desc"
-* [ ] the filterBy key exists in the objects passed in the array of objects
-* [ ] the filterByTerm exists (meaning there is at least one object that has that value and is a string (not just empty spaces)
+* [x] the 2nd array parameter [sortByField1, order] is not empty.
+* [x] the 2nd array parameter [sortByField1, order] has two and only two elements.
+* [x] Each element in the 2nd array parameter [sortByField1, order] are strings (not just empty spaces)
+* [x] the 2nd array parameter [sortByField1, order] index 0 is a key that exists as a key in the array of objects and each object in the array of objects passed in as the first input parameter has that key.
+* [x] the 2nd array parameter [sortByField1, order] index 1 is either one of these values "asc" for ascending or "desc" for descending. This element can ONLY have a value of "asc" or "desc"
+* [x] the 3rd array parameter [sortByField2, order] exists.
+* [x] the 3rd array parameter [sortByField2, order] is not empty.
+* [x] the 3rd array parameter [sortByField2, order] has two and only two elements.
+* [x] Each element in the 3rd array parameter [sortByField2, order] are strings (not just empty spaces)
+* [x] the 3rd array parameter [sortByField2, order] index 0 is a key that exists as a key in the array of objects and each object in the array of objects passed in as the first input parameter has that key.
+* [x] the 3rd array parameter [sortByField2, order] index 1 is either one of these values "asc" for ascending or "desc" for descending. This element can ONLY have a value of "asc" or "desc"
+* [x] the filterBy key exists in the objects passed in the array of objects
+* [x] the filterByTerm exists (meaning there is at least one object that has that value and is a string (not just empty spaces)
 
 ## output must be of format:
 
