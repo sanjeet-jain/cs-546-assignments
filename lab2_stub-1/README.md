@@ -35,7 +35,7 @@ This file will export 3 functions, each of which will pertain to arrays.
 ## Given:
 
 * [x] An array of objects
-* [ ] An array with a key to sort a field first on and the order of the sort (ascending/descending) ,
+* [x] An array with a key to sort a field first on and the order of the sort (ascending/descending) ,
 * [ ] An array with a key to sort a field second on and the order of the sort (ascending/descending),
 * [ ] A key to filter by
 * [ ] A value to be filtered, this function must return an array sorted by the sortByField1 in the order given first and then by the sortByField2 key in the order given and filtered by the filterBy key.
@@ -49,7 +49,7 @@ This file will export 3 functions, each of which will pertain to arrays.
 * [x] each object in the array parameter is not an empty object
 * [x] all objects in the array parameter have all the same keys.
 * [x] all values for for all keys in each object in the array parameter are strings (not just empty spaces)
-* [ ] the 2nd array parameter [sortByField1, order] exists.
+* [x] the 2nd array parameter [sortByField1, order] exists.
 * [x] the 2nd array parameter [sortByField1, order] is not empty.
 * [x] the 2nd array parameter [sortByField1, order] has two and only two elements.
 * [x] Each element in the 2nd array parameter [sortByField1, order] are strings (not just empty spaces)

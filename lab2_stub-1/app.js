@@ -45,6 +45,7 @@ for (let people of [
 /* #endregion */
 
 console.log();
+
 /* #region Array Object Correctness*/
 
 for (let people of [
@@ -100,6 +101,7 @@ for (let people of [
   }
 }
 /* #endregion */
+console.log();
 
 let people = [
   { name: "Matt", age: "21", location: "New York", role: "Student" },
@@ -177,6 +179,7 @@ for (let sortByField2 of [
   }
 }
 /* #endregion */
+console.log();
 
 /* #region filterBy and filterByTerm Correctness*/
 
@@ -240,5 +243,38 @@ for (let filterByTerm of [
 }
 
 /* #endregion */
+console.log();
+
+/* #region Array cleanup*/
+
+try {
+  console.log(
+    sortAndFilter(
+      [
+        {
+          " name ": "    Matt ",
+          age: " 21         ",
+          location: "New York",
+          role: "Student",
+        },
+        {
+          name: "    Matt ",
+          " age    ": " 21         ",
+          location: "New York",
+          role: "Student",
+        },
+      ],
+      [" name ", " asc "],
+      [" location ", " asc "],
+      "   role ",
+      "    Student "
+    )
+  );
+  //  output Error thrown for all except last
+} catch (error) {
+  console.log(error);
+}
+/* #endregion */
+console.log();
 
 /* #endregion */

@@ -63,9 +63,11 @@ function validateArrElements(input, length, type, arrayName = "") {
  * @param input an input string value to check if its not empty and not a whitespace.
  */
 function isNonEmptyString(value, spaces = true) {
-  return typeof value === "string" && spaces
-    ? !isEmpty(value)
-    : !isEmpty(value.trim());
+  if (typeof value === "string") {
+    return spaces ? !isEmpty(value) : !isEmpty(value.trim());
+  } else {
+    return false;
+  }
 }
 function checkIfItemsAreString(element, elementName = "") {
   let temp;
@@ -74,6 +76,7 @@ function checkIfItemsAreString(element, elementName = "") {
   } else if (Array.isArray(element)) {
     temp = element;
   } else {
+    throw "Error";
   }
   if (
     !temp.every((value) => {
@@ -95,6 +98,25 @@ export function validateObjectArray(input) {
     throw "Error: objects array length must be greater than 1";
   }
   validateArrElements(input, 4, "object", "object array");
+  input.forEach((element) => {
+    checkIfItemsAreString(element, "object array");
+  });
+
+  //cleanup values
+  input.forEach((element) => {
+    Object.keys(element).forEach((k) => (element[k] = element[k].trim()));
+  });
+
+  //cleanup keys
+  //reference from https://medium.com/@svchaibasa/how-to-remove-extra-whitespace-from-json-object-keys-in-javascript-816204584ae8
+  input.forEach((element) => {
+    Object.keys(element).forEach((k) => {
+      if (k !== k.trim()) {
+        element[k.trim()] = element[k];
+        delete element[k];
+      }
+    });
+  });
 
   const arrayKeys = Object.keys(input[0]);
   input.forEach((element) => {
@@ -106,23 +128,45 @@ export function validateObjectArray(input) {
     ) {
       throw "Error: array with objects doesnt have same keys ";
     }
-    checkIfItemsAreString(element, "object array");
   });
+
   return arrayKeys;
 }
 
-export function validateSortByFieldArray(input, arrayKeys) {
-  errorIfNotArray(input, "sort by array");
-  errorIfNullOrEmpty(input, "sort by array");
-  if (input.length !== 2) {
-    throw "Error: sort by Array length must be 2";
+export function validateSortByFieldArray(sortBy1, sortBy2, arrayKeys) {
+  //check sort by 1
+  errorIfNotArray(sortBy1, "sort by array 1");
+  errorIfNullOrEmpty(sortBy1, "sort by array 1");
+  if (sortBy1.length !== 2) {
+    throw "Error: sort by Array 1 length must be 2";
   }
-  checkIfItemsAreString(input, "sort by array");
-  if (!arrayKeys.includes(input[0])) {
-    throw "Error: sort by field passed doesnt exist in object array keys";
+  checkIfItemsAreString(sortBy1, "sort by array");
+  if (!arrayKeys.includes(sortBy1[0])) {
+    throw "Error: sort by 1 field passed doesnt exist in object array keys";
   }
-  if (!["asc", "desc"].includes(input[1])) {
-    throw "Error: sort by order field should be asc or desc";
+  if (!["asc", "desc"].includes(sortBy1[1])) {
+    throw "Error: sort by 1 order field should be asc or desc";
+  }
+
+  //check sort by 2
+  errorIfNotArray(sortBy2, "sort by array 2");
+  errorIfNullOrEmpty(sortBy2, "sort by array 2");
+
+  if (sortBy2.length !== 2) {
+    throw "Error: sort by Array 2 length must be 2";
+  }
+  checkIfItemsAreString(sortBy2, "sort by array");
+  if (!arrayKeys.includes(sortBy2[0])) {
+    throw "Error: sort by 2 field passed doesnt exist in object array keys";
+  }
+  if (!["asc", "desc"].includes(sortBy2[1])) {
+    throw "Error: sort by 2 order field should be asc or desc";
+  }
+
+  //cleanup sort by arrays
+  for (let i in sortBy1) {
+    sortBy1[i] = sortBy1[i].trim();
+    sortBy2[i] = sortBy2[i].trim();
   }
 }
 
@@ -148,20 +192,9 @@ export function validateFilters(filterBy, filterByTerm, array) {
   if (!filterByTermFound) {
     throw "Error: filterByTerm key doesnt exist in object array";
   }
-}
-
-export function cleanupForSortAndFilter(
-  array,
-  sortBy1,
-  sortBy2,
-  filterBy,
-  filterByTerm
-) {
-  array.forEach((element) => {
-    for (let values in element) {
-      values = values.trim();
-    }
-  });
+  //cleanup filterBy and filterByTerm
+  filterBy = filterBy.trim();
+  filterByTerm = filterByTerm.trim();
 }
 
 // export function validateInputForMerge(input){

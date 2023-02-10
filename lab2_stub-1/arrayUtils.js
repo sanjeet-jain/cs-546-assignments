@@ -19,19 +19,11 @@ export let sortAndFilter = (
   filterBy,
   filterByTerm
 ) => {
-  helpers.cleanupForSortAndFilter(
-    array,
-    sortBy1,
-    sortBy2,
-    filterBy,
-    filterByTerm
-  );
   let arrayKeys = helper.validateObjectArray(array);
-  helper.validateSortByFieldArray(sortBy1, arrayKeys);
-  helper.validateSortByFieldArray(sortBy2, arrayKeys);
+  helper.validateSortByFieldArray(sortBy1, sortBy2, arrayKeys);
   helper.validateFilters(filterBy, filterByTerm, array);
   // sorting logic
-  return "correct array"; //temp output
+  return array; //temp output
 };
 
 export let merge = (...args) => {
