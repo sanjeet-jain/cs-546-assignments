@@ -86,11 +86,29 @@ export let merge = (...args) => {
 
 export let matrixMultiply = (...args) => {
   //this function takes in a variable number of arrays that's what the ...args signifies
+  let m1 = [];
   if (helper.validateInputForMatrixMultiply(args)) {
     //matrix multiplication
-    let result = math.multiply();
-    return result;
+    args.forEach((matrix) => {
+      if (m1.length == []) {
+        m1 = matrix;
+      } else {
+        let result = [];
+        for (let i = 0; i < m1.length; i++) {
+          result[i] = [];
+          for (let j = 0; j < matrix[0].length; j++) {
+            let sum = 0;
+            for (let k = 0; k < m1[0].length; k++) {
+              sum += m1[i][k] * matrix[k][j];
+            }
+            result[i][j] = sum;
+          }
+        }
+        m1 = result;
+      }
+    });
   } else {
     throw "Error: Matrix multiplication not possible";
   }
+  return m1;
 };

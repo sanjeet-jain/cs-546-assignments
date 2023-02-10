@@ -35,7 +35,7 @@ function isNull(input) {
  * @returns {boolean} returns true if input is empty type
  */
 function isEmpty(input) {
-  if (Array.isArray(input) && input === []) {
+  if (Array.isArray(input) && input.length === 0) {
     return true;
   } else if (typeof input === "string" && input === "") {
     return true;

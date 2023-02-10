@@ -155,8 +155,8 @@ You must check:
 
 # matrixMultiply(...args)
 
-* [ ] For this function, you will take a variable amount of array inputs. Each array would represent a matrix, a set of numbers arranged within rows and columns. So, for example, a 2x3 matrix would be [ [1, 2, 3], [4, 5, 6] ] and a 5x2 matrix would be [ [1, 2], [3, 4], [5, 6], [7, 8], [9, 10] ].
-* [ ] Perform one or more matrix multiplications given the number of matrices (or array of arrays) given as input. Return the resulting matrix from these multiplications. If matrix multiplication is not possible, throw an error.
+* [x] For this function, you will take a variable amount of array inputs. Each array would represent a matrix, a set of numbers arranged within rows and columns. So, for example, a 2x3 matrix would be [ [1, 2, 3], [4, 5, 6] ] and a 5x2 matrix would be [ [1, 2], [3, 4], [5, 6], [7, 8], [9, 10] ].
+* [x] Perform one or more matrix multiplications given the number of matrices (or array of arrays) given as input. Return the resulting matrix from these multiplications. If matrix multiplication is not possible, throw an error.
 
 You must ensure that:
 
@@ -166,17 +166,17 @@ You must ensure that:
 * [x] The outer array must have only arrays as elements
 * [x] The inner arrays must only have numbers as elements
 * [x] Each inner array is of the same length
-* [ ] In order for any two matrices to be multiplied together, the number of columns within the first matrix must match the number of rows within the second matrix. So, for a 2x3 matrix and a 3x2 matrix, we can multiply these since the first matrix has 3 columns and the second matrix has 3 rows. For a 2x4 matrix and a 1x4 matrix, we cannot multiply these together since the first matrix has 4 columns while the second matrix has 1 row.
+* [x] In order for any two matrices to be multiplied together, the number of columns within the first matrix must match the number of rows within the second matrix. So, for a 2x3 matrix and a 3x2 matrix, we can multiply these since the first matrix has 3 columns and the second matrix has 3 rows. For a 2x4 matrix and a 1x4 matrix, we cannot multiply these together since the first matrix has 4 columns while the second matrix has 1 row.
 
 For those that aren't familiar with performing matrix multiplication, here is a link summarizing how it works: https://www.mathsisfun.com/algebra/matrix-multiplying.htmlLinks to an external site.
 
 Examples:
 
-* [ ] matrixMultiply([ [2,3], [3,4], [4,5] ], [ [1,1,1], [2,2,2] ], [ [3], [2], [1] ]) would return [ [48], [66], [84] ]
-* [ ] matrixMultiply([ [3,5] ], [ [4], [4] ]) would return [ [32] ]
-* [ ] matrixMultiply([]) //thows an error
-* [ ] matrixMultiply([ [1,2], [3,3] ]) //throws an error
-* [ ] matrixMultiply([ [1,2] ], [ ['foobar'], [6] ]) //throws an error
+* [x] matrixMultiply([ [2,3], [3,4], [4,5] ], [ [1,1,1], [2,2,2] ], [ [3], [2], [1] ]) would return [ [48], [66], [84] ]
+* [x] matrixMultiply([ [3,5] ], [ [4], [4] ]) would return [ [32] ]
+* [x] matrixMultiply([]) //thows an error
+* [x] matrixMultiply([ [1,2], [3,3] ]) //throws an error
+* [x] matrixMultiply([ [1,2] ], [ ['foobar'], [6] ]) //throws an error
 
 ## stringUtils.js
 
