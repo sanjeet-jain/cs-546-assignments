@@ -13,6 +13,14 @@ Created by https://sanjeet-jain.github.io/
                    ______    
 */
 
+export {
+  validateObjectArray,
+  validateInputForMatrixMultiply,
+  validateInputForMerge,
+  validateSortByFieldArray,
+  validateFilters,
+};
+
 /**
  * function check if input is null.
  * @param input an input value to check if its null.
@@ -162,7 +170,7 @@ function checkIfItemsAreString(element, elementName = "") {
  * function check if input is valid for sort and filter.
  * @param {Array} input an input array value to check if its valid.
  */
-export function validateObjectArray(input) {
+function validateObjectArray(input) {
   errorIfNotArray(input, "object array");
   errorIfNullOrEmpty(input);
   if (input.length < 2) {
@@ -215,7 +223,7 @@ export function validateObjectArray(input) {
  * @param {Array} sortBy2
  * @param {Array} array
  */
-export function validateSortByFieldArray(sortBy1, sortBy2, arrayKeys) {
+function validateSortByFieldArray(sortBy1, sortBy2, arrayKeys) {
   //check sort by 1
   errorIfNotArray(sortBy1, "sort by array 1");
   errorIfNullOrEmpty(sortBy1, "sort by array 1");
@@ -260,7 +268,7 @@ export function validateSortByFieldArray(sortBy1, sortBy2, arrayKeys) {
  * @param {String} filterByTerm
  * @param {Array} array
  */
-export function validateFilters(filterBy, filterByTerm, array) {
+function validateFilters(filterBy, filterByTerm, array) {
   errorIfNullOrEmpty(filterBy, "filterBy");
   errorIfNullOrEmpty(filterByTerm, "filterByTerm");
 
@@ -290,7 +298,7 @@ export function validateFilters(filterBy, filterByTerm, array) {
  * @param {Array} input
  * @returns {Array} returns flattened and validated array
  */
-export function validateInputForMerge(input) {
+function validateInputForMerge(input) {
   errorIfNotArray(input);
   errorIfNullOrEmpty(input, "merge args");
   validateArrElements(input, 0, "array", "merge args", true);
@@ -306,7 +314,7 @@ export function validateInputForMerge(input) {
  * @param {Array} input
  * @returns {boolean}
  */
-export function validateInputForMatrixMultiply(input) {
+function validateInputForMatrixMultiply(input) {
   errorIfNotArray(input);
   errorIfNullOrEmpty(input, "matrix args");
   if (input.length < 2) {

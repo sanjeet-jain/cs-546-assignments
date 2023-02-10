@@ -3,6 +3,7 @@ do not forget that you need to create the package.json and add the start command
 
 /* #region ArrayUtils  */
 import { sortAndFilter, merge, matrixMultiply } from "./arrayUtils.js";
+
 /* #region  matrix multiply */
 console.log("\n \n matrix multiplication");
 console.log(
@@ -610,5 +611,9 @@ try {
 /* #endregion */
 
 /* #endregion */
+
+/* #endregion */
+
+/* #region  StringUtil.js */
 
 /* #endregion */

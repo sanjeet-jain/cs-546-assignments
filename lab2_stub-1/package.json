@@ -1,7 +1,7 @@
 {
   "name": "cs-546-lab-2",
   "version": "1.0.0",
-  "description": "cs-546-lab-2 package for cs 546 SIT",
+  "description": "cs-546-lab-2 for cs-546 SIT",
   "main": "app.js",
   "type": "module",
   "scripts": {
