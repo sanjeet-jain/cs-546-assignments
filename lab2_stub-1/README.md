@@ -37,8 +37,8 @@ This file will export 3 functions, each of which will pertain to arrays.
 * [x] An array of objects
 * [x] An array with a key to sort a field first on and the order of the sort (ascending/descending) ,
 * [x] An array with a key to sort a field second on and the order of the sort (ascending/descending),
-* [ ] A key to filter by
-* [ ] A value to be filtered, this function must return an array sorted by the sortByField1 in the order given first and then by the sortByField2 key in the order given and filtered by the filterBy key.
+* [x] A key to filter by
+* [x] A value to be filtered, this function must return an array sorted by the sortByField1 in the order given first and then by the sortByField2 key in the order given and filtered by the filterBy key.
 
 ## You must ensure that:
 
@@ -66,60 +66,60 @@ This file will export 3 functions, each of which will pertain to arrays.
 
 ## output must be of format:
 
-* [ ] output: [{name: 'Greg', age: '22', location: 'New York', role: 'Student'},...]
+* [x] output: [{name: 'Greg', age: '22', location: 'New York', role: 'Student'},...]
 
 ## Example:
 
-* [ ] let people = [
+* [x] let people = [
     {name: 'Ryan', age: '22', location: 'Hoboken', role: 'Student'},
     {name: 'Matt', age: '21', location: 'New York', role: 'Student'},
     {name: 'Matt', age: '25', location: 'New Jersey', role: 'Student'},
     {name: 'Greg', age: '22', location: 'New York', role: 'Student'},
     {name: 'Mike', age: '21', location: 'Chicago', role: 'Teacher'} ];
-* [ ] console.log(sortAndFilter(people, ['name', 'asc'], ['location', 'asc'], 'role', 'Student'));
+* [x] console.log(sortAndFilter(people, ['name', 'asc'], ['location', 'asc'], 'role', 'Student'));
     /\_ output:
     [{name: 'Greg', age: '22', location: 'New York', role: 'Student'},
     {name: 'Matt', age: '25', location: 'New Jersey', role: 'Student'},
     {name: 'Matt', age: '21', location: 'New York', role: 'Student'},
     {name: 'Ryan', age: '22', location: 'Hoboken', role: 'Student'}]
     \_/
-* [ ] console.log(sortAndFilter(people, ['name', 'asc'], ['location', 'desc'], 'role', 'Student'));
+* [x] console.log(sortAndFilter(people, ['name', 'asc'], ['location', 'desc'], 'role', 'Student'));
     /\_ output:
     [{name: 'Greg', age: '22', location: 'New York', role: 'Student'},
     {name: 'Matt', age: '21', location: 'New York', role: 'Student'},
     {name: 'Matt', age: '25', location: 'New Jersey', role: 'Student'},
     {name: 'Ryan', age: '22', location: 'Hoboken', role: 'Student'}]
     \_/
-* [ ] console.log(sortAndFilter(people, ['location', 'asc'], ['name', 'asc'], 'age', '22'));
+* [x] console.log(sortAndFilter(people, ['location', 'asc'], ['name', 'asc'], 'age', '22'));
     /\_ output:
     [{name: 'Ryan', age: '22', location: 'Hoboken', role: 'Student'},
     {name: 'Greg', age: '22', location: 'New York', role: 'Student'}]
     \_/
-* [ ] console.log(sortAndFilter(people, ['ssn', 'asc'], ['name', 'asc'], 'age', '22'));
+* [x] console.log(sortAndFilter(people, ['ssn', 'asc'], ['name', 'asc'], 'age', '22'));
     /\_ output:
     Error: the sortByField1 is not a key in each object of the array
     \_/
-* [ ] console.log(sortAndFilter(people, ['location', 'none'], ['name', 'asc'], 'age', '22'));
+* [x] console.log(sortAndFilter(people, ['location', 'none'], ['name', 'asc'], 'age', '22'));
     /\_ output:
     Error: the order of sortByField1 must be either 'asc' or 'desc'
     \_/
-* [ ] console.log(sortAndFilter(people, ['location', 'asc'], ['name', 'asc'], 'phone', '22'));
+* [x] console.log(sortAndFilter(people, ['location', 'asc'], ['name', 'asc'], 'phone', '22'));
     /\_ output:
     Error: the filterBy key is not a key in each object of the array
     \_/
-* [ ] console.log(sortAndFilter(['location', 'asc'], ['name', 'asc'], 'age', '22'));
+* [x] console.log(sortAndFilter(['location', 'asc'], ['name', 'asc'], 'age', '22'));
     /\_ output:
     Error: the array does not exist
     \_/
-* [ ] console.log(sortAndFilter(['string', {}], ['location', 'asc'], ['name', 'asc'], 'age', '22'));
+* [x] console.log(sortAndFilter(['string', {}], ['location', 'asc'], ['name', 'asc'], 'age', '22'));
     /\_ output:
     Error: each element in the array must be an object
     \_/
-* [ ] console.log(sortAndFilter(people, ['location', 'asc'], ['name', 'asc'], 'age', 22));
+* [x] console.log(sortAndFilter(people, ['location', 'asc'], ['name', 'asc'], 'age', 22));
     /\_ output:
     Error: the filterByTerm must be a string
     \_/
-* [ ] console.log(sortAndFilter([ {name: 'Ryan', age: '22', location: 'Hoboken', role: 'Student'}, {name: 'Greg', age: 22, location: 'New York', role: 'Student'}], 'location', 'age', '22'));
+* [x] console.log(sortAndFilter([ {name: 'Ryan', age: '22', location: 'Hoboken', role: 'Student'}, {name: 'Greg', age: 22, location: 'New York', role: 'Student'}], 'location', 'age', '22'));
     /\_ output:
     Error: each value for each key in each object in the array must be a string
     \_/

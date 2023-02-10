@@ -4,6 +4,11 @@ do not forget that you need to create the package.json and add the start command
 /* #region ArrayUtils  */
 
 import { sortAndFilter } from "./arrayUtils.js";
+let people = [
+  { name: "Matt", age: "21", location: "New York", role: "Student" },
+  { name: "Matt", age: "21", location: "New Jersey", role: "Student" },
+];
+console.log("\n\n Array Correctness");
 
 /* #region Array Correctness*/
 
@@ -44,7 +49,7 @@ for (let people of [
 }
 /* #endregion */
 
-console.log();
+console.log("\n\n Array Object Correctness");
 
 /* #region Array Object Correctness*/
 
@@ -101,12 +106,9 @@ for (let people of [
   }
 }
 /* #endregion */
-console.log();
 
-let people = [
-  { name: "Matt", age: "21", location: "New York", role: "Student" },
-  { name: "Matt", age: "21", location: "New Jersey", role: "Student" },
-];
+console.log("\n\n sortByField1 and sortByField2 Correctness");
+
 /* #region sortByField1 and sortByField2 Correctness*/
 
 for (let sortByField1 of [
@@ -179,7 +181,7 @@ for (let sortByField2 of [
   }
 }
 /* #endregion */
-console.log();
+console.log("\n\n filterBy and filterByTerm Correctness");
 
 /* #region filterBy and filterByTerm Correctness*/
 
@@ -243,7 +245,7 @@ for (let filterByTerm of [
 }
 
 /* #endregion */
-console.log("filterBy and filterByTerm Correctness");
+console.log("\n\n  Array Cleanup");
 
 /* #region Array cleanup*/
 
@@ -275,6 +277,165 @@ try {
   console.log(error);
 }
 /* #endregion */
-console.log();
+console.log("\n\n Sample test cases");
 
+/* #region  sample test cases */
+people = [
+  { name: "Ryan", age: "22", location: "Hoboken", role: "Student" },
+
+  { name: "Matt", age: "21", location: "New York", role: "Student" },
+
+  { name: "Matt", age: "25", location: "New Jersey", role: "Student" },
+
+  { name: "Greg", age: "22", location: "New York", role: "Student" },
+
+  { name: "Mike", age: "21", location: "Chicago", role: "Teacher" },
+];
+
+console.log(
+  sortAndFilter(people, ["name", "asc"], ["location", "asc"], "role", "Student")
+);
+
+/* output:
+  
+  [{name: 'Greg', age: '22', location: 'New York', role: 'Student'},
+  
+  {name: 'Matt', age: '25', location: 'New Jersey', role: 'Student'},
+  
+  {name: 'Matt', age: '21', location: 'New York', role: 'Student'},
+  
+  {name: 'Ryan', age: '22', location: 'Hoboken', role: 'Student'}]
+  
+ */
+
+console.log(
+  sortAndFilter(
+    people,
+    ["name", "asc"],
+    ["location", "desc"],
+    "role",
+    "Student"
+  )
+);
+
+/* output:
+  
+  [{name: 'Greg', age: '22', location: 'New York', role: 'Student'},
+  
+  {name: 'Matt', age: '21', location: 'New York', role: 'Student'},
+  
+  {name: 'Matt', age: '25', location: 'New Jersey', role: 'Student'},
+  
+  {name: 'Ryan', age: '22', location: 'Hoboken', role: 'Student'}]
+  
+ */
+
+console.log(
+  sortAndFilter(people, ["location", "asc"], ["name", "asc"], "age", "22")
+);
+
+/* output:
+  
+  [{name: 'Ryan', age: '22', location: 'Hoboken', role: 'Student'},
+  
+  {name: 'Greg', age: '22', location: 'New York', role: 'Student'}]
+  
+ */
+try {
+  console.log(
+    sortAndFilter(people, ["ssn", "asc"], ["name", "asc"], "age", "22")
+  );
+} catch (error) {
+  console.log(error);
+}
+/* output:
+  
+  Error: the sortByField1 is not a key in each object of the array
+  
+ */
+try {
+  console.log(
+    sortAndFilter(people, ["location", "none"], ["name", "asc"], "age", "22")
+  );
+} catch (error) {
+  console.log(error);
+}
+/* output:
+  
+  Error: the order of sortByField1 must be either 'asc' or 'desc'
+  
+ */
+try {
+  console.log(
+    sortAndFilter(people, ["location", "asc"], ["name", "asc"], "phone", "22")
+  );
+} catch (error) {
+  console.log(error);
+}
+/* output:
+  
+  Error: the filterBy key is not a key in each object of the array
+  
+ */
+try {
+  console.log(sortAndFilter(["location", "asc"], ["name", "asc"], "age", "22"));
+} catch (error) {
+  console.log(error);
+}
+/* output:
+  
+  Error: the array does not exist
+  
+ */
+try {
+  console.log(
+    sortAndFilter(
+      ["string", {}],
+      ["location", "asc"],
+      ["name", "asc"],
+      "age",
+      "22"
+    )
+  );
+} catch (error) {
+  console.log(error);
+}
+/* output:
+  
+  Error: each element in the array must be an object
+  
+ */
+try {
+  console.log(
+    sortAndFilter(people, ["location", "asc"], ["name", "asc"], "age", 22)
+  );
+} catch (error) {
+  console.log(error);
+}
+/* output:
+  
+  Error: the filterByTerm must be a string
+  
+ */
+try {
+  console.log(
+    sortAndFilter(
+      [
+        { name: "Ryan", age: "22", location: "Hoboken", role: "Student" },
+        { name: "Greg", age: 22, location: "New York", role: "Student" },
+      ],
+      "location",
+      "age",
+      "22"
+    )
+  );
+} catch (error) {
+  console.log(error);
+}
+/* output:
+  
+  Error: each value for each key in each object in the array must be a string
+  
+ */
+/* #endregion */
 /* #endregion */
