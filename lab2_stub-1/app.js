@@ -2,6 +2,11 @@
 do not forget that you need to create the package.json and add the start command to run app.js as the starting script*/
 
 /* #region ArrayUtils  */
+/* #region  merge */
+
+/* #endregion */
+
+/* #region  Sort and Filer */
 
 import { sortAndFilter } from "./arrayUtils.js";
 let people = [
@@ -280,6 +285,7 @@ try {
 console.log("\n\n Sample test cases");
 
 /* #region  sample test cases */
+/* #endregion */
 people = [
   { name: "Ryan", age: "22", location: "Hoboken", role: "Student" },
 
@@ -438,4 +444,5 @@ try {
   
  */
 /* #endregion */
+
 /* #endregion */
