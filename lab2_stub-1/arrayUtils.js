@@ -23,7 +23,9 @@ export let sortAndFilter = (
 ) => {
   let arrayKeys = helper.validateObjectArray(array);
   helper.validateSortByFieldArray(sortBy1, sortBy2, arrayKeys);
-  helper.validateFilters(filterBy, filterByTerm, array);
+  let filterArray = helper.validateFilters(filterBy, filterByTerm, array);
+  filterBy = filterArray[0];
+  filterByTerm = filterArray[1];
   // sorting logic
   array.sort((a, b) => {
     let fa = a[sortBy1[0]].toLowerCase();
@@ -45,7 +47,7 @@ export let sortAndFilter = (
     return 0;
   });
   //filtering logic
-  array.filter((x) => {
+  array = array.filter((x) => {
     return x[filterBy] === filterByTerm;
   });
   return array; //temp output

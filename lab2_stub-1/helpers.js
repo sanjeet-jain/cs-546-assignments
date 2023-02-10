@@ -192,6 +192,7 @@ export function validateFilters(filterBy, filterByTerm, array) {
   if (!filterByTermFound) {
     throw "Error: filterByTerm key doesnt exist in object array";
   }
+  return [filterBy, filterByTerm];
 }
 
 // export function validateInputForMerge(input){
