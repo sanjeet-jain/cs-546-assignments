@@ -53,6 +53,11 @@ export let sortAndFilter = (
   return array; //temp output
 };
 
+/**
+ * function to check if input is valid for sort and filter.
+ *@param {Array}array input array of items which needs to be validated if they are arrays and are valid arrays ( that is they only contain strings or numbers)
+ *@return {Array} of sorted items ( numbers sorted in order concatenated with sorted strings as per ASCII value)
+ */
 export let merge = (...args) => {
   //this function takes in a variable number of arrays that's what the ...args signifies
   let temp = helper.validateInputForMerge(args);
@@ -81,4 +86,11 @@ export let merge = (...args) => {
 
 export let matrixMultiply = (...args) => {
   //this function takes in a variable number of arrays that's what the ...args signifies
+  if (helper.validateInputForMatrixMultiply(args)) {
+    //matrix multiplication
+    let result = math.multiply();
+    return result;
+  } else {
+    throw "Error: Matrix multiplication not possible";
+  }
 };

@@ -1,3 +1,14 @@
+/\*
+Created by https://sanjeet-jain.github.io/
+      \_       \_          \_\_\_\_\_
+     \| \|     \(\_\)        / \_\_\_\_\|
+     \| \| \_\_ \_ \_ \_ \_\_   \| \(\_\_\_  
+ \_   \| \|/ \_\` \| \| '\_ \\   \\\_\_\_ \\
+\| \|\_\_\| \| \(\_\| \| \| \| \| \|  \_\_\_\_\) \|
+ \\\_\_\_\_/ \\\_\_\,\_\|\_\|\_\| \|\_\| \|\_\_\_\_\_/
+                   \_\_\_\_\_\_    
+\*/
+
 # CS-546 Lab 2
 
 The purpose of this lab is to familiarize yourself with Node.js modules and further your understanding of JavaScript syntax.
@@ -149,12 +160,12 @@ You must check:
 
 You must ensure that:
 
-* [ ] There are at least two inputs
-* [ ] Each input is an array
-* [ ] Each array is not empty
-* [ ] The outer array must have only arrays as elements
-* [ ] The inner arrays must only have numbers as elements
-* [ ] Each inner array is of the same length
+* [x] There are at least two inputs
+* [x] Each input is an array
+* [x] Each array is not empty
+* [x] The outer array must have only arrays as elements
+* [x] The inner arrays must only have numbers as elements
+* [x] Each inner array is of the same length
 * [ ] In order for any two matrices to be multiplied together, the number of columns within the first matrix must match the number of rows within the second matrix. So, for a 2x3 matrix and a 3x2 matrix, we can multiply these since the first matrix has 3 columns and the second matrix has 3 rows. For a 2x4 matrix and a 1x4 matrix, we cannot multiply these together since the first matrix has 4 columns while the second matrix has 1 row.
 
 For those that aren't familiar with performing matrix multiplication, here is a link summarizing how it works: https://www.mathsisfun.com/algebra/matrix-multiplying.htmlLinks to an external site.

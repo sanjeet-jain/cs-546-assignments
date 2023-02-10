@@ -2,6 +2,17 @@
     and then export them for use in your other files.
 */
 
+/*
+Created by https://sanjeet-jain.github.io/
+      _       _          _____ 
+     | |     (_)        / ____|
+     | | __ _ _ _ __   | (___  
+ _   | |/ _` | | '_ \   \___ \ 
+| |__| | (_| | | | | |  ____) |
+ \____/ \__,_|_|_| |_| |_____/ 
+                   ______    
+*/
+
 /**
  * function check if input is null.
  * @param input an input value to check if its null.
@@ -52,18 +63,39 @@ function errorIfNotArray(input, arrayName = "") {
  * @param {number}length length of items inside the array
  * @param {string}type  string input to check for the type of items within the array ( if "array" passed then checks for nested arrays as well and only allows strings or numbers within nested arrays )
  * @param {string?}arrayName string input containing array name for messages
+ * @param {boolean?} recursive whether to recursively check the input array elements
  */
-function validateArrElements(input, length, type, arrayName = "") {
+let recursionCount = 0;
+function validateArrElements(
+  input,
+  length,
+  type,
+  arrayName = "",
+  recursive = false
+) {
   input.forEach((element) => {
     if (isNull(element) || isEmpty(element)) {
       throw "Error: an item within the " + arrayName + " is empty or null";
     }
     if (type === "array") {
-      if (Array.isArray(element)) {
+      if (Array.isArray(element) && recursive === true) {
         errorIfNotArray(element, arrayName);
         errorIfNullOrEmpty(element);
         //recursive call to check deeper
-        validateArrElements(element, 0, "array", arrayName);
+        recursionCount += 1;
+        validateArrElements(
+          element,
+          0,
+          "array",
+          arrayName + " at depth " + recursionCount,
+          true
+        );
+      } else if (recursionCount < 1 && recursive === true) {
+        throw (
+          "Error: an element of " +
+          arrayName +
+          " in the first depth is not an array"
+        );
       } else if (typeof element === "string") {
         isNonEmptyString(element, true);
       } else if (typeof element === "number") {
@@ -78,6 +110,9 @@ function validateArrElements(input, length, type, arrayName = "") {
     }
     if (length > 0) {
       let elementKeys = Object.keys(element);
+      if (recursive === true) {
+        arrayName += " : " + element;
+      }
       if (elementKeys.length !== length) {
         throw "Error: " + arrayName + " of incorrect length";
       }
@@ -258,15 +293,62 @@ export function validateFilters(filterBy, filterByTerm, array) {
 export function validateInputForMerge(input) {
   errorIfNotArray(input);
   errorIfNullOrEmpty(input, "merge args");
-  validateArrElements(input, 0, "array", "merge args");
+  validateArrElements(input, 0, "array", "merge args", true);
   //spaces are intentional so no need to cleanup
   let temp = input.flat(Infinity);
   return temp;
 }
 
-// export function validateInputForMatrixMultiply(input){
-//     let isValid = False;
-//     if(input)
+/**
+ * function to check if input has a set of matrices and validate matrix multiplication
+ * throws an error if any of the validation fails
+ * returns true if matrix multiplication is possible else false
+ * @param {Array} input
+ * @returns {boolean}
+ */
+export function validateInputForMatrixMultiply(input) {
+  errorIfNotArray(input);
+  errorIfNullOrEmpty(input, "matrix args");
+  if (input.length < 2) {
+    return false;
+  }
+  input.forEach((element) => {
+    validateArrElements(
+      element,
+      element[0].length,
+      "array",
+      "matrix args",
+      true
+    );
+  });
+  let temp = input.flat(Infinity);
+  if (
+    !temp.every((x) => {
+      return typeof x === "number" && !isNull(x);
+    })
+  ) {
+    return false;
+  }
 
-//     return isValid
-// }
+  let currRow = 0;
+  let currCol = 0;
+  let prevRow = 0;
+  let prevCol = 0;
+
+  let isValid = true;
+  input.forEach((element) => {
+    if (prevRow === 0 && prevCol === 0) {
+      prevRow = element.length;
+      prevCol = element[0].length;
+    } else {
+      currRow = element.length;
+      currCol = element[0].length;
+      if (prevCol === currRow) {
+        prevCol = currCol;
+      } else {
+        isValid = false;
+      }
+    }
+  });
+  return true && isValid;
+}

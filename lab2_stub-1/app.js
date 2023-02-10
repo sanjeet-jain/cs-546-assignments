@@ -2,69 +2,141 @@
 do not forget that you need to create the package.json and add the start command to run app.js as the starting script*/
 
 /* #region ArrayUtils  */
-import { sortAndFilter, merge } from "./arrayUtils.js";
-/* #region  merge */
-console.log(merge(["bar", 0, 1, [[[5, "foo"]]]], [7, "buzz", ["fizz", 8]]));
+import { sortAndFilter, merge, matrixMultiply } from "./arrayUtils.js";
+/* #region  matrix multiply */
 console.log(
-  merge(
-    [3, 0, "Lab2", 2, "Aiden"],
-    ["CS-546", "Computer Science", 8, 15],
-    [6, 3, "! Patrick ", "! Patrick", 25, 29],
-    [" ! 1", ["!1", ["2"]], " !"]
+  matrixMultiply(
+    [
+      [2, 3],
+      [3, 4],
+      [4, 5],
+    ],
+    [
+      [1, 1, 1],
+      [2, 2, 2],
+    ],
+    [[3], [2], [1]]
   )
 );
 try {
-  console.log(merge([1]));
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(merge(["1"]));
+  console.log(matrixMultiply([[2], [2]], [[2]]));
 } catch (error) {
   console.log(error);
 }
 
-//errors
+// invalid
 try {
-  console.log(merge([[1, { key: 1 }], [[1]]]));
+  console.log(matrixMultiply([[2]], [[2], [2]]));
 } catch (error) {
   console.log(error);
 }
 try {
-  console.log(merge([]));
+  console.log(
+    matrixMultiply(
+      [[2, 3], [3, 4], [4]],
+      [
+        [1, 1, 1],
+        [2, 2, 2],
+      ],
+      [[3], [2], [1]]
+    )
+  );
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(
+    matrixMultiply(
+      [
+        [2, 3],
+        [3, 4],
+        [4, "5"],
+      ],
+      [
+        [1, 1, 1],
+        [2, 2, 2],
+      ],
+      [[3], [2], [1]]
+    )
+  );
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(matrixMultiply([[2, 3]]));
 } catch (error) {
   console.log(error);
 }
 
-try {
-  console.log(merge());
-} catch (error) {
-  console.log(error);
-}
-
-try {
-  console.log(merge(null));
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(merge(NaN));
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(merge(undefined));
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(merge([" ", " ", ""]));
-} catch (error) {
-  console.log(error);
-}
 /* #endregion */
 
-// /* #region  Sort and Filer */
+// /* #region  merge */
+// console.log(merge(["bar", 0, 1, [[[5, "foo"]]]], [7, "buzz", ["fizz", 8]]));
+// console.log(
+//   merge(
+//     [3, 0, "Lab2", 2, "Aiden"],
+//     ["CS-546", "Computer Science", 8, 15],
+//     [6, 3, "! Patrick ", "! Patrick", 25, 29],
+//     [" ! 1", ["!1", ["2"]], " !"]
+//   )
+// );
+// try {
+//   console.log(merge(1, 2));
+// } catch (error) {
+//   console.log(error);
+// }
+// try {
+//   console.log(merge([1]));
+// } catch (error) {
+//   console.log(error);
+// }
+// try {
+//   console.log(merge(["1"]));
+// } catch (error) {
+//   console.log(error);
+// }
+
+// //errors
+// try {
+//   console.log(merge([[1, { key: 1 }], [[1]]]));
+// } catch (error) {
+//   console.log(error);
+// }
+// try {
+//   console.log(merge([]));
+// } catch (error) {
+//   console.log(error);
+// }
+
+// try {
+//   console.log(merge());
+// } catch (error) {
+//   console.log(error);
+// }
+
+// try {
+//   console.log(merge(null));
+// } catch (error) {
+//   console.log(error);
+// }
+// try {
+//   console.log(merge(NaN));
+// } catch (error) {
+//   console.log(error);
+// }
+// try {
+//   console.log(merge(undefined));
+// } catch (error) {
+//   console.log(error);
+// }
+// try {
+//   console.log(merge([" ", " ", ""]));
+// } catch (error) {
+//   console.log(error);
+// }
+// /* #endregion */
+
+// /* #region  Sort and Filter */
 
 // let people = [
 //   { name: "Matt", age: "21", location: "New York", role: "Student" },
@@ -256,7 +328,7 @@ try {
 //   { key: "value" },
 //   "",
 //   " ",
-//   "name",
+//   "role",
 // ]) {
 //   try {
 //     console.log(
@@ -342,7 +414,6 @@ try {
 // console.log("\n\n Sample test cases");
 
 // /* #region  sample test cases */
-// /* #endregion */
 // people = [
 //   { name: "Ryan", age: "22", location: "Hoboken", role: "Student" },
 
@@ -500,6 +571,8 @@ try {
 //   Error: each value for each key in each object in the array must be a string
 
 //  */
+// /* #endregion */
+
 // /* #endregion */
 
 /* #endregion */
