@@ -89,7 +89,7 @@ function checkIfItemsAreString(element, elementName = "") {
 
 /**
  * funtion check if input is valid for sort and filter.
- * @param input[] an input array value to check if its valid.
+ * @param {Array} input an input array value to check if its valid.
  */
 export function validateObjectArray(input) {
   errorIfNotArray(input, "object array");

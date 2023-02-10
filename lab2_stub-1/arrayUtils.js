@@ -4,13 +4,15 @@
 */
 import * as helper from "./helpers.js";
 
+//commenting reference from https://javascript.info/comments
 /**
- * funtion check if input is valid for sort and filter.
- *@param array input array,
- *@param sortBy1 [sortByField1, order] sort using object key and order to sort it in asc or desc,
- *@param sortBy2 [sortByField2, order],
- *@param filterBy filter by object key,
- *@param filterByTerm filter object value
+ * function to check if input is valid for sort and filter.
+ *@param {Array}array input array,
+ *@param {Array}sortBy1 [sortByField1, order] sort using object key and order to sort it in asc or desc,
+ *@param {Array}sortBy2 [sortByField2, order],
+ *@param {string}filterBy filter by object key,
+ *@param {string}filterByTerm filter object value
+ *@return {Array}
  */
 export let sortAndFilter = (
   array,
@@ -23,6 +25,9 @@ export let sortAndFilter = (
   helper.validateSortByFieldArray(sortBy1, sortBy2, arrayKeys);
   helper.validateFilters(filterBy, filterByTerm, array);
   // sorting logic
+  array;
+  //filtering logic
+
   return array; //temp output
 };
 
