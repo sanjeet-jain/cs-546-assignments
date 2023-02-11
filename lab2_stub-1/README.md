@@ -221,7 +221,7 @@ For example, Hello, 2 the world! becomes hello, 2 the world! when lowercased and
 
 ## censorWords(str, badWordsList)
 
-* [ ] `Given an input string and an array of strings to be censored, return the input string while replacing each word that is present in the input string and in the bad words list with special characters (each bad word should maintain its original length). How it works is like so: you will use !, @, $, # in that particular order and replace each character in each bad word with these starting with !. For example if the bad word is “pineapple”, the censored word would be “!@$#!@$#!”. For every bad word encountered, the pattern resumes from where it last left off, so after encountering “pineapple” and we later encounter “pretzel” as the next bad word in the input string, we will censor it as “@$#!@$#”. Also, you must censor any strings in the bad words list that appear as substrings in the input string - an example is provided below.`
+* [x] `Given an input string and an array of strings to be censored, return the input string while replacing each word that is present in the input string and in the bad words list with special characters (each bad word should maintain its original length). How it works is like so: you will use !, @, $, # in that particular order and replace each character in each bad word with these starting with !. For example if the bad word is “pineapple”, the censored word would be “!@$#!@$#!”. For every bad word encountered, the pattern resumes from where it last left off, so after encountering “pineapple” and we later encounter “pretzel” as the next bad word in the input string, we will censor it as “@$#!@$#”. Also, you must censor any strings in the bad words list that appear as substrings in the input string - an example is provided below.`
 
 You must ensure the following:
 
@@ -253,17 +253,17 @@ You must check:
 * [x] That string, word1, and word2 are of type string
 * [x] That string, word1, and word2 are not just empty strings
 * [x] That string, word1, and word2 are not just strings made of punctuation symbols
-* [ ] That string is at least two words long
-* [ ] That word1 and word2 are not the same
-* [ ] That word1 and word2 exist in the string
-* [ ] That word1 appears before word2 in the string
-* [ ] If any of those conditions fail, the function will throw.
-* [ ] This function is case insensitive.
-* [ ] distance() // throws error
-* [ ] distance([],true) // throws error
-* [ ] distance("","","") // throws error
-* [ ] distance("Hello World!", " !?!", " ... ") // throws error
-* [ ] distance("Patrick", "Patrick", "Patrick") // throws error
+* [x] That string is at least two words long
+* [x] That word1 and word2 are not the same
+* [x] That word1 and word2 exist in the string
+* [x] That word1 appears before word2 in the string
+* [x] If any of those conditions fail, the function will throw.
+* [x] This function is case insensitive.
+* [x] distance() // throws error
+* [x] distance([],true) // throws error
+* [x] distance("","","") // throws error
+* [x] distance("Hello World!", " !?!", " ... ") // throws error
+* [x] distance("Patrick", "Patrick", "Patrick") // throws error
 * [ ] distance(123, "CS", "Patrick") // throws error
 * [ ] distance("Hello there", "hello", "") // throws error
 * [ ] distance("Give me music suggestions", "rock", "pop") // throws error

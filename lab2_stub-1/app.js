@@ -1,10 +1,11 @@
 /* TODO: Import the functions from your three modules here and write two test cases for each function.. You should have a total of 18 test cases. 
 do not forget that you need to create the package.json and add the start command to run app.js as the starting script*/
 
-/* #region ArrayUtils  */
+// /* #region ArrayUtils  */
+
 // import { sortAndFilter, merge, matrixMultiply } from "./arrayUtils.js";
 
-/* #region  Sort and Filter */
+// /* #region  Sort and Filter */
 
 // let people = [
 //   { name: "Matt", age: "21", location: "New York", role: "Student" },
@@ -12,9 +13,8 @@ do not forget that you need to create the package.json and add the start command
 // ];
 // console.log("\n\n Array Correctness");
 
-/* #region Array Correctness*/
-
-// for (let people of [
+// /* #region Array Correctness*/
+// const arrayCorrectnessTest = [
 //   [],
 //   null,
 //   NaN,
@@ -33,7 +33,9 @@ do not forget that you need to create the package.json and add the start command
 //     { name: "Ryan", age: "22", location: "Hoboken1", role: "Student" },
 //     { name: "Ryan", age: "22", location: "Hoboken", role: "Student" },
 //   ],
-// ]) {
+// ];
+
+// arrayCorrectnessTest.forEach((people) => {
 //   try {
 //     console.log(
 //       sortAndFilter(
@@ -48,14 +50,14 @@ do not forget that you need to create the package.json and add the start command
 //   } catch (error) {
 //     console.log(error);
 //   }
-// }
-/* #endregion */
+// });
+
+// /* #endregion */
 
 // console.log("\n\n Array Object Correctness");
 
-/* #region Array Object Correctness*/
-
-// for (let people of [
+// /* #region Array Object Correctness*/
+// const data = [
 //   //length check -ERROR
 //   [{ name: "Matt", age: "21", location: "New York", role: "Student" }],
 //   //type check -ERROR
@@ -83,7 +85,9 @@ do not forget that you need to create the package.json and add the start command
 //     { name: "Matt", age: "21", location: "New York", role: "Student" },
 //     { name: "Matt", age: "21", location: "New Jersey", role: "Student" },
 //   ],
-// ]) {
+// ];
+
+// data.forEach((people) => {
 //   try {
 //     console.log(
 //       sortAndFilter(
@@ -106,12 +110,13 @@ do not forget that you need to create the package.json and add the start command
 //     // last input should give valid result
 //     */
 //   }
-// }
-/* #endregion */
+// });
+
+// /* #endregion */
 
 // console.log("\n\n sortByField1 and sortByField2 Correctness");
 
-/* #region sortByField1 and sortByField2 Correctness*/
+// /* #region sortByField1 and sortByField2 Correctness*/
 
 // for (let sortByField1 of [
 //   [],
@@ -182,10 +187,10 @@ do not forget that you need to create the package.json and add the start command
 //     console.log(error);
 //   }
 // }
-/* #endregion */
+// /* #endregion */
 // console.log("\n\n filterBy and filterByTerm Correctness");
 
-/* #region filterBy and filterByTerm Correctness*/
+// /* #region filterBy and filterByTerm Correctness*/
 
 // for (let filterBy of [
 //   [],
@@ -246,10 +251,10 @@ do not forget that you need to create the package.json and add the start command
 //   }
 // }
 
-/* #endregion */
+// /* #endregion */
 // console.log("\n\n  Array Cleanup");
 
-/* #region Array cleanup*/
+// /* #region Array cleanup*/
 
 // try {
 //   console.log(
@@ -278,10 +283,10 @@ do not forget that you need to create the package.json and add the start command
 // } catch (error) {
 //   console.log(error);
 // }
-/* #endregion */
+// /* #endregion */
 // console.log("\n\n Sample test cases");
 
-/* #region  sample test cases */
+// /* #region  sample test cases */
 // people = [
 //   { name: "Ryan", age: "22", location: "Hoboken", role: "Student" },
 
@@ -298,7 +303,7 @@ do not forget that you need to create the package.json and add the start command
 //   sortAndFilter(people, ["name", "asc"], ["location", "asc"], "role", "Student")
 // );
 
-/* output:
+// /* output:
 
 //   [{name: 'Greg', age: '22', location: 'New York', role: 'Student'},
 
@@ -320,7 +325,7 @@ do not forget that you need to create the package.json and add the start command
 //   )
 // );
 
-/* output:
+// /* output:
 
 //   [{name: 'Greg', age: '22', location: 'New York', role: 'Student'},
 
@@ -336,7 +341,7 @@ do not forget that you need to create the package.json and add the start command
 //   sortAndFilter(people, ["location", "asc"], ["name", "asc"], "age", "22")
 // );
 
-/* output:
+// /* output:
 
 //   [{name: 'Ryan', age: '22', location: 'Hoboken', role: 'Student'},
 
@@ -350,7 +355,7 @@ do not forget that you need to create the package.json and add the start command
 // } catch (error) {
 //   console.log(error);
 // }
-/* output:
+// /* output:
 
 //   Error: the sortByField1 is not a key in each object of the array
 
@@ -362,7 +367,7 @@ do not forget that you need to create the package.json and add the start command
 // } catch (error) {
 //   console.log(error);
 // }
-/* output:
+// /* output:
 
 //   Error: the order of sortByField1 must be either 'asc' or 'desc'
 
@@ -374,7 +379,7 @@ do not forget that you need to create the package.json and add the start command
 // } catch (error) {
 //   console.log(error);
 // }
-/* output:
+// /* output:
 
 //   Error: the filterBy key is not a key in each object of the array
 
@@ -384,7 +389,7 @@ do not forget that you need to create the package.json and add the start command
 // } catch (error) {
 //   console.log(error);
 // }
-/* output:
+// /* output:
 
 //   Error: the array does not exist
 
@@ -402,7 +407,7 @@ do not forget that you need to create the package.json and add the start command
 // } catch (error) {
 //   console.log(error);
 // }
-/* output:
+// /* output:
 
 //   Error: each element in the array must be an object
 
@@ -414,7 +419,7 @@ do not forget that you need to create the package.json and add the start command
 // } catch (error) {
 //   console.log(error);
 // }
-/* output:
+// /* output:
 
 //   Error: the filterByTerm must be a string
 
@@ -434,86 +439,48 @@ do not forget that you need to create the package.json and add the start command
 // } catch (error) {
 //   console.log(error);
 // }
-/* output:
+// /* output:
 
 //   Error: each value for each key in each object in the array must be a string
 
 //  */
-/* #endregion */
+// /* #endregion */
 
-/* #endregion */
+// /* #endregion */
 
-/* #region  merge */
+// /* #region  merge */
 // console.log("\n \n merge Function");
-// console.log(merge(["bar", 0, 1, [[[5, "foo"]]]], [7, "buzz", ["fizz", 8]]));
-// console.log(
-//   merge(
+// const testCasesMerge = [
+//   [
 //     [3, 0, "Lab2", 2, "Aiden"],
 //     ["CS-546", "Computer Science", 8, 15],
 //     [6, 3, "! Patrick ", "! Patrick", 25, 29],
-//     [" ! 1", ["!1", ["2"]], " !"]
-//   )
-// );
-// try {
-//   console.log(merge(1, 2));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(merge([1]));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(merge(["1"]));
-// } catch (error) {
-//   console.log(error);
-// }
+//     [" ! 1", ["!1", ["2"]], " !"],
+//   ],
+//   [(1, 2)],
+//   [1],
+//   ["1"],
+//   [[[1, { key: 1 }], [[1]]]],
+//   [],
+//   undefined,
+//   null,
+//   NaN,
+//   [" ", " ", ""],
+// ];
 
-// //errors
-// try {
-//   console.log(merge([[1, { key: 1 }], [[1]]]));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(merge([]));
-// } catch (error) {
-//   console.log(error);
-// }
+// testCasesMerge.forEach((testCase) => {
+//   try {
+//     console.log(merge(testCase));
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
+// /* #endregion */
 
-// try {
-//   console.log(merge());
-// } catch (error) {
-//   console.log(error);
-// }
-
-// try {
-//   console.log(merge(null));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(merge(NaN));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(merge(undefined));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(merge([" ", " ", ""]));
-// } catch (error) {
-//   console.log(error);
-// }
-/* #endregion */
-
-/* #region  matrix multiply */
-// console.log("\n \n matrix multiplication");
-// console.log(
-//   matrixMultiply(
+// /* #region  matrix multiply */
+// console.log("\n matrix multiply");
+// const tests = [
+//   [
 //     [
 //       [2, 3],
 //       [3, 4],
@@ -523,12 +490,9 @@ do not forget that you need to create the package.json and add the start command
 //       [1, 1, 1],
 //       [2, 2, 2],
 //     ],
-//     [[3], [2], [1]]
-//   )
-// );
-
-// console.log(
-//   matrixMultiply(
+//     [[3], [2], [1]],
+//   ],
+//   [
 //     [
 //       [1, 2],
 //       [3, 4],
@@ -539,282 +503,205 @@ do not forget that you need to create the package.json and add the start command
 //     [
 //       [1, 2, 3],
 //       [4, 5, 6],
-//     ]
-//   )
-// );
-// console.log(matrixMultiply([[3, 5]], [[4], [4]]));
-// try {
-//   console.log(matrixMultiply([[2], [2]], [[2]]));
-// } catch (error) {
-//   console.log(error);
-// }
+//     ],
+//   ],
+//   [[[3, 5]], [[4], [4]]],
+//   [[[2], [2]], [[2]]],
+//   [],
+//   [[[1, 2]], [["1"], [6]]],
+//   [[[2]], [[2], [2]]],
+//   [
+//     [[2, 3], [3, 4], [4]],
+//     [
+//       [1, 1, 1],
+//       [2, 2, 2],
+//     ],
+//     [[3], [2], [1]],
+//   ],
+//   [
+//     [
+//       [2, 3],
+//       [3, 4],
+//       [4, "5"],
+//     ],
+//     [
+//       [1, 1, 1],
+//       [2, 2, 2],
+//     ],
+//     [[3], [2], [1]],
+//   ],
+//   [[[2, 3]]],
+// ];
 
-/* #region  invalid test cases */
-// try {
-//   console.log(matrixMultiply());
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(matrixMultiply([]));
-// } catch (error) {
-//   console.log(error);
-// }
+// tests.forEach((test) => {
+//   try {
+//     console.log(matrixMultiply(...test));
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
+// /* #endregion */
 
-// try {
-//   console.log(matrixMultiply([[1, 2]], [["1"], [6]]));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(matrixMultiply([[2]], [[2], [2]]));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(
-//     matrixMultiply(
-//       [[2, 3], [3, 4], [4]],
-//       [
-//         [1, 1, 1],
-//         [2, 2, 2],
-//       ],
-//       [[3], [2], [1]]
-//     )
-//   );
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(
-//     matrixMultiply(
-//       [
-//         [2, 3],
-//         [3, 4],
-//         [4, "5"],
-//       ],
-//       [
-//         [1, 1, 1],
-//         [2, 2, 2],
-//       ],
-//       [[3], [2], [1]]
-//     )
-//   );
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(matrixMultiply([[2, 3]]));
-// } catch (error) {
-//   console.log(error);
-// }
-/* #endregion */
-
-/* #endregion */
-
-/* #endregion */
+// /* #endregion */
 
 /* #region  StringUtil.js */
 import { palindromes, censorWords, distance } from "./stringUtils.js";
-/* #region  palindrome */
-
-// console.log(
-//   palindromes([
+// /* #region  palindrome */
+// console.log("\n palindrom test");
+// const testCasesPalindrome = [
+//   [
 //     "Madam",
 //     "Loot",
 //     "Was it a cat I saw?",
 //     "Poor Dan is in a droop",
 //     "Anna",
 //     "Nope",
-//   ])
-// );
+//   ],
+//   ["@!$%%!@%"],
+//   [],
+//   "hi",
+//   " ",
+//   1,
+//   [""],
+//   [" a a"],
+//   [""],
+// ];
 
-// //invalid
-// try {
-//   console.log(palindromes(["@!$%%!@%"]));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(palindromes());
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(palindromes("hi"));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(palindromes(" "));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(palindromes(1));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(palindromes([]));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(palindromes([""]));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(palindromes([" a a"]));
-// } catch (error) {
-//   console.log(error);
-// }
-/* #endregion */
+// testCasesPalindrome.forEach((element) => {
+//   try {
+//     console.log(palindromes(element));
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
-/* #region  censorWords */
-// let badWords = ["bread", "chocolate", "pop"];
+// /* #endregion */
 
-// console.log(
-//   censorWords(
-//     "I like bread that has chocolate chips in it but I do not like lollipops",
-//     badWords
-//   )
-// );
-
-// console.log(
-//   censorWords(
-//     "I like bread that has bread chocolate chips in it but I do not like lollipops",
-//     ["bread", "chocolate", "pop"]
-//   )
-// );
-// console.log(
-//   censorWords(
-//     "I like bread that has bread chocolate chips in it but I do not like lollipops",
-//     ["bread", "chocolate chip", "pop"]
-//   )
-// );
-
-/* #region  invalid test case*/
-// try {
-//   console.log(
-//     censorWords(
+// /* #region  censorWords */
+// let testCasesCensor = [
+//   {
+//     input:
+//       "I like bread that has chocolate chips in it but I do not like lollipops",
+//     badWords: ["bread", "chocolate", "pop"],
+//   },
+//   {
+//     input:
+//       "I like bread that has bread chocolate chips in it but I do not like lollipops",
+//     badWords: ["bread", "chocolate", "pop"],
+//   },
+//   {
+//     input:
+//       "I like bread that has bread chocolate chips in it but I do not like lollipops",
+//     badWords: ["bread", "chocolate chip", "pop"],
+//   },
+//   {
+//     input:
 //       "I like bread that has bread chocolate,chips in it but I do not like lollipops",
-//       ["bread", "chocolate", "pop"]
-//     )
-//   );
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(
-//     censorWords(
+//     badWords: ["bread", "chocolate", "pop"],
+//   },
+//   {
+//     input:
 //       "I like bread that has bread chocolate,chips in it but I do not like lollipops",
-//       ["bread", "chocolate chips", "pop"]
-//     )
-//   );
-// } catch (error) {
-//   console.log(error);
-// }
+//     badWords: ["bread", "chocolate chips", "pop"],
+//   },
+//   {
+//     input: "I like bread that has bread bread in it but I do not like bread",
+//     badWords: ["bread", "chocolate", "pop"],
+//   },
+//   {
+//     input: " ",
+//     badWords: [" ", "chocolate", "pop"],
+//   },
+//   {
+//     input: " 1",
+//     badWords: [" ", "chocolate", "pop"],
+//   },
+//   {
+//     input: " 1",
+//     badWords: [1, "chocolate", "pop"],
+//   },
+//   {
+//     input: "",
+//     badWords: [1, "chocolate", "pop"],
+//   },
+//   {
+//     input: "",
+//     badWords: ["", "chocolate", "pop"],
+//   },
+//   {
+//     input: "123",
+//     badWords: { key: 1 },
+//   },
+//   {
+//     input: ["1234", "chocolate", "pop"],
+//   },
+// ];
 
-// try {
-//   console.log(
-//     censorWords(
-//       "I like bread that has bread bread in it but I do not like bread",
-//       badWords
-//     )
-//   );
-// } catch (error) {
-//   console.log(error);
-// }
+// testCasesCensor.forEach((testCase) => {
+//   try {
+//     console.log(censorWords(testCase.input, testCase.badWords));
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
-// try {
-//   console.log(censorWords(" ", [" ", "chocolate", "pop"]));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(censorWords(" 1", [" ", "chocolate", "pop"]));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(censorWords(" 1", [1, "chocolate", "pop"]));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(censorWords("", [1, "chocolate", "pop"]));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(censorWords("", ["", "chocolate", "pop"]));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(censorWords("123", { key: 1 }));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(censorWords(badWords));
-// } catch (error) {
-//   console.log(error);
-// }
-
-/* #endregion */
-
-/* #endregion */
+// /* #endregion */
 
 /* #region  distance */
-console.log(distance("The brown fox jumped, over the lazy dog", "fox", "dog"));
-// returns 5
-/* #region  invalid test cases */
-try {
-  console.log(
-    distance("The brown fox jumped over the lazy dog", ",", "dog")
-    // returns 5
-  );
-} catch (error) {
-  console.log(error);
-}
+const testCasesDistance = [
+  // {
+  //   sentence: "The brown fox jumped, over the lazy dog",
+  //   firstWord: "fox",
+  //   secondWord: "dog",
+  // },
+  // {
+  //   sentence: "I was going to buy workout powder yesterday",
+  //   firstWord: "going to",
+  //   secondWord: "workout powder",
+  // },
+  // {
+  //   sentence: "  The brown fox jumped over the lazy dog as a fox",
+  //   firstWord: "fox",
+  //   secondWord: "dog",
+  // },
+  { sentence: "Patrick", firstWord: "Patrick", secondWord: "Patrick" },
 
-try {
-  console.log(
-    distance("", "", "")
-    // returns 5
-  );
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(
-    distance("1", "", "")
-    // returns 5
-  );
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(
-    distance("1", "1", "")
-    // returns 5
-  );
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(
-    distance(" ", "1", "1")
-    // returns 5
-  );
-} catch (error) {
-  console.log(error);
-}
-/* #endregion */
+  { sentence: [], firstWord: true, secondWord: undefined },
+  { sentence: undefined, firstWord: undefined, secondWord: undefined },
+  {
+    sentence: "The brown dog fox jumped over the lazy dog",
+    firstWord: "fox",
+    secondWord: "dog",
+  },
+  {
+    sentence: "The brown fox jumped over the lazy dog",
+    firstWord: ",",
+    secondWord: "dog",
+  },
+  { sentence: "!@#", firstWord: "!@$", secondWord: "!@$" },
+  { sentence: "123", firstWord: "123", secondWord: "!@$" },
+  { sentence: "", firstWord: "", secondWord: "" },
+  { sentence: "Hello World!", firstWord: " !?!", secondWord: " ... " },
+  { sentence: "1", firstWord: "1", secondWord: "" },
+  { sentence: " ", firstWord: "1", secondWord: "1" },
+  { sentence: 123, firstWord: "CS", secondWord: "Patrick" },
+  { sentence: "Hello there", firstWord: "hello", secondWord: "" },
+  {
+    sentence: "Give me music suggestions",
+    firstWord: "rock",
+    secondWord: "pop",
+  },
+];
 
+testCasesDistance.forEach((testCase) => {
+  try {
+    console.log(
+      distance(testCase.sentence, testCase.firstWord, testCase.secondWord)
+    );
+  } catch (error) {
+    console.log(error);
+  }
+});
 /* #endregion */
 
 /* #endregion */

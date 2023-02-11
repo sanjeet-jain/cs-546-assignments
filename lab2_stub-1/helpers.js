@@ -444,17 +444,34 @@ const stringUtils = {
     errorIfNullOrEmpty(word1, "word1 string");
     errorIfNullOrEmpty(word2, "word2 string");
     checkIfItemsAreString([string, word1, word2], "input strings", false);
-    let tmpstring = string.trim().toLowerCase().replace(/\W/g, " ");
-    let tmpword1 = word1.trim().toLowerCase().replace(/\W/g, " ");
-    let tmpword2 = word2.trim().toLowerCase().replace(/\W/g, " ");
+
+    let regex = /[!@#$%^&*,.'"]/g;
+    let tmpstring = string.trim().toLowerCase().replace(regex, "");
+    let tmpword1 = word1.trim().toLowerCase().replace(regex, "");
+    let tmpword2 = word2.trim().toLowerCase().replace(regex, "");
     checkIfItemsAreString(
       [tmpstring, tmpword1, tmpword2],
       "input strings",
       false
     );
-
-    // console.log(tmpstring.split(regex));
-
+    if (tmpstring.split(" ").length < 2) {
+      throw "Error: string min length 2";
+    }
+    if (tmpword1 === tmpword2) {
+      throw "Error: word1 word2 cant be same";
+    }
+    if (
+      tmpstring.match(tmpword1) == null ||
+      tmpstring.match(tmpword2) == null
+    ) {
+      throw "Error: words not present in string ";
+    }
+    // console.log(tmpstring);
+    // console.log(tmpword1);
+    // console.log(tmpword2);
+    if (tmpstring.match(tmpword1).index > tmpstring.match(tmpword2).index) {
+      throw "Error: word1 must come before word2";
+    }
     return true;
   },
 };
