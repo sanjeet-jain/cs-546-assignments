@@ -445,64 +445,64 @@ try {
 
 /* #region  merge */
 console.log("\n \n merge Function");
-// console.log(merge(["bar", 0, 1, [[[5, "foo"]]]], [7, "buzz", ["fizz", 8]]));
-// console.log(
-//   merge(
-//     [3, 0, "Lab2", 2, "Aiden"],
-//     ["CS-546", "Computer Science", 8, 15],
-//     [6, 3, "! Patrick ", "! Patrick", 25, 29],
-//     [" ! 1", ["!1", ["2"]], " !"]
-//   )
-// );
-// try {
-//   console.log(merge(1, 2));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(merge([1]));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(merge(["1"]));
-// } catch (error) {
-//   console.log(error);
-// }
+console.log(merge(["bar", 0, 1, [[[5, "foo"]]]], [7, "buzz", ["fizz", 8]]));
+console.log(
+  merge(
+    [3, 0, "Lab2", 2, "Aiden"],
+    ["CS-546", "Computer Science", 8, 15],
+    [6, 3, "! Patrick ", "! Patrick", 25, 29],
+    [" ! 1", ["!1", ["2"]], " !"]
+  )
+);
+try {
+  console.log(merge(1, 2));
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(merge([1]));
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(merge(["1"]));
+} catch (error) {
+  console.log(error);
+}
 
-// //errors
-// try {
-//   console.log(merge([[1, { key: 1 }], [[1]]]));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(merge([]));
-// } catch (error) {
-//   console.log(error);
-// }
+//errors
+try {
+  console.log(merge([[1, { key: 1 }], [[1]]]));
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(merge([]));
+} catch (error) {
+  console.log(error);
+}
 
-// try {
-//   console.log(merge());
-// } catch (error) {
-//   console.log(error);
-// }
+try {
+  console.log(merge());
+} catch (error) {
+  console.log(error);
+}
 
-// try {
-//   console.log(merge(null));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(merge(NaN));
-// } catch (error) {
-//   console.log(error);
-// }
-// try {
-//   console.log(merge(undefined));
-// } catch (error) {
-//   console.log(error);
-// }
+try {
+  console.log(merge(null));
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(merge(NaN));
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(merge(undefined));
+} catch (error) {
+  console.log(error);
+}
 try {
   console.log(merge([" ", " ", ""]));
 } catch (error) {
