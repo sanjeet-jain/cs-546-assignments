@@ -249,10 +249,10 @@ Examples:
 
 You must check:
 
-* [ ] That string, word1, and word2 exist
-* [ ] That string, word1, and word2 are of type string
-* [ ] That string, word1, and word2 are not just empty strings
-* [ ] That string, word1, and word2 are not just strings made of punctuation symbols
+* [x] That string, word1, and word2 exist
+* [x] That string, word1, and word2 are of type string
+* [x] That string, word1, and word2 are not just empty strings
+* [x] That string, word1, and word2 are not just strings made of punctuation symbols
 * [ ] That string is at least two words long
 * [ ] That word1 and word2 are not the same
 * [ ] That word1 and word2 exist in the string

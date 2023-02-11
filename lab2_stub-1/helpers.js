@@ -373,6 +373,8 @@ const stringUtils = {
     for (let key in strArray) {
       strArray[key] = strArray[key].trim().toLowerCase().replace(/\W/g, "");
     }
+    checkIfItemsAreString(strArray, "palindrome Array", false);
+
     // regex reference https://linuxhint.com/remove-all-non-alphanumeric-characters-in-javascript/
     // basicall y \W is a metacharacter that matches for all non alphanumeric characters including spaces and we replace them with ""
     let result = strArray.reduce((old, key) => ({ ...old, [key]: false }), {});
@@ -441,7 +443,19 @@ const stringUtils = {
     errorIfNullOrEmpty(string, "string input");
     errorIfNullOrEmpty(word1, "word1 string");
     errorIfNullOrEmpty(word2, "word2 string");
-    checkIfItemsAreString([string, word1, word2], "all input strings", false);
+    checkIfItemsAreString([string, word1, word2], "input strings", false);
+    let tmpstring = string.trim().toLowerCase().replace(/\W/g, " ");
+    let tmpword1 = word1.trim().toLowerCase().replace(/\W/g, " ");
+    let tmpword2 = word2.trim().toLowerCase().replace(/\W/g, " ");
+    checkIfItemsAreString(
+      [tmpstring, tmpword1, tmpword2],
+      "input strings",
+      false
+    );
+
+    // console.log(tmpstring.split(regex));
+
+    return true;
   },
 };
 

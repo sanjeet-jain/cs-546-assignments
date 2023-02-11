@@ -631,6 +631,11 @@ import { palindromes, censorWords, distance } from "./stringUtils.js";
 
 // //invalid
 // try {
+//   console.log(palindromes(["@!$%%!@%"]));
+// } catch (error) {
+//   console.log(error);
+// }
+// try {
 //   console.log(palindromes());
 // } catch (error) {
 //   console.log(error);
@@ -764,6 +769,51 @@ import { palindromes, censorWords, distance } from "./stringUtils.js";
 /* #endregion */
 
 /* #region  distance */
+console.log(distance("The brown fox jumped, over the lazy dog", "fox", "dog"));
+// returns 5
+/* #region  invalid test cases */
+try {
+  console.log(
+    distance("The brown fox jumped over the lazy dog", ",", "dog")
+    // returns 5
+  );
+} catch (error) {
+  console.log(error);
+}
+
+try {
+  console.log(
+    distance("", "", "")
+    // returns 5
+  );
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(
+    distance("1", "", "")
+    // returns 5
+  );
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(
+    distance("1", "1", "")
+    // returns 5
+  );
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(
+    distance(" ", "1", "1")
+    // returns 5
+  );
+} catch (error) {
+  console.log(error);
+}
+/* #endregion */
 
 /* #endregion */
 
