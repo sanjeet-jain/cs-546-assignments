@@ -4,175 +4,6 @@ do not forget that you need to create the package.json and add the start command
 // /* #region ArrayUtils  */
 import { sortAndFilter, merge, matrixMultiply } from "./arrayUtils.js";
 
-/* #region  matrix multiply */
-console.log("\n \n matrix multiplication");
-console.log(
-  matrixMultiply(
-    [
-      [2, 3],
-      [3, 4],
-      [4, 5],
-    ],
-    [
-      [1, 1, 1],
-      [2, 2, 2],
-    ],
-    [[3], [2], [1]]
-  )
-);
-
-console.log(
-  matrixMultiply(
-    [
-      [1, 2],
-      [3, 4],
-      [5, 6],
-      [7, 8],
-      [9, 10],
-    ],
-    [
-      [1, 2, 3],
-      [4, 5, 6],
-    ]
-  )
-);
-console.log(matrixMultiply([[3, 5]], [[4], [4]]));
-try {
-  console.log(matrixMultiply([[2], [2]], [[2]]));
-} catch (error) {
-  console.log(error);
-}
-
-/* #region  invalid test cases */
-try {
-  console.log(matrixMultiply());
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(matrixMultiply([]));
-} catch (error) {
-  console.log(error);
-}
-
-try {
-  console.log(matrixMultiply([[1, 2]], [["1"], [6]]));
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(matrixMultiply([[2]], [[2], [2]]));
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(
-    matrixMultiply(
-      [[2, 3], [3, 4], [4]],
-      [
-        [1, 1, 1],
-        [2, 2, 2],
-      ],
-      [[3], [2], [1]]
-    )
-  );
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(
-    matrixMultiply(
-      [
-        [2, 3],
-        [3, 4],
-        [4, "5"],
-      ],
-      [
-        [1, 1, 1],
-        [2, 2, 2],
-      ],
-      [[3], [2], [1]]
-    )
-  );
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(matrixMultiply([[2, 3]]));
-} catch (error) {
-  console.log(error);
-}
-/* #endregion */
-
-/* #endregion */
-
-/* #region  merge */
-console.log("\n \n merge Function");
-console.log(merge(["bar", 0, 1, [[[5, "foo"]]]], [7, "buzz", ["fizz", 8]]));
-console.log(
-  merge(
-    [3, 0, "Lab2", 2, "Aiden"],
-    ["CS-546", "Computer Science", 8, 15],
-    [6, 3, "! Patrick ", "! Patrick", 25, 29],
-    [" ! 1", ["!1", ["2"]], " !"]
-  )
-);
-try {
-  console.log(merge(1, 2));
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(merge([1]));
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(merge(["1"]));
-} catch (error) {
-  console.log(error);
-}
-
-//errors
-try {
-  console.log(merge([[1, { key: 1 }], [[1]]]));
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(merge([]));
-} catch (error) {
-  console.log(error);
-}
-
-try {
-  console.log(merge());
-} catch (error) {
-  console.log(error);
-}
-
-try {
-  console.log(merge(null));
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(merge(NaN));
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(merge(undefined));
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(merge([" ", " ", ""]));
-} catch (error) {
-  console.log(error);
-}
-/* #endregion */
-
 /* #region  Sort and Filter */
 
 let people = [
@@ -608,6 +439,175 @@ try {
   Error: each value for each key in each object in the array must be a string
 
  */
+/* #endregion */
+
+/* #endregion */
+
+/* #region  merge */
+console.log("\n \n merge Function");
+// console.log(merge(["bar", 0, 1, [[[5, "foo"]]]], [7, "buzz", ["fizz", 8]]));
+// console.log(
+//   merge(
+//     [3, 0, "Lab2", 2, "Aiden"],
+//     ["CS-546", "Computer Science", 8, 15],
+//     [6, 3, "! Patrick ", "! Patrick", 25, 29],
+//     [" ! 1", ["!1", ["2"]], " !"]
+//   )
+// );
+// try {
+//   console.log(merge(1, 2));
+// } catch (error) {
+//   console.log(error);
+// }
+// try {
+//   console.log(merge([1]));
+// } catch (error) {
+//   console.log(error);
+// }
+// try {
+//   console.log(merge(["1"]));
+// } catch (error) {
+//   console.log(error);
+// }
+
+// //errors
+// try {
+//   console.log(merge([[1, { key: 1 }], [[1]]]));
+// } catch (error) {
+//   console.log(error);
+// }
+// try {
+//   console.log(merge([]));
+// } catch (error) {
+//   console.log(error);
+// }
+
+// try {
+//   console.log(merge());
+// } catch (error) {
+//   console.log(error);
+// }
+
+// try {
+//   console.log(merge(null));
+// } catch (error) {
+//   console.log(error);
+// }
+// try {
+//   console.log(merge(NaN));
+// } catch (error) {
+//   console.log(error);
+// }
+// try {
+//   console.log(merge(undefined));
+// } catch (error) {
+//   console.log(error);
+// }
+try {
+  console.log(merge([" ", " ", ""]));
+} catch (error) {
+  console.log(error);
+}
+/* #endregion */
+
+/* #region  matrix multiply */
+console.log("\n \n matrix multiplication");
+console.log(
+  matrixMultiply(
+    [
+      [2, 3],
+      [3, 4],
+      [4, 5],
+    ],
+    [
+      [1, 1, 1],
+      [2, 2, 2],
+    ],
+    [[3], [2], [1]]
+  )
+);
+
+console.log(
+  matrixMultiply(
+    [
+      [1, 2],
+      [3, 4],
+      [5, 6],
+      [7, 8],
+      [9, 10],
+    ],
+    [
+      [1, 2, 3],
+      [4, 5, 6],
+    ]
+  )
+);
+console.log(matrixMultiply([[3, 5]], [[4], [4]]));
+try {
+  console.log(matrixMultiply([[2], [2]], [[2]]));
+} catch (error) {
+  console.log(error);
+}
+
+/* #region  invalid test cases */
+try {
+  console.log(matrixMultiply());
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(matrixMultiply([]));
+} catch (error) {
+  console.log(error);
+}
+
+try {
+  console.log(matrixMultiply([[1, 2]], [["1"], [6]]));
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(matrixMultiply([[2]], [[2], [2]]));
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(
+    matrixMultiply(
+      [[2, 3], [3, 4], [4]],
+      [
+        [1, 1, 1],
+        [2, 2, 2],
+      ],
+      [[3], [2], [1]]
+    )
+  );
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(
+    matrixMultiply(
+      [
+        [2, 3],
+        [3, 4],
+        [4, "5"],
+      ],
+      [
+        [1, 1, 1],
+        [2, 2, 2],
+      ],
+      [[3], [2], [1]]
+    )
+  );
+} catch (error) {
+  console.log(error);
+}
+try {
+  console.log(matrixMultiply([[2, 3]]));
+} catch (error) {
+  console.log(error);
+}
 /* #endregion */
 
 /* #endregion */

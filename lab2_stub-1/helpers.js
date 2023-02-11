@@ -71,25 +71,18 @@ function validateArrElements(
   length,
   type,
   arrayName = "",
-  recursive = false
+  recursive = false,
+  allowSpaces = true
 ) {
   input.forEach((element) => {
-    if (isNull(element) || isEmpty(element)) {
-      throw "Error: an item within the " + arrayName + " is empty or null";
-    }
+    errorIfNullOrEmpty(element, arrayName);
     if (type === "array") {
       if (Array.isArray(element) && recursive === true) {
         errorIfNotArray(element, arrayName);
         errorIfNullOrEmpty(element);
         //recursive call to check deeper
         recursionCount += 1;
-        validateArrElements(
-          element,
-          0,
-          "array",
-          arrayName + " at depth " + recursionCount,
-          true
-        );
+        validateArrElements(element, 0, "array", arrayName, true);
       } else if (recursionCount < 1 && recursive === true) {
         throw (
           "Error: an element of " +
@@ -97,13 +90,23 @@ function validateArrElements(
           " in the first depth is not an array"
         );
       } else if (typeof element === "string") {
-        isNonEmptyString(element, true);
+        if (!isNonEmptyString(element, allowSpaces)) {
+          throw allowSpaces
+            ? "Error: element within array is not a valid string"
+            : "Error: element within array is not a valid string(no spaces allowed ) ";
+        }
       } else if (typeof element === "number") {
         errorIfNullOrEmpty(element);
       } else {
         throw (
           "Error: an element within " + arrayName + " is not a number or string"
         );
+      }
+    } else if (typeof element === "string") {
+      if (!isNonEmptyString(element, allowSpaces)) {
+        throw allowSpaces
+          ? "Error: element within array is not a valid string"
+          : "Error: element within array is not a valid string(no spaces allowed ) ";
       }
     } else if (typeof element !== type) {
       throw "Error:" + arrayName + " items arent " + type;
@@ -293,7 +296,8 @@ const arrayUtils = {
   validateInputForMerge(input) {
     errorIfNotArray(input);
     errorIfNullOrEmpty(input, "merge args");
-    validateArrElements(input, 0, "array", "merge args", true);
+    recursionCount = 0;
+    validateArrElements(input, 0, "array", "merge args", true, true);
     //spaces are intentional so no need to cleanup
     let temp = input.flat(Infinity);
     return temp;
@@ -367,6 +371,7 @@ const stringUtils = {
       0,
       "string",
       "palindrome Array",
+      false,
       false,
       false
     );
