@@ -204,18 +204,18 @@ For example, Hello, 2 the world! becomes hello, 2 the world! when lowercased and
 ## You must check:
 
 * [x] That the array exists
-* [ ] The array is of the proper type (meaning, it's an array)
-* [ ] The array is not empty
-* [ ] Each array element in the array is a string (No strings with empty spaces)
-* [ ] Each array element in the array consists of at least one alphanumeric character (No strings consisting of only non-alphanumeric characters)
-* [ ] That each string element exists.
-* [ ] If any of those conditions fails, the function will throw.
-* [ ] palindromes(["Madam", "Loot", "Was it a cat I saw?", "Poor Dan is in a droop", "Anna", "Nope" ]);
-* [ ] // Returns: {madam: true, loot: false, wasitacatisaw: true, poordanisinadroop: true, anna: true, nope: false}
-* [ ] palindromes(); // throws error
-* [ ] palindromes("hi"); // throws error
-* [ ] palindromes(" "); // throws error
-* [ ] palindromes(1); //throws error
+* [x] The array is of the proper type (meaning, it's an array)
+* [x] The array is not empty
+* [x] Each array element in the array is a string (No strings with empty spaces)
+* [x] Each array element in the array consists of at least one alphanumeric character (No strings consisting of only non-alphanumeric characters)
+* [x] That each string element exists.
+* [x] If any of those conditions fails, the function will throw.
+* [x] palindromes(["Madam", "Loot", "Was it a cat I saw?", "Poor Dan is in a droop", "Anna", "Nope" ]);
+* [x] // Returns: {madam: true, loot: false, wasitacatisaw: true, poordanisinadroop: true, anna: true, nope: false}
+* [x] palindromes(); // throws error
+* [x] palindromes("hi"); // throws error
+* [x] palindromes(" "); // throws error
+* [x] palindromes(1); //throws error
 
 # 
 
@@ -225,20 +225,20 @@ For example, Hello, 2 the world! becomes hello, 2 the world! when lowercased and
 
 You must ensure the following:
 
-* [ ] the input string exists and is a string (not just empty spaces)
-* [ ] The bad words list exists and is an array
-* [ ] The bad words list is not empty
-* [ ] Each element in the bad words list is a string
-* [ ] Each element in the bad words list must exist in the input string
+* [x] the input string exists and is a string (not just empty spaces)
+* [x] The bad words list exists and is an array
+* [x] The bad words list is not empty
+* [x] Each element in the bad words list is a string
+* [x] Each element in the bad words list must exist in the input string
 
 Examples:
 
-* [ ] let badWords = ["bread","chocolate,"pop"];
-* [ ] console.log(censorWords("I like bread that has chocolate chips in it but I do not like lollipops", badWords))
+* [x] let badWords = ["bread","chocolate,"pop"];
+* [x] console.log(censorWords("I like bread that has chocolate chips in it but I do not like lollipops", badWords))
     `/_ output: "I like !@$#! that has @$#!@$#!@ chips in it but I do not like lolli$#!s" _/`
-* [ ] console.log(censorWords(" ", badWords))
+* [x] console.log(censorWords(" ", badWords))
     `/_ output: Error: input string cannot be an empty string _/`
-* [ ] console.log(censorWords("I like bread that has chocolate chips in it", [2, "wow"]))
+* [x] console.log(censorWords("I like bread that has chocolate chips in it", [2, "wow"]))
     `/_ output: Error: each element in the bad words list must be a string _/`
 
 # 

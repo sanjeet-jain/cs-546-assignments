@@ -140,21 +140,22 @@ function isNonEmptyString(value, allowSpaces = true) {
 /**
  * function check if all items within the element input are strings.
  * throws an error if the input doesn't contain strings within it
- * @param {Array | Object} element an input array value to check if its valid.
- * @param {string?} element an input array value to check if its valid.
+ * @param {Array||Object} element an input array or object value to check if its items/properties are valid.
+ * @param {string} elementName
+ * @param {boolean} allowSpaces an input array value to check if its valid.
  */
-function checkIfItemsAreString(element, elementName = "") {
+function checkIfItemsAreString(element, elementName = "", allowSpaces = false) {
   let temp;
   if (typeof element === "object") {
     temp = Object.values(element);
   } else if (Array.isArray(element)) {
     temp = element;
   } else {
-    throw "Error";
+    throw "Error wrong input type";
   }
   if (
     !temp.every((value) => {
-      return isNonEmptyString(value, false);
+      return isNonEmptyString(value, allowSpaces);
     })
   ) {
     throw "Error: Incorrect string values for " + elementName;
@@ -172,7 +173,7 @@ const arrayUtils = {
     if (input.length < 2) {
       throw "Error: objects array length must be greater than 1";
     }
-    validateArrElements(input, 4, "object", "object array");
+    validateArrElements(input, 4, "object", "object array", false, false);
     input.forEach((element) => {
       checkIfItemsAreString(element, "object array");
     });
@@ -359,22 +360,15 @@ const arrayUtils = {
 };
 const stringUtils = {
   /**
-   * function to check if input string is a palindrome or and returning an object
+   * function to check if input string is a palindrome or and returning an object with each string as key and corresponding boolean value whether its a palindrome
    * @param {string[]} strArray
    * @returns {Object}
    */
   validatePalindromeString(strArray) {
     errorIfNullOrEmpty(strArray, "palindrome Array");
     errorIfNotArray(strArray, "palindrome Array");
-    validateArrElements(
-      strArray,
-      0,
-      "string",
-      "palindrome Array",
-      false,
-      false,
-      false
-    );
+    checkIfItemsAreString(strArray, "palindrome Array", false);
+
     // pre processing
     for (let key in strArray) {
       strArray[key] = strArray[key].trim().toLowerCase().replace(/\W/g, "");
@@ -405,6 +399,35 @@ const stringUtils = {
       }
     });
     return result;
+  },
+
+  /**
+   * function to check if input for censorWord is valid
+   * @param {string} strInput
+   * @param {string[]} badWordsArr
+   * @returns {boolean}
+   */
+  validateCensorWordsInputs(strInput, badWordsArr) {
+    errorIfNullOrEmpty(strInput, "string input");
+    if (!isNonEmptyString(strInput, false)) {
+      throw "Error: String input is empty or just a space";
+    }
+    errorIfNotArray(badWordsArr, "badword array");
+    errorIfNullOrEmpty(badWordsArr, "badword array");
+    checkIfItemsAreString(badWordsArr, "badword array", false);
+    strInput = strInput.trim();
+    for (let key in badWordsArr) {
+      badWordsArr[key] = badWordsArr[key].trim().toLowerCase();
+    }
+    badWordsArr.forEach((badword) => {
+      // check if all words present
+      var regex = new RegExp(badword);
+      if (!strInput.match(regex)) {
+        throw "Error: not all bad words are in the sentence";
+      }
+    });
+
+    return true;
   },
 };
 
