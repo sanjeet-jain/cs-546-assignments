@@ -1,10 +1,10 @@
 /* TODO: Import the functions from your three modules here and write two test cases for each function.. You should have a total of 18 test cases. 
 do not forget that you need to create the package.json and add the start command to run app.js as the starting script*/
 
-// /* #region ArrayUtils  */
+/* #region ArrayUtils  */
 // import { sortAndFilter, merge, matrixMultiply } from "./arrayUtils.js";
 
-// /* #region  Sort and Filter */
+/* #region  Sort and Filter */
 
 // let people = [
 //   { name: "Matt", age: "21", location: "New York", role: "Student" },
@@ -12,7 +12,7 @@ do not forget that you need to create the package.json and add the start command
 // ];
 // console.log("\n\n Array Correctness");
 
-// /* #region Array Correctness*/
+/* #region Array Correctness*/
 
 // for (let people of [
 //   [],
@@ -49,11 +49,11 @@ do not forget that you need to create the package.json and add the start command
 //     console.log(error);
 //   }
 // }
-// /* #endregion */
+/* #endregion */
 
 // console.log("\n\n Array Object Correctness");
 
-// /* #region Array Object Correctness*/
+/* #region Array Object Correctness*/
 
 // for (let people of [
 //   //length check -ERROR
@@ -107,11 +107,11 @@ do not forget that you need to create the package.json and add the start command
 //     */
 //   }
 // }
-// /* #endregion */
+/* #endregion */
 
 // console.log("\n\n sortByField1 and sortByField2 Correctness");
 
-// /* #region sortByField1 and sortByField2 Correctness*/
+/* #region sortByField1 and sortByField2 Correctness*/
 
 // for (let sortByField1 of [
 //   [],
@@ -182,10 +182,10 @@ do not forget that you need to create the package.json and add the start command
 //     console.log(error);
 //   }
 // }
-// /* #endregion */
+/* #endregion */
 // console.log("\n\n filterBy and filterByTerm Correctness");
 
-// /* #region filterBy and filterByTerm Correctness*/
+/* #region filterBy and filterByTerm Correctness*/
 
 // for (let filterBy of [
 //   [],
@@ -246,10 +246,10 @@ do not forget that you need to create the package.json and add the start command
 //   }
 // }
 
-// /* #endregion */
+/* #endregion */
 // console.log("\n\n  Array Cleanup");
 
-// /* #region Array cleanup*/
+/* #region Array cleanup*/
 
 // try {
 //   console.log(
@@ -278,10 +278,10 @@ do not forget that you need to create the package.json and add the start command
 // } catch (error) {
 //   console.log(error);
 // }
-// /* #endregion */
+/* #endregion */
 // console.log("\n\n Sample test cases");
 
-// /* #region  sample test cases */
+/* #region  sample test cases */
 // people = [
 //   { name: "Ryan", age: "22", location: "Hoboken", role: "Student" },
 
@@ -298,7 +298,7 @@ do not forget that you need to create the package.json and add the start command
 //   sortAndFilter(people, ["name", "asc"], ["location", "asc"], "role", "Student")
 // );
 
-// /* output:
+/* output:
 
 //   [{name: 'Greg', age: '22', location: 'New York', role: 'Student'},
 
@@ -320,7 +320,7 @@ do not forget that you need to create the package.json and add the start command
 //   )
 // );
 
-// /* output:
+/* output:
 
 //   [{name: 'Greg', age: '22', location: 'New York', role: 'Student'},
 
@@ -336,7 +336,7 @@ do not forget that you need to create the package.json and add the start command
 //   sortAndFilter(people, ["location", "asc"], ["name", "asc"], "age", "22")
 // );
 
-// /* output:
+/* output:
 
 //   [{name: 'Ryan', age: '22', location: 'Hoboken', role: 'Student'},
 
@@ -350,7 +350,7 @@ do not forget that you need to create the package.json and add the start command
 // } catch (error) {
 //   console.log(error);
 // }
-// /* output:
+/* output:
 
 //   Error: the sortByField1 is not a key in each object of the array
 
@@ -362,7 +362,7 @@ do not forget that you need to create the package.json and add the start command
 // } catch (error) {
 //   console.log(error);
 // }
-// /* output:
+/* output:
 
 //   Error: the order of sortByField1 must be either 'asc' or 'desc'
 
@@ -374,7 +374,7 @@ do not forget that you need to create the package.json and add the start command
 // } catch (error) {
 //   console.log(error);
 // }
-// /* output:
+/* output:
 
 //   Error: the filterBy key is not a key in each object of the array
 
@@ -384,7 +384,7 @@ do not forget that you need to create the package.json and add the start command
 // } catch (error) {
 //   console.log(error);
 // }
-// /* output:
+/* output:
 
 //   Error: the array does not exist
 
@@ -402,7 +402,7 @@ do not forget that you need to create the package.json and add the start command
 // } catch (error) {
 //   console.log(error);
 // }
-// /* output:
+/* output:
 
 //   Error: each element in the array must be an object
 
@@ -414,7 +414,7 @@ do not forget that you need to create the package.json and add the start command
 // } catch (error) {
 //   console.log(error);
 // }
-// /* output:
+/* output:
 
 //   Error: the filterByTerm must be a string
 
@@ -434,16 +434,16 @@ do not forget that you need to create the package.json and add the start command
 // } catch (error) {
 //   console.log(error);
 // }
-// /* output:
+/* output:
 
 //   Error: each value for each key in each object in the array must be a string
 
 //  */
-// /* #endregion */
+/* #endregion */
 
-// /* #endregion */
+/* #endregion */
 
-// /* #region  merge */
+/* #region  merge */
 // console.log("\n \n merge Function");
 // console.log(merge(["bar", 0, 1, [[[5, "foo"]]]], [7, "buzz", ["fizz", 8]]));
 // console.log(
@@ -508,9 +508,9 @@ do not forget that you need to create the package.json and add the start command
 // } catch (error) {
 //   console.log(error);
 // }
-// /* #endregion */
+/* #endregion */
 
-// /* #region  matrix multiply */
+/* #region  matrix multiply */
 // console.log("\n \n matrix multiplication");
 // console.log(
 //   matrixMultiply(
@@ -549,7 +549,7 @@ do not forget that you need to create the package.json and add the start command
 //   console.log(error);
 // }
 
-// /* #region  invalid test cases */
+/* #region  invalid test cases */
 // try {
 //   console.log(matrixMultiply());
 // } catch (error) {
@@ -608,15 +608,15 @@ do not forget that you need to create the package.json and add the start command
 // } catch (error) {
 //   console.log(error);
 // }
-// /* #endregion */
+/* #endregion */
 
-// /* #endregion */
+/* #endregion */
 
-// /* #endregion */
+/* #endregion */
 
 /* #region  StringUtil.js */
 import { palindromes, censorWords, distance } from "./stringUtils.js";
-// /* #region  palindrome */
+/* #region  palindrome */
 
 // console.log(
 //   palindromes([
@@ -664,101 +664,106 @@ import { palindromes, censorWords, distance } from "./stringUtils.js";
 //   console.log(palindromes([" a a"]));
 // } catch (error) {
 //   console.log(error);
-// } /* #endregion */
+// }
+/* #endregion */
 
 /* #region  censorWords */
-let badWords = ["bread", "chocolate", "pop"];
+// let badWords = ["bread", "chocolate", "pop"];
 
-console.log(
-  censorWords(
-    "I like bread that has chocolate chips in it but I do not like lollipops",
-    badWords
-  )
-);
+// console.log(
+//   censorWords(
+//     "I like bread that has chocolate chips in it but I do not like lollipops",
+//     badWords
+//   )
+// );
 
-console.log(
-  censorWords(
-    "I like bread that has bread chocolate chips in it but I do not like lollipops",
-    ["bread", "chocolate", "pop"]
-  )
-);
-console.log(
-  censorWords(
-    "I like bread that has bread chocolate chips in it but I do not like lollipops",
-    ["bread", "chocolate chip", "pop"]
-  )
-);
+// console.log(
+//   censorWords(
+//     "I like bread that has bread chocolate chips in it but I do not like lollipops",
+//     ["bread", "chocolate", "pop"]
+//   )
+// );
+// console.log(
+//   censorWords(
+//     "I like bread that has bread chocolate chips in it but I do not like lollipops",
+//     ["bread", "chocolate chip", "pop"]
+//   )
+// );
 
 /* #region  invalid test case*/
-try {
-  console.log(
-    censorWords(
-      "I like bread that has bread chocolate,chips in it but I do not like lollipops",
-      ["bread", "chocolate", "pop"]
-    )
-  );
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(
-    censorWords(
-      "I like bread that has bread chocolate,chips in it but I do not like lollipops",
-      ["bread", "chocolate chips", "pop"]
-    )
-  );
-} catch (error) {
-  console.log(error);
-}
+// try {
+//   console.log(
+//     censorWords(
+//       "I like bread that has bread chocolate,chips in it but I do not like lollipops",
+//       ["bread", "chocolate", "pop"]
+//     )
+//   );
+// } catch (error) {
+//   console.log(error);
+// }
+// try {
+//   console.log(
+//     censorWords(
+//       "I like bread that has bread chocolate,chips in it but I do not like lollipops",
+//       ["bread", "chocolate chips", "pop"]
+//     )
+//   );
+// } catch (error) {
+//   console.log(error);
+// }
 
-try {
-  console.log(
-    censorWords(
-      "I like bread that has bread bread in it but I do not like bread",
-      badWords
-    )
-  );
-} catch (error) {
-  console.log(error);
-}
+// try {
+//   console.log(
+//     censorWords(
+//       "I like bread that has bread bread in it but I do not like bread",
+//       badWords
+//     )
+//   );
+// } catch (error) {
+//   console.log(error);
+// }
 
-try {
-  console.log(censorWords(" ", [" ", "chocolate", "pop"]));
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(censorWords(" 1", [" ", "chocolate", "pop"]));
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(censorWords(" 1", [1, "chocolate", "pop"]));
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(censorWords("", [1, "chocolate", "pop"]));
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(censorWords("", ["", "chocolate", "pop"]));
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(censorWords("123", { key: 1 }));
-} catch (error) {
-  console.log(error);
-}
-try {
-  console.log(censorWords(badWords));
-} catch (error) {
-  console.log(error);
-}
+// try {
+//   console.log(censorWords(" ", [" ", "chocolate", "pop"]));
+// } catch (error) {
+//   console.log(error);
+// }
+// try {
+//   console.log(censorWords(" 1", [" ", "chocolate", "pop"]));
+// } catch (error) {
+//   console.log(error);
+// }
+// try {
+//   console.log(censorWords(" 1", [1, "chocolate", "pop"]));
+// } catch (error) {
+//   console.log(error);
+// }
+// try {
+//   console.log(censorWords("", [1, "chocolate", "pop"]));
+// } catch (error) {
+//   console.log(error);
+// }
+// try {
+//   console.log(censorWords("", ["", "chocolate", "pop"]));
+// } catch (error) {
+//   console.log(error);
+// }
+// try {
+//   console.log(censorWords("123", { key: 1 }));
+// } catch (error) {
+//   console.log(error);
+// }
+// try {
+//   console.log(censorWords(badWords));
+// } catch (error) {
+//   console.log(error);
+// }
 
 /* #endregion */
+
+/* #endregion */
+
+/* #region  distance */
 
 /* #endregion */
 

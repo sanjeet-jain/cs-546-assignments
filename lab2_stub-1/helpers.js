@@ -404,8 +404,8 @@ const stringUtils = {
   /**
    * function to check if input for censorWord is valid
    * @param {string} strInput
-   * @param {string[]} badWordsArr
-   * @returns {boolean}
+   * @param {string[]} badWordsArr all strings in this array must be in string input
+   * @returns {boolean} true if all validations pass
    */
   validateCensorWordsInputs(strInput, badWordsArr) {
     errorIfNullOrEmpty(strInput, "string input");
@@ -428,6 +428,20 @@ const stringUtils = {
     });
 
     return true;
+  },
+
+  /**
+   * function to check if input for censorWord is valid
+   * @param {string} string
+   * @param {string} word1
+   * @param {string} word2
+   * @returns {boolean}
+   */
+  validateDistanceInputs(string, word1, word2) {
+    errorIfNullOrEmpty(string, "string input");
+    errorIfNullOrEmpty(word1, "word1 string");
+    errorIfNullOrEmpty(word2, "word2 string");
+    checkIfItemsAreString([string, word1, word2], "all input strings", false);
   },
 };
 

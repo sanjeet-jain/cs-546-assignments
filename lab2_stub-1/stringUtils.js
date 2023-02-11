@@ -41,4 +41,10 @@ export let censorWords = (string, badWordsList) => {
   }
 };
 
-export let distance = (string, word1, word2) => {};
+export let distance = (string, word1, word2) => {
+  if (stringUtils.validateDistanceInputs(string, word1, word2)) {
+    return 1;
+  } else {
+    throw "ERROR";
+  }
+};
