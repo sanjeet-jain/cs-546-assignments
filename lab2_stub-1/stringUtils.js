@@ -4,7 +4,7 @@
 */
 
 import { stringUtils } from "./helpers.js";
-
+import { errorIfNullOrEmpty } from "./helpers.js";
 /**
  * function to check if input string is a palindrome or and returning an object
  * @param {string[]} string
@@ -69,37 +69,74 @@ export let censorWords = (string, badWordsList) => {
 };
 
 export let distance = (string, word1, word2) => {
+  //validate if words are present in string
   let preProcessedData = stringUtils.validateDistanceInputs(
     string,
     word1,
     word2
-  ); // [validationResult, tmpstring, tmpword1, tmpword2]
-  //validation success
-  if (preProcessedData[0]) {
-    let result = -1;
-    let tmpstring = preProcessedData[1];
-    let tmpword1 = preProcessedData[2];
-    let tmpword2 = preProcessedData[3];
-    let tmpstringArray = tmpstring.split(" ");
-    console.log(tmpword2);
-    let startIndex = tmpstringArray.findIndex((x) => x === tmpword1);
-    if (startIndex === -1) {
-      for (let key = 0; key < tmpstringArray.length; key++) {
-        if (key < tmpstringArray.length - 1)
-          if (
-            tmpword1.split(" ").includes(tmpstringArray[key]) &&
-            tmpword1.split(" ").includes(tmpstringArray[key + 1])
-          ) {
-            startIndex = key;
-            break;
-          }
-      }
-    }
-    let endIndex = tmpstringArray.findIndex((x) => x === tmpword2);
-
-    result = endIndex - startIndex;
-    return result;
-  } else {
-    throw "ERROR";
+  );
+  let result = [];
+  findValidPairs(
+    preProcessedData,
+    word1.trim().toLowerCase(),
+    word2.trim().toLowerCase(),
+    result
+  );
+  for (let key in result) {
+    result[key] = result[key][1] - result[key][0];
   }
+  return Math.min(...result);
 };
+
+function findValidPairs(
+  stringArray,
+  tmpword1,
+  tmpword2,
+  result,
+  word1Index = 0,
+  word2Index = 0
+) {
+  let temp = stringArray;
+  // check if the words are in order or find the suitable pair
+  word1Index = temp.findIndex((x) => x === tmpword1);
+  word2Index = temp.findIndex((x) => x === tmpword2);
+  if (word1Index !== -1 && word2Index !== -1) {
+    if (word1Index < word2Index) {
+      result.push([word1Index, word2Index]);
+      // throw "Error: word1 must come before word2";
+      //check if theres any other valid pairs
+      findValidPairs(
+        temp.slice(word1Index + 1),
+        tmpword1,
+        tmpword2,
+        result,
+        word1Index,
+        word2Index
+      );
+      findValidPairs(
+        temp.slice(word2Index + 1),
+        tmpword1,
+        tmpword2,
+        result,
+        word1Index,
+        word2Index
+      );
+    } else if (word1Index > word2Index) {
+      findValidPairs(
+        temp.slice(word2Index + 1),
+        tmpword1,
+        tmpword2,
+        result,
+        word1Index,
+        word2Index
+      );
+    } else if (word1Index === word2Index) {
+      throw "Error: word1 and word 2 same indices";
+    }
+  }
+  try {
+    errorIfNullOrEmpty(result);
+  } catch (error) {
+    throw "word 1 cant be before word 2";
+  }
+}

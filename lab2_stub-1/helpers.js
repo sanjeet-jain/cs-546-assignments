@@ -45,7 +45,7 @@ function isEmpty(input) {
   return false;
 }
 
-function errorIfNullOrEmpty(input, arrayName = "") {
+export function errorIfNullOrEmpty(input, arrayName = "") {
   if (isNull(input) || isEmpty(input)) {
     throw "Error: the " + arrayName + " is null or empty!";
   }
@@ -161,7 +161,30 @@ function checkIfItemsAreString(element, elementName = "", allowSpaces = false) {
     throw "Error: Incorrect string values for " + elementName;
   }
 }
-
+function splitSentence(sentence, phrases) {
+  let count = 0;
+  let words = sentence.split(" ");
+  let result = [];
+  for (let k = 0; k < sentence.split(" ").length; k++) {
+    let phrase = "";
+    for (let i = 0; i < words.length; i++) {
+      phrase += words[i] + " ";
+      if (phrases.includes(phrase.trim())) {
+        result[k - count] = phrase.trim();
+        result = result.slice(0, k + 1 - count);
+        count = count + phrase.trim().split(" ").length - 1;
+        phrase = "";
+        let temp = 0;
+      } else {
+        if (result.join(" ") !== sentence) {
+          result.push(words[i]);
+        }
+      }
+    }
+    words = words.slice(1);
+  }
+  return result;
+}
 const arrayUtils = {
   /**
    * function check if input is valid for sort and filter.
@@ -439,48 +462,17 @@ const stringUtils = {
     if (tmpword1 === tmpword2) {
       throw "Error: word1 word2 cant be same";
     }
+    let temp = splitSentence(tmpstring, [tmpword1, tmpword2]);
 
-    let tmpword1Regex = new RegExp("\\b" + tmpword1 + "\\b");
-    let tmpword2Regex = new RegExp("\\b" + tmpword2 + "\\b");
     if (
-      tmpstring.match(tmpword1Regex) == null ||
-      tmpstring.match(tmpword2Regex) == null
+      temp.findIndex((x) => x === tmpword1) === -1 ||
+      temp.findIndex((x) => x === tmpword2) === -1
     ) {
       throw "Error: words not present in string ";
     }
-    if (
-      tmpstring.match(tmpword1Regex).index >
-      tmpstring.match(tmpword2Regex).index
-    ) {
-      throw "Error: word1 must come before word2";
-    }
-    let temp = splitSentence(tmpstring, [tmpword1, tmpword2]);
-    console.log(temp);
-    return [true, tmpstring, tmpword1, tmpword2];
+
+    return temp;
   },
 };
-function splitSentence(sentence, phrases) {
-  let count = 0;
-  let words = sentence.split(" ");
-  let result = [];
-  for (let k = 0; k < sentence.split(" ").length; k++) {
-    let phrase = "";
-    for (let i = 0; i < words.length; i++) {
-      phrase += words[i] + " ";
-      if (phrases.includes(phrase.trim())) {
-        result[k - count] = phrase.trim();
-        result = result.slice(0, k + 1 - count);
-        count = count + phrase.trim().split(" ").length - 1;
-        phrase = "";
-        let temp = 0;
-      } else {
-        if (result.join(" ") !== sentence) {
-          result.push(words[i]);
-        }
-      }
-    }
-    words = words.slice(1);
-  }
-  return result;
-}
+
 export { arrayUtils, stringUtils };
