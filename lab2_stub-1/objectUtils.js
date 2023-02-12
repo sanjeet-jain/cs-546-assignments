@@ -72,7 +72,15 @@ function compareTwoObjects(obj1, obj2) {
  * @returns {object} returns object with same keys but values after the functions are applied
  */
 export let calculateObject = (object, funcs) => {
-  //
+  if (objectUtils.validateCalculateObject(object, funcs)) {
+    //
+    funcs.forEach((func) => {
+      Object.keys(object).forEach((key) => {
+        object[key] = func(object[key]).toFixed(2);
+      });
+    });
+    return object;
+  }
 };
 
 export let combineObjects = (...args) => {

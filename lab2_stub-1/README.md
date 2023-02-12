@@ -312,16 +312,16 @@ Remember: The order of the keys is not important so: {a: 2, b: 4} is equal to {b
 
 ## calculateObject(object, funcs)
 
-* [ ] Given an object and an array of functions, evaluate the functions in order on the values of the object, using the output of the previous function as the input of the next function. Return a new object with the results. Note, on the result, please use the toFixed(2) function to only display 2 decimal places rounded.
+* [x] Given an object and an array of functions, evaluate the functions in order on the values of the object, using the output of the previous function as the input of the next function. Return a new object with the results. Note, on the result, please use the toFixed(2) function to only display 2 decimal places rounded.
 
 You must check:
 
-* [ ] That the object exists and is of proper type (an object). If not, throw an error.
-* [ ] That funcs exists and is of proper type (an array). If not, throw an error.
-* [ ] That the object values are all numbers (positive, negative, decimal). If not, throw an error.
-* [ ] That the funcs array has at least one element and that the elements are of proper type (functions). If not, throw an error.
-* [ ] You can assume that the correct types will be passed into the funcs parameter element functions since you are checking the types of the values of the object beforehand.
-* [ ] calculateObject({ a: 3, b: 7, c: 5 }, [(n => n \* 2), (n => Math.sqrt(n))]);
+* [x] That the object exists and is of proper type (an object). If not, throw an error.
+* [x] That funcs exists and is of proper type (an array). If not, throw an error.
+* [x] That the object values are all numbers (positive, negative, decimal). If not, throw an error.
+* [x] That the funcs array has at least one element and that the elements are of proper type (functions). If not, throw an error.
+* [x] You can assume that the correct types will be passed into the funcs parameter element functions since you are checking the types of the values of the object beforehand.
+* [x] calculateObject({ a: 3, b: 7, c: 5 }, [(n => n \* 2), (n => Math.sqrt(n))]);
 
 /\_ Returns:
 {

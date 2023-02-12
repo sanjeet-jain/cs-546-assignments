@@ -507,10 +507,26 @@ const objectUtils = {
 
   /**
    * validates the object and func array passed
-   * @param {object} object object wholes values to be processed
+   * @param {object} obj object wholes values to be processed
    * @param {[function]} func array of arrow functions that will be used on the object values
    * @returns {boolean} if validations pass else raises errors
    */
-  validateCalculateObject(object, func) {},
+  validateCalculateObject(obj, func) {
+    errorIfNullOrEmpty(obj, "object");
+    if (!isValidObjectType(obj)) {
+      throw "Error: not a correct object";
+    }
+    if (!Object.values(obj).every((x) => typeof x === "number")) {
+      throw "Error: object should only have numbers ";
+    }
+    errorIfNotArray(func, "func");
+    errorIfNullOrEmpty(func, "func");
+    func.forEach((element) => {
+      if (!(typeof element === "function")) {
+        throw "Error: object should only have numbers ";
+      }
+    });
+    return true;
+  },
 };
 export { arrayUtils, stringUtils, objectUtils };

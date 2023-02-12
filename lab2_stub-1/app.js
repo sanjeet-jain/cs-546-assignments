@@ -770,7 +770,7 @@ do not forget that you need to create the package.json and add the start command
 /* #region  ObjectUtils.js */
 import { areObjectsEqual, calculateObject } from "./objectUtils.js";
 
-// /* #region  areObjectsEqual */
+/* #region  areObjectsEqual */
 
 // const testCasesAreObjectsEqualValid = [
 //   [
@@ -841,18 +841,48 @@ import { areObjectsEqual, calculateObject } from "./objectUtils.js";
 //   }
 // });
 
-// /* #endregion */
+/* #endregion */
 
 /* #region  calculateObject */
+// console.log("\n ");
 // const testCasesAreObjectsEqualValid = [
 //   {
-//     object:
-//     funcs:[]
-//   }
+//     object: { a: 3, b: 7, c: 5 },
+//     funcs: [(n) => n * 2, (n) => Math.sqrt(n)],
+//   },
+
+//   {
+//     object: { a: "3", b: 7, c: 5 },
+//     funcs: [(n) => n * 2, (n) => Math.sqrt(n)],
+//   },
+//   {
+//     object: { a: 3, b: 7, c: 5 },
+//     funcs: [],
+//   },
+//   {
+//     object: { a: null, b: 7, c: 5 },
+//     funcs: [(n) => n * 2, (n) => Math.sqrt(n)],
+//   },
+//   {
+//     object: [1, 2, 4, 4, 5],
+//     funcs: [(n) => n * 2, (n) => Math.sqrt(n)],
+//   },
+//   {
+//     object: null,
+//     funcs: [(n) => n * 2, (n) => Math.sqrt(n)],
+//   },
+//   {
+//     object: { a: "Hello", b: 7, c: false },
+//     funcs: [(n) => n * n],
+//   },
+//   {
+//     object: { a: 1, b: 2, c: 3 },
+//     funcs: [false],
+//   },
 // ];
 // testCasesAreObjectsEqualValid.forEach((testCase) => {
 //   try {
-//     let result = calculateObject(object, funcs);
+//     let result = calculateObject(testCase.object, testCase.funcs);
 //     console.log(result);
 //   } catch (error) {
 //     console.log(error);
@@ -860,15 +890,37 @@ import { areObjectsEqual, calculateObject } from "./objectUtils.js";
 //     console.log();
 //   }
 // });
-calculateObject({ a: 3, b: 7, c: 5 }, [(n) => n * 2, (n) => Math.sqrt(n)]);
-/* Returns:
-{
-a: 2.45,
-b: 3.74,
-c: 3.16
-}
-*/
 
+// /* Returns:
+// {
+// a: 2.45,
+// b: 3.74,
+// c: 3.16
+// }
+// */
 /* #endregion */
 
+/* #region  combineObjects */
+console.log("\n Combine Objects");
+const testCasesAreObjectsEqualValid = [
+  [
+    { a: 3, b: 7, c: 5 },
+
+    { d: 4, e: 9 },
+
+    { a: 8, d: 2 },
+  ],
+];
+testCasesAreObjectsEqualValid.forEach((testCase) => {
+  try {
+    let result = calculateObject(testCase);
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    console.log();
+  }
+});
+
+/* #endregion */
 /* #endregion */
