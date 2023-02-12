@@ -448,105 +448,106 @@ do not forget that you need to create the package.json and add the start command
 
 // /* #endregion */
 
-/* #region  merge */
-// console.log("\n \n merge Function");
-// const testCasesMerge = [
-//   [
-//     [3, 0, "Lab2", 2, "Aiden"],
-//     ["CS-546", "Computer Science", 8, 15],
-//     [6, 3, "! Patrick ", "! Patrick", 25, 29],
-//     [" ! 1", ["!1", ["2"]], " !"],
-//   ],
-//   [(1, 2)],
-//   [1],
-//   ["1"],
-//   [[[1, { key: 1 }], [[1]]]],
-//   [],
-//   undefined,
-//   null,
-//   NaN,
-//   [" ", " ", ""],
-// ];
+// /* #region  merge */
+// // console.log("\n \n merge Function");
+// // const testCasesMerge = [
+// //   [
+// //     [3, 0, "Lab2", 2, "Aiden"],
+// //     ["CS-546", "Computer Science", 8, 15],
+// //     [6, 3, "! Patrick ", "! Patrick", 25, 29],
+// //     [" ! 1", ["!1", ["2"]], " !"],
+// //   ],
+// //   [(1, 2)],
+// //   [1],
+// //   ["1"],
+// //   [[[1, { key: 1 }], [[1]]]],
+// //   [],
+// //   undefined,
+// //   null,
+// //   NaN,
+// //   [" ", " ", ""],
+// // ];
 
-// testCasesMerge.forEach((testCase) => {
-//   try {
-//     console.log(merge(testCase));
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
-/* #endregion */
+// // testCasesMerge.forEach((testCase) => {
+// //   try {
+// //     console.log(merge(testCase));
+// //   } catch (error) {
+// //     console.log(error);
+// //   }
+// // });
+// /* #endregion */
 
-/* #region  matrix multiply */
-// console.log("\n matrix multiply");
-// const tests = [
-//   [
-//     [
-//       [2, 3],
-//       [3, 4],
-//       [4, 5],
-//     ],
-//     [
-//       [1, 1, 1],
-//       [2, 2, 2],
-//     ],
-//     [[3], [2], [1]],
-//   ],
-//   [
-//     [
-//       [1, 2],
-//       [3, 4],
-//       [5, 6],
-//       [7, 8],
-//       [9, 10],
-//     ],
-//     [
-//       [1, 2, 3],
-//       [4, 5, 6],
-//     ],
-//   ],
-//   [[[3, 5]], [[4], [4]]],
-//   [[[2], [2]], [[2]]],
-//   [],
-//   [[[1, 2]], [["1"], [6]]],
-//   [[[2]], [[2], [2]]],
-//   [
-//     [[2, 3], [3, 4], [4]],
-//     [
-//       [1, 1, 1],
-//       [2, 2, 2],
-//     ],
-//     [[3], [2], [1]],
-//   ],
-//   [
-//     [
-//       [2, 3],
-//       [3, 4],
-//       [4, "5"],
-//     ],
-//     [
-//       [1, 1, 1],
-//       [2, 2, 2],
-//     ],
-//     [[3], [2], [1]],
-//   ],
-//   [[[2, 3]]],
-// ];
+// /* #region  matrix multiply */
+// // console.log("\n matrix multiply");
+// // const tests = [
+// //   [
+// //     [
+// //       [2, 3],
+// //       [3, 4],
+// //       [4, 5],
+// //     ],
+// //     [
+// //       [1, 1, 1],
+// //       [2, 2, 2],
+// //     ],
+// //     [[3], [2], [1]],
+// //   ],
+// //   [
+// //     [
+// //       [1, 2],
+// //       [3, 4],
+// //       [5, 6],
+// //       [7, 8],
+// //       [9, 10],
+// //     ],
+// //     [
+// //       [1, 2, 3],
+// //       [4, 5, 6],
+// //     ],
+// //   ],
+// //   [[[3, 5]], [[4], [4]]],
+// //   [[[2], [2]], [[2]]],
+// //   [],
+// //   [[[1, 2]], [["1"], [6]]],
+// //   [[[2]], [[2], [2]]],
+// //   [
+// //     [[2, 3], [3, 4], [4]],
+// //     [
+// //       [1, 1, 1],
+// //       [2, 2, 2],
+// //     ],
+// //     [[3], [2], [1]],
+// //   ],
+// //   [
+// //     [
+// //       [2, 3],
+// //       [3, 4],
+// //       [4, "5"],
+// //     ],
+// //     [
+// //       [1, 1, 1],
+// //       [2, 2, 2],
+// //     ],
+// //     [[3], [2], [1]],
+// //   ],
+// //   [[[2, 3]]],
+// // ];
 
-// tests.forEach((test) => {
-//   try {
-//     console.log(matrixMultiply(...test));
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
-/* #endregion */
+// // tests.forEach((test) => {
+// //   try {
+// //     console.log(matrixMultiply(...test));
+// //   } catch (error) {
+// //     console.log(error);
+// //   }
+// // });
+// /* #endregion */
 
-/* #endregion */
+// /* #endregion */
 
-/* #region  StringUtil.js */
-import { palindromes, censorWords, distance } from "./stringUtils.js";
-/* #region  palindrome */
+// console.log("\n string util");
+// /* #region  StringUtil.js */
+// import { palindromes, censorWords, distance } from "./stringUtils.js";
+// /* #region  palindrome */
 // console.log("\n palindrom test");
 // const testCasesPalindrome = [
 //   [
@@ -576,9 +577,9 @@ import { palindromes, censorWords, distance } from "./stringUtils.js";
 //   }
 // });
 
-/* #endregion */
+// /* #endregion */
 
-/* #region  censorWords */
+// /* #region  censorWords */
 // let testCasesCensor = [
 //   {
 //     input:
@@ -646,9 +647,9 @@ import { palindromes, censorWords, distance } from "./stringUtils.js";
 //   }
 // });
 
-/* #endregion */
+// /* #endregion */
 
-/* #region  distance */
+// /* #region  distance */
 // const testCasesDistance = [
 //   { sentence: "Patrick", firstWord: "Patrick", secondWord: "Patrick" },
 
@@ -762,74 +763,112 @@ import { palindromes, censorWords, distance } from "./stringUtils.js";
 //     console.log(error);
 //   }
 // });
-/* #endregion */
+// /* #endregion */
 
-/* #endregion */
+// /* #endregion */
 
 /* #region  ObjectUtils.js */
-import { areObjectsEqual } from "./objectUtils.js";
+import { areObjectsEqual, calculateObject } from "./objectUtils.js";
 
-/* #region  areObjectsEqual */
-const resultsAreObjectsEqualValid = [false, true, false, true, true, true];
-const testCasesAreObjectsEqualValid = [
-  [
-    { a: 2, b: 3 },
-    { a: 2, b: 4 },
-    { a: 2, b: 3 },
-  ],
-  [
-    { a: { sA: "Hello", sB: "There", sC: "Class" }, b: 7, c: true, d: "Test" },
-    { c: true, b: 7, d: "Test", a: { sB: "There", sC: "Class", sA: "Hello" } },
-  ],
-  [
-    { a: { sA: "Hello", sB: "There", sC: "Class" }, b: 7, c: true, d: "Test" },
-    { a: 2, b: 3 },
-    {
-      name: { firstName: "Patrick", lastName: "Hill" },
-      age: 47,
-      dob: "9/25/1975",
-      hobbies: ["Playing music", "Movies", "Spending time with family"],
-    },
-  ],
-  [
-    {
-      name: { firstName: "Patrick", lastName: "Hill" },
-      age: 47,
-      dob: "9/25/1975",
-      hobbies: ["Playing music", "Movies", "Spending time with family"],
-    },
-    {
-      age: 47,
-      name: { firstName: "Patrick", lastName: "Hill" },
-      hobbies: ["Playing music", "Movies", "Spending time with family"],
-      dob: "9/25/1975",
-    },
-  ],
-  [
-    { a: 2, b: 3 },
-    { b: 3, a: 2 },
-    { a: 2, b: 3 },
-  ],
-  [{}, {}, {}, {}, {}],
-  [{}],
-  [],
-];
-let i = 0;
-testCasesAreObjectsEqualValid.forEach((testCase) => {
-  try {
-    if (testCase.valid) {
-      console.log("\nvalid test case:");
-    }
-    let result = areObjectsEqual(...testCase);
-    console.log(result);
-    console.log(resultsAreObjectsEqualValid[i]);
-  } catch (error) {
-    console.log(error);
-  } finally {
-    i++;
-    console.log();
-  }
-});
+// /* #region  areObjectsEqual */
+
+// const testCasesAreObjectsEqualValid = [
+//   [
+//     { a: 2, b: 3 },
+//     { a: 2, b: 4 },
+//     { a: 2, b: 3 },
+//   ], //false
+//   [
+//     { a: { sA: "Hello", sB: "There", sC: "Class" }, b: 7, c: true, d: "Test" },
+//     { c: true, b: 7, d: "Test", a: { sB: "There", sC: "Class", sA: "Hello" } },
+//   ], //true
+//   [
+//     { a: { sA: "Hello", sB: "There", sC: "Class" }, b: 7, c: true, d: "Test" },
+//     { a: 2, b: 3 },
+//     {
+//       name: { firstName: "Patrick", lastName: "Hill" },
+//       age: 47,
+//       dob: "9/25/1975",
+//       hobbies: ["Playing music", "Movies", "Spending time with family"],
+//     },
+//   ], //false
+//   [
+//     {
+//       name: { firstName: "Patrick", lastName: "Hill" },
+//       age: 47,
+//       dob: "9/25/1975",
+//       hobbies: ["Playing music", "Movies", "Spending time with family"],
+//     },
+//     {
+//       age: 47,
+//       name: { firstName: "Patrick", lastName: "Hill" },
+//       hobbies: ["Playing music", "Movies", "Spending time with family"],
+//       dob: "9/25/1975",
+//     },
+//   ], //true
+//   [
+//     { a: 2, b: 3 },
+//     { b: 3, a: 2 },
+//     { a: 2, b: 3 },
+//   ], //true
+//   [{}, {}, {}, {}, {}], //true
+
+//   [null, null], // error as they arent traditional objects
+//   [{}, null], // error as null isnt a traditional object
+//   [], // error
+//   [
+//     [1, 2, 3],
+//     [1, 2, 3],
+//   ], //  error as they arent traditional objects
+//   [
+//     { a: NaN, b: null },
+//     { a: NaN, b: null },
+//   ], //true
+//   [
+//     { a: NaN, b: [null] },
+//     { a: NaN, b: [null] },
+//   ], //true
+//   [true, false], // error as null isnt a traditional object
+// ];
+// testCasesAreObjectsEqualValid.forEach((testCase) => {
+//   try {
+//     let result = areObjectsEqual(...testCase);
+//     console.log(result);
+//   } catch (error) {
+//     console.log(error);
+//   } finally {
+//     console.log();
+//   }
+// });
+
+// /* #endregion */
+
+/* #region  calculateObject */
+// const testCasesAreObjectsEqualValid = [
+//   {
+//     object:
+//     funcs:[]
+//   }
+// ];
+// testCasesAreObjectsEqualValid.forEach((testCase) => {
+//   try {
+//     let result = calculateObject(object, funcs);
+//     console.log(result);
+//   } catch (error) {
+//     console.log(error);
+//   } finally {
+//     console.log();
+//   }
+// });
+calculateObject({ a: 3, b: 7, c: 5 }, [(n) => n * 2, (n) => Math.sqrt(n)]);
+/* Returns:
+{
+a: 2.45,
+b: 3.74,
+c: 3.16
+}
+*/
 
 /* #endregion */
+
 /* #endregion */

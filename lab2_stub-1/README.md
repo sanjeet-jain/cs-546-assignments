@@ -285,25 +285,25 @@ You must check:
 
 For example, if given the following:
 
-* [ ] const first = {a: 2, b: 3};
-* [ ] const second = {a: 2, b: 4};
-* [ ] const third = {a: 2, b: 3};
-* [ ] const forth = {a: {sA: "Hello", sB: "There", sC: "Class"}, b: 7, c: true, d: "Test"}
-* [ ] const fifth = {c: true, b: 7, d: "Test", a: {sB: "There", sC: "Class", sA: "Hello"}}
-* [ ] const sixth = {name: {firstName: "Patrick", lastName: "Hill"}, age: 47, dob: '9/25/1975', hobbies: ["Playing music", "Movies", "Spending time with family"]}
-* [ ] const seventh = {age: 47, name: {firstName: "Patrick", lastName: "Hill"}, hobbies: ["Playing music", "Movies", "Spending time with family"], dob: '9/25/1975'}
-* [ ] const eighth = {b:3, a:2}
-* [ ] console.log(areObjectsEqual(first, second, third)); // false
-* [ ] console.log(areObjectsEqual(forth, fifth)); // true
-* [ ] console.log(areObjectsEqual(forth, third, sixth)); // false
-* [ ] console.log(areObjectsEqual(sixth, seventh)); // true
-* [ ] console.log(areObjectsEqual(first, eighth, third)); // true
-* [ ] console.log(areObjectsEqual({}, {}, {}, {}, {})); // true
-* [ ] console.log(areObjectsEqual([1,2,3], [1,2,3])); // throws error
-* [ ] console.log(areObjectsEqual("foo", "bar")); // throws error
+* [x] const first = {a: 2, b: 3};
+* [x] const second = {a: 2, b: 4};
+* [x] const third = {a: 2, b: 3};
+* [x] const forth = {a: {sA: "Hello", sB: "There", sC: "Class"}, b: 7, c: true, d: "Test"}
+* [x] const fifth = {c: true, b: 7, d: "Test", a: {sB: "There", sC: "Class", sA: "Hello"}}
+* [x] const sixth = {name: {firstName: "Patrick", lastName: "Hill"}, age: 47, dob: '9/25/1975', hobbies: ["Playing music", "Movies", "Spending time with family"]}
+* [x] const seventh = {age: 47, name: {firstName: "Patrick", lastName: "Hill"}, hobbies: ["Playing music", "Movies", "Spending time with family"], dob: '9/25/1975'}
+* [x] const eighth = {b:3, a:2}
+* [x] console.log(areObjectsEqual(first, second, third)); // false
+* [x] console.log(areObjectsEqual(forth, fifth)); // true
+* [x] console.log(areObjectsEqual(forth, third, sixth)); // false
+* [x] console.log(areObjectsEqual(sixth, seventh)); // true
+* [x] console.log(areObjectsEqual(first, eighth, third)); // true
+* [x] console.log(areObjectsEqual({}, {}, {}, {}, {})); // true
+* [x] console.log(areObjectsEqual([1,2,3], [1,2,3])); // throws error
+* [x] console.log(areObjectsEqual("foo", "bar")); // throws error
     You must check:
-* [ ] That input exists and is of proper type (an Object). If not, throw an error.
-* [ ] There are at least two objects passed into the function, if not, throw an error
+* [x] That input exists and is of proper type (an Object). If not, throw an error.
+* [x] There are at least two objects passed into the function, if not, throw an error
     Hint: Using recursion is the best way to solve this one.
 
 Remember: The order of the keys is not important so: {a: 2, b: 4} is equal to {b: 4, a: 2}

@@ -75,49 +75,64 @@ function validateArrElements(
   allowSpaces = true
 ) {
   input.forEach((element) => {
-    errorIfNullOrEmpty(element, arrayName);
-    if (type === "array") {
-      if (Array.isArray(element) && recursive === true) {
-        errorIfNotArray(element, arrayName);
-        errorIfNullOrEmpty(element);
-        //recursive call to check deeper
-        recursionCount += 1;
-        validateArrElements(element, 0, "array", arrayName, true);
-      } else if (recursionCount < 1 && recursive === true) {
-        throw (
-          "Error: an element of " +
-          arrayName +
-          " in the first depth is not an array"
-        );
+    if (type === "object array") {
+      if (
+        typeof element == "object" &&
+        !isNull(element) &&
+        !Array.isArray(element)
+      ) {
+        if (length > 0) {
+          let elementKeys = Object.keys(element);
+          if (recursive === true) {
+            arrayName += " : " + element;
+          }
+          if (elementKeys.length !== length) {
+            throw "Error: " + arrayName + " of incorrect length";
+          }
+        } else {
+          //
+        }
+      } else {
+        throw "Error: element in object array " + arrayName + " isnt an object";
+      }
+    } else {
+      errorIfNullOrEmpty(element, arrayName);
+      if (type === "array") {
+        if (Array.isArray(element) && recursive === true) {
+          errorIfNotArray(element, arrayName);
+          errorIfNullOrEmpty(element);
+          //recursive call to check deeper
+          recursionCount += 1;
+          validateArrElements(element, 0, "array", arrayName, true);
+        } else if (recursionCount < 1 && recursive === true) {
+          throw (
+            "Error: an element of " +
+            arrayName +
+            " in the first depth is not an array"
+          );
+        } else if (typeof element === "string") {
+          if (!isNonEmptyString(element, allowSpaces)) {
+            throw allowSpaces
+              ? "Error: element within array is not a valid string"
+              : "Error: element within array is not a valid string(no spaces allowed ) ";
+          }
+        } else if (typeof element === "number") {
+          errorIfNullOrEmpty(element);
+        } else {
+          throw (
+            "Error: an element within " +
+            arrayName +
+            " is not a number or string"
+          );
+        }
       } else if (typeof element === "string") {
         if (!isNonEmptyString(element, allowSpaces)) {
           throw allowSpaces
             ? "Error: element within array is not a valid string"
             : "Error: element within array is not a valid string(no spaces allowed ) ";
         }
-      } else if (typeof element === "number") {
-        errorIfNullOrEmpty(element);
-      } else {
-        throw (
-          "Error: an element within " + arrayName + " is not a number or string"
-        );
-      }
-    } else if (typeof element === "string") {
-      if (!isNonEmptyString(element, allowSpaces)) {
-        throw allowSpaces
-          ? "Error: element within array is not a valid string"
-          : "Error: element within array is not a valid string(no spaces allowed ) ";
-      }
-    } else if (typeof element !== type) {
-      throw "Error:" + arrayName + " items arent " + type;
-    }
-    if (length > 0) {
-      let elementKeys = Object.keys(element);
-      if (recursive === true) {
-        arrayName += " : " + element;
-      }
-      if (elementKeys.length !== length) {
-        throw "Error: " + arrayName + " of incorrect length";
+      } else if (typeof element !== type) {
+        throw "Error:" + arrayName + " items arent " + type;
       }
     }
   });
@@ -478,20 +493,15 @@ const stringUtils = {
 
 const objectUtils = {
   /**
-   *
+   * validates objects before they are compared for equality
+   * @param {[]} args
+   * @returns {boolean}
    */
   validateAreObjectsEqualInputs(args) {
     errorIfNotArray(args, "args");
     errorIfNullOrEmpty(args, "args");
-    let isValid = true;
-    isValid =
-      isValid &&
-      args.every((element) => {
-        return typeof element == "object";
-      }) &&
-      args.length >= 2;
-
-    return isValid;
+    validateArrElements(args, 0, "object array", "object array");
+    return true;
   },
 };
 export { arrayUtils, stringUtils, objectUtils };
