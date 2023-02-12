@@ -460,24 +460,23 @@ const stringUtils = {
   },
 };
 function splitSentence(sentence, phrases) {
-  let result = [];
   let count = 0;
   let words = sentence.split(" ");
-  let tmpResult = [];
+  let result = [];
   for (let k = 0; k < sentence.split(" ").length; k++) {
     let phrase = "";
     for (let i = 0; i < words.length; i++) {
       phrase += words[i] + " ";
       if (phrases.includes(phrase.trim())) {
-        count++;
-        let index = sentence
-          .split(" ")
-          .findIndex((x) => x === phrase.split(" ")[0]);
-        tmpResult = tmpResult.slice(0, index - count);
-        tmpResult[index - count] = phrase.trim();
+        result[k - count] = phrase.trim();
+        result = result.slice(0, k + 1 - count);
+        count = count + phrase.trim().split(" ").length - 1;
         phrase = "";
+        let temp = 0;
       } else {
-        tmpResult.push(words[i]);
+        if (result.join(" ") !== sentence) {
+          result.push(words[i]);
+        }
       }
     }
     words = words.slice(1);
