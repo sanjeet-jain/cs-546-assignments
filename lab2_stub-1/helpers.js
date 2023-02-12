@@ -374,33 +374,7 @@ const stringUtils = {
       strArray[key] = strArray[key].trim().toLowerCase().replace(/\W/g, "");
     }
     checkIfItemsAreString(strArray, "palindrome Array", false);
-
-    // regex reference https://linuxhint.com/remove-all-non-alphanumeric-characters-in-javascript/
-    // basicall y \W is a metacharacter that matches for all non alphanumeric characters including spaces and we replace them with ""
-    let result = strArray.reduce((old, key) => ({ ...old, [key]: false }), {});
-    strArray.forEach((element) => {
-      let strLen = element.length;
-      let leftHalf = "";
-      let rightHalf = "";
-      if (strLen % 2 === 0) {
-        leftHalf = element.slice(0, strLen / 2);
-        rightHalf = element.slice(strLen / 2);
-        if (leftHalf === rightHalf) {
-          result[element] = true;
-        } else return false;
-      } else {
-        leftHalf = element.slice(0, strLen / 2);
-        rightHalf = element
-          .slice(strLen / 2 + 1)
-          .split("")
-          .reverse()
-          .join("");
-        if (leftHalf === rightHalf) {
-          result[element] = true;
-        } else result[element] = false;
-      }
-    });
-    return result;
+    return strArray;
   },
 
   /**
@@ -437,7 +411,7 @@ const stringUtils = {
    * @param {string} string
    * @param {string} word1
    * @param {string} word2
-   * @returns {boolean}
+   * @returns {[boolean,string,string,string,]} contains validation result and pre processed strings [validationResult:boolean, tmpstring, tmpword1, tmpword2]
    */
   validateDistanceInputs(string, word1, word2) {
     errorIfNullOrEmpty(string, "string input");
@@ -445,7 +419,8 @@ const stringUtils = {
     errorIfNullOrEmpty(word2, "word2 string");
     checkIfItemsAreString([string, word1, word2], "input strings", false);
 
-    let regex = /[!@#$%^&*,.'"]/g;
+    // strip all symbols to check for valid input
+    let regex = /[!@#$%^&*,.'"-=()]/g;
     let tmpstring = string.trim().toLowerCase().replace(regex, "");
     let tmpword1 = word1.trim().toLowerCase().replace(regex, "");
     let tmpword2 = word2.trim().toLowerCase().replace(regex, "");
@@ -454,26 +429,59 @@ const stringUtils = {
       "input strings",
       false
     );
+    // return strings back to with symbols
+    tmpstring = string.trim().toLowerCase();
+    tmpword1 = word1.trim().toLowerCase();
+    tmpword2 = word2.trim().toLowerCase();
     if (tmpstring.split(" ").length < 2) {
       throw "Error: string min length 2";
     }
     if (tmpword1 === tmpword2) {
       throw "Error: word1 word2 cant be same";
     }
+
+    let tmpword1Regex = new RegExp("\\b" + tmpword1 + "\\b");
+    let tmpword2Regex = new RegExp("\\b" + tmpword2 + "\\b");
     if (
-      tmpstring.match(tmpword1) == null ||
-      tmpstring.match(tmpword2) == null
+      tmpstring.match(tmpword1Regex) == null ||
+      tmpstring.match(tmpword2Regex) == null
     ) {
       throw "Error: words not present in string ";
     }
-    // console.log(tmpstring);
-    // console.log(tmpword1);
-    // console.log(tmpword2);
-    if (tmpstring.match(tmpword1).index > tmpstring.match(tmpword2).index) {
+    if (
+      tmpstring.match(tmpword1Regex).index >
+      tmpstring.match(tmpword2Regex).index
+    ) {
       throw "Error: word1 must come before word2";
     }
-    return true;
+    let temp = splitSentence(tmpstring, [tmpword1, tmpword2]);
+    console.log(temp);
+    return [true, tmpstring, tmpword1, tmpword2];
   },
 };
-
+function splitSentence(sentence, phrases) {
+  let result = [];
+  let count = 0;
+  let words = sentence.split(" ");
+  let tmpResult = [];
+  for (let k = 0; k < sentence.split(" ").length; k++) {
+    let phrase = "";
+    for (let i = 0; i < words.length; i++) {
+      phrase += words[i] + " ";
+      if (phrases.includes(phrase.trim())) {
+        count++;
+        let index = sentence
+          .split(" ")
+          .findIndex((x) => x === phrase.split(" ")[0]);
+        tmpResult = tmpResult.slice(0, index - count);
+        tmpResult[index - count] = phrase.trim();
+        phrase = "";
+      } else {
+        tmpResult.push(words[i]);
+      }
+    }
+    words = words.slice(1);
+  }
+  return result;
+}
 export { arrayUtils, stringUtils };

@@ -546,7 +546,7 @@ do not forget that you need to create the package.json and add the start command
 
 /* #region  StringUtil.js */
 import { palindromes, censorWords, distance } from "./stringUtils.js";
-// /* #region  palindrome */
+/* #region  palindrome */
 // console.log("\n palindrom test");
 // const testCasesPalindrome = [
 //   [
@@ -565,6 +565,7 @@ import { palindromes, censorWords, distance } from "./stringUtils.js";
 //   [""],
 //   [" a a"],
 //   [""],
+//   ["Anna"],
 // ];
 
 // testCasesPalindrome.forEach((element) => {
@@ -575,9 +576,9 @@ import { palindromes, censorWords, distance } from "./stringUtils.js";
 //   }
 // });
 
-// /* #endregion */
+/* #endregion */
 
-// /* #region  censorWords */
+/* #region  censorWords */
 // let testCasesCensor = [
 //   {
 //     input:
@@ -645,59 +646,104 @@ import { palindromes, censorWords, distance } from "./stringUtils.js";
 //   }
 // });
 
-// /* #endregion */
+/* #endregion */
 
 /* #region  distance */
 const testCasesDistance = [
+  // { sentence: "Patrick", firstWord: "Patrick", secondWord: "Patrick" },
+
+  // { sentence: [], firstWord: true, secondWord: undefined },
+  // { sentence: undefined, firstWord: undefined, secondWord: undefined },
   // {
-  //   sentence: "The brown fox jumped, over the lazy dog",
+  //   sentence: "The brown dog fox jumped over the lazy dog",
   //   firstWord: "fox",
   //   secondWord: "dog",
   // },
   // {
-  //   sentence: "I was going to buy workout powder yesterday",
+  //   sentence: "The brown fox jumped over the lazy dog",
+  //   firstWord: ",",
+  //   secondWord: "dog",
+  // },
+  // { sentence: "!@#", firstWord: "!@$", secondWord: "!@$" },
+  // { sentence: "123", firstWord: "123", secondWord: "!@$" },
+  // { sentence: "", firstWord: "", secondWord: "" },
+  // { sentence: "Hello World!", firstWord: " !?!", secondWord: " ... " },
+  // { sentence: "1", firstWord: "1", secondWord: "" },
+  // { sentence: " ", firstWord: "1", secondWord: "1" },
+  // { sentence: 123, firstWord: "CS", secondWord: "Patrick" },
+  // { sentence: "Hello there", firstWord: "hello", secondWord: "" },
+  // {
+  //   sentence: "Give me music suggestions",
+  //   firstWord: "rock",
+  //   secondWord: "pop",
+  // },
+  // {
+  //   sentence: "Bob met Adam on wednesday",
+  //   firstWord: "Adam",
+  //   secondWord: "Bob",
+  // },
+  // {
+  //   sentence: "I was going to buy preworkout powder yesterday",
   //   firstWord: "going to",
   //   secondWord: "workout powder",
   // },
   // {
-  //   sentence: "  The brown fox jumped over the lazy dog as a fox",
+  //   valid: 5,
+  //   sentence: "The brown fox jumped, over the lazy dog",
   //   firstWord: "fox",
   //   secondWord: "dog",
   // },
-  { sentence: "Patrick", firstWord: "Patrick", secondWord: "Patrick" },
 
-  { sentence: [], firstWord: true, secondWord: undefined },
-  { sentence: undefined, firstWord: undefined, secondWord: undefined },
+  // {
+  //   valid: 5,
+  //   sentence: "The brown fox jumped over the lazy dog",
+  //   firstWord: "fox",
+  //   secondWord: "dog",
+  // }, //5
   {
-    sentence: "The brown dog fox jumped over the lazy dog",
+    valid: 2,
+    sentence: "I was going to buy workout powder yesterday",
+    firstWord: "going to",
+    secondWord: "workout powder",
+  }, //2
+  {
+    valid: 2,
+    sentence: "I was going to buy workout-powder yesterday",
+    firstWord: "going to",
+    secondWord: "workout-powder",
+  }, //2
+  {
+    valid: 5,
+    sentence: "  The brown fox jumped over the lazy dog as a fox",
     firstWord: "fox",
     secondWord: "dog",
-  },
+  }, //5
   {
-    sentence: "The brown fox jumped over the lazy dog",
-    firstWord: ",",
-    secondWord: "dog",
-  },
-  { sentence: "!@#", firstWord: "!@$", secondWord: "!@$" },
-  { sentence: "123", firstWord: "123", secondWord: "!@$" },
-  { sentence: "", firstWord: "", secondWord: "" },
-  { sentence: "Hello World!", firstWord: " !?!", secondWord: " ... " },
-  { sentence: "1", firstWord: "1", secondWord: "" },
-  { sentence: " ", firstWord: "1", secondWord: "1" },
-  { sentence: 123, firstWord: "CS", secondWord: "Patrick" },
-  { sentence: "Hello there", firstWord: "hello", secondWord: "" },
+    valid: 2,
+    sentence: "I really hope it will snow soon because I like snow",
+    firstWord: "I",
+    secondWord: "snow",
+  }, //2
   {
-    sentence: "Give me music suggestions",
-    firstWord: "rock",
-    secondWord: "pop",
-  },
+    valid: 4,
+    sentence: "I like sweet and salty but I like sweet more",
+    firstWord: "salty",
+    secondWord: "sweet",
+  }, //4
 ];
 
 testCasesDistance.forEach((testCase) => {
   try {
-    console.log(
-      distance(testCase.sentence, testCase.firstWord, testCase.secondWord)
+    if (testCase.valid) {
+      console.log("\nvalid test case:");
+    }
+    let result = distance(
+      testCase.sentence,
+      testCase.firstWord,
+      testCase.secondWord
     );
+    console.log(result);
+    console.log(testCase.valid);
   } catch (error) {
     console.log(error);
   }

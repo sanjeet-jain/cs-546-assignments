@@ -182,7 +182,7 @@ Examples:
 
 This file will export 3 functions, each are useful functions when dealing with strings in JavaScript.
 
-* [ ] palindromes(strings)
+* [x] palindromes(strings)
     Given an array of strings, you will return an object that contains each string element as a key (after it's been converted to lowercase and stripped of any non alphanumeric characters) and a boolean for the value of that key which will state if that key is a palindrome or not.
 
 A palindrome is a phrase that is spelled the same way, backwards and forwards (ignoring spacing and punctuation). For example, the following phrases are palindromes:
@@ -245,7 +245,7 @@ Examples:
 
 ## distance(string, word1, word2)
 
-* [ ] Given string, word1, and word2 return the minimum distance between word1 and word2 in the string, where word1 appears before word2. You should be calculating the distance based on index, meaning word2 is inclusive in the distance. If word1 is at index 1 and word2 is at index 8, then the distance is 8-1=7.
+* [x] Given string, word1, and word2 return the minimum distance between word1 and word2 in the string, where word1 appears before word2. You should be calculating the distance based on index, meaning word2 is inclusive in the distance. If word1 is at index 1 and word2 is at index 8, then the distance is 8-1=7.
 
 You must check:
 
@@ -264,11 +264,11 @@ You must check:
 * [x] distance("","","") // throws error
 * [x] distance("Hello World!", " !?!", " ... ") // throws error
 * [x] distance("Patrick", "Patrick", "Patrick") // throws error
-* [ ] distance(123, "CS", "Patrick") // throws error
-* [ ] distance("Hello there", "hello", "") // throws error
-* [ ] distance("Give me music suggestions", "rock", "pop") // throws error
-* [ ] distance("Bob met Adam on wednesday", "Adam", "Bob") // throws error
-* [ ] distance("I was going to buy preworkout powder yesterday", "going to", "workout powder") // throws error
+* [x] distance(123, "CS", "Patrick") // throws error
+* [x] distance("Hello there", "hello", "") // throws error
+* [x] distance("Give me music suggestions", "rock", "pop") // throws error
+* [x] distance("Bob met Adam on wednesday", "Adam", "Bob") // throws error
+* [x] distance("I was going to buy preworkout powder yesterday", "going to", "workout powder") // throws error
 * [ ] distance("The brown fox jumped over the lazy dog", "fox", "dog") // returns 5
 * [ ] distance("I was going to buy workout powder yesterday", "going to", "workout powder") // returns 2
 * [ ] distance("sphinx of black quartz, judge my vow", "QUARTZ", "vOW"); // returns 3
