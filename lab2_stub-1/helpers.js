@@ -453,9 +453,9 @@ const stringUtils = {
       false
     );
     // return strings back to with symbols
-    tmpstring = string.trim().toLowerCase();
-    tmpword1 = word1.trim().toLowerCase();
-    tmpword2 = word2.trim().toLowerCase();
+    // tmpstring = string.trim().toLowerCase();
+    // tmpword1 = word1.trim().toLowerCase();
+    // tmpword2 = word2.trim().toLowerCase();
     if (tmpstring.split(" ").length < 2) {
       throw "Error: string min length 2";
     }
@@ -471,7 +471,7 @@ const stringUtils = {
       throw "Error: words not present in string ";
     }
 
-    return temp;
+    return [temp, tmpword1, tmpword2];
   },
 };
 

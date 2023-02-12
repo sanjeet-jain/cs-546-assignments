@@ -77,9 +77,9 @@ export let distance = (string, word1, word2) => {
   );
   let result = [];
   findValidPairs(
-    preProcessedData,
-    word1.trim().toLowerCase(),
-    word2.trim().toLowerCase(),
+    preProcessedData[0],
+    preProcessedData[1],
+    preProcessedData[2],
     result
   );
   for (let key in result) {

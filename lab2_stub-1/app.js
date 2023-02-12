@@ -731,6 +731,12 @@ const testCasesDistance = [
     firstWord: "salty",
     secondWord: "sweet",
   }, //4
+  {
+    valid: 3,
+    sentence: "sphinx of black quartz, judge my vow",
+    firstWord: "QUARTZ",
+    secondWord: "vOW",
+  }, //3
 ];
 
 testCasesDistance.forEach((testCase) => {
@@ -746,7 +752,13 @@ testCasesDistance.forEach((testCase) => {
     console.log(testCase.sentence);
     console.log(result);
     console.log(testCase.valid);
+    if (!testCase.valid) {
+      console.log("this was an error case passing as valid");
+    }
   } catch (error) {
+    if (testCase.valid) {
+      console.log("this was a valid test case with error");
+    }
     console.log(error);
   }
 });

@@ -269,11 +269,11 @@ You must check:
 * [x] distance("Give me music suggestions", "rock", "pop") // throws error
 * [x] distance("Bob met Adam on wednesday", "Adam", "Bob") // throws error
 * [x] distance("I was going to buy preworkout powder yesterday", "going to", "workout powder") // throws error
-* [ ] distance("The brown fox jumped over the lazy dog", "fox", "dog") // returns 5
-* [ ] distance("I was going to buy workout powder yesterday", "going to", "workout powder") // returns 2
-* [ ] distance("sphinx of black quartz, judge my vow", "QUARTZ", "vOW"); // returns 3
-* [ ] distance("I really hope it will snow soon because I like snow", "I", "snow") // returns 2
-* [ ] distance("I like sweet and salty but I like sweet more", "salty", "sweet") // returns 4
+* [x] distance("The brown fox jumped over the lazy dog", "fox", "dog") // returns 5
+* [x] distance("I was going to buy workout powder yesterday", "going to", "workout powder") // returns 2
+* [x] distance("sphinx of black quartz, judge my vow", "QUARTZ", "vOW"); // returns 3
+* [x] distance("I really hope it will snow soon because I like snow", "I", "snow") // returns 2
+* [x] distance("I like sweet and salty but I like sweet more", "salty", "sweet") // returns 4
 
 # objUtils.js
 
