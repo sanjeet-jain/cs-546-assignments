@@ -83,6 +83,47 @@ export let calculateObject = (object, funcs) => {
   }
 };
 
+/**
+ * does combination of common keys amongst all objects passed with
+ * @param {[]} args
+ * @returns {object} returns object with combined keys
+ */
 export let combineObjects = (...args) => {
   //this function takes in a variable number of objects that's what the ...args signifies
+  if (objectUtils.validateCombineObjects(args)) {
+    //// Implement question 3 here
+
+    let result = {};
+    // we find the common keys of both key lists and append to result object with flag true
+    let flattenedKeys = [];
+    args.forEach((element) => {
+      flattenedKeys.push(...Object.keys(element));
+    });
+    let flattenedKeysCounter = {};
+    flattenedKeys.forEach((key) => {
+      flattenedKeysCounter[key] =
+        (flattenedKeysCounter[key] === undefined
+          ? 0
+          : flattenedKeysCounter[key]) + 1;
+    });
+    for (let property in flattenedKeysCounter) {
+      if (flattenedKeysCounter[property] < 2) {
+        delete flattenedKeysCounter[property];
+      }
+    }
+    // from lab1 find common keys but instead we put the object key value instead of boolean
+    let arrA = Object.keys(flattenedKeysCounter);
+    args.forEach((element) => {
+      let arrB = Object.keys(element);
+      arrB
+        .filter((x) => arrA.includes(x))
+        .forEach((key) => {
+          if (result[key] === undefined) {
+            result[key] = element[key];
+          }
+        });
+    });
+
+    return result;
+  }
 };

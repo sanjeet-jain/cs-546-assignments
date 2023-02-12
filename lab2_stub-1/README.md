@@ -277,11 +277,11 @@ You must check:
 
 # objUtils.js
 
-* [ ] This file will export 3 functions that are useful when dealing with objects in JavaScript.
+* [x] This file will export 3 functions that are useful when dealing with objects in JavaScript.
 
 ## areObjectsEqual(....args)
 
-* [ ] This method takes in a variable number of objects and checks each field (at every level deep) for equality. It will return true if each field in each of the supplied objects is equal, and false if not. Note: Empty objects can be passed into this function.
+* [x] This method takes in a variable number of objects and checks each field (at every level deep) for equality. It will return true if each field in each of the supplied objects is equal, and false if not. Note: Empty objects can be passed into this function.
 
 For example, if given the following:
 
@@ -331,23 +331,23 @@ c: 3.16
 }
 \_/
 
-* [ ] calculateObject({ a: 'Hello', b: 7, c: false }, [(n => n \* n)]);
+* [x] calculateObject({ a: 'Hello', b: 7, c: false }, [(n => n \* n)]);
     /\_ Throws an error \_/
-* [ ] calculateObject({ a: 1, b: 2, c: 3}, [false]);
+* [x] calculateObject({ a: 1, b: 2, c: 3}, [false]);
     /\_ Throws an error \_/
 
 ## combineObjects(...args)
 
-* [ ] Given a variable amount of objects\, you will find all the keys that appear in at least any two objects and return a new object with all these keys where the value of each of those keys is the value from the first object that had the key\. In other words\, if a key 'k' appears in objects args\[0\] and args\[2\]\, the result object will include the key k and its value will be that of args\[0\]\['k'\]\.
+* [x] Given a variable amount of objects\, you will find all the keys that appear in at least any two objects and return a new object with all these keys where the value of each of those keys is the value from the first object that had the key\. In other words\, if a key 'k' appears in objects args\[0\] and args\[2\]\, the result object will include the key k and its value will be that of args\[0\]\['k'\]\.
 
 You must check:
 
-* [ ] That args has at least two objects. If not, throw an error
-* [ ] That each object in args is of proper type (an object), has at least 1 key. If not, throw an error.
+* [x] That args has at least two objects. If not, throw an error
+* [x] That each object in args is of proper type (an object), has at least 1 key. If not, throw an error.
 
 Examples:
 
-* [ ] combineObjects(
+* [x] combineObjects(
     { a: 3, b: 7, c: 5 },
     { d: 4, e: 9 },
     { a: 8, d: 2 }
@@ -358,7 +358,7 @@ Examples:
     d: 4
     }
     \_/
-* [ ] combineObjects(
+* [x] combineObjects(
     { b: 7, c: 5 },
     { d: 4, e: 9, a: 'waffle' },
     { a: 8, d: 2 },
@@ -370,7 +370,7 @@ Examples:
     d: 4,
     e: 9
     }
-* [ ] combineObjects(
+* [x] combineObjects(
     { apple: 'orange', orange: 'pear' },
     { pear: 'blueberry', fruit: 4 },
     { cool: false, intelligence: -2 }
@@ -378,7 +378,7 @@ Examples:
     /\_ Returns:
     { }
     \_/
-* [ ] combineObjects(
+* [x] combineObjects(
     { wow: 'crazy', super: 'duper },
     false
     );

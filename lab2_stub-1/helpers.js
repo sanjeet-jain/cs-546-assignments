@@ -84,14 +84,9 @@ function validateArrElements(
       if (isValidObjectType(element)) {
         if (length > 0) {
           let elementKeys = Object.keys(element);
-          if (recursive === true) {
-            arrayName += " : " + element;
-          }
           if (elementKeys.length !== length) {
             throw "Error: " + arrayName + " of incorrect length";
           }
-        } else {
-          //
         }
       } else {
         throw "Error: element in object array " + arrayName + " isnt an object";
@@ -212,7 +207,14 @@ const arrayUtils = {
     if (input.length < 2) {
       throw "Error: objects array length must be greater than 1";
     }
-    validateArrElements(input, 4, "object", "object array", false, false);
+    validateArrElements(
+      input,
+      4,
+      "object",
+      "object array for sort and filter",
+      false,
+      false
+    );
     input.forEach((element) => {
       checkIfItemsAreString(element, "object array");
     });
@@ -501,7 +503,12 @@ const objectUtils = {
   validateAreObjectsEqualInputs(args) {
     errorIfNotArray(args, "args");
     errorIfNullOrEmpty(args, "args");
-    validateArrElements(args, 0, "object array", "object array");
+    validateArrElements(
+      args,
+      0,
+      "object array",
+      "object array for comparision"
+    );
     return true;
   },
 
@@ -526,6 +533,27 @@ const objectUtils = {
         throw "Error: object should only have numbers ";
       }
     });
+    return true;
+  },
+
+  /**
+   * validates inouts for CombineObjects
+   * checks if args has only objects
+   * @param {[]} args
+   * @returns {boolean} returns true if validations passed else throws errors
+   */
+  validateCombineObjects(args) {
+    errorIfNotArray(args, "args");
+    errorIfNullOrEmpty(args, "args");
+    if (args.length < 2) {
+      throw "Error: min length is 2";
+    }
+    validateArrElements(
+      args,
+      0,
+      "object array",
+      "object array for combination"
+    );
     return true;
   },
 };

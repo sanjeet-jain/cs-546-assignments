@@ -768,7 +768,11 @@ do not forget that you need to create the package.json and add the start command
 // /* #endregion */
 
 /* #region  ObjectUtils.js */
-import { areObjectsEqual, calculateObject } from "./objectUtils.js";
+import {
+  areObjectsEqual,
+  calculateObject,
+  combineObjects,
+} from "./objectUtils.js";
 
 /* #region  areObjectsEqual */
 
@@ -910,10 +914,53 @@ const testCasesAreObjectsEqualValid = [
 
     { a: 8, d: 2 },
   ],
+  /*Returns:
+  {
+  a: 3,
+  d: 4
+  }
+  */
+  [
+    { b: 7, c: 5 },
+
+    { d: 4, e: 9, a: "waffle" },
+
+    { a: 8, d: 2 },
+
+    { d: 3, e: "hello" },
+  ],
+  /* Returns:
+  {
+  a: 'waffle',
+  d: 4,
+  e: 9
+  }
+  */
+  [
+    { apple: "orange", orange: "pear" },
+
+    { pear: "blueberry", fruit: 4 },
+
+    { cool: false, intelligence: -2 },
+  ],
+  /* Returns:
+  { }
+  */
+
+  [{ wow: "crazy", super: "duper" }, false],
+  // Throws an error
+  [{ b: 7, c: 5 }], // error
+  [
+    { cool: false, intelligence: -2 },
+    { cool: "beans" },
+    { a: 1, b: 4 },
+    { c: { cool: false, intelligence: -2, d: { a: ["hello"], b: 4 } } },
+    { c: "a" },
+  ],
 ];
 testCasesAreObjectsEqualValid.forEach((testCase) => {
   try {
-    let result = calculateObject(testCase);
+    let result = combineObjects(...testCase);
     console.log(result);
   } catch (error) {
     console.log(error);
