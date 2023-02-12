@@ -13,10 +13,8 @@ let people = [
   { name: "Matt", age: "21", location: "New York", role: "Student" },
   { name: "Matt", age: "21", location: "New Jersey", role: "Student" },
 ];
-console.log("\n\n Array Correctness");
 
 /* #region Array Correctness*/
-console.log("\n ArrayCorrectness");
 
 const arrayCorrectnessTest = [
   [],
@@ -551,7 +549,7 @@ console.log("\n string util");
 /* #region  StringUtil.js */
 import { palindromes, censorWords, distance } from "./stringUtils.js";
 /* #region  palindrome */
-console.log("\n palindrom test");
+console.log("\n palindrome test");
 const testCasesPalindrome = [
   [
     "Madam",
@@ -583,6 +581,7 @@ testCasesPalindrome.forEach((element) => {
 /* #endregion */
 
 /* #region  censorWords */
+console.log("\n censor words");
 let testCasesCensor = [
   {
     input:
@@ -653,6 +652,7 @@ testCasesCensor.forEach((testCase) => {
 /* #endregion */
 
 /* #region  distance */
+console.log("\n distance");
 const testCasesDistance = [
   { sentence: "Patrick", firstWord: "Patrick", secondWord: "Patrick" },
 
