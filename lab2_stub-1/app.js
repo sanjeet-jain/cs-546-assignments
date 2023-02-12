@@ -767,5 +767,63 @@ import { palindromes, censorWords, distance } from "./stringUtils.js";
 /* #endregion */
 
 /* #region  ObjectUtils.js */
+import { areObjectsEqual } from "./objectUtils.js";
 
+/* #region  areObjectsEqual */
+const resultsAreObjectsEqualValid = [false, true, false, true, true, true];
+const testCasesAreObjectsEqualValid = [
+  [
+    { a: 2, b: 3 },
+    { a: 2, b: 4 },
+    { a: 2, b: 3 },
+  ],
+  [
+    ({ a: { sA: "Hello", sB: "There", sC: "Class" }, b: 7, c: true, d: "Test" },
+    { c: true, b: 7, d: "Test", a: { sB: "There", sC: "Class", sA: "Hello" } }),
+  ],
+  [
+    ({ a: { sA: "Hello", sB: "There", sC: "Class" }, b: 7, c: true, d: "Test" },
+    { a: 2, b: 3 },
+    {
+      name: { firstName: "Patrick", lastName: "Hill" },
+      age: 47,
+      dob: "9/25/1975",
+      hobbies: ["Playing music", "Movies", "Spending time with family"],
+    }),
+  ],
+  [
+    ({
+      name: { firstName: "Patrick", lastName: "Hill" },
+      age: 47,
+      dob: "9/25/1975",
+      hobbies: ["Playing music", "Movies", "Spending time with family"],
+    },
+    {
+      age: 47,
+      name: { firstName: "Patrick", lastName: "Hill" },
+      hobbies: ["Playing music", "Movies", "Spending time with family"],
+      dob: "9/25/1975",
+    }),
+  ],
+  [({ a: 2, b: 3 }, { b: 3, a: 2 }, { a: 2, b: 3 })],
+  [{}, {}, {}, {}, {}],
+];
+let i = 0;
+testCasesAreObjectsEqualValid.forEach((testCase) => {
+  try {
+    if (testCase.valid) {
+      console.log("\nvalid test case:");
+    }
+    let result = areObjectsEqual(...testCase);
+    console.log(result);
+    console.log(resultsAreObjectsEqualValid[i]);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    i++;
+    console.log();
+  }
+});
+
+/* #endregion */
 /* #endregion */

@@ -3,12 +3,12 @@
       DO NOT CHANGE THE FUNCTION NAMES
 */
 
-let areObjectsEqual = (...args) => {
+export let areObjectsEqual = (...args) => {
   //this function takes in a variable number of objects that's what the ...args signifies
 };
 
-let calculateObject = (object, funcs) => {};
+export let calculateObject = (object, funcs) => {};
 
-let combineObjects = (...args) => {
+export let combineObjects = (...args) => {
   //this function takes in a variable number of objects that's what the ...args signifies
 };
