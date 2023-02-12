@@ -778,21 +778,21 @@ const testCasesAreObjectsEqualValid = [
     { a: 2, b: 3 },
   ],
   [
-    ({ a: { sA: "Hello", sB: "There", sC: "Class" }, b: 7, c: true, d: "Test" },
-    { c: true, b: 7, d: "Test", a: { sB: "There", sC: "Class", sA: "Hello" } }),
+    { a: { sA: "Hello", sB: "There", sC: "Class" }, b: 7, c: true, d: "Test" },
+    { c: true, b: 7, d: "Test", a: { sB: "There", sC: "Class", sA: "Hello" } },
   ],
   [
-    ({ a: { sA: "Hello", sB: "There", sC: "Class" }, b: 7, c: true, d: "Test" },
+    { a: { sA: "Hello", sB: "There", sC: "Class" }, b: 7, c: true, d: "Test" },
     { a: 2, b: 3 },
     {
       name: { firstName: "Patrick", lastName: "Hill" },
       age: 47,
       dob: "9/25/1975",
       hobbies: ["Playing music", "Movies", "Spending time with family"],
-    }),
+    },
   ],
   [
-    ({
+    {
       name: { firstName: "Patrick", lastName: "Hill" },
       age: 47,
       dob: "9/25/1975",
@@ -803,10 +803,16 @@ const testCasesAreObjectsEqualValid = [
       name: { firstName: "Patrick", lastName: "Hill" },
       hobbies: ["Playing music", "Movies", "Spending time with family"],
       dob: "9/25/1975",
-    }),
+    },
   ],
-  [({ a: 2, b: 3 }, { b: 3, a: 2 }, { a: 2, b: 3 })],
+  [
+    { a: 2, b: 3 },
+    { b: 3, a: 2 },
+    { a: 2, b: 3 },
+  ],
   [{}, {}, {}, {}, {}],
+  [{}],
+  [],
 ];
 let i = 0;
 testCasesAreObjectsEqualValid.forEach((testCase) => {

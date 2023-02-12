@@ -3,7 +3,9 @@
       DO NOT CHANGE THE FUNCTION NAMES
 */
 
+import { objectUtils } from "./helpers.js";
 export let areObjectsEqual = (...args) => {
+  return objectUtils.validateAreObjectsEqualInputs(args);
   //this function takes in a variable number of objects that's what the ...args signifies
 };
 

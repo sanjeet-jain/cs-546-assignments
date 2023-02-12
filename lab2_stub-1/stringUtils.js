@@ -68,6 +68,13 @@ export let censorWords = (string, badWordsList) => {
   }
 };
 
+/**
+ * function which returns the least distance between two words in a string
+ * @param {string} string
+ * @param {string} word1
+ * @param {string} word2
+ * @returns {number} least distance between input words present in the string
+ */
 export let distance = (string, word1, word2) => {
   //validate if words are present in string
   let preProcessedData = stringUtils.validateDistanceInputs(
@@ -88,6 +95,16 @@ export let distance = (string, word1, word2) => {
   return Math.min(...result);
 };
 
+/**
+ * function which returns the least distance between two words in a string
+ * @param {string[]} stringArray
+ * @param {string} tmpword1
+ * @param {string} tmpword2
+ * @param {[[number]]} result contains all valid pairs of indices where word1 is present before word 2
+ * @param {number} word1Index
+ * @param {number} word1Index
+ *
+ */
 function findValidPairs(
   stringArray,
   tmpword1,

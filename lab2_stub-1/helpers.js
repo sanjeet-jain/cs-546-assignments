@@ -341,6 +341,7 @@ const arrayUtils = {
       return false;
     }
     input.forEach((element) => {
+      recursionCount = 0;
       validateArrElements(
         element,
         element[0].length,
@@ -430,11 +431,11 @@ const stringUtils = {
   },
 
   /**
-   * function to check if input for censorWord is valid
+   * function to check if input for distance() is valid
    * @param {string} string
    * @param {string} word1
    * @param {string} word2
-   * @returns {[boolean,string,string,string,]} contains validation result and pre processed strings [validationResult:boolean, tmpstring, tmpword1, tmpword2]
+   * @returns {[boolean,string,string,string,]} contains validation result and pre processed strings [tmpstring, tmpword1, tmpword2]
    */
   validateDistanceInputs(string, word1, word2) {
     errorIfNullOrEmpty(string, "string input");
@@ -475,5 +476,22 @@ const stringUtils = {
   },
 };
 
-const objectUtils = {};
+const objectUtils = {
+  /**
+   *
+   */
+  validateAreObjectsEqualInputs(args) {
+    errorIfNotArray(args, "args");
+    errorIfNullOrEmpty(args, "args");
+    let isValid = true;
+    isValid =
+      isValid &&
+      args.every((element) => {
+        return typeof element == "object";
+      }) &&
+      args.length >= 2;
+
+    return isValid;
+  },
+};
 export { arrayUtils, stringUtils, objectUtils };
