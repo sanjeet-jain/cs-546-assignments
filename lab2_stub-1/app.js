@@ -649,119 +649,123 @@ import { palindromes, censorWords, distance } from "./stringUtils.js";
 /* #endregion */
 
 /* #region  distance */
-const testCasesDistance = [
-  { sentence: "Patrick", firstWord: "Patrick", secondWord: "Patrick" },
+// const testCasesDistance = [
+//   { sentence: "Patrick", firstWord: "Patrick", secondWord: "Patrick" },
 
-  { sentence: [], firstWord: true, secondWord: undefined },
-  { sentence: undefined, firstWord: undefined, secondWord: undefined },
-  {
-    valid: 5,
-    sentence: "The brown dog fox jumped over the lazy dog",
-    firstWord: "fox",
-    secondWord: "dog",
-  },
-  {
-    sentence: "The brown fox jumped over the lazy dog",
-    firstWord: ",",
-    secondWord: "dog",
-  },
-  { sentence: "!@#", firstWord: "!@$", secondWord: "!@$" },
-  { sentence: "123", firstWord: "123", secondWord: "!@$" },
-  { sentence: "", firstWord: "", secondWord: "" },
-  { sentence: "Hello World!", firstWord: " !?!", secondWord: " ... " },
-  { sentence: "1", firstWord: "1", secondWord: "" },
-  { sentence: " ", firstWord: "1", secondWord: "1" },
-  { sentence: 123, firstWord: "CS", secondWord: "Patrick" },
-  { sentence: "Hello there", firstWord: "hello", secondWord: "" },
-  {
-    sentence: "Give me music suggestions",
-    firstWord: "rock",
-    secondWord: "pop",
-  },
-  {
-    sentence: "Bob met Adam on wednesday",
-    firstWord: "Adam",
-    secondWord: "Bob",
-  },
-  {
-    sentence: "I was going to buy preworkout powder yesterday",
-    firstWord: "going to",
-    secondWord: "workout powder",
-  },
-  {
-    valid: 5,
-    sentence: "The brown fox jumped, over the lazy dog",
-    firstWord: "fox",
-    secondWord: "dog",
-  },
+//   { sentence: [], firstWord: true, secondWord: undefined },
+//   { sentence: undefined, firstWord: undefined, secondWord: undefined },
+//   {
+//     valid: 5,
+//     sentence: "The brown dog fox jumped over the lazy dog",
+//     firstWord: "fox",
+//     secondWord: "dog",
+//   },
+//   {
+//     sentence: "The brown fox jumped over the lazy dog",
+//     firstWord: ",",
+//     secondWord: "dog",
+//   },
+//   { sentence: "!@#", firstWord: "!@$", secondWord: "!@$" },
+//   { sentence: "123", firstWord: "123", secondWord: "!@$" },
+//   { sentence: "", firstWord: "", secondWord: "" },
+//   { sentence: "Hello World!", firstWord: " !?!", secondWord: " ... " },
+//   { sentence: "1", firstWord: "1", secondWord: "" },
+//   { sentence: " ", firstWord: "1", secondWord: "1" },
+//   { sentence: 123, firstWord: "CS", secondWord: "Patrick" },
+//   { sentence: "Hello there", firstWord: "hello", secondWord: "" },
+//   {
+//     sentence: "Give me music suggestions",
+//     firstWord: "rock",
+//     secondWord: "pop",
+//   },
+//   {
+//     sentence: "Bob met Adam on wednesday",
+//     firstWord: "Adam",
+//     secondWord: "Bob",
+//   },
+//   {
+//     sentence: "I was going to buy preworkout powder yesterday",
+//     firstWord: "going to",
+//     secondWord: "workout powder",
+//   },
+//   {
+//     valid: 5,
+//     sentence: "The brown fox jumped, over the lazy dog",
+//     firstWord: "fox",
+//     secondWord: "dog",
+//   },
 
-  {
-    valid: 5,
-    sentence: "The brown fox jumped over the lazy dog",
-    firstWord: "fox",
-    secondWord: "dog",
-  }, //5
-  {
-    valid: 2,
-    sentence: "I was going to buy workout powder yesterday",
-    firstWord: "going to",
-    secondWord: "workout powder",
-  }, //2
-  {
-    valid: 2,
-    sentence: "I was going to buy workout-powder yesterday",
-    firstWord: "going to",
-    secondWord: "workout-powder",
-  }, //2
-  {
-    valid: 5,
-    sentence: "  The brown fox jumped over the lazy dog as a fox",
-    firstWord: "fox",
-    secondWord: "dog",
-  }, //5
-  {
-    valid: 2,
-    sentence: "I really hope it will snow soon because I like snow",
-    firstWord: "I",
-    secondWord: "snow",
-  }, //2
-  {
-    valid: 4,
-    sentence: "I like sweet and salty but I like sweet more",
-    firstWord: "salty",
-    secondWord: "sweet",
-  }, //4
-  {
-    valid: 3,
-    sentence: "sphinx of black quartz, judge my vow",
-    firstWord: "QUARTZ",
-    secondWord: "vOW",
-  }, //3
-];
+//   {
+//     valid: 5,
+//     sentence: "The brown fox jumped over the lazy dog",
+//     firstWord: "fox",
+//     secondWord: "dog",
+//   }, //5
+//   {
+//     valid: 2,
+//     sentence: "I was going to buy workout powder yesterday",
+//     firstWord: "going to",
+//     secondWord: "workout powder",
+//   }, //2
+//   {
+//     valid: 2,
+//     sentence: "I was going to buy workout-powder yesterday",
+//     firstWord: "going to",
+//     secondWord: "workout-powder",
+//   }, //2
+//   {
+//     valid: 5,
+//     sentence: "  The brown fox jumped over the lazy dog as a fox",
+//     firstWord: "fox",
+//     secondWord: "dog",
+//   }, //5
+//   {
+//     valid: 2,
+//     sentence: "I really hope it will snow soon because I like snow",
+//     firstWord: "I",
+//     secondWord: "snow",
+//   }, //2
+//   {
+//     valid: 4,
+//     sentence: "I like sweet and salty but I like sweet more",
+//     firstWord: "salty",
+//     secondWord: "sweet",
+//   }, //4
+//   {
+//     valid: 3,
+//     sentence: "sphinx of black quartz, judge my vow",
+//     firstWord: "QUARTZ",
+//     secondWord: "vOW",
+//   }, //3
+// ];
 
-testCasesDistance.forEach((testCase) => {
-  try {
-    if (testCase.valid) {
-      console.log("\nvalid test case:");
-    }
-    let result = distance(
-      testCase.sentence,
-      testCase.firstWord,
-      testCase.secondWord
-    );
-    console.log(testCase.sentence);
-    console.log(result);
-    console.log(testCase.valid);
-    if (!testCase.valid) {
-      console.log("this was an error case passing as valid");
-    }
-  } catch (error) {
-    if (testCase.valid) {
-      console.log("this was a valid test case with error");
-    }
-    console.log(error);
-  }
-});
+// testCasesDistance.forEach((testCase) => {
+//   try {
+//     if (testCase.valid) {
+//       console.log("\nvalid test case:");
+//     }
+//     let result = distance(
+//       testCase.sentence,
+//       testCase.firstWord,
+//       testCase.secondWord
+//     );
+//     console.log(testCase.sentence);
+//     console.log(result);
+//     console.log(testCase.valid);
+//     if (!testCase.valid) {
+//       console.log("this was an error case passing as valid");
+//     }
+//   } catch (error) {
+//     if (testCase.valid) {
+//       console.log("this was a valid test case with error");
+//     }
+//     console.log(error);
+//   }
+// });
 /* #endregion */
+
+/* #endregion */
+
+/* #region  ObjectUtils.js */
 
 /* #endregion */

@@ -475,4 +475,5 @@ const stringUtils = {
   },
 };
 
-export { arrayUtils, stringUtils };
+const objectUtils = {};
+export { arrayUtils, stringUtils, objectUtils };
