@@ -65,7 +65,15 @@ function compareTwoObjects(obj1, obj2) {
   return isSame;
 }
 
-export let calculateObject = (object, funcs) => {};
+/**
+ * does calculations on object values based on functions passed in order
+ * @param {object} object object wholes values to be processed
+ * @param {[function]} func array of arrow functions that will be used on the object values
+ * @returns {object} returns object with same keys but values after the functions are applied
+ */
+export let calculateObject = (object, funcs) => {
+  //
+};
 
 export let combineObjects = (...args) => {
   //this function takes in a variable number of objects that's what the ...args signifies

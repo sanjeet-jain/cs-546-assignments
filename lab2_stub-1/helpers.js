@@ -56,6 +56,11 @@ function errorIfNotArray(input, arrayName = "") {
     throw "Error: " + arrayName + " not an array";
   }
 }
+function isValidObjectType(element) {
+  return (
+    typeof element == "object" && !isNull(element) && !Array.isArray(element)
+  );
+}
 
 /**
  * function check if input array is of correct length and has correct type of items within it
@@ -76,11 +81,7 @@ function validateArrElements(
 ) {
   input.forEach((element) => {
     if (type === "object array") {
-      if (
-        typeof element == "object" &&
-        !isNull(element) &&
-        !Array.isArray(element)
-      ) {
+      if (isValidObjectType(element)) {
         if (length > 0) {
           let elementKeys = Object.keys(element);
           if (recursive === true) {
@@ -503,5 +504,13 @@ const objectUtils = {
     validateArrElements(args, 0, "object array", "object array");
     return true;
   },
+
+  /**
+   * validates the object and func array passed
+   * @param {object} object object wholes values to be processed
+   * @param {[function]} func array of arrow functions that will be used on the object values
+   * @returns {boolean} if validations pass else raises errors
+   */
+  validateCalculateObject(object, func) {},
 };
 export { arrayUtils, stringUtils, objectUtils };
