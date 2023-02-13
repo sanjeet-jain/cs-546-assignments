@@ -59,7 +59,7 @@ export let censorWords = (string, badWordsList) => {
           index = 0;
         }
       }
-      var regex = new RegExp(badword);
+      var regex = new RegExp(badword, "i");
       while (string.match(regex)) {
         string = string.replace(regex, replacement);
       }

@@ -444,7 +444,7 @@ const stringUtils = {
     }
     badWordsArr.forEach((badword) => {
       // check if all words present
-      var regex = new RegExp(badword);
+      var regex = new RegExp(badword, "i");
       if (!strInput.match(regex)) {
         throw "Error: not all bad words are in the sentence";
       }
