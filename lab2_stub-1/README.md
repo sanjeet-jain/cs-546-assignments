@@ -160,8 +160,8 @@ You must check:
 
 # matrixMultiply(...args)
 
-* [ ] For this function, you will take a variable amount of array inputs. Each array would represent a matrix, a set of numbers arranged within rows and columns. So, for example, a 2x3 matrix would be [ [1, 2, 3], [4, 5, 6] ] and a 5x2 matrix would be [ [1, 2], [3, 4], [5, 6], [7, 8], [9, 10] ].
-* [ ] Perform one or more matrix multiplications given the number of matrices (or array of arrays) given as input. Return the resulting matrix from these multiplications. If matrix multiplication is not possible, throw an error.
+* [x] For this function, you will take a variable amount of array inputs. Each array would represent a matrix, a set of numbers arranged within rows and columns. So, for example, a 2x3 matrix would be [ [1, 2, 3], [4, 5, 6] ] and a 5x2 matrix would be [ [1, 2], [3, 4], [5, 6], [7, 8], [9, 10] ].
+* [x] Perform one or more matrix multiplications given the number of matrices (or array of arrays) given as input. Return the resulting matrix from these multiplications. If matrix multiplication is not possible, throw an error.
 
 You must ensure that:
 
