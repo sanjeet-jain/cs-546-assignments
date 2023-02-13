@@ -702,326 +702,333 @@ testCasesCensor.forEach((testCase) => {
 
 /* #endregion */
 
-// /* #region  distance */
-// console.log("\n distance");
-// const testCasesDistance = [
-//   { sentence: "Patrick", firstWord: "Patrick", secondWord: "Patrick" },
+/* #region  distance */
+console.log("\n distance");
+const testCasesDistance = [
+  { sentence: "Patrick", firstWord: "Patrick", secondWord: "Patrick" },
 
-//   { sentence: [], firstWord: true, secondWord: undefined },
-//   { sentence: undefined, firstWord: undefined, secondWord: undefined },
-//   {
-//     valid: 5,
-//     sentence: "The brown dog fox jumped over the lazy dog",
-//     firstWord: "fox",
-//     secondWord: "dog",
-//   },
-//   {
-//     sentence: "The brown fox jumped over the lazy dog",
-//     firstWord: ",",
-//     secondWord: "dog",
-//   },
-//   { sentence: "!@#", firstWord: "!@$", secondWord: "!@$" },
-//   { sentence: "123", firstWord: "123", secondWord: "!@$" },
-//   { sentence: "", firstWord: "", secondWord: "" },
-//   { sentence: "Hello World!", firstWord: " !?!", secondWord: " ... " },
-//   { sentence: "1", firstWord: "1", secondWord: "" },
-//   { sentence: " ", firstWord: "1", secondWord: "1" },
-//   { sentence: 123, firstWord: "CS", secondWord: "Patrick" },
-//   { sentence: "Hello there", firstWord: "hello", secondWord: "" },
-//   {
-//     sentence: "Give me music suggestions",
-//     firstWord: "rock",
-//     secondWord: "pop",
-//   },
-//   {
-//     sentence: "Bob met Adam on wednesday",
-//     firstWord: "Adam",
-//     secondWord: "Bob",
-//   },
-//   {
-//     sentence: "I was going to buy preworkout powder yesterday",
-//     firstWord: "going to",
-//     secondWord: "workout powder",
-//   },
-//   {
-//     valid: 5,
-//     sentence: "The brown fox jumped, over the lazy dog",
-//     firstWord: "fox",
-//     secondWord: "dog",
-//   },
+  { sentence: [], firstWord: true, secondWord: undefined },
+  { sentence: undefined, firstWord: undefined, secondWord: undefined },
 
-//   {
-//     valid: 5,
-//     sentence: "The brown fox jumped over the lazy dog",
-//     firstWord: "fox",
-//     secondWord: "dog",
-//   }, //5
-//   {
-//     valid: 2,
-//     sentence: "I was going to buy workout powder yesterday",
-//     firstWord: "going to",
-//     secondWord: "workout powder",
-//   }, //2
-//   {
-//     valid: 2,
-//     sentence: "I was going to buy workout-powder yesterday",
-//     firstWord: "going to",
-//     secondWord: "workout-powder",
-//   }, //2
-//   {
-//     valid: 5,
-//     sentence: "  The brown fox jumped over the lazy dog as a fox",
-//     firstWord: "fox",
-//     secondWord: "dog",
-//   }, //5
-//   {
-//     valid: 2,
-//     sentence: "I really hope it will snow soon because I like snow",
-//     firstWord: "I",
-//     secondWord: "snow",
-//   }, //2
-//   {
-//     valid: 4,
-//     sentence: "I like sweet and salty but I like sweet more",
-//     firstWord: "salty",
-//     secondWord: "sweet",
-//   }, //4
-//   {
-//     valid: 3,
-//     sentence: "sphinx of black quartz, judge my vow",
-//     firstWord: "QUARTZ",
-//     secondWord: "vOW",
-//   }, //3
-// ];
+  {
+    sentence: "The brown fox jumped over the lazy dog",
+    firstWord: ",",
+    secondWord: "dog",
+  },
+  { sentence: "!@#", firstWord: "!@$", secondWord: "!@$" },
+  { sentence: "123", firstWord: "123", secondWord: "!@$" },
+  { sentence: "", firstWord: "", secondWord: "" },
+  { sentence: "Hello World!", firstWord: " !?!", secondWord: " ... " },
+  { sentence: "1", firstWord: "1", secondWord: "" },
+  { sentence: " ", firstWord: "1", secondWord: "1" },
+  { sentence: 123, firstWord: "CS", secondWord: "Patrick" },
+  { sentence: "Hello there", firstWord: "hello", secondWord: "" },
+  {
+    sentence: "Give me music suggestions",
+    firstWord: "rock",
+    secondWord: "pop",
+  },
+  {
+    sentence: "Bob met Adam on wednesday",
+    firstWord: "Adam",
+    secondWord: "Bob",
+  },
+  {
+    sentence: "I was going to buy preworkout powder yesterday",
+    firstWord: "going to",
+    secondWord: "workout powder",
+  },
+  {
+    valid: 5,
+    sentence: "The brown fox jumped, over the lazy dog",
+    firstWord: "fox",
+    secondWord: "dog",
+  },
 
-// testCasesDistance.forEach((testCase) => {
-//   try {
-//     if (testCase.valid) {
-//       console.log("\nvalid test case:");
-//     }
-//     let result = distance(
-//       testCase.sentence,
-//       testCase.firstWord,
-//       testCase.secondWord
-//     );
-//     console.log(testCase.sentence);
-//     console.log(result);
-//     console.log(testCase.valid);
-//     if (!testCase.valid) {
-//       console.log("this was an error case passing as valid");
-//     }
-//   } catch (error) {
-//     if (testCase.valid) {
-//       console.log("this was a valid test case with error");
-//     }
-//     console.log(error);
-//   }
-// });
-// /* #endregion */
+  {
+    valid: 5,
+    sentence: "The brown fox jumped over the lazy dog",
+    firstWord: "fox",
+    secondWord: "dog",
+  }, //5
+  {
+    valid: 2,
+    sentence: "I was going to buy workout powder yesterday",
+    firstWord: "going to",
+    secondWord: "workout powder",
+  }, //2
+  {
+    valid: 2,
+    sentence: "I was going to buy workout-powder yesterday",
+    firstWord: "going to",
+    secondWord: "workout-powder",
+  }, //2
+  {
+    valid: 5,
+    sentence: "  The brown fox jumped over the lazy dog as a fox",
+    firstWord: "fox",
+    secondWord: "dog",
+  }, //5
+  {
+    valid: 2,
+    sentence: "I really hope it will snow soon because I like snow",
+    firstWord: "I",
+    secondWord: "snow",
+  }, //2
+  {
+    valid: 4,
+    sentence: "I like sweet and salty but I like sweet more",
+    firstWord: "salty",
+    secondWord: "sweet",
+  }, //4
+  {
+    valid: 3,
+    sentence: "sphinx of black quartz, judge my vow",
+    firstWord: "QUARTZ",
+    secondWord: "vOW",
+  }, //3
+  {
+    valid: 5,
+    sentence: "The brown dog fox jumped over the lazy dog",
+    firstWord: "FOX",
+    secondWord: "DoG",
+  },
+  {
+    valid: 5,
+    sentence: "The brown dog FoX jumped over the lazy DoG",
+    firstWord: "fox",
+    secondWord: "dog",
+  },
+];
 
-// /* #endregion */
+testCasesDistance.forEach((testCase) => {
+  try {
+    if (testCase.valid) {
+      console.log("\nvalid test case:");
+    }
+    let result = distance(
+      testCase.sentence,
+      testCase.firstWord,
+      testCase.secondWord
+    );
+    console.log(testCase.sentence);
+    console.log(result);
+    console.log(testCase.valid);
+    if (!testCase.valid) {
+      console.log("this was an error case passing as valid");
+    }
+  } catch (error) {
+    if (testCase.valid) {
+      console.log("this was a valid test case with error");
+    }
+    console.log(error);
+  }
+});
+/* #endregion */
 
-// /* #region  ObjectUtils.js */
-// import {
-//   areObjectsEqual,
-//   calculateObject,
-//   combineObjects,
-// } from "./objectUtils.js";
+/* #endregion */
 
-// /* #region  areObjectsEqual */
+/* #region  ObjectUtils.js */
+import {
+  areObjectsEqual,
+  calculateObject,
+  combineObjects,
+} from "./objectUtils.js";
 
-// const testCasesAreObjectsEqualValid = [
-//   [
-//     { a: 2, b: 3 },
-//     { a: 2, b: 4 },
-//     { a: 2, b: 3 },
-//   ], //false
-//   [
-//     { a: { sA: "Hello", sB: "There", sC: "Class" }, b: 7, c: true, d: "Test" },
-//     { c: true, b: 7, d: "Test", a: { sB: "There", sC: "Class", sA: "Hello" } },
-//   ], //true
-//   [
-//     { a: { sA: "Hello", sB: "There", sC: "Class" }, b: 7, c: true, d: "Test" },
-//     { a: 2, b: 3 },
-//     {
-//       name: { firstName: "Patrick", lastName: "Hill" },
-//       age: 47,
-//       dob: "9/25/1975",
-//       hobbies: ["Playing music", "Movies", "Spending time with family"],
-//     },
-//   ], //false
-//   [
-//     {
-//       name: { firstName: "Patrick", lastName: "Hill" },
-//       age: 47,
-//       dob: "9/25/1975",
-//       hobbies: ["Playing music", "Movies", "Spending time with family"],
-//     },
-//     {
-//       age: 47,
-//       name: { firstName: "Patrick", lastName: "Hill" },
-//       hobbies: ["Playing music", "Movies", "Spending time with family"],
-//       dob: "9/25/1975",
-//     },
-//   ], //true
-//   [
-//     { a: 2, b: 3 },
-//     { b: 3, a: 2 },
-//     { a: 2, b: 3 },
-//   ], //true
-//   [{}, {}, {}, {}, {}], //true
+/* #region  areObjectsEqual */
 
-//   [null, null], // error as they arent traditional objects
-//   [{}, null], // error as null isnt a traditional object
-//   [], // error
-//   [
-//     [1, 2, 3],
-//     [1, 2, 3],
-//   ], //  error as they arent traditional objects
-//   [
-//     { a: NaN, b: null },
-//     { a: NaN, b: null },
-//   ], //true
-//   [
-//     { a: NaN, b: [null] },
-//     { a: NaN, b: [null] },
-//   ], //true
-//   [true, false], // error as null isnt a traditional object
-// ];
-// testCasesAreObjectsEqualValid.forEach((testCase) => {
-//   try {
-//     let result = areObjectsEqual(...testCase);
-//     console.log(result);
-//   } catch (error) {
-//     console.log(error);
-//   } finally {
-//     console.log();
-//   }
-// });
+const testCasesAreObjectsEqualValid = [
+  [
+    { a: 2, b: 3 },
+    { a: 2, b: 4 },
+    { a: 2, b: 3 },
+  ], //false
+  [
+    { a: { sA: "Hello", sB: "There", sC: "Class" }, b: 7, c: true, d: "Test" },
+    { c: true, b: 7, d: "Test", a: { sB: "There", sC: "Class", sA: "Hello" } },
+  ], //true
+  [
+    { a: { sA: "Hello", sB: "There", sC: "Class" }, b: 7, c: true, d: "Test" },
+    { a: 2, b: 3 },
+    {
+      name: { firstName: "Patrick", lastName: "Hill" },
+      age: 47,
+      dob: "9/25/1975",
+      hobbies: ["Playing music", "Movies", "Spending time with family"],
+    },
+  ], //false
+  [
+    {
+      name: { firstName: "Patrick", lastName: "Hill" },
+      age: 47,
+      dob: "9/25/1975",
+      hobbies: ["Playing music", "Movies", "Spending time with family"],
+    },
+    {
+      age: 47,
+      name: { firstName: "Patrick", lastName: "Hill" },
+      hobbies: ["Playing music", "Movies", "Spending time with family"],
+      dob: "9/25/1975",
+    },
+  ], //true
+  [
+    { a: 2, b: 3 },
+    { b: 3, a: 2 },
+    { a: 2, b: 3 },
+  ], //true
+  [{}, {}, {}, {}, {}], //true
 
-// /* #endregion */
+  [null, null], // error as they arent traditional objects
+  [{}, null], // error as null isnt a traditional object
+  [], // error
+  [
+    [1, 2, 3],
+    [1, 2, 3],
+  ], //  error as they arent traditional objects
+  [
+    { a: NaN, b: null },
+    { a: NaN, b: null },
+  ], //true
+  [
+    { a: NaN, b: [null] },
+    { a: NaN, b: [null] },
+  ], //true
+  [true, false], // error as null isnt a traditional object
+];
+testCasesAreObjectsEqualValid.forEach((testCase) => {
+  try {
+    let result = areObjectsEqual(...testCase);
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    console.log();
+  }
+});
 
-// /* #region  calculateObject */
-// console.log("\n ");
-// const testCasesAreObjectsEqual = [
-//   {
-//     object: { a: 3, b: 7, c: 5 },
-//     funcs: [(n) => n * 2, (n) => Math.sqrt(n)],
-//   },
+/* #endregion */
 
-//   {
-//     object: { a: "3", b: 7, c: 5 },
-//     funcs: [(n) => n * 2, (n) => Math.sqrt(n)],
-//   },
-//   {
-//     object: { a: 3, b: 7, c: 5 },
-//     funcs: [],
-//   },
-//   {
-//     object: { a: null, b: 7, c: 5 },
-//     funcs: [(n) => n * 2, (n) => Math.sqrt(n)],
-//   },
-//   {
-//     object: [1, 2, 4, 4, 5],
-//     funcs: [(n) => n * 2, (n) => Math.sqrt(n)],
-//   },
-//   {
-//     object: null,
-//     funcs: [(n) => n * 2, (n) => Math.sqrt(n)],
-//   },
-//   {
-//     object: { a: "Hello", b: 7, c: false },
-//     funcs: [(n) => n * n],
-//   },
-//   {
-//     object: { a: 1, b: 2, c: 3 },
-//     funcs: [false],
-//   },
-// ];
-// testCasesAreObjectsEqual.forEach((testCase) => {
-//   try {
-//     let result = calculateObject(testCase.object, testCase.funcs);
-//     console.log(result);
-//   } catch (error) {
-//     console.log(error);
-//   } finally {
-//     console.log();
-//   }
-// });
+/* #region  calculateObject */
+console.log("\n ");
+const testCasesAreObjectsEqual = [
+  {
+    object: { a: 3, b: 7, c: 5 },
+    funcs: [(n) => n * 2, (n) => Math.sqrt(n)],
+  },
 
-// /* Returns:
-// {
-// a: 2.45,
-// b: 3.74,
-// c: 3.16
-// }
-// */
-// /* #endregion */
+  {
+    object: { a: "3", b: 7, c: 5 },
+    funcs: [(n) => n * 2, (n) => Math.sqrt(n)],
+  },
+  {
+    object: { a: 3, b: 7, c: 5 },
+    funcs: [],
+  },
+  {
+    object: { a: null, b: 7, c: 5 },
+    funcs: [(n) => n * 2, (n) => Math.sqrt(n)],
+  },
+  {
+    object: [1, 2, 4, 4, 5],
+    funcs: [(n) => n * 2, (n) => Math.sqrt(n)],
+  },
+  {
+    object: null,
+    funcs: [(n) => n * 2, (n) => Math.sqrt(n)],
+  },
+  {
+    object: { a: "Hello", b: 7, c: false },
+    funcs: [(n) => n * n],
+  },
+  {
+    object: { a: 1, b: 2, c: 3 },
+    funcs: [false],
+  },
+];
+testCasesAreObjectsEqual.forEach((testCase) => {
+  try {
+    let result = calculateObject(testCase.object, testCase.funcs);
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    console.log();
+  }
+});
 
-// /* #region  combineObjects */
-// console.log("\n Combine Objects");
-// const testCasesCombineObjects = [
-//   [
-//     { a: 3, b: 7, c: 5 },
+/* Returns:
+{
+a: 2.45,
+b: 3.74,
+c: 3.16
+}
+*/
+/* #endregion */
 
-//     { d: 4, e: 9 },
+/* #region  combineObjects */
+console.log("\n Combine Objects");
+const testCasesCombineObjects = [
+  [
+    { a: 3, b: 7, c: 5 },
 
-//     { a: 8, d: 2 },
-//   ],
-//   /*Returns:
-//   {
-//   a: 3,
-//   d: 4
-//   }
-//   */
-//   [
-//     { b: 7, c: 5 },
+    { d: 4, e: 9 },
 
-//     { d: 4, e: 9, a: "waffle" },
+    { a: 8, d: 2 },
+  ],
+  /*Returns:
+  {
+  a: 3,
+  d: 4
+  }
+  */
+  [
+    { b: 7, c: 5 },
 
-//     { a: 8, d: 2 },
+    { d: 4, e: 9, a: "waffle" },
 
-//     { d: 3, e: "hello" },
-//   ],
-//   /* Returns:
-//   {
-//   a: 'waffle',
-//   d: 4,
-//   e: 9
-//   }
-//   */
-//   [
-//     { apple: "orange", orange: "pear" },
+    { a: 8, d: 2 },
 
-//     { pear: "blueberry", fruit: 4 },
+    { d: 3, e: "hello" },
+  ],
+  /* Returns:
+  {
+  a: 'waffle',
+  d: 4,
+  e: 9
+  }
+  */
+  [
+    { apple: "orange", orange: "pear" },
 
-//     { cool: false, intelligence: -2 },
-//   ],
-//   /* Returns:
-//   { }
-//   */
+    { pear: "blueberry", fruit: 4 },
 
-//   [{ wow: "crazy", super: "duper" }, false],
-//   // Throws an error
-//   [{ b: 7, c: 5 }], // error
-//   [
-//     { cool: false, intelligence: -2 },
-//     { cool: "beans" },
-//     { a: 1, b: 4 },
-//     { c: { cool: false, intelligence: -2, d: { a: ["hello"], b: 4 } } },
-//     { c: "a" },
-//   ],
-// ];
-// testCasesAreObjectsEqualValid.forEach((testCase) => {
-//   try {
-//     let result = combineObjects(...testCase);
-//     console.log(result);
-//   } catch (error) {
-//     console.log(error);
-//   } finally {
-//     console.log();
-//   }
-// });
+    { cool: false, intelligence: -2 },
+  ],
+  /* Returns:
+  { }
+  */
 
-// /* #endregion */
-// /* #endregion */
+  [{ wow: "crazy", super: "duper" }, false],
+  // Throws an error
+  [{ b: 7, c: 5 }], // error
+  [
+    { cool: false, intelligence: -2 },
+    { cool: "beans" },
+    { a: 1, b: 4 },
+    { c: { cool: false, intelligence: -2, d: { a: ["hello"], b: 4 } } },
+    { c: "a" },
+  ],
+];
+testCasesCombineObjects.forEach((testCase) => {
+  try {
+    let result = combineObjects(...testCase);
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    console.log();
+  }
+});
+
+/* #endregion */
+/* #endregion */

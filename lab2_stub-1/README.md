@@ -250,65 +250,65 @@ Examples:
 
 ## distance(string, word1, word2)
 
-* [ ] Given string, word1, and word2 return the minimum distance between word1 and word2 in the string, where word1 appears before word2. You should be calculating the distance based on index, meaning word2 is inclusive in the distance. If word1 is at index 1 and word2 is at index 8, then the distance is 8-1=7.
+* [x] Given string, word1, and word2 return the minimum distance between word1 and word2 in the string, where word1 appears before word2. You should be calculating the distance based on index, meaning word2 is inclusive in the distance. If word1 is at index 1 and word2 is at index 8, then the distance is 8-1=7.
 
 You must check:
 
-* [ ] That string, word1, and word2 exist
-* [ ] That string, word1, and word2 are of type string
-* [ ] That string, word1, and word2 are not just empty strings
-* [ ] That string, word1, and word2 are not just strings made of punctuation symbols
-* [ ] That string is at least two words long
-* [ ] That word1 and word2 are not the same
-* [ ] That word1 and word2 exist in the string
-* [ ] That word1 appears before word2 in the string
-* [ ] If any of those conditions fail, the function will throw.
-* [ ] This function is case insensitive.
-* [ ] distance() // throws error
-* [ ] distance([],true) // throws error
-* [ ] distance("","","") // throws error
-* [ ] distance("Hello World!", " !?!", " ... ") // throws error
-* [ ] distance("Patrick", "Patrick", "Patrick") // throws error
-* [ ] distance(123, "CS", "Patrick") // throws error
-* [ ] distance("Hello there", "hello", "") // throws error
-* [ ] distance("Give me music suggestions", "rock", "pop") // throws error
-* [ ] distance("Bob met Adam on wednesday", "Adam", "Bob") // throws error
-* [ ] distance("I was going to buy preworkout powder yesterday", "going to", "workout powder") // throws error
-* [ ] distance("The brown fox jumped over the lazy dog", "fox", "dog") // returns 5
-* [ ] distance("I was going to buy workout powder yesterday", "going to", "workout powder") // returns 2
-* [ ] distance("sphinx of black quartz, judge my vow", "QUARTZ", "vOW"); // returns 3
-* [ ] distance("I really hope it will snow soon because I like snow", "I", "snow") // returns 2
-* [ ] distance("I like sweet and salty but I like sweet more", "salty", "sweet") // returns 4
+* [x] That string, word1, and word2 exist
+* [x] That string, word1, and word2 are of type string
+* [x] That string, word1, and word2 are not just empty strings
+* [x] That string, word1, and word2 are not just strings made of punctuation symbols
+* [x] That string is at least two words long
+* [x] That word1 and word2 are not the same
+* [x] That word1 and word2 exist in the string
+* [x] That word1 appears before word2 in the string
+* [x] If any of those conditions fail, the function will throw.
+* [x] This function is case insensitive.
+* [x] distance() // throws error
+* [x] distance([],true) // throws error
+* [x] distance("","","") // throws error
+* [x] distance("Hello World!", " !?!", " ... ") // throws error
+* [x] distance("Patrick", "Patrick", "Patrick") // throws error
+* [x] distance(123, "CS", "Patrick") // throws error
+* [x] distance("Hello there", "hello", "") // throws error
+* [x] distance("Give me music suggestions", "rock", "pop") // throws error
+* [x] distance("Bob met Adam on wednesday", "Adam", "Bob") // throws error
+* [x] distance("I was going to buy preworkout powder yesterday", "going to", "workout powder") // throws error
+* [x] distance("The brown fox jumped over the lazy dog", "fox", "dog") // returns 5
+* [x] distance("I was going to buy workout powder yesterday", "going to", "workout powder") // returns 2
+* [x] distance("sphinx of black quartz, judge my vow", "QUARTZ", "vOW"); // returns 3
+* [x] distance("I really hope it will snow soon because I like snow", "I", "snow") // returns 2
+* [x] distance("I like sweet and salty but I like sweet more", "salty", "sweet") // returns 4
 
 # objUtils.js
 
-* [ ] This file will export 3 functions that are useful when dealing with objects in JavaScript.
+* [x] This file will export 3 functions that are useful when dealing with objects in JavaScript.
 
 ## areObjectsEqual(....args)
 
-* [ ] This method takes in a variable number of objects and checks each field (at every level deep) for equality. It will return true if each field in each of the supplied objects is equal, and false if not. Note: Empty objects can be passed into this function.
+* [x] This method takes in a variable number of objects and checks each field (at every level deep) for equality. It will return true if each field in each of the supplied objects is equal, and false if not. Note: Empty objects can be passed into this function.
 
 For example, if given the following:
 
-* [ ] const first = {a: 2, b: 3};
-* [ ] const second = {a: 2, b: 4};
-* [ ] const third = {a: 2, b: 3};
-* [ ] const forth = {a: {sA: "Hello", sB: "There", sC: "Class"}, b: 7, c: true, d: "Test"}
-* [ ] const fifth = {c: true, b: 7, d: "Test", a: {sB: "There", sC: "Class", sA: "Hello"}}
-* [ ] const sixth = {name: {firstName: "Patrick", lastName: "Hill"}, age: 47, dob: '9/25/1975', hobbies: ["Playing music", "Movies", "Spending time with family"]}
-* [ ] const seventh = {age: 47, name: {firstName: "Patrick", lastName: "Hill"}, hobbies: ["Playing music", "Movies", "Spending time with family"], dob: '9/25/1975'}
-* [ ] const eighth = {b:3, a:2}
-* [ ] console.log(areObjectsEqual(first, second, third)); // false
-* [ ] console.log(areObjectsEqual(forth, fifth)); // true
-* [ ] console.log(areObjectsEqual(forth, third, sixth)); // false
-* [ ] console.log(areObjectsEqual(sixth, seventh)); // true
-* [ ] console.log(areObjectsEqual(first, eighth, third)); // true
-* [ ] console.log(areObjectsEqual({}, {}, {}, {}, {})); // true
-* [ ] console.log(areObjectsEqual([1,2,3], [1,2,3])); // throws error
-* [ ] console.log(areObjectsEqual("foo", "bar")); // throws error
+* [x] const first = {a: 2, b: 3};
+* [x] const second = {a: 2, b: 4};
+* [x] const third = {a: 2, b: 3};
+* [x] const forth = {a: {sA: "Hello", sB: "There", sC: "Class"}, b: 7, c: true, d: "Test"}
+* [x] const fifth = {c: true, b: 7, d: "Test", a: {sB: "There", sC: "Class", sA: "Hello"}}
+* [x] const sixth = {name: {firstName: "Patrick", lastName: "Hill"}, age: 47, dob: '9/25/1975', hobbies: ["Playing music", "Movies", "Spending time with family"]}
+* [x] const seventh = {age: 47, name: {firstName: "Patrick", lastName: "Hill"}, hobbies: ["Playing music", "Movies", "Spending time with family"], dob: '9/25/1975'}
+* [x] const eighth = {b:3, a:2}
+* [x] console.log(areObjectsEqual(first, second, third)); // false
+* [x] console.log(areObjectsEqual(forth, fifth)); // true
+* [x] console.log(areObjectsEqual(forth, third, sixth)); // false
+* [x] console.log(areObjectsEqual(sixth, seventh)); // true
+* [x] console.log(areObjectsEqual(first, eighth, third)); // true
+* [x] console.log(areObjectsEqual({}, {}, {}, {}, {})); // true
+* [x] console.log(areObjectsEqual([1,2,3], [1,2,3])); // throws error
+* [x] console.log(areObjectsEqual("foo", "bar")); // throws error
     You must check:
-* [ ] That input exists and is of proper type (an Object). If not, throw an error.
-* [ ] There are at least two objects passed into the function, if not, throw an error
+* [x] That input exists and is of proper type (an Object). If not, throw an error.
+* [x] There are at least two objects passed into the function, if not, throw an error
     Hint: Using recursion is the best way to solve this one.
 
 Remember: The order of the keys is not important so: {a: 2, b: 4} is equal to {b: 4, a: 2}
@@ -317,16 +317,16 @@ Remember: The order of the keys is not important so: {a: 2, b: 4} is equal to {b
 
 ## calculateObject(object, funcs)
 
-* [ ] Given an object and an array of functions, evaluate the functions in order on the values of the object, using the output of the previous function as the input of the next function. Return a new object with the results. Note, on the result, please use the toFixed(2) function to only display 2 decimal places rounded.
+* [x] Given an object and an array of functions, evaluate the functions in order on the values of the object, using the output of the previous function as the input of the next function. Return a new object with the results. Note, on the result, please use the toFixed(2) function to only display 2 decimal places rounded.
 
 You must check:
 
-* [ ] That the object exists and is of proper type (an object). If not, throw an error.
-* [ ] That funcs exists and is of proper type (an array). If not, throw an error.
-* [ ] That the object values are all numbers (positive, negative, decimal). If not, throw an error.
-* [ ] That the funcs array has at least one element and that the elements are of proper type (functions). If not, throw an error.
-* [ ] You can assume that the correct types will be passed into the funcs parameter element functions since you are checking the types of the values of the object beforehand.
-* [ ] calculateObject({ a: 3, b: 7, c: 5 }, [(n => n \* 2), (n => Math.sqrt(n))]);
+* [x] That the object exists and is of proper type (an object). If not, throw an error.
+* [x] That funcs exists and is of proper type (an array). If not, throw an error.
+* [x] That the object values are all numbers (positive, negative, decimal). If not, throw an error.
+* [x] That the funcs array has at least one element and that the elements are of proper type (functions). If not, throw an error.
+* [x] You can assume that the correct types will be passed into the funcs parameter element functions since you are checking the types of the values of the object beforehand.
+* [x] calculateObject({ a: 3, b: 7, c: 5 }, [(n => n \* 2), (n => Math.sqrt(n))]);
 
 /\_ Returns:
 {
@@ -336,23 +336,23 @@ c: 3.16
 }
 \_/
 
-* [ ] calculateObject({ a: 'Hello', b: 7, c: false }, [(n => n \* n)]);
+* [x] calculateObject({ a: 'Hello', b: 7, c: false }, [(n => n \* n)]);
     /\_ Throws an error \_/
-* [ ] calculateObject({ a: 1, b: 2, c: 3}, [false]);
+* [x] calculateObject({ a: 1, b: 2, c: 3}, [false]);
     /\_ Throws an error \_/
 
 ## combineObjects(...args)
 
-* [ ] Given a variable amount of objects\, you will find all the keys that appear in at least any two objects and return a new object with all these keys where the value of each of those keys is the value from the first object that had the key\. In other words\, if a key 'k' appears in objects args\[0\] and args\[2\]\, the result object will include the key k and its value will be that of args\[0\]\['k'\]\.
+* [x] Given a variable amount of objects\, you will find all the keys that appear in at least any two objects and return a new object with all these keys where the value of each of those keys is the value from the first object that had the key\. In other words\, if a key 'k' appears in objects args\[0\] and args\[2\]\, the result object will include the key k and its value will be that of args\[0\]\['k'\]\.
 
 You must check:
 
-* [ ] That args has at least two objects. If not, throw an error
-* [ ] That each object in args is of proper type (an object), has at least 1 key. If not, throw an error.
+* [x] That args has at least two objects. If not, throw an error
+* [x] That each object in args is of proper type (an object), has at least 1 key. If not, throw an error.
 
 Examples:
 
-* [ ] combineObjects(
+* [x] combineObjects(
     { a: 3, b: 7, c: 5 },
     { d: 4, e: 9 },
     { a: 8, d: 2 }
@@ -363,7 +363,7 @@ Examples:
     d: 4
     }
     \_/
-* [ ] combineObjects(
+* [x] combineObjects(
     { b: 7, c: 5 },
     { d: 4, e: 9, a: 'waffle' },
     { a: 8, d: 2 },
@@ -375,7 +375,7 @@ Examples:
     d: 4,
     e: 9
     }
-* [ ] combineObjects(
+* [x] combineObjects(
     { apple: 'orange', orange: 'pear' },
     { pear: 'blueberry', fruit: 4 },
     { cool: false, intelligence: -2 }
@@ -383,7 +383,7 @@ Examples:
     /\_ Returns:
     { }
     \_/
-* [ ] combineObjects(
+* [x] combineObjects(
     { wow: 'crazy', super: 'duper },
     false
     );
