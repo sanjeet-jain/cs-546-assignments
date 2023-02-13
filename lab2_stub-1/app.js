@@ -1,5 +1,20 @@
 /* TODO: Import the functions from your three modules here and write two test cases for each function.. You should have a total of 18 test cases. 
 do not forget that you need to create the package.json and add the start command to run app.js as the starting script*/
+// /\*
+// Created by https://sanjeet-jain.github.io/
+
+// ```
+//        _       _          _____
+//       | |     (_)        / ____|
+//       | | __ _ _ _ __   | (___
+//   _   | |/ _` | | '_ \   \___ \
+//  | |__| | (_| | | | | |  ____) |
+//   \____/ \__,_|_|_| |_| |_____/
+//                     ______
+//                    |______|
+// ```
+
+// \*/
 
 /* #region ArrayUtils  */
 console.log("\n ArrayUtils");
