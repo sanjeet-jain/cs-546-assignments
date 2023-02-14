@@ -528,7 +528,7 @@ const objectUtils = {
     if (!isValidObjectType(obj)) {
       throw "Error: not a correct object";
     }
-    if (!Object.values(obj).every((x) => typeof x === "number")) {
+    if (!Object.values(obj).every((x) => typeof x === "number" && !isNaN(x))) {
       throw "Error: object should only have numbers ";
     }
     errorIfNotArray(func, "func");

@@ -915,7 +915,7 @@ const testCasesAreObjectsEqual = [
     object: { a: 3, b: 7, c: 5 },
     funcs: [(n) => n * 2, (n) => Math.sqrt(n)],
   },
-
+  
   {
     object: { a: "3", b: 7, c: 5 },
     funcs: [(n) => n * 2, (n) => Math.sqrt(n)],
@@ -943,6 +943,10 @@ const testCasesAreObjectsEqual = [
   {
     object: { a: 1, b: 2, c: 3 },
     funcs: [false],
+  },
+  {
+    object: { a: NaN, b: 7, c: 5 },
+    funcs: [(n) => n * 2, (n) => Math.sqrt(n)],
   },
 ];
 testCasesAreObjectsEqual.forEach((testCase) => {
