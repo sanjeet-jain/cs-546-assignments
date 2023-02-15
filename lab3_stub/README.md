@@ -2,18 +2,22 @@
 
 The purpose of this lab is to familiarize yourself with asynchronous programming in JavaScript, as well as using modules from the Node.js Package Manager (npm (Links to an external site.)).
 
-* [ ] For this lab, you must use the async/await keywords (not Promises). You will also be using axios (Links to an external site.), which is a HTTP client for Node.js; you can install it with npm i axios.
+* [x] For this lab, you must use the async/await keywords (not Promises). You will also be using axios (Links to an external site.), which is a HTTP client for Node.js; you can install it with npm i axios.
 * [ ] In addition, you must have error checking for the arguments of all your functions. If an argument fails error checking, you should throw a string describing which argument was wrong, and what went wrong.
 * [ ] You will be creating three .js files: movies.js, users.js and app.js.
 * [ ] You can download the starter template here: lab3\_stub.zip Download lab3\_stub.zip PLEASE NOTE: THE STUB DOES NOT INCLUDE THE PACKAGE.JSON FILE. YOU WILL NEED TO CREATE IT! DO NOT FORGET TO ADD THE START COMMAND AND "type": "module". DO NOT ADD ANY OTHER FILE OR FOLDER APART FROM PACKAGE.JSON FILE.
-* [ ] Note: Remember that the order of the keys in the objects does not matter so {firstName: "Patrick", lastName: "Hill"} is the same as: {lastName: "Hill", firstName: "Patrick"}
+* [x] Note: Remember that the order of the keys in the objects does not matter so {firstName: "Patrick", lastName: "Hill"} is the same as: {lastName: "Hill", firstName: "Patrick"}
 
 # Network JSON Data
 
 * [ ] You will be downloading JSON files from the following GitHub Gists:
-* [ ] movies.json (Links to an external site.)Links to an external site.
-* [ ] users.json (Links to an external site.)Links to an external site.
-* [ ] For every function you write, you will download the necessary JSONs with axios. DO NOT just save the data into a local file, you MUST use Axios to get the data. Here is an example of how to do so:
+* [ ] movies.json ([Links to an external site.](https://gist.githubusercontent.com/jdelrosa/78dfa36561d5c06f7e62d8cce868cf8e/raw/2292be808f74c9486d4085bdbc2025bab84d462b/movies.json))Links to an external site.
+* [ ] users.json ([Links to an external site.](https://gist.githubusercontent.com/jdelrosa/381cbe8fae75b769a1ce6e71bdb249b5/raw/564a41f84ab00655524a8cbd9f30b0409836ee39/users.json))Links to an external site.
+* [ ] For every function you write, you will download the necessary JSONs with axios. DO NOT just save the data into a local file, you MUST use Axios to get the data. Here is an example of how to do so: 
+    `async function getMovies(){
+      const { data } = await axios.get('https://URL_FROM_GIST_HERE/movies.json')
+      return data // this will be the array of user objects
+    }`
 
 # async function getMovies(){
 
