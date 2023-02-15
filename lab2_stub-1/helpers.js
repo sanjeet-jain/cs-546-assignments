@@ -190,7 +190,7 @@ function splitSentence(sentence, phrases) {
         result = result.slice(0, k + 1 - count);
         count = count + phrase.trim().split(" ").length - 1;
         phrase = "";
-        let temp = 0;
+        k += 1;
       } else {
         if (result.join(" ") !== sentence) {
           result.push(words[i]);
