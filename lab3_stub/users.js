@@ -1,9 +1,15 @@
-//TODO EXPORT AND IMPLEMENT THE FOLLOWING FUNCTIONS IN ES6 FORMAT
-//User data link: https://gist.githubusercontent.com/jdelrosa/381cbe8fae75b769a1ce6e71bdb249b5/raw/564a41f84ab00655524a8cbd9f30b0409836ee39/users.json
-const getUserById = async (id) => {};
+import helpers from "./helpers.js";
 
-const sameGenre = async (genre) => {};
+/** returns the user object for the specified id within the users.json array. Note: The id is case sensitive. if user not found then throws an error
+ * @param {string} id
+ * @returns {object} user object returned
+ */
+export const getUserById = async (id) => {
+  helpers.errorIfNullOrEmpty();
+};
 
-const moviesReviewed = async (id) => {};
+export const sameGenre = async (genre) => {};
 
-const referMovies = async (id) => {};
+export const moviesReviewed = async (id) => {};
+
+export const referMovies = async (id) => {};

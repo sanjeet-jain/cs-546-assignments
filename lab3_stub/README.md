@@ -5,12 +5,12 @@ The purpose of this lab is to familiarize yourself with asynchronous programming
 * [x] For this lab, you must use the async/await keywords (not Promises). You will also be using axios (Links to an external site.), which is a HTTP client for Node.js; you can install it with npm i axios.
 * [ ] In addition, you must have error checking for the arguments of all your functions. If an argument fails error checking, you should throw a string describing which argument was wrong, and what went wrong.
 * [ ] You will be creating three .js files: movies.js, users.js and app.js.
-* [ ] You can download the starter template here: lab3\_stub.zip Download lab3\_stub.zip PLEASE NOTE: THE STUB DOES NOT INCLUDE THE PACKAGE.JSON FILE. YOU WILL NEED TO CREATE IT! DO NOT FORGET TO ADD THE START COMMAND AND "type": "module". DO NOT ADD ANY OTHER FILE OR FOLDER APART FROM PACKAGE.JSON FILE.
+* [x] You can download the starter template here: lab3\_stub.zip Download lab3\_stub.zip PLEASE NOTE: THE STUB DOES NOT INCLUDE THE PACKAGE.JSON FILE. YOU WILL NEED TO CREATE IT! DO NOT FORGET TO ADD THE START COMMAND AND "type": "module". DO NOT ADD ANY OTHER FILE OR FOLDER APART FROM PACKAGE.JSON FILE.
 * [x] Note: Remember that the order of the keys in the objects does not matter so {firstName: "Patrick", lastName: "Hill"} is the same as: {lastName: "Hill", firstName: "Patrick"}
 
 # Network JSON Data
 
-* [ ] You will be downloading JSON files from the following GitHub Gists:
+* [x] You will be downloading JSON files from the following GitHub Gists:
 * [ ] movies.json ([Links to an external site.](https://gist.githubusercontent.com/jdelrosa/78dfa36561d5c06f7e62d8cce868cf8e/raw/2292be808f74c9486d4085bdbc2025bab84d462b/movies.json))Links to an external site.
 * [ ] users.json ([Links to an external site.](https://gist.githubusercontent.com/jdelrosa/381cbe8fae75b769a1ce6e71bdb249b5/raw/564a41f84ab00655524a8cbd9f30b0409836ee39/users.json))Links to an external site.
 * [ ] For every function you write, you will download the necessary JSONs with axios. DO NOT just save the data into a local file, you MUST use Axios to get the data. Here is an example of how to do so: 
@@ -19,13 +19,12 @@ The purpose of this lab is to familiarize yourself with asynchronous programming
       return data // this will be the array of user objects
     }`
 
-# async function getMovies(){
+# async function getMovies()
 
-const { data } = await axios.get('https://URL\_FROM\_GIST\_HERE/movies.json')
-return data // this will be the array of user objects
-}
 Instead of making the request in every single function, remember that code reuse is key, so if you see you are making the same axios request in all of your functions, it's best to put it in a function like noted above and then calling that function in all the functions that need to get the data from whichever json file you're working with. Always do this when you see you are doing the same thing over and over again in multiple different places. It's much easier to maintain. Say if the URL of the file ever changes, then you only need to change it in one place, not 10 different places.
-users.js
+
+# users.js
+
 This file will export the following functions:
 
 # getUserById(id)

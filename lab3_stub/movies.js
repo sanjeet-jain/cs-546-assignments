@@ -1,9 +1,19 @@
 //TODO EXPORT AND IMPLEMENT THE FOLLOWING FUNCTIONS IN ES6 FORMAT
 //Movie data link: https://gist.githubusercontent.com/jdelrosa/78dfa36561d5c06f7e62d8cce868cf8e/raw/2292be808f74c9486d4085bdbc2025bab84d462b/movies.json
-const findMoviesByDirector = async (directorName) => {};
+import axios from "axios";
+import helpers from "./helpers.js";
 
-const findMoviesByCastMember = async (castMemberName) => {};
+export async function getMovies() {
+  const { data } = await axios.get(
+    "https://gist.githubusercontent.com/jdelrosa/78dfa36561d5c06f7e62d8cce868cf8e/raw/2292be808f74c9486d4085bdbc2025bab84d462b/movies.json"
+  );
+  return data; // this will be the array of user objects
+}
 
-const getOverallRating = async (title) => {};
+export const findMoviesByDirector = async (directorName) => {};
 
-const getMovieById = async (id) => {};
+export const findMoviesByCastMember = async (castMemberName) => {};
+
+export const getOverallRating = async (title) => {};
+
+export const getMovieById = async (id) => {};
