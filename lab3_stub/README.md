@@ -11,9 +11,9 @@ The purpose of this lab is to familiarize yourself with asynchronous programming
 # Network JSON Data
 
 * [x] You will be downloading JSON files from the following GitHub Gists:
-* [ ] movies.json ([Links to an external site.](https://gist.githubusercontent.com/jdelrosa/78dfa36561d5c06f7e62d8cce868cf8e/raw/2292be808f74c9486d4085bdbc2025bab84d462b/movies.json))Links to an external site.
-* [ ] users.json ([Links to an external site.](https://gist.githubusercontent.com/jdelrosa/381cbe8fae75b769a1ce6e71bdb249b5/raw/564a41f84ab00655524a8cbd9f30b0409836ee39/users.json))Links to an external site.
-* [ ] For every function you write, you will download the necessary JSONs with axios. DO NOT just save the data into a local file, you MUST use Axios to get the data. Here is an example of how to do so: 
+* [x] movies.json ([Links to an external site.](https://gist.githubusercontent.com/jdelrosa/78dfa36561d5c06f7e62d8cce868cf8e/raw/2292be808f74c9486d4085bdbc2025bab84d462b/movies.json))Links to an external site.
+* [x] users.json ([Links to an external site.](https://gist.githubusercontent.com/jdelrosa/381cbe8fae75b769a1ce6e71bdb249b5/raw/564a41f84ab00655524a8cbd9f30b0409836ee39/users.json))Links to an external site.
+* [x] For every function you write, you will download the necessary JSONs with axios. DO NOT just save the data into a local file, you MUST use Axios to get the data. Here is an example of how to do so: 
     `async function getMovies(){
       const { data } = await axios.get('https://URL_FROM_GIST_HERE/movies.json')
       return data // this will be the array of user objects
@@ -33,16 +33,16 @@ This file will export the following functions:
 
 You must check:
 
-* [ ] That the id parameter exists and is of proper type (string). If not, throw an error.
-* [ ] If the id exists and is in the proper type but the id is not found in the array of users, throw a 'user not found' error.
-* [ ] if the id parameter is just empty spaces, throw an error.
-* [ ] await getUserById("48fded55-37cd-4e6b-8f19-e78b481a14a4");
+* [x] That the id parameter exists and is of proper type (string). If not, throw an error.
+* [x] If the id exists and is in the proper type but the id is not found in the array of users, throw a 'user not found' error.
+* [x] if the id parameter is just empty spaces, throw an error.
+* [x] await getUserById("48fded55-37cd-4e6b-8f19-e78b481a14a4");
     \\ Returns:
     {id:"48fded55-37cd-4e6b-8f19-e78b481a14a4",username:"abrett0",password:"YQ8Jpot33Mf",first\_name:"Abigail",last\_name:"Brett",email:"abrett0@gizmodo.com",favorite\_genre:"Fantasy"}
-* [ ] await getUserById(-1); \\ Throws Error
-* [ ] await getUserById(1001); \\ Throws Error
-* [ ] await getUserById();\\ Throws Error
-* [ ] await getUserById('7989fa5e-5617-43f7-a931-46036f9dbcff');\\ Throws user not found Error
+* [x] await getUserById(-1); \\ Throws Error
+* [x] await getUserById(1001); \\ Throws Error
+* [x] await getUserById();\\ Throws Error
+* [x] await getUserById('7989fa5e-5617-43f7-a931-46036f9dbcff');\\ Throws user not found Error
 
 # sameGenre(genre)
 

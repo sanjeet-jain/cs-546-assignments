@@ -11,7 +11,7 @@ Note:
 3. Submit all files (including package.json) in a zip with your name in the following format: LastName_FirstName.zip.
 4. DO NOT submit a zip containing your node_modules folder.
 
-import * as movies from "./movies.js");
+import * as movies from "./movies.js";
 
 async function main(){
     try{
@@ -25,3 +25,39 @@ async function main(){
 call main
 main();
 */
+
+import * as movies from "./movies.js";
+import * as users from "./users.js";
+
+async function main() {
+  //   try {
+  //     const moviedata = await movies.getMovies();
+  //     console.log(moviedata);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+
+  /* #region  getUserById test cases */
+  [
+    "48fded55-37cd-4e6b-8f19-e78b481a14a4",
+    -1,
+    1001,
+    ,
+    "",
+    " ",
+    null,
+    "7989fa5e-5617-43f7-a931-46036f9dbcff",
+  ].forEach(async (testData) => {
+    try {
+      const userdata = await users.getUserById(testData);
+      console.log(userdata);
+    } catch (e) {
+      console.log(e);
+    }
+  });
+  /* #endregion */
+
+  //
+}
+
+main();

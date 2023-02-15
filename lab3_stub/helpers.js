@@ -32,22 +32,29 @@ const helpers = {
     }
     return false;
   },
+  /**
+   *
+   * @param {any} input input to check if its numm or empty
+   * @param {string} inputName name of input for error message
+   * @returns {boolean}  returns a boolean true if input is valid
+   */
 
-  errorIfNullOrEmpty(input, arrayName = "") {
-    if (isNull(input) || isEmpty(input)) {
-      throw "Error: the " + arrayName + " is null or empty!";
+  errorIfNullOrEmpty(input, inputName = "") {
+    if (this.isNull(input) || this.isEmpty(input)) {
+      throw "Error: the " + inputName + " is null or empty!";
     }
+    return true;
   },
 
   /**
    *  check if input is a non empty string (not whitespace).
    * @param {any|string}value an input string value to check if its not empty
-   * @param {boolean}allowSpaces? boolean value whether to allow spcaes or no for the non empty check , if passed false treats spaces as empty string
-   * @return {boolean}
+   * @param {boolean?=false} allowSpaces default false; boolean value whether to allow spcaes or no for the non empty check , if passed false treats spaces as empty string
+   * @returns {boolean} returns a boolean value after checking if its a non empty string
    */
   isNonEmptyString(value, allowSpaces = true) {
     if (typeof value === "string") {
-      return allowSpaces ? !isEmpty(value) : !isEmpty(value.trim());
+      return allowSpaces ? !this.isEmpty(value) : !this.isEmpty(value.trim());
     } else {
       return false;
     }
