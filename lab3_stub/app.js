@@ -37,27 +37,49 @@ async function main() {
   //     console.log(e);
   //   }
 
-  /* #region  getUserById test cases */
+  //   /* #region  getUserById test cases */
+  //   [
+  //     "48fded55-37cd-4e6b-8f19-e78b481a14a4",
+  //     -1,
+  //     1001,
+  //     ,
+  //     "",
+  //     " ",
+  //     null,
+  //     "7989fa5e-5617-43f7-a931-46036f9dbcff",
+  //   ].forEach(async (testData) => {
+  //     try {
+  //       const userdata = await users.getUserById(testData);
+  //       console.log(userdata);
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   });
+  //   /* #endregion */
+
+  /* #region  sameGenre test cases */
   [
-    "48fded55-37cd-4e6b-8f19-e78b481a14a4",
-    -1,
-    1001,
-    ,
+    "action",
+    "Action",
+    "ACTION",
+    "IMAX",
+    ["Action"],
+    123,
+    true,
+    null,
+    undefined,
+    NaN,
     "",
     " ",
-    null,
-    "7989fa5e-5617-43f7-a931-46036f9dbcff",
   ].forEach(async (testData) => {
     try {
-      const userdata = await users.getUserById(testData);
+      const userdata = await users.sameGenre(testData);
       console.log(userdata);
     } catch (e) {
       console.log(e);
     }
   });
   /* #endregion */
-
-  //
 }
 
 main();

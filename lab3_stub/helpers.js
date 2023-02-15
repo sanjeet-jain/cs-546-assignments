@@ -1,4 +1,29 @@
 //Todo You can use this file for any helper s you may need. This file is optional and you don't have to use it if you do not want to.
+import axios from "axios";
+
+const dataGet = {
+  /**
+   *
+   * @returns json object of users
+   */
+  // sample format of each object
+  //   {
+  //     id: "48fded55-37cd-4e6b-8f19-e78b481a14a4",
+  //     username: "abrett0",
+  //     password: "YQ8Jpot33Mf",
+  //     first_name: "Abigail",
+  //     last_name: "Brett",
+  //     email: "abrett0@gizmodo.com",
+  //     favorite_genre: "Fantasy",
+  //   }
+  async getUsers() {
+    const { data } = await axios.get(
+      "https://gist.githubusercontent.com/jdelrosa/381cbe8fae75b769a1ce6e71bdb249b5/raw/564a41f84ab00655524a8cbd9f30b0409836ee39/users.json"
+    );
+    helpers.errorIfNullOrEmpty(data, "data from users api");
+    return data; // this will be the array of user objects
+  },
+};
 
 const helpers = {
   /**
@@ -60,4 +85,4 @@ const helpers = {
     }
   },
 };
-export default helpers;
+export { helpers as default, dataGet };

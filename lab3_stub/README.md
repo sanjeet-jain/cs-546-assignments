@@ -13,11 +13,8 @@ The purpose of this lab is to familiarize yourself with asynchronous programming
 * [x] You will be downloading JSON files from the following GitHub Gists:
 * [x] movies.json ([Links to an external site.](https://gist.githubusercontent.com/jdelrosa/78dfa36561d5c06f7e62d8cce868cf8e/raw/2292be808f74c9486d4085bdbc2025bab84d462b/movies.json))Links to an external site.
 * [x] users.json ([Links to an external site.](https://gist.githubusercontent.com/jdelrosa/381cbe8fae75b769a1ce6e71bdb249b5/raw/564a41f84ab00655524a8cbd9f30b0409836ee39/users.json))Links to an external site.
-* [x] For every function you write, you will download the necessary JSONs with axios. DO NOT just save the data into a local file, you MUST use Axios to get the data. Here is an example of how to do so: 
-    `async function getMovies(){
-      const { data } = await axios.get('https://URL_FROM_GIST_HERE/movies.json')
-      return data // this will be the array of user objects
-    }`
+* [x] For every function you write, you will download the necessary JSONs with axios. DO NOT just save the data into a local file, you MUST use Axios to get the data. Here is an example of how to do so:
+    `async function getMovies(){ const { data } = await axios.get('https://URL_FROM_GIST_HERE/movies.json') return data // this will be the array of user objects }`
 
 # async function getMovies()
 
@@ -46,22 +43,22 @@ You must check:
 
 # sameGenre(genre)
 
-* [ ] For this function, you will return an array of the first 50 users (so the 50 that appear first in the array of users. If there are less than 50, then just return however many there are) who have the same favorite genre from users.json. The array will be comprised of the names of user ("firstName lastName" format) sorted alphabetically by last name. You must return at least two users, so if there are not 2 or more users that have the same favorite genre for the genre provided you will throw an error.
+* [x] For this function, you will return an array of the first 50 users (so the 50 that appear first in the array of users. If there are less than 50, then just return however many there are) who have the same favorite genre from users.json. The array will be comprised of the names of user ("firstName lastName" format) sorted alphabetically by last name. You must return at least two users, so if there are not 2 or more users that have the same favorite genre for the genre provided you will throw an error.
 
 You must check:
 
-* [ ] That the genre parameter exists and is of proper type (string). If not, throw an error.
-* [ ] If there are not at least two users that have the same favorite genre as the genre provided , you will throw an error.
-* [ ] if genre is just empty spaces, throw an error.
-* [ ] The genre parameter must be case in-sensitive i.e. sameGenre("action") should return the same results as passing sameGenre("ACTION")
-* [ ] await sameGenre("Action");
+* [x] That the genre parameter exists and is of proper type (string). If not, throw an error.
+* [x] If there are not at least two users that have the same favorite genre as the genre provided , you will throw an error.
+* [x] if genre is just empty spaces, throw an error.
+* [x] The genre parameter must be case in-sensitive i.e. sameGenre("action") should return the same results as passing sameGenre("ACTION")
+* [x] await sameGenre("Action");
     \\ Returns:
     ['Shay Claydon', 'Merridie Confort', 'Bent Crowest', 'Shurlocke Cull', 'Lonny Dechelle', 'Olia Shefton']
-* [ ] await sameGenre(); \\ Throws Error
-* [ ] await sameGenre("IMAX"); \\ Throws Error since there are not two people with that genre
-* [ ] await sameGenre(123); \\ Throws Error
-* [ ] await sameGenre(["Action"]); \\ Throws Error
-* [ ] await sameGenre(true); \\ Throws Error
+* [x] await sameGenre(); \\ Throws Error
+* [x] await sameGenre("IMAX"); \\ Throws Error since there are not two people with that genre
+* [x] await sameGenre(123); \\ Throws Error
+* [x] await sameGenre(["Action"]); \\ Throws Error
+* [x] await sameGenre(true); \\ Throws Error
 
 # moviesReviewed(id)
 

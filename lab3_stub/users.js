@@ -1,17 +1,4 @@
-import helpers from "./helpers.js";
-import axios from "axios";
-/**
- *
- * @returns json object of users
- */
-async function getUsers() {
-  const { data } = await axios.get(
-    "https://gist.githubusercontent.com/jdelrosa/381cbe8fae75b769a1ce6e71bdb249b5/raw/564a41f84ab00655524a8cbd9f30b0409836ee39/users.json"
-  );
-  helpers.errorIfNullOrEmpty(data, "data from users api");
-
-  return data; // this will be the array of user objects
-}
+import helpers, { dataGet } from "./helpers.js";
 
 /** returns the user object for the specified id within the users.json array. Note: The id is case sensitive. if user not found then throws an error
  * @param {string} id
@@ -22,8 +9,8 @@ export const getUserById = async (id) => {
   if (!helpers.isNonEmptyString(id)) {
     throw "Error: user id is not a valid string";
   }
-  let userByIdData = await getUsers();
-  let result = userByIdData.find((user) => user.id === id);
+  const userData = await dataGet.getUsers();
+  const result = userData.find((user) => user.id.trim() === id.trim());
   helpers.errorIfNullOrEmpty(result, "User Data returned");
   return result;
 };
@@ -32,7 +19,28 @@ export const getUserById = async (id) => {
  * returns an array of the first 50 users who have the same favorite genre from users.json
  * @param {string} genre
  */
-export const sameGenre = async (genre) => {};
+export const sameGenre = async (genre) => {
+  helpers.errorIfNullOrEmpty(genre, "genre");
+  if (!helpers.isNonEmptyString(genre)) {
+    throw "Error: genre is not a valid string";
+  }
+
+  const result = (await dataGet.getUsers())
+    .filter((user) => {
+      return (
+        user.favorite_genre.toLowerCase().trim() === genre.trim().toLowerCase()
+      );
+    })
+    .map((user) => {
+      return user.first_name + " " + user.last_name;
+    });
+
+  if (result.length < 2) {
+    throw "Error: numbers of users with the same genre are less than 2";
+  }
+
+  return result;
+};
 
 export const moviesReviewed = async (id) => {};
 
