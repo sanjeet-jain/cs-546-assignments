@@ -794,11 +794,17 @@ const testCasesDistance = [
     secondWord: "DoG",
   },
   {
-    valid: 5,
+    valid: 1,
     sentence: "The brown dog FoX jumped over the lazy DoG",
     firstWord: "fox",
-    secondWord: "dog",
+    secondWord: "jumped",
   },
+  {
+    valid: 2,
+    sentence: "I was going to buy workout powder to buy my way in yesterday",
+    firstWord: "going to",
+    secondWord: "to buy",
+  }, //1
 ];
 
 testCasesDistance.forEach((testCase) => {
@@ -943,6 +949,10 @@ const testCasesAreObjectsEqual = [
   {
     object: { a: 1, b: 2, c: 3 },
     funcs: [false],
+  },
+  {
+    object: { a: NaN, b: 7, c: 5 },
+    funcs: [(n) => n * 2, (n) => Math.sqrt(n)],
   },
 ];
 testCasesAreObjectsEqual.forEach((testCase) => {

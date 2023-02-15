@@ -190,7 +190,7 @@ function splitSentence(sentence, phrases) {
         result = result.slice(0, k + 1 - count);
         count = count + phrase.trim().split(" ").length - 1;
         phrase = "";
-        let temp = 0;
+        k += 1;
       } else {
         if (result.join(" ") !== sentence) {
           result.push(words[i]);
@@ -528,7 +528,7 @@ const objectUtils = {
     if (!isValidObjectType(obj)) {
       throw "Error: not a correct object";
     }
-    if (!Object.values(obj).every((x) => typeof x === "number")) {
+    if (!Object.values(obj).every((x) => typeof x === "number" && !isNaN(x))) {
       throw "Error: object should only have numbers ";
     }
     errorIfNotArray(func, "func");
