@@ -11,7 +11,7 @@ export const getUserById = async (id) => {
   }
   const userData = await getData.getUsers();
   const result = userData.find((user) => user.id.trim() === id.trim());
-  helpers.errorIfNullOrEmpty(result, "User Data returned");
+  helpers.errorIfNullOrEmpty(result, "", "User not found");
   return result;
 };
 

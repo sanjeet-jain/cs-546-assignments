@@ -90,9 +90,13 @@ const helpers = {
    * @returns {boolean}  returns a boolean true if input is valid
    */
 
-  errorIfNullOrEmpty(input, inputName = "") {
+  errorIfNullOrEmpty(input, inputName = "", customErrorMessage = "") {
     if (this.isNull(input) || this.isEmpty(input)) {
-      throw "Error: the " + inputName + " is null or empty!";
+      let errorMessage = "the " + inputName + " is null or empty!";
+      if (customErrorMessage !== "") {
+        errorMessage = customErrorMessage;
+      }
+      throw "Error: " + errorMessage;
     }
     return true;
   },
