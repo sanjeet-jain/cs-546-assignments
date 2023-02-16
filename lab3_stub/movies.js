@@ -5,7 +5,19 @@ import helpers, { getData } from "./helpers.js";
  * @param {string} directorName
  * @returns {[object]} array of movie objects
  */
-export const findMoviesByDirector = async (directorName) => {};
+export const findMoviesByDirector = async (directorName) => {
+  helpers.errorIfNullOrEmpty(directorName, "directorName");
+  if (!helpers.isNonEmptyString(directorName, false)) {
+    throw "Error: movie id is not a valid string";
+  }
+  const movieData = await getData.getMovies();
+  const result = movieData.filter(
+    (movie) =>
+      movie.director.trim().toLowerCase() === directorName.trim().toLowerCase()
+  );
+  helpers.errorIfNullOrEmpty(result, "director data", "director not found");
+  return result;
+};
 
 /**
  * return an array of objects that contains all the movies where the castMemberName provided has starred in
