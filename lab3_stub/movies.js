@@ -1,5 +1,3 @@
-//TODO EXPORT AND IMPLEMENT THE FOLLOWING FUNCTIONS IN ES6 FORMAT
-//Movie data link: https://gist.githubusercontent.com/jdelrosa/78dfa36561d5c06f7e62d8cce868cf8e/raw/2292be808f74c9486d4085bdbc2025bab84d462b/movies.json
 import helpers, { getData } from "./helpers.js";
 
 /**
@@ -28,4 +26,13 @@ export const getOverallRating = async (title) => {};
  * @param {string} id
  * @returns {object} returns movie object
  */
-export const getMovieById = async (id) => {};
+export const getMovieById = async (id) => {
+  helpers.errorIfNullOrEmpty(id, "movie id");
+  if (!helpers.isNonEmptyString(id, false)) {
+    throw "Error: movie id is not a valid string";
+  }
+  const movieData = await getData.getMovies();
+  const result = movieData.find((movie) => movie.id.trim() === id.trim());
+  helpers.errorIfNullOrEmpty(result, "movie data", "movie not found");
+  return result;
+};

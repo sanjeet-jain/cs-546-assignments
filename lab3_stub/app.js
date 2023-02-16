@@ -112,10 +112,29 @@ async function main() {
   //   }
   // });
   /* #endregion */
-  /* #region  referMovies test cases */
+  /* #region  getMovieById test cases */
+  // [
+  //   "38fd6885-0271-4650-8afd-6d09f3a890a2",
+  //   "7989fa5e-5617-43f7-a931-46036f9dbcff",
+  //   -1,
+  //   1001,
+  //   ,
+  //   "",
+  //   " ",
+  //   null,
+  // ].forEach(async (testData) => {
+  //   try {
+  //     const userdata = await movies.getMovieById(testData);
+  //     console.log(userdata);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // });
+  /* #endregion */
+  /* #region  findMoviesByDirector test cases */
   [
+    "Fernando Dollimore",
     "7989fa5e-5617-43f7-a931-46036f9dbcff",
-    "5060fc9e-10c7-4f38-9f3d-47b7f477568b",
     -1,
     1001,
     ,
@@ -124,7 +143,7 @@ async function main() {
     null,
   ].forEach(async (testData) => {
     try {
-      const userdata = await users.referMovies(testData);
+      const userdata = await movies.findMoviesByDirector(testData);
       console.log(userdata);
     } catch (e) {
       console.log(e);

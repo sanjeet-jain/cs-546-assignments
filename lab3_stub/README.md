@@ -303,14 +303,14 @@ await getOverallRating(); \\ Throws Error
 
 # getMovieById(id)
 
-* [ ] This will return the Movie for the specified id within the movies.json array. Note: The id is case sensitive.
+* [x] This will return the Movie for the specified id within the movies.json array. Note: The id is case sensitive.
 
 You must check:
 
-* [ ] That the id parameter exists and is of proper type (string). If not, throw an error.
-* [ ] If the id exists and is in the proper type but the id is not found in the array of movies, throw a 'movie not found' error.
-* [ ] if the id parameter is just empty spaces, throw an error.
-* [ ] await getMovieById("38fd6885-0271-4650-8afd-6d09f3a890a2");
+* [x] That the id parameter exists and is of proper type (string). If not, throw an error.
+* [x] If the id exists and is in the proper type but the id is not found in the array of movies, throw a 'movie not found' error.
+* [x] if the id parameter is just empty spaces, throw an error.
+* [x] await getMovieById("38fd6885-0271-4650-8afd-6d09f3a890a2");
     \\ Returns:
     {
     id:"38fd6885-0271-4650-8afd-6d09f3a890a2",
@@ -327,10 +327,10 @@ You must check:
     {username:"ltruckettim",rating:2,review:"It was meh, plot was very bad."},
     {username:"fgoodale6l",rating:3,review:"A very ok movie."}]
     }
-* [ ] await getMovieById(-1); \\ Throws Error
-* [ ] await getMovieById(1001); \\ Throws Error
-* [ ] await getMovieById();\\ Throws Error
-* [ ] await getMovieById('7989fa5e-5617-43f7-a931-46036f9dbcff');\\ Throws movie not found Error
+* [x] await getMovieById(-1); \\ Throws Error
+* [x] await getMovieById(1001); \\ Throws Error
+* [x] await getMovieById();\\ Throws Error
+* [x] await getMovieById('7989fa5e-5617-43f7-a931-46036f9dbcff');\\ Throws movie not found Error
 
 # app.js
 

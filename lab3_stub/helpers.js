@@ -104,7 +104,7 @@ const helpers = {
   /**
    *  check if input is a non empty string (not whitespace).
    * @param {any|string}value an input string value to check if its not empty
-   * @param {boolean?=false} allowSpaces default true; boolean value whether to allow spcaes or no for the non empty check , if passed false treats spaces as empty string
+   * @param {boolean} allowSpaces default true; boolean value whether to allow spcaes or no for the non empty check , if passed false treats spaces as empty string
    * @returns {boolean} returns a boolean value after checking if its a non empty string
    */
   isNonEmptyString(value, allowSpaces = true) {
