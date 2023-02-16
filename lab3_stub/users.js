@@ -18,6 +18,7 @@ export const getUserById = async (id) => {
 /**
  * returns an array of the first 50 users who have the same favorite genre from users.json
  * @param {string} genre
+ * @returns {[string]} returns array of first 50 users' first name and last name
  */
 export const sameGenre = async (genre) => {
   helpers.errorIfNullOrEmpty(genre, "genre");
@@ -43,8 +44,9 @@ export const sameGenre = async (genre) => {
 };
 
 /**
- * This function will take in id of a user object and return an array of all the movies that the specified user left a review on. The array will be comprised of objects of the following format: {title: {review object with username, rating, and review properties as shown below}}.
+ * This function will take in id of a user object and return an array of all the movies that the specified user left a review on..
  * @param {string} id
+ * @returns {[object]} returns an array of objects of the following format: {title: {review object with username, rating, and review properties as shown below}}.
  */
 export const moviesReviewed = async (id) => {
   let result = [];
@@ -61,6 +63,11 @@ export const moviesReviewed = async (id) => {
   return result;
 };
 
+/**
+ * This function will take the id of a user object and return an array of all the movies that match that user's favorite genre that they have NOT reviewed previously.
+ * @param {string} id
+ * @returns {[string]} list of movie suggestions
+ */
 export const referMovies = async (id) => {
   const userData = await getUserById(id);
   const movieData = await getData.getMovies();
