@@ -151,25 +151,46 @@ async function main() {
   // });
   /* #endregion */
   /* #region  findMoviesByCastMember test cases */
-  [
-    "Fernando Dollimore",
-    "Huberto Snoddon",
-    "Huberto Snoddon".toUpperCase(),
-    ,
-    -1,
-    1001,
-    ,
-    "",
-    " ",
-    null,
-  ].forEach(async (testData) => {
-    try {
-      const userdata = await movies.findMoviesByCastMember(testData);
-      console.log(userdata);
-    } catch (e) {
-      console.log(e);
-    }
-  });
+  // [
+  //   "Fernando Dollimore",
+  //   "Huberto Snoddon",
+  //   "Huberto Snoddon".toUpperCase(),
+  //   ,
+  //   -1,
+  //   1001,
+  //   ,
+  //   "",
+  //   " ",
+  //   null,
+  // ].forEach(async (testData) => {
+  //   try {
+  //     const userdata = await movies.findMoviesByCastMember(testData);
+  //     console.log(userdata);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // });
+  /* #endregion */
+  /* #region  getOverallRating test cases */
+  // [
+  //   "Asterix and the Vikings (Astérix et les Vikings)",
+  //   "Asterix and the Vikings (Astérix et les Vikings)".toUpperCase(),
+  //   "Huberto Snoddon",
+  //   ,
+  //   -1,
+  //   1001,
+  //   ,
+  //   "",
+  //   " ",
+  //   null,
+  // ].forEach(async (testData) => {
+  //   try {
+  //     const userdata = await movies.getOverallRating(testData);
+  //     console.log(userdata);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // });
   /* #endregion */
 }
 

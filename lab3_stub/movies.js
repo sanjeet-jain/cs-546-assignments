@@ -46,7 +46,28 @@ export const findMoviesByCastMember = async (castMemberName) => {
  * @param {string} title
  * @returns {number} rating for the movie
  */
-export const getOverallRating = async (title) => {};
+export const getOverallRating = async (title) => {
+  helpers.errorIfNullOrEmpty(title, "movie title");
+  if (!helpers.isNonEmptyString(title, false)) {
+    throw "Error: movie title is not a valid string";
+  }
+  const movieData = (await getData.getMovies()).find(
+    (movie) => movie.title.trim().toLowerCase() === title.trim().toLowerCase()
+  );
+  helpers.errorIfNullOrEmpty(movieData, "movie data", "movie title not found");
+  //   helpers.errorIfNullOrEmpty(movieData.reviews, "movie review data");
+  if (helpers.isEmpty(movieData.reviews)) {
+    return 0;
+  }
+  let movieReviewRating = movieData.reviews.reduce(
+    (sum, review) => (sum += review.rating),
+    0
+  );
+
+  return (
+    Math.floor((movieReviewRating * 10) / movieData.reviews.length) / 10
+  ).toFixed(1);
+};
 
 /**
  * return the Movie for the specified id within the movies.json array. Note: The id is case sensitive.
