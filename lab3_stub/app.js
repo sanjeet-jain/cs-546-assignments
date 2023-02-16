@@ -30,14 +30,7 @@ import * as movies from "./movies.js";
 import * as users from "./users.js";
 
 async function main() {
-  //   try {
-  //     const moviedata = await movies.getMovies();
-  //     console.log(moviedata);
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-
-  //   /* #region  getUserById test cases */
+  /* #region  getUserById test cases */
   //   [
   //     "48fded55-37cd-4e6b-8f19-e78b481a14a4",
   //     -1,
@@ -55,25 +48,45 @@ async function main() {
   //       console.log(e);
   //     }
   //   });
-  //   /* #endregion */
+  /* #endregion */
+
+  /* #region  sameGenre test cases */
+  // [
+  //   "action",
+  //   "Action",
+  //   "ACTION",
+  //   "IMAX",
+  //   ["Action"],
+  //   123,
+  //   true,
+  //   null,
+  //   undefined,
+  //   NaN,
+  //   "",
+  //   " ",
+  // ].forEach(async (testData) => {
+  //   try {
+  //     const userdata = await users.sameGenre(testData);
+  //     console.log(userdata);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // });
+  /* #endregion */
 
   /* #region  sameGenre test cases */
   [
-    "action",
-    "Action",
-    "ACTION",
-    "IMAX",
-    ["Action"],
-    123,
-    true,
-    null,
-    undefined,
-    NaN,
+    "64035fad-a5b7-48c9-9317-3e31e22fe26c",
+    "7989fa5e-5617-43f7-a931-46036f9dbcff",
+    -1,
+    1001,
+    ,
     "",
     " ",
+    null,
   ].forEach(async (testData) => {
     try {
-      const userdata = await users.sameGenre(testData);
+      const userdata = await users.moviesReviewed(testData);
       console.log(userdata);
     } catch (e) {
       console.log(e);

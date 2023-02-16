@@ -23,6 +23,32 @@ const dataGet = {
     helpers.errorIfNullOrEmpty(data, "data from users api");
     return data; // this will be the array of user objects
   },
+
+  /**
+   *
+   * @returns json object of movies
+   */
+  async getMovies() {
+    const { data } = await axios.get(
+      "https://gist.githubusercontent.com/jdelrosa/78dfa36561d5c06f7e62d8cce868cf8e/raw/2292be808f74c9486d4085bdbc2025bab84d462b/movies.json"
+    );
+    helpers.errorIfNullOrEmpty(data, "data from movies api");
+
+    return data; // this will be the array of movie objects
+  },
+  // sample format of each object
+  // {
+  //   id: '0edc8652-062d-46b2-a930-fd815f88ddd5',
+  //   title: 'Kill List',
+  //   genre: 'Horror|Mystery|Thriller',
+  //   director: 'Zeb Fountaine',
+  //   release_date: '03/09/2002',
+  //   runtime: '1h 50mins',
+  //   mpa_rating: 'PG',
+  //   cast: [ 'Stanleigh Perham', 'Jessee Haberfield' ],
+  //   streaming_service: { company: 'Disney+', link: 'https://Disney+.com/Kill List' },
+  //   reviews: [ {username: 'afrill27', rating: 3, review: 'A very ok movie.'} ]
+  // },
 };
 
 const helpers = {
@@ -74,7 +100,7 @@ const helpers = {
   /**
    *  check if input is a non empty string (not whitespace).
    * @param {any|string}value an input string value to check if its not empty
-   * @param {boolean?=false} allowSpaces default false; boolean value whether to allow spcaes or no for the non empty check , if passed false treats spaces as empty string
+   * @param {boolean?=false} allowSpaces default true; boolean value whether to allow spcaes or no for the non empty check , if passed false treats spaces as empty string
    * @returns {boolean} returns a boolean value after checking if its a non empty string
    */
   isNonEmptyString(value, allowSpaces = true) {

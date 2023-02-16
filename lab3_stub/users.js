@@ -6,7 +6,7 @@ import helpers, { dataGet } from "./helpers.js";
  */
 export const getUserById = async (id) => {
   helpers.errorIfNullOrEmpty(id, "user id");
-  if (!helpers.isNonEmptyString(id)) {
+  if (!helpers.isNonEmptyString(id, false)) {
     throw "Error: user id is not a valid string";
   }
   const userData = await dataGet.getUsers();
@@ -21,7 +21,7 @@ export const getUserById = async (id) => {
  */
 export const sameGenre = async (genre) => {
   helpers.errorIfNullOrEmpty(genre, "genre");
-  if (!helpers.isNonEmptyString(genre)) {
+  if (!helpers.isNonEmptyString(genre, false)) {
     throw "Error: genre is not a valid string";
   }
 
@@ -42,6 +42,23 @@ export const sameGenre = async (genre) => {
   return result;
 };
 
-export const moviesReviewed = async (id) => {};
+/**
+ * This function will take in id of a user object and return an array of all the movies that the specified user left a review on. The array will be comprised of objects of the following format: {title: {review object with username, rating, and review properties as shown below}}.
+ * @param {string} id
+ */
+export const moviesReviewed = async (id) => {
+  let result = [];
+  const userData = await getUserById(id);
+  const movieData = await dataGet.getMovies();
+  movieData.forEach((movie) => {
+    let reviewList = movie.reviews.filter((review) => {
+      return review.username.trim() === userData.username.trim();
+    });
+    if (!helpers.isEmpty(reviewList)) {
+      result.push({ [movie.title]: reviewList[0] });
+    }
+  });
+  return result;
+};
 
 export const referMovies = async (id) => {};

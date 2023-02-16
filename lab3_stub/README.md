@@ -62,13 +62,13 @@ You must check:
 
 # moviesReviewed(id)
 
-* [ ] This function will take in id of a user object and return an array of all the movies that the specified user left a review on. The array will be comprised of objects of the following format: {title: {review object with username, rating, and review properties as shown below}}.
-* [ ] To get the movie a user has reviewed, use the username field found in both the user object in users.json and movie object in movies.json. So this takes in an ID of the user in users.json, gets the username for that user and then finds all the movies that user reviewed.
-* [ ] Note: The id is case-sensitive.
-* [ ] That the id parameter exists and is of proper type (string). If not, throw an error.
-* [ ] If the id exists and is in the proper type but the id is not found in the array of users, throw a 'user not found' error.
-* [ ] if the id parameter is just empty spaces, throw an error.
-* [ ] await moviesReviewed('64035fad-a5b7-48c9-9317-3e31e22fe26c')
+* [x] This function will take in id of a user object and return an array of all the movies that the specified user left a review on. The array will be comprised of objects of the following format: {title: {review object with username, rating, and review properties as shown below}}.
+* [x] To get the movie a user has reviewed, use the username field found in both the user object in users.json and movie object in movies.json. So this takes in an ID of the user in users.json, gets the username for that user and then finds all the movies that user reviewed.
+* [x] Note: The id is case-sensitive.
+* [x] That the id parameter exists and is of proper type (string). If not, throw an error.
+* [x] If the id exists and is in the proper type but the id is not found in the array of users, throw a 'user not found' error.
+* [x] if the id parameter is just empty spaces, throw an error.
+* [x] await moviesReviewed('64035fad-a5b7-48c9-9317-3e31e22fe26c')
     \\ Returns:
     [{'Charlie's Angels': {username:"cfinkle5",rating:4,review:"Solid, good movie."} },
     {'Class of 1999 II: The Substitute': {username:"cfinkle5",rating:4,review:"Solid, good movie."} },
