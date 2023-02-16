@@ -1,7 +1,7 @@
 //Todo You can use this file for any helper s you may need. This file is optional and you don't have to use it if you do not want to.
 import axios from "axios";
 
-const dataGet = {
+const getData = {
   /**
    *
    * @returns json object of users
@@ -111,4 +111,4 @@ const helpers = {
     }
   },
 };
-export { helpers as default, dataGet };
+export { helpers as default, getData };

@@ -49,13 +49,14 @@ async function main() {
   //     }
   //   });
   /* #endregion */
-
   /* #region  sameGenre test cases */
   // [
   //   "action",
   //   "Action",
   //   "ACTION",
   //   "IMAX",
+  //   "(no genres listed)",
+  //   "(No GENRES LisTed)",
   //   ["Action"],
   //   123,
   //   true,
@@ -73,8 +74,7 @@ async function main() {
   //   }
   // });
   /* #endregion */
-
-  /* #region  sameGenre test cases */
+  /* #region  moviesReviewed test cases */
   [
     "64035fad-a5b7-48c9-9317-3e31e22fe26c",
     "7989fa5e-5617-43f7-a931-46036f9dbcff",
@@ -92,6 +92,25 @@ async function main() {
       console.log(e);
     }
   });
+  /* #endregion */
+  /* #region  referMovies test cases */
+  // [
+  //   "7989fa5e-5617-43f7-a931-46036f9dbcff",
+  //   "5060fc9e-10c7-4f38-9f3d-47b7f477568b",
+  //   -1,
+  //   1001,
+  //   ,
+  //   "",
+  //   " ",
+  //   null,
+  // ].forEach(async (testData) => {
+  //   try {
+  //     const userdata = await users.referMovies(testData);
+  //     console.log(userdata);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // });
   /* #endregion */
 }
 

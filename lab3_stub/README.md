@@ -26,7 +26,7 @@ This file will export the following functions:
 
 # getUserById(id)
 
-* [ ] This will return the user object for the specified id within the users.json array. Note: The id is case sensitive.
+* [x] This will return the user object for the specified id within the users.json array. Note: The id is case sensitive.
 
 You must check:
 
@@ -73,27 +73,31 @@ You must check:
     [{'Charlie's Angels': {username:"cfinkle5",rating:4,review:"Solid, good movie."} },
     {'Class of 1999 II: The Substitute': {username:"cfinkle5",rating:4,review:"Solid, good movie."} },
     {'Terminator 3: Rise of the Machines': {username:"cfinkle5",rating:2,review:"It was meh, plot was very bad."} }]
-* [ ] await moviesReviewed(-1); \\ Throws Error
-* [ ] await moviesReviewed(1001); \\ Throws Error
-* [ ] await moviesReviewed();\\ Throws Error
-* [ ] await moviesReviewed('7989fa5e-5617-43f7-a931-46036f9dbcff');\\ Throws user not found Error
+* [x] await moviesReviewed(-1); \\ Throws Error
+* [x] await moviesReviewed(1001); \\ Throws Error
+* [x] await moviesReviewed();\\ Throws Error
+* [x] await moviesReviewed('7989fa5e-5617-43f7-a931-46036f9dbcff');\\ Throws user not found Error
 
 # referMovies(id)
 
-* [ ] This function will take the id of a user object and return an array of all the movies that match that user's favorite genre that they have NOT reviewed previously\. The idea is this function will recommend movies to the user that they have not reviewed\(we assume they haven't seen the movies they haven't reviewed\) that are listed in their favorite genre\. The array will contain the titles of the movies\. NOTE: Please look at the genre data in movies\.json\, you'll notice that some movies have more than one genre separated by a pipe character\. You will need to return the movie\, as long as the user's favorite genre is included in the genre field\. For example\, some movies have their genre like this: "genre": "Drama\|Musical"\, If the user's favorite genre is "Drama" all the movies that have the genre of "Drama" should be returned as well as any movies where "Drama" is contained in the genre field like the "Drama\|Musical" example above\.
-* [ ] Note: The id is case-sensitive.
+* [x] <strong>This function will take the id of a user object and return an array of all the movies that match that user's favorite genre that they have NOT reviewed previously</strong>. 
+* [x] The idea is this function will recommend movies to the user that they have not reviewed(we assume they haven't seen the movies they haven't reviewed) that are listed in their favorite genre. 
+* [x] The array will contain the titles of the movies. NOTE: Please look at the genre data in movies.json, you'll notice that some movies have more than one genre separated by a pipe character. 
+* [x] You will need to return the movie, as long as the user's favorite genre is included in the genre field. 
+* [x] For example\, some movies have their genre like this: "genre": "Drama\|Musical"\, If the user's favorite genre is "Drama" all the movies that have the genre of "Drama" should be returned as well as any movies where "Drama" is contained in the genre field like the "Drama\|Musical" example above\.
+* [x] Note: The id is case-sensitive.
 
 You must check:
 
-* [ ] That the id parameter exists and is of proper type (string). If not, throw an error.
-* [ ] If the id exists and is in the proper type but the id is not found in the array of users, throw a 'user not found' error.
-* [ ] if the id parameter is just empty spaces, throw an error
-* [ ] await referMovies('5060fc9e-10c7-4f38-9f3d-47b7f477568b'); \\ Returns:
+* [x] That the id parameter exists and is of proper type (string). If not, throw an error.
+* [x] If the id exists and is in the proper type but the id is not found in the array of users, throw a 'user not found' error.
+* [x] if the id parameter is just empty spaces, throw an error
+* [x] await referMovies('5060fc9e-10c7-4f38-9f3d-47b7f477568b'); \\ Returns:
     ['Fly Me to the Moon', 'Gravity', 'Spiderwick Chronicles, The', 'How to Train Your Dragon', 'Wings of Courage', 'Happy Feet Two']
-* [ ] await referMovies(-1); \\ Throws Error
-* [ ] await referMovies(' '); \\ Throws Error
-* [ ] await referMovies(); \\ Throws Error
-* [ ] await referMovies('7989fa5e-5617-43f7-a931-46036f9dbcff'); \\ Throws user not found Error
+* [x] await referMovies(-1); \\ Throws Error
+* [x] await referMovies(' '); \\ Throws Error
+* [x] await referMovies(); \\ Throws Error
+* [x] await referMovies('7989fa5e-5617-43f7-a931-46036f9dbcff'); \\ Throws user not found Error
 
 # movies.js
 
