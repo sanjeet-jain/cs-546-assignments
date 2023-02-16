@@ -1,4 +1,18 @@
-//Todo You can use this file for any helper s you may need. This file is optional and you don't have to use it if you do not want to.
+// /\*
+// Created by https://sanjeet-jain.github.io/
+
+// ```
+//        _       _          _____
+//       | |     (_)        / ____|
+//       | | __ _ _ _ __   | (___
+//   _   | |/ _` | | '_ \   \___ \
+//  | |__| | (_| | | | | |  ____) |
+//   \____/ \__,_|_|_| |_| |_____/
+//                     ______
+//                    |______|
+// ```
+
+// \*/
 import axios from "axios";
 
 const getData = {

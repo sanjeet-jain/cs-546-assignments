@@ -1,3 +1,18 @@
+// /\*
+// Created by https://sanjeet-jain.github.io/
+
+// ```
+//        _       _          _____
+//       | |     (_)        / ____|
+//       | | __ _ _ _ __   | (___
+//   _   | |/ _` | | '_ \   \___ \
+//  | |__| | (_| | | | | |  ____) |
+//   \____/ \__,_|_|_| |_| |_____/
+//                     ______
+//                    |______|
+// ```
+
+// \*/
 import helpers, { getData } from "./helpers.js";
 
 /** returns the user object for the specified id within the users.json array. Note: The id is case sensitive. if user not found then throws an error
