@@ -132,9 +132,30 @@ async function main() {
   // });
   /* #endregion */
   /* #region  findMoviesByDirector test cases */
+  // [
+  //   "Fernando Dollimore",
+  //   "7989fa5e-5617-43f7-a931-46036f9dbcff",
+  //   -1,
+  //   1001,
+  //   ,
+  //   "",
+  //   " ",
+  //   null,
+  // ].forEach(async (testData) => {
+  //   try {
+  //     const userdata = await movies.findMoviesByDirector(testData);
+  //     console.log(userdata);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // });
+  /* #endregion */
+  /* #region  findMoviesByCastMember test cases */
   [
     "Fernando Dollimore",
-    "7989fa5e-5617-43f7-a931-46036f9dbcff",
+    "Huberto Snoddon",
+    "Huberto Snoddon".toUpperCase(),
+    ,
     -1,
     1001,
     ,
@@ -143,7 +164,7 @@ async function main() {
     null,
   ].forEach(async (testData) => {
     try {
-      const userdata = await movies.findMoviesByDirector(testData);
+      const userdata = await movies.findMoviesByCastMember(testData);
       console.log(userdata);
     } catch (e) {
       console.log(e);

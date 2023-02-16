@@ -24,7 +24,22 @@ export const findMoviesByDirector = async (directorName) => {
  * @param {string} castMemberName
  * @returns {[object]} array of movie objects
  */
-export const findMoviesByCastMember = async (castMemberName) => {};
+export const findMoviesByCastMember = async (castMemberName) => {
+  helpers.errorIfNullOrEmpty(castMemberName, "castMemberName");
+  if (!helpers.isNonEmptyString(castMemberName, false)) {
+    throw "Error: castMemberName is not a valid string";
+  }
+  const movieData = await getData.getMovies();
+  const result = movieData.filter((movie) =>
+    movie.cast
+      .map((cast) => {
+        return cast.trim().toLowerCase();
+      })
+      .includes(castMemberName.trim().toLowerCase())
+  );
+  helpers.errorIfNullOrEmpty(result, "castMember data", "castMember not found");
+  return result;
+};
 
 /**
  * calculate the overallRating of that specified movie object from movies.json

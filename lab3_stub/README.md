@@ -105,14 +105,14 @@ You must check:
 
 # findMoviesByDirector(directorName)
 
-* [ ] For this function, you will return an array of objects that contains all the movies that were directed by directorName provided.
+* [x] For this function, you will return an array of objects that contains all the movies that were directed by directorName provided.
 
 You must check:
 
-* [ ] That directorName parameter exists and is of the proper type (string). If not, throw an error.
-* [ ] You must check to make sure the directorName parameter is not just empty spaces: If it is, throw an error.
-* [ ] If the no movies can be found in movies.json for the directorName provided, then throw an error.
-* [ ] findMoviesByDirector("Fernando Dollimore") Would return:
+* [x] That directorName parameter exists and is of the proper type (string). If not, throw an error.
+* [x] You must check to make sure the directorName parameter is not just empty spaces: If it is, throw an error.
+* [x] If the no movies can be found in movies.json for the directorName provided, then throw an error.
+* [x] findMoviesByDirector("Fernando Dollimore") Would return:
     [
     {
     id: '040d7398-136c-45f0-89b8-9b73c67c617e',
@@ -234,14 +234,14 @@ You must check:
 
 # findMoviesByCastMember(castMemberName)
 
-* [ ] For this function, you will return an array of objects that contains all the movies where the castMemberName provided has starred in.
+* [x] For this function, you will return an array of objects that contains all the movies where the castMemberName provided has starred in.
 
 You must check:
 
-* [ ] That castMemberName parameter exists and is of the proper type (string). If not, throw an error.
-* [ ] You must check to make sure the castMemberName parameter is not just empty spaces: If it is, throw an error.
-* [ ] If the no movies can be found in movies.json for the castMemberName provided, then throw an error.
-* [ ] findMoviesByCastMember("Huberto Snoddon") Would return:
+* [x] That castMemberName parameter exists and is of the proper type (string). If not, throw an error.
+* [x] You must check to make sure the castMemberName parameter is not just empty spaces: If it is, throw an error.
+* [x] If the no movies can be found in movies.json for the castMemberName provided, then throw an error.
+* [x] findMoviesByCastMember("Huberto Snoddon") Would return:
     [
     {
     id: '040d7398-136c-45f0-89b8-9b73c67c617e',
