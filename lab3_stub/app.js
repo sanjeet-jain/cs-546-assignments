@@ -46,7 +46,6 @@ import * as movies from "./movies.js";
 import * as users from "./users.js";
 
 async function main() {
-  let functionName = "getUserById";
   /* #region  getUserById test cases */
   [
     "48fded55-37cd-4e6b-8f19-e78b481a14a4",
@@ -60,17 +59,17 @@ async function main() {
   ].forEach(async (testData) => {
     try {
       const userdata = await users.getUserById(testData);
-      console.log(functionName + "\n" + testData, "\n", userdata);
+      console.log("getUserById \n", testData, "\n", userdata);
     } catch (e) {
-      console.log(functionName + "\n" + testData, "\n" + e);
+      console.log("getUserById \n", testData, "\n", e);
     } finally {
       console.log();
     }
   });
   /* #endregion */
   /* #region  sameGenre test cases */
-  functionName = "sameGenre";
   [
+    "WaR",
     "action",
     "Action",
     "ACTION",
@@ -88,16 +87,15 @@ async function main() {
   ].forEach(async (testData) => {
     try {
       const userdata = await users.sameGenre(testData);
-      console.log(functionName + "\n" + testData, "\n", userdata);
+      console.log("sameGenre \n", testData, "\n", userdata);
     } catch (e) {
-      console.log(functionName + "\n" + testData, "\n" + e);
+      console.log("sameGenre \n", testData, "\n", e);
     } finally {
       console.log();
     }
   });
   /* #endregion */
   /* #region  moviesReviewed test cases */
-  functionName = "moviesReviewed";
 
   [
     "64035fad-a5b7-48c9-9317-3e31e22fe26c",
@@ -111,16 +109,15 @@ async function main() {
   ].forEach(async (testData) => {
     try {
       const userdata = await users.moviesReviewed(testData);
-      console.log(functionName + "\n" + testData, "\n", userdata);
+      console.log("moviesReviewed", "\n", testData, "\n", userdata);
     } catch (e) {
-      console.log(functionName + "\n" + testData, "\n" + e);
+      console.log("moviesReviewed \n", testData, "\n", e);
     } finally {
       console.log();
     }
   });
   /* #endregion */
   /* #region  referMovies test cases */
-  functionName = "referMovies";
 
   [
     "7989fa5e-5617-43f7-a931-46036f9dbcff",
@@ -134,16 +131,15 @@ async function main() {
   ].forEach(async (testData) => {
     try {
       const userdata = await users.referMovies(testData);
-      console.log(functionName + "\n" + testData, "\n", userdata);
+      console.log("referMovies \n", testData, "\n", userdata);
     } catch (e) {
-      console.log(functionName + "\n" + testData, "\n" + e);
+      console.log("referMovies \n", testData, "\n", e);
     } finally {
       console.log();
     }
   });
   /* #endregion */
   /* #region  getMovieById test cases */
-  functionName = "getMovieById";
 
   [
     "38fd6885-0271-4650-8afd-6d09f3a890a2",
@@ -157,44 +153,36 @@ async function main() {
   ].forEach(async (testData) => {
     try {
       const userdata = await movies.getMovieById(testData);
-      console.log(functionName + "\n" + testData, "\n", userdata);
+      console.log("getMovieById \n", testData, "\n", userdata);
     } catch (e) {
-      console.log(functionName + "\n" + testData, "\n" + e);
+      console.log("getMovieById \n", testData, "\n", e);
     } finally {
       console.log();
     }
   });
   /* #endregion */
   /* #region  findMoviesByDirector test cases */
-  functionName = "findMoviesByDirector";
 
-  [
-    "Fernando Dollimore",
-    "7989fa5e-5617-43f7-a931-46036f9dbcff",
-    -1,
-    1001,
-    ,
-    "",
-    " ",
-    null,
-  ].forEach(async (testData) => {
-    try {
-      const userdata = await movies.findMoviesByDirector(testData);
-      console.log(functionName + "\n" + testData, "\n", userdata);
-    } catch (e) {
-      console.log(functionName + "\n" + testData, "\n" + e);
-    } finally {
-      console.log();
+  ["Fernando Dollimore", "Dollimore", -1, 1001, , "", " ", null].forEach(
+    async (testData) => {
+      try {
+        const userdata = await movies.findMoviesByDirector(testData);
+        console.log("findMoviesByDirector \n", testData, "\n", userdata);
+      } catch (e) {
+        console.log("findMoviesByDirector \n", testData, "\n", e);
+      } finally {
+        console.log();
+      }
     }
-  });
+  );
   /* #endregion */
   /* #region  findMoviesByCastMember test cases */
-  functionName = "findMoviesByCastMember";
 
   [
     "Fernando Dollimore",
     "Huberto Snoddon",
-    "Huberto Snoddon".toUpperCase(),
+    " Huberto Snoddon ".toUpperCase(),
+    " Snoddon".toUpperCase(),
     ,
     -1,
     1001,
@@ -205,16 +193,15 @@ async function main() {
   ].forEach(async (testData) => {
     try {
       const userdata = await movies.findMoviesByCastMember(testData);
-      console.log(functionName + "\n" + testData, "\n", userdata);
+      console.log("findMoviesByCastMember \n", testData, "\n", userdata);
     } catch (e) {
-      console.log(functionName + "\n" + testData, "\n" + e);
+      console.log("findMoviesByCastMember \n", testData, "\n", e);
     } finally {
       console.log();
     }
   });
   /* #endregion */
   /* #region  getOverallRating test cases */
-  functionName = "getOverallRating";
 
   [
     "Asterix and the Vikings (Astérix et les Vikings)",
@@ -230,9 +217,9 @@ async function main() {
   ].forEach(async (testData) => {
     try {
       const userdata = await movies.getOverallRating(testData);
-      console.log(functionName + "\n" + testData, "\n", userdata);
+      console.log("getOverallRating \n", testData, "\n", userdata);
     } catch (e) {
-      console.log(functionName + "\n" + testData, "\n" + e);
+      console.log("getOverallRating \n", testData, "\n", e);
     } finally {
       console.log();
     }

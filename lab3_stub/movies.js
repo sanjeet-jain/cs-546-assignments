@@ -79,9 +79,7 @@ export const getOverallRating = async (title) => {
     0
   );
 
-  return (
-    Math.floor((movieReviewRating * 10) / movieData.reviews.length) / 10
-  ).toFixed(1);
+  return Math.floor((movieReviewRating * 10) / movieData.reviews.length) / 10;
 };
 
 /**

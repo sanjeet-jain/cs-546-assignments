@@ -116,7 +116,7 @@ You must check:
 
 # movies.js
 
-* [ ] This file will export the following three functions:
+* [x] This file will export the following three functions:
 
 # findMoviesByDirector(directorName)
 
@@ -301,14 +301,14 @@ You must check:
 
 # getOverallRating(title)
 
-* [ ] Given the title provided, you will calculate the overallRating of that specified movie object from movies.json. The overallRating will be calculated by taking the average of all the review ratings of the movie. The overallRating should go up to 1 decimal place. For rounding, you can use the Math.floor() function https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Math/floorLinks to an external site.
+* [x] Given the title provided, you will calculate the overallRating of that specified movie object from movies.json. The overallRating will be calculated by taking the average of all the review ratings of the movie. The overallRating should go up to 1 decimal place. For rounding, you can use the Math.floor() function https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Math/floorLinks to an external site.
 
 You must check:
 
-* [ ] That title parameter exists and is of the proper type (string). If not, throw an error.
-* [ ] You must check to make sure the title parameter is not just empty spaces: If it is, throw an error.
-* [ ] If the movie cannot be found in movies.json for the supplied title parameter, then throw an error.
-* [ ] await getOverallRating('Asterix and the Vikings (Astérix et les Vikings)');
+* [x] That title parameter exists and is of the proper type (string). If not, throw an error.
+* [x] You must check to make sure the title parameter is not just empty spaces: If it is, throw an error.
+* [x] If the movie cannot be found in movies.json for the supplied title parameter, then throw an error.
+* [x] await getOverallRating('Asterix and the Vikings (Astérix et les Vikings)');
     \\ Returns: 2.2
 
 await getOverallRating(43); \\ Throws Error
@@ -349,10 +349,10 @@ You must check:
 
 # app.js
 
-* [ ] This file is where you will import your functions from the two other files and run test cases on your functions by calling them with various inputs. We will not use this file for grading and is only for your testing purposes to make sure:
-* [ ] 1\. Your functions in your 2 files are exporting correctly\.
-* [ ] 2\. They are returning the correct output based on the input supplied \(throwing errors when you're supposed to\, returning the right results etc\.\.\)\.
-* [ ] Note: You will need an async function in your app.js file that awaits the calls to your function like the example below. You put all of your function calls within main each in its own try/catch block. and then you just call main().
+* [x] This file is where you will import your functions from the two other files and run test cases on your functions by calling them with various inputs. We will not use this file for grading and is only for your testing purposes to make sure:
+* [x] 1\. Your functions in your 2 files are exporting correctly\.
+* [x] 2\. They are returning the correct output based on the input supplied \(throwing errors when you're supposed to\, returning the right results etc\.\.\)\.
+* [x] Note: You will need an async function in your app.js file that awaits the calls to your function like the example below. You put all of your function calls within main each in its own try/catch block. and then you just call main().
 
 import \* as movies from "./movies.js";
 
@@ -370,8 +370,8 @@ console.log (e);
 main();
 Requirements
 
-* [ ] Write each function in the specified file and export the function so that it may be used in other files.
-* [ ] Ensure to properly error check for different cases such as arguments existing and of the proper type as well as throw (Links to an external site.) if anything is out of bounds such as invalid array index or negative numbers for different operations.
-* [ ] Submit all files (including package.json) in a zip with your name in the following format: LastName\_FirstName.zip.
-* [ ] Make sure to save any npm packages you use to your package.json.
-* [ ] DO NOT submit a zip containing your node\_modules folder.
+* [x] Write each function in the specified file and export the function so that it may be used in other files.
+* [x] Ensure to properly error check for different cases such as arguments existing and of the proper type as well as throw (Links to an external site.) if anything is out of bounds such as invalid array index or negative numbers for different operations.
+* [x] Submit all files (including package.json) in a zip with your name in the following format: LastName\_FirstName.zip.
+* [x] Make sure to save any npm packages you use to your package.json.
+* [x] DO NOT submit a zip containing your node\_modules folder.
