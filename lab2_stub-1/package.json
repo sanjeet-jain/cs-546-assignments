@@ -1,0 +1,12 @@
+{
+  "name": "cs-546-lab-2",
+  "version": "1.0.0",
+  "description": "cs-546-lab-2 for cs-546 SIT",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Sanjeet Vinod Jain 20012768",
+  "license": "ISC"
+}
