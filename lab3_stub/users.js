@@ -55,7 +55,17 @@ export const sameGenre = async (genre) => {
     throw "Error: numbers of users with the same genre are less than 2";
   }
   //returns top 50
-  return result.slice(0, 50);
+  return result
+    .sort((a, b) => {
+      if (a.split(" ")[1] > b.split(" ")[1]) {
+        return 1;
+      }
+      if (a.split(" ")[1] < b.split(" ")[1]) {
+        return -1;
+      }
+      return 0;
+    })
+    .slice(0, 50);
 };
 
 /**
