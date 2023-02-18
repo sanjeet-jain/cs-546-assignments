@@ -106,7 +106,7 @@ const helpers = {
 
   errorIfNullOrEmpty(input, inputName = "", customErrorMessage = "") {
     if (this.isNull(input) || this.isEmpty(input)) {
-      let errorMessage = "the " + inputName + " is null or empty!";
+      let errorMessage = inputName + " is null or empty!";
       if (customErrorMessage !== "") {
         errorMessage = customErrorMessage;
       }

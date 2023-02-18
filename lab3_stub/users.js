@@ -57,13 +57,15 @@ export const sameGenre = async (genre) => {
   //returns top 50
   return result
     .sort((a, b) => {
-      if (a.split(" ")[1] > b.split(" ")[1]) {
-        return 1;
-      }
-      if (a.split(" ")[1] < b.split(" ")[1]) {
+      const [aFirst, aLast] = a.split(" ");
+      const [bFirst, bLast] = b.split(" ");
+      if (aLast < bLast) {
         return -1;
+      } else if (aLast > bLast) {
+        return 1;
+      } else {
+        return aFirst.localeCompare(bFirst);
       }
-      return 0;
     })
     .slice(0, 50);
 };
