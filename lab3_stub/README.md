@@ -58,9 +58,9 @@ You must check:
 
 # sameGenre(genre)
 
-* [x] For this function, you will return an array of the first 50 users (so the 50 that appear first in the array of users. 
-* [x] If there are less than 50, then just return however many there are) who have the same favorite genre from users.json. 
-* [x] The array will be comprised of the names of user ("firstName lastName" format) sorted alphabetically by last name. 
+* [x] For this function, you will return an array of the first 50 users (so the 50 that appear first in the array of users.
+* [x] If there are less than 50, then just return however many there are) who have the same favorite genre from users.json.
+* [x] The array will be comprised of the names of user ("firstName lastName" format) sorted alphabetically by last name.
 * [x] You must return at least two users, so if there are not 2 or more users that have the same favorite genre for the genre provided you will throw an error.
 
 You must check:
