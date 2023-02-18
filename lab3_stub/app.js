@@ -46,175 +46,175 @@ import * as movies from "./movies.js";
 import * as users from "./users.js";
 
 async function main() {
-  // /* #region  getUserById test cases */
-  // [
-  //   "48fded55-37cd-4e6b-8f19-e78b481a14a4",
-  //   -1,
-  //   1001,
-  //   ,
-  //   "",
-  //   " ",
-  //   null,
-  //   "7989fa5e-5617-43f7-a931-46036f9dbcff",
-  // ].forEach(async (testData) => {
-  //   try {
-  //     const userdata = await users.getUserById(testData);
-  //     console.log("getUserById \n", testData, "\n", userdata);
-  //   } catch (e) {
-  //     console.log("getUserById \n", testData, "\n", e);
-  //   } finally {
-  //     console.log();
-  //   }
-  // });
-  // /* #endregion */
-  // /* #region  sameGenre test cases */
-  // [
-  //   "WaR",
-  //   "action",
-  //   "Action",
-  //   "ACTION",
-  //   "IMAX",
-  //   "(no genres listed)",
-  //   "(No GENRES LisTed)",
-  //   ["Action"],
-  //   123,
-  //   true,
-  //   null,
-  //   undefined,
-  //   NaN,
-  //   "",
-  //   " ",
-  // ].forEach(async (testData) => {
-  //   try {
-  //     const userdata = await users.sameGenre(testData);
-  //     console.log("sameGenre \n", testData, "\n", userdata);
-  //   } catch (e) {
-  //     console.log("sameGenre \n", testData, "\n", e);
-  //   } finally {
-  //     console.log();
-  //   }
-  // });
-  // /* #endregion */
-  // /* #region  moviesReviewed test cases */
-
-  // [
-  //   "64035fad-a5b7-48c9-9317-3e31e22fe26c",
-  //   "7989fa5e-5617-43f7-a931-46036f9dbcff",
-  //   -1,
-  //   1001,
-  //   ,
-  //   "",
-  //   " ",
-  //   null,
-  // ].forEach(async (testData) => {
-  //   try {
-  //     const userdata = await users.moviesReviewed(testData);
-  //     console.log("moviesReviewed", "\n", testData, "\n", userdata);
-  //   } catch (e) {
-  //     console.log("moviesReviewed \n", testData, "\n", e);
-  //   } finally {
-  //     console.log();
-  //   }
-  // });
-  // /* #endregion */
-  // /* #region  referMovies test cases */
-
-  // [
-  //   "7989fa5e-5617-43f7-a931-46036f9dbcff",
-  //   "5060fc9e-10c7-4f38-9f3d-47b7f477568b",
-  //   -1,
-  //   1001,
-  //   ,
-  //   "",
-  //   " ",
-  //   null,
-  // ].forEach(async (testData) => {
-  //   try {
-  //     const userdata = await users.referMovies(testData);
-  //     console.log("referMovies \n", testData, "\n", userdata);
-  //   } catch (e) {
-  //     console.log("referMovies \n", testData, "\n", e);
-  //   } finally {
-  //     console.log();
-  //   }
-  // });
-  // /* #endregion */
-  // /* #region  getMovieById test cases */
-
-  // [
-  //   "38fd6885-0271-4650-8afd-6d09f3a890a2",
-  //   "7989fa5e-5617-43f7-a931-46036f9dbcff",
-  //   -1,
-  //   1001,
-  //   ,
-  //   "",
-  //   " ",
-  //   null,
-  // ].forEach(async (testData) => {
-  //   try {
-  //     const userdata = await movies.getMovieById(testData);
-  //     console.log("getMovieById \n", testData, "\n", userdata);
-  //   } catch (e) {
-  //     console.log("getMovieById \n", testData, "\n", e);
-  //   } finally {
-  //     console.log();
-  //   }
-  // });
-  // /* #endregion */
-  // /* #region  findMoviesByDirector test cases */
-
-  // ["Fernando Dollimore", "Dollimore", -1, 1001, , "", " ", null].forEach(
-  //   async (testData) => {
-  //     try {
-  //       const userdata = await movies.findMoviesByDirector(testData);
-  //       console.log("findMoviesByDirector \n", testData, "\n", userdata);
-  //     } catch (e) {
-  //       console.log("findMoviesByDirector \n", testData, "\n", e);
-  //     } finally {
-  //       console.log();
-  //     }
-  //   }
-  // );
-  // /* #endregion */
-  // /* #region  findMoviesByCastMember test cases */
-
-  // [
-  //   "Fernando Dollimore",
-  //   "Huberto Snoddon",
-  //   " Huberto Snoddon ".toUpperCase(),
-  //   " Snoddon".toUpperCase(),
-  //   ,
-  //   -1,
-  //   1001,
-  //   ,
-  //   "",
-  //   " ",
-  //   null,
-  // ].forEach(async (testData) => {
-  //   try {
-  //     const userdata = await movies.findMoviesByCastMember(testData);
-  //     console.log("findMoviesByCastMember \n", testData, "\n", userdata);
-  //   } catch (e) {
-  //     console.log("findMoviesByCastMember \n", testData, "\n", e);
-  //   } finally {
-  //     console.log();
-  //   }
-  // });
-  // /* #endregion */
-  // /* #region  getOverallRating test cases */
+  /* #region  getUserById test cases */
+  [
+    "48fded55-37cd-4e6b-8f19-e78b481a14a4",
+    -1,
+    1001,
+    ,
+    "",
+    " ",
+    null,
+    "7989fa5e-5617-43f7-a931-46036f9dbcff",
+  ].forEach(async (testData) => {
+    try {
+      const userdata = await users.getUserById(testData);
+      console.log("getUserById \n", testData, "\n", userdata);
+    } catch (e) {
+      console.log("getUserById \n", testData, "\n", e);
+    } finally {
+      console.log();
+    }
+  });
+  /* #endregion */
+  /* #region  sameGenre test cases */
+  [
+    "WaR",
+    "action",
+    "Action",
+    "ACTION",
+    "IMAX",
+    "(no genres listed)",
+    "(No GENRES LisTed)",
+    ["Action"],
+    123,
+    true,
+    null,
+    undefined,
+    NaN,
+    "",
+    " ",
+  ].forEach(async (testData) => {
+    try {
+      const userdata = await users.sameGenre(testData);
+      console.log("sameGenre \n", testData, "\n", userdata);
+    } catch (e) {
+      console.log("sameGenre \n", testData, "\n", e);
+    } finally {
+      console.log();
+    }
+  });
+  /* #endregion */
+  /* #region  moviesReviewed test cases */
 
   [
-    "Mother",
-    // "Asterix and the Vikings (Astérix et les Vikings)",
-    // "Asterix and the Vikings (Astérix et les Vikings)".toUpperCase(),
-    // "Huberto Snoddon",
-    // ,
-    // -1,
-    // 1001,
-    // ,
-    // "",
-    // " ",
-    // null,
+    "64035fad-a5b7-48c9-9317-3e31e22fe26c",
+    "7989fa5e-5617-43f7-a931-46036f9dbcff",
+    -1,
+    1001,
+    ,
+    "",
+    " ",
+    null,
+  ].forEach(async (testData) => {
+    try {
+      const userdata = await users.moviesReviewed(testData);
+      console.log("moviesReviewed", "\n", testData, "\n", userdata);
+    } catch (e) {
+      console.log("moviesReviewed \n", testData, "\n", e);
+    } finally {
+      console.log();
+    }
+  });
+  /* #endregion */
+  /* #region  referMovies test cases */
+
+  [
+    "7989fa5e-5617-43f7-a931-46036f9dbcff",
+    "5060fc9e-10c7-4f38-9f3d-47b7f477568b",
+    -1,
+    1001,
+    ,
+    "",
+    " ",
+    null,
+  ].forEach(async (testData) => {
+    try {
+      const userdata = await users.referMovies(testData);
+      console.log("referMovies \n", testData, "\n", userdata);
+    } catch (e) {
+      console.log("referMovies \n", testData, "\n", e);
+    } finally {
+      console.log();
+    }
+  });
+  /* #endregion */
+  /* #region  getMovieById test cases */
+
+  [
+    "38fd6885-0271-4650-8afd-6d09f3a890a2",
+    "7989fa5e-5617-43f7-a931-46036f9dbcff",
+    -1,
+    1001,
+    ,
+    "",
+    " ",
+    null,
+  ].forEach(async (testData) => {
+    try {
+      const userdata = await movies.getMovieById(testData);
+      console.log("getMovieById \n", testData, "\n", userdata);
+    } catch (e) {
+      console.log("getMovieById \n", testData, "\n", e);
+    } finally {
+      console.log();
+    }
+  });
+  /* #endregion */
+  /* #region  findMoviesByDirector test cases */
+
+  ["Fernando Dollimore", "Dollimore", -1, 1001, , "", " ", null].forEach(
+    async (testData) => {
+      try {
+        const userdata = await movies.findMoviesByDirector(testData);
+        console.log("findMoviesByDirector \n", testData, "\n", userdata);
+      } catch (e) {
+        console.log("findMoviesByDirector \n", testData, "\n", e);
+      } finally {
+        console.log();
+      }
+    }
+  );
+  /* #endregion */
+  /* #region  findMoviesByCastMember test cases */
+
+  [
+    "Fernando Dollimore",
+    "Huberto Snoddon",
+    " Huberto Snoddon ".toUpperCase(),
+    " Snoddon".toUpperCase(),
+    ,
+    -1,
+    1001,
+    ,
+    "",
+    " ",
+    null,
+  ].forEach(async (testData) => {
+    try {
+      const userdata = await movies.findMoviesByCastMember(testData);
+      console.log("findMoviesByCastMember \n", testData, "\n", userdata);
+    } catch (e) {
+      console.log("findMoviesByCastMember \n", testData, "\n", e);
+    } finally {
+      console.log();
+    }
+  });
+  /* #endregion */
+  /* #region  getOverallRating test cases */
+
+  [
+    "Bad Girl Island (Sirens of Eleuthera) (Sirens of the Caribbean)",
+    "Asterix and the Vikings (Astérix et les Vikings)",
+    "Asterix and the Vikings (Astérix et les Vikings)".toUpperCase(),
+    "Huberto Snoddon",
+    ,
+    -1,
+    1001,
+    ,
+    "",
+    " ",
+    null,
   ].forEach(async (testData) => {
     try {
       const userdata = await movies.getOverallRating(testData);

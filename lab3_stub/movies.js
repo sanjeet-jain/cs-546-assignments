@@ -67,21 +67,18 @@ export const getOverallRating = async (title) => {
     throw "Error: movie title is not a valid string";
   }
   const movieData = await getData.getMovies();
-  let result = movieData.find(
+  const result = movieData.find(
     (movie) => movie.title.trim().toLowerCase() === title.trim().toLowerCase()
   );
-  console.log(movieData);
-  helpers.errorIfNullOrEmpty(movieData, "movie data", "movie title not found");
-  //   helpers.errorIfNullOrEmpty(movieData.reviews, "movie review data");
-  if (helpers.isEmpty(movieData.reviews)) {
-    return 0;
-  }
-  let movieReviewRating = movieData.reviews.reduce(
+
+  helpers.errorIfNullOrEmpty(result, "movie data", "movie title not found");
+
+  let movieReviewRating = result.reviews.reduce(
     (sum, review) => (sum += review.rating),
     0
   );
 
-  return Math.floor((movieReviewRating * 10) / movieData.reviews.length) / 10;
+  return Math.floor((movieReviewRating * 10) / result.reviews.length) / 10;
 };
 
 /**

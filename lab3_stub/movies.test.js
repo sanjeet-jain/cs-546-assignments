@@ -1,3 +1,4 @@
+import { number } from "yargs";
 import * as movies from "./movies.js";
 
 const expectedDirectorMovie = [
@@ -371,12 +372,78 @@ describe("movies.getOverallRating function", () => {
     const rating = await movies.getOverallRating(
       "Asterix and the Vikings (Astérix et les Vikings)"
     );
+    expect(typeof rating).toEqual("number");
     expect(rating).toEqual(2.2);
   });
   test("should return the overall rating of a movie with reviews", async () => {
-    const title = "The Shawshank Redemption";
-    const expectedRating = 9.3;
+    const title =
+      "Bad Girl Island (Sirens of Eleuthera) (Sirens of the Caribbean)";
     const rating = await movies.getOverallRating(title);
-    expect(rating).toBe(expectedRating);
+    expect(typeof rating).toEqual("number");
+    expect(rating).toEqual(4);
+  });
+});
+
+describe("movies.getMovieById", () => {
+  test("returns a movies object when a valid movies id is provided", async () => {
+    const result = await movies.getMovieById(
+      "38fd6885-0271-4650-8afd-6d09f3a890a2"
+    );
+    expect(result).toEqual({
+      id: "38fd6885-0271-4650-8afd-6d09f3a890a2",
+
+      title: "Asterix and the Vikings (Astérix et les Vikings)",
+
+      genre: "Adventure|Animation|Children|Comedy|Fantasy",
+
+      director: "Charissa Edinboro",
+
+      release_date: "06/29/2007",
+
+      runtime: "2h 35mins",
+
+      mpa_rating: "R",
+
+      cast: ["Sharl Covert", "Ailyn Howcroft", "Nissie Henrys"],
+
+      streaming_service: {
+        company: "Disney+",
+        link: "https://Disney+.com/Asterix and the Vikings (Astérix et les Vikings)",
+      },
+
+      reviews: [
+        { username: "afrill27", rating: 3, review: "A very ok movie." },
+
+        { username: "tchedzoy2v", rating: 1, review: "HORRIBLE MOVIE!!!" },
+
+        {
+          username: "ltruckettim",
+          rating: 2,
+          review: "It was meh, plot was very bad.",
+        },
+
+        { username: "fgoodale6l", rating: 3, review: "A very ok movie." },
+      ],
+    });
+  });
+
+  test("throws an error when a non-existent movies id is provided", async () => {
+    await expect(
+      movies.getMovieById("7989fa5e-5617-43f7-a931-46036f9dbcff")
+    ).rejects.toEqual("Error: movie not found");
+  });
+
+  test("throws an error when a non-string value is provided as movies id", async () => {
+    [-1, 1001, " "].forEach(async (testData) => {
+      await expect(movies.getMovieById(testData)).rejects.toEqual(
+        "Error: movie id is not a valid string"
+      );
+    });
+
+    [, , "", null].forEach(async (testData) => {
+      await expect(movies.getMovieById(testData)).rejects.toEqual(
+        "Error: movie id is null or empty!"
+      );
+    });
   });
 });
