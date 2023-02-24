@@ -3,15 +3,28 @@ import { dbConnection, closeConnection } from "./config/mongoConnection.js";
 import * as bandsMongo from "./config/mongoCollections.js";
 
 let bandCollection;
-
+let bandId;
+const dumbExample = {
+  name: "   Dumb a$$ title with spaces at the end and start :)   ",
+  genre: [" DuMb Genre With SPaces "],
+  website: " http:// dumb website with space in the middle .com ",
+  recordCompany: " dumb stupid lab 3 test case with stupid space ",
+  groupMembers: [" PatriCk AI "],
+  yearBandWasFormed: 2023,
+};
 beforeAll(async () => {
   const db = await dbConnection();
   await db.dropDatabase();
   bandCollection = await bandsMongo.bands();
+
+  const insertedBand = await bandCollection.insertOne(dumbExample);
+  bandId = insertedBand.insertedId.toString();
 });
 afterEach(async () => {
   await bandCollection.deleteMany({});
   jest.restoreAllMocks();
+  const insertedBand = await bandCollection.insertOne(dumbExample);
+  bandId = insertedBand.insertedId.toString();
 });
 
 afterAll(async () => {
@@ -523,7 +536,7 @@ describe("band.js create Valid Tests", () => {
 
 describe("band.js get Valid Tests", () => {
   test("should return a band when given a valid id", async () => {
-    const newBand = await bands.create(
+    const band = await bands.create(
       "Pink Floyd Alternative",
       ["Progressive Rock", "Psychedelic rock", "Classic Rock"],
       "http://www.pinkfloyd.com",
@@ -538,7 +551,7 @@ describe("band.js get Valid Tests", () => {
       1965
     );
 
-    const band = await bands.get(newBand._id);
+    const newBand = await bands.get(band._id);
     expect(newBand._id).toBeTruthy();
     expect(newBand.name).toBe("Pink Floyd Alternative");
     expect(newBand.genre).toEqual([
@@ -557,7 +570,19 @@ describe("band.js get Valid Tests", () => {
     expect(newBand.website).toBe("http://www.pinkfloyd.com");
     expect(newBand.yearBandWasFormed).toBe(1965);
   });
+  test("should return a band when given a valid id", async () => {
+    const newBand = await bands.get(bandId);
+    expect(newBand._id).toBe(bandId);
+    expect(newBand.name).toEqual(dumbExample.name);
+    expect(newBand.genre).toEqual(dumbExample.genre);
+    expect(newBand.groupMembers).toEqual(dumbExample.groupMembers);
+    expect(newBand.recordCompany).toEqual(dumbExample.recordCompany);
+    expect(newBand.website).toEqual(dumbExample.website);
+    expect(newBand.yearBandWasFormed).toEqual(dumbExample.yearBandWasFormed);
+  });
+});
 
+describe("band.js get Invalid Tests", () => {
   test("should throw an error if no id is provided", async () => {
     await expect(bands.get()).rejects.toEqual("Error: id is null or empty!");
   });
@@ -578,6 +603,48 @@ describe("band.js get Valid Tests", () => {
   test("should throw an error if no band exists with the provided id", async () => {
     await expect(bands.get("000000000000000000000000")).rejects.toEqual(
       "Error: Band not found with id : 000000000000000000000000"
+    );
+  });
+});
+
+describe("band.js remove Tests", () => {
+  test("successfully bands.removes a band from the database", async () => {
+    const result = await bands.remove(bandId);
+    expect(result).toEqual(
+      `${dumbExample.name} has been successfully deleted!`
+    );
+    await expect(bands.get(bandId)).rejects.toEqual(
+      `Error: Band not found with id : ${bandId}`
+    );
+  });
+
+  test("throws an error if no id is provided", async () => {
+    await expect(bands.remove()).rejects.toEqual("Error: id is null or empty!");
+  });
+
+  test("throws an error if id is not a string", async () => {
+    await expect(bands.remove(123)).rejects.toEqual(
+      "Error: id is not a valid ObjectId string"
+    );
+  });
+
+  test("throws an error if id is an empty string", async () => {
+    await expect(bands.remove("")).rejects.toEqual(
+      "Error: id is null or empty!"
+    );
+  });
+
+  test("throws an error if id is not a valid ObjectId", async () => {
+    const invalidId = "invalid-id";
+    await expect(bands.remove(invalidId)).rejects.toEqual(
+      `Error: id is not a valid ObjectId string`
+    );
+  });
+
+  test("throws an error if band does not exist with the provided id", async () => {
+    const nonExistentId = "000000000000000000000000";
+    await expect(bands.remove(nonExistentId)).rejects.toEqual(
+      `Error: ${nonExistentId} not found for deletion`
     );
   });
 });

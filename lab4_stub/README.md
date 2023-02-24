@@ -165,8 +165,7 @@ Would return and log:
         genre: ["Alternative Rock", "Pop Rock", "Alternative Metal"],    website: "http://www.linkinpark.com",    recordCompany: "Warner",    groupMembers: ["Chester Bennington", "Rob Bourdon", "Brad Delson", "Mike Shinoda", "Dave Farrell", "Joe Hahn"],    yearBandWasFormed: 1996
     }
     ```
-
-    [ ] **Notice the output does not have ObjectId() around the ID field and no quotes around the key names, you need to display it as such.**
+* [x] **Notice the output does not have ObjectId() around the ID field and no quotes around the key names, you need to display it as such.**
 
 ### async get(id);
 
@@ -175,21 +174,21 @@ Would return and log:
 * [x] If the `id` provided is not a `string`, or is an  empty string, the method should throw.
 * [x] If the `id`  provided is not a valid `ObjectId`, the method should throw
 * [x] If the no band exists with that `id`, the method should throw.
-* [ ] For example, you would use this method as:
+* [x] For example, you would use this method as:
 <br>
     import \* as bands from "./bands.js";
 <br>
     async function main() {
     const linkinPark = await bands.get("507f1f77bcf86cd799439013"); console.log(linkinPark); } main();
-* [ ] Would return and log Linkin Park:
+* [x] Would return and log Linkin Park:
 <br>
     {
     \_id: "507f1f77bcf86cd799439013",
     name: "Linkin Park",
     genre: ["Alternative Rock", "Pop Rock", "Alternative Metal"], website: "http://www.linkinpark.com", recordCompany: "Warner", groupMembers: ["Chester Bennington", "Rob Bourdon", "Brad Delson", "Mike Shinoda", "Dave Farrell", "Joe Hahn"], yearBandWasFormed: 1996
     }
-* [ ] **Notice the output does not have ObjectId() around the ID field and no quotes around the key names, you need to display it as such.**
-* [ ] <strong>Important note</strong>:  The ID field that MongoDB generates is an `ObjectId`.  This function takes in a `string`representation of an ID as the `id` parameter.  You will need to convert it to an `ObjectId` in your function before you query the DB for the provided ID and then pass that converted value to your query.
+* [x] **Notice the output does not have ObjectId() around the ID field and no quotes around the key names, you need to display it as such.**
+* [x] <strong>Important note</strong>:  The ID field that MongoDB generates is an `ObjectId`.  This function takes in a `string`representation of an ID as the `id` parameter.  You will need to convert it to an `ObjectId` in your function before you query the DB for the provided ID and then pass that converted value to your query.
 <br>
     //We need to require ObjectId from mongo
     let { ObjectId } = require('mongodb');
@@ -238,19 +237,19 @@ Would return and log:
 
 ### async remove(id)
 
-* [ ] This function will remove the band from the database.
-* [ ] If no `id` is provided, the method should throw.
-* [ ] If the `id` provided is not a `string`, or is an empty string the method should throw.
-* [ ] If the `id` provided is not a valid `ObjectId`, the method should throw
-* [ ] If the band cannot be removed (does not exist), the method should throw.
-* [ ] If the removal succeeds, return the name of the band and the text " has been successfully deleted!"
+* [x] This function will remove the band from the database.
+* [x] If no `id` is provided, the method should throw.
+* [x] If the `id` provided is not a `string`, or is an empty string the method should throw.
+* [x] If the `id` provided is not a valid `ObjectId`, the method should throw
+* [x] If the band cannot be removed (does not exist), the method should throw.
+* [x] If the removal succeeds, return the name of the band and the text " has been successfully deleted!"
 <br>
     import \* as bands from "./bands.js";
 <br>
     async function main() {
     const removeBeatles = await bands.remove("507f1f77bcf86cd799439012"); console.log(removeBeatles); } main();
-* [ ] Would return and then log: "The Beatles has been successfully deleted!".  **NOTE: YOU MUST RETURN THIS EXACT SENTENCE. Points will be deducted if you do not match this format 100% including the "!" and including the band name that was deleted. It must match 100% or points will be deducted.**
-* [ ] <strong>Important note</strong>:  The ID field that MongoDB generates is an `ObjectId`.  This function takes in a `string`representation of an ID as the `id` parameter.  You will need to convert it to an `ObjectId` in your function before you query the DB for the provided ID.  See example above in `getId()`.
+* [x] Would return and then log: "The Beatles has been successfully deleted!".  **NOTE: YOU MUST RETURN THIS EXACT SENTENCE. Points will be deducted if you do not match this format 100% including the "!" and including the band name that was deleted. It must match 100% or points will be deducted.**
+* [x] <strong>Important note</strong>:  The ID field that MongoDB generates is an `ObjectId`.  This function takes in a `string`representation of an ID as the `id` parameter.  You will need to convert it to an `ObjectId` in your function before you query the DB for the provided ID.  See example above in `getId()`.
 
 ### async rename(id, newName)
 

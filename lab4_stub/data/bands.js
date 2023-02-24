@@ -75,7 +75,7 @@ export const create = async (
   const insertInfo = await bandCollection.insertOne(band);
   // Retrieve inserted band and return as object
   if (!insertInfo.acknowledged || !insertInfo.insertedId) {
-    throw helpers.throwError("", "", "Could not add band");
+    helpers.throwError("", "", "Could not add band");
   }
   const newId = insertInfo.insertedId.toString();
   const insertedBand = await get(newId);
@@ -97,6 +97,22 @@ export const get = async (id) => {
   return band;
 };
 
-export const remove = async (id) => {};
+export const remove = async (id) => {
+  helpers.errorIfNullOrEmpty(id, "id");
+  if (!helpers.isNonEmptyString(id, false) || !ObjectId.isValid(id.trim())) {
+    helpers.throwError("id", "ObjectId string");
+  }
+  id = id.trim();
+  const bandCollection = await bands();
+  const deletionInfo = await bandCollection.findOneAndDelete({
+    _id: new ObjectId(id),
+  });
+
+  if (deletionInfo.lastErrorObject.n === 0) {
+    helpers.throwError("", "", `${id} not found for deletion`);
+  }
+  //do not trim !
+  return `${deletionInfo.value.name} has been successfully deleted!`;
+};
 
 export const rename = async (id, newName) => {};

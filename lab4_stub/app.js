@@ -25,7 +25,7 @@ async function main() {
   const db = await dbConnection();
   await db.dropDatabase();
   const pinkFloyd = await bands.create(
-    "Pink Floyd Alternative",
+    "Pink Floyd Alternative ",
     ["Progressive Rock", "Psychedelic rock", "Classic Rock"],
     "http://www.pinkfloyd.com",
     "EMI",
@@ -38,7 +38,13 @@ async function main() {
     ],
     1965
   );
-  console.log(pinkFloyd);
+  console.log("create \n", pinkFloyd);
+  console.log();
+  console.log("get \n", await bands.get(pinkFloyd._id));
+  console.log();
+  const removeFloyd = await bands.remove(pinkFloyd._id);
+  console.log("remove");
+  console.log(removeFloyd);
 
   // 2. Log the newly created band. (Just that band, not all bands)
 
