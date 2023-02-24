@@ -825,3 +825,117 @@ describe("getAll", () => {
     expect(result[2].yearBandWasFormed).toEqual(dumbExample3.yearBandWasFormed);
   });
 });
+
+describe("bands.rename", () => {
+  test("throws an error when id is null", async () => {
+    await expect(bands.rename(null, "New Band Name")).rejects.toEqual(
+      "Error: id is null or empty!"
+    );
+  });
+
+  test("throws an error when id is an empty string", async () => {
+    await expect(bands.rename("", "New Band Name")).rejects.toEqual(
+      "Error: id is null or empty!"
+    );
+  });
+
+  test("throws an error when id is not a string", async () => {
+    await expect(bands.rename(123, "New Band Name")).rejects.toEqual(
+      "Error: id is not a valid ObjectId string"
+    );
+  });
+
+  test("throws an error when id is not a valid ObjectId", async () => {
+    await expect(bands.rename("12345", "New Band Name")).rejects.toEqual(
+      "Error: id is not a valid ObjectId string"
+    );
+  });
+
+  test("throws an error when newName is null", async () => {
+    await expect(bands.rename(bandId, null)).rejects.toEqual(
+      "Error: newName is null or empty!"
+    );
+  });
+
+  test("throws an error when newName is an empty string", async () => {
+    await expect(bands.rename(bandId, "")).rejects.toEqual(
+      "Error: newName is null or empty!"
+    );
+  });
+
+  test("throws an error when newName is not a string", async () => {
+    await expect(bands.rename(bandId, 123)).rejects.toEqual(
+      "Error: newName is not a valid string"
+    );
+  });
+
+  test("throws an error when band does not exist", async () => {
+    await expect(
+      bands.rename("123456789012345678901234", "New Band Name")
+    ).rejects.toEqual(
+      "Error: Band not found with id : 123456789012345678901234"
+    );
+  });
+
+  test("throws an error when newName is the same as the current value stored in the database", async () => {
+    const dumbExample1 = await bands.create(
+      "Pink Floyd Alternative",
+      ["Progressive Rock", "Psychedelic rock", "Classic Rock"],
+      "http://www.pinkfloyd.com",
+      "EMI",
+      [
+        "Roger Waters",
+        "David Gilmour",
+        "Nick Mason",
+        "Richard Wright",
+        "Sid Barrett",
+      ],
+      1965
+    );
+    await expect(
+      bands.rename(dumbExample1._id, "  Pink Floyd Alternative ")
+    ).rejects.toEqual("Error: newName cant be same as old name");
+  });
+
+  test("updates and returns the entire band object", async () => {
+    const dumbExample1 = await bands.create(
+      "Pink Floyd Alternative",
+      ["Progressive Rock", "Psychedelic rock", "Classic Rock"],
+      "http://www.pinkfloyd.com",
+      "EMI",
+      [
+        "Roger Waters",
+        "David Gilmour",
+        "Nick Mason",
+        "Richard Wright",
+        "Sid Barrett",
+      ],
+      1965
+    );
+    const newBandName = "New Band Name";
+    const updatedBand = await bands.rename(dumbExample1._id, newBandName);
+    expect(updatedBand.name).toEqual(newBandName);
+    expect(updatedBand._id).toBeDefined();
+
+    expect(typeof updatedBand).toEqual("object");
+    expect(updatedBand).toHaveProperty("_id");
+    expect(typeof updatedBand._id).toEqual("string");
+    expect(updatedBand).toHaveProperty("name");
+    expect(typeof updatedBand.name).toEqual("string");
+    expect(updatedBand).toHaveProperty("genre");
+    expect(Array.isArray(updatedBand.genre)).toBe(true);
+    expect(updatedBand.genre.every((g) => typeof g === "string")).toBe(true);
+    expect(updatedBand).toHaveProperty("website");
+    expect(typeof updatedBand.website).toEqual("string");
+
+    expect(updatedBand).toHaveProperty("recordCompany");
+    expect(typeof updatedBand.recordCompany).toEqual("string");
+    expect(updatedBand).toHaveProperty("groupMembers");
+    expect(Array.isArray(updatedBand.groupMembers)).toBe(true);
+    expect(updatedBand.groupMembers.every((gm) => typeof gm === "string")).toBe(
+      true
+    );
+    expect(updatedBand).toHaveProperty("yearBandWasFormed");
+    expect(typeof updatedBand.yearBandWasFormed).toEqual("number");
+  });
+});

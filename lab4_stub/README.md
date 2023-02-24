@@ -138,7 +138,7 @@ Would return and log:
 
 ### async getAll();
 
-* [ ] This function will return an array of all bands in the collection.   **If there are no bands in your DB, this function will return an empty array**
+* [x] This function will return an array of all bands in the collection.   **If there are no bands in your DB, this function will return an empty array**
 <br>
     import \* as bands import "./bands.js";
 <br>
@@ -148,7 +148,7 @@ Would return and log:
     }
 <br>
     main();
-* [ ] Would return and log all the bands in the database.
+* [x] Would return and log all the bands in the database.
 
     ```
     [{
@@ -254,13 +254,13 @@ Would return and log:
 ### async rename(id, newName)
 
 * [ ] This function will update the name of the band currently in the database.
-* [ ] If no `id` is provided, the method should throw.
-* [ ] If the `id` provided is not a `string`, or is an empty string the method should throw.
-* [ ] If the `id` provided is not a valid `ObjectId`, the method should throw.
-* [ ] If `newName` is not provided, the method should throw.
-* [ ] If `newName`  is not a `string`, or an empty string, the method should throw.
-* [ ] If the band cannot be updated (does not exist), the method should throw.
-* [ ] if the `newName` is the same as the current value stored in the database, the method should throw.
+* [x] If no `id` is provided, the method should throw.
+* [x] If the `id` provided is not a `string`, or is an empty string the method should throw.
+* [x] If the `id` provided is not a valid `ObjectId`, the method should throw.
+* [x] If `newName` is not provided, the method should throw.
+* [x] If `newName`  is not a `string`, or an empty string, the method should throw.
+* [x] If the band cannot be updated (does not exist), the method should throw.
+* [x] if the `newName` is the same as the current value stored in the database, the method should throw.
 * [ ] If the update succeeds, return the entire band object as it is after it is updated.
 <br>
     import \* as bands from "./bands.js";
@@ -279,22 +279,22 @@ Would return and log:
 
 ## app.js
 
-* [ ] For your app.js file, you will:
-* [ ] 1\. Create a band of your choice\.
-* [ ] 2\. Log the newly created band\. \(Just that band\, not all bands\)
-* [ ] 3\. Create another band of your choice\.
-* [ ] 4\. Query all bands\, and log them all
-* [ ] 5\. Create the 3rd band of your choice\.
-* [ ] 6\. Log the newly created 3rd band\. \(Just that band\, not all bands\)
+* [x] For your app.js file, you will:
+* [x] 1\. Create a band of your choice\.
+* [x] 2\. Log the newly created band\. \(Just that band\, not all bands\)
+* [x] 3\. Create another band of your choice\.
+* [x] 4\. Query all bands\, and log them all
+* [x] 5\. Create the 3rd band of your choice\.
+* [x] 6\. Log the newly created 3rd band\. \(Just that band\, not all bands\)
 * [ ] 7\. Rename the first band
-* [ ] 8\. Log the first band with the updated name\.
-* [ ] 9\. Remove the second band you created\.
-* [ ] 10\. Query all bands\, and log them all
-* [ ] 11\. Try to create a band with bad input parameters to make sure it throws errors\.
-* [ ] 12\. Try to remove a band that does not exist to make sure it throws errors\.
+* [x] 8\. Log the first band with the updated name\.
+* [x] 9\. Remove the second band you created\.
+* [x] 10\. Query all bands\, and log them all
+* [x] 11\. Try to create a band with bad input parameters to make sure it throws errors\.
+* [x] 12\. Try to remove a band that does not exist to make sure it throws errors\.
 * [ ] 13\. Try to rename a band that does not exist to make sure it throws errors\.
 * [ ] 14\. Try to rename a band passing in invalid data for the `newName` parameter to make sure it throws errors.
-* [ ] 15\. Try getting a band by ID that does not exist to make sure it throws errors\.
+* [x] 15\. Try getting a band by ID that does not exist to make sure it throws errors\.
 
 ## General Requirements
 

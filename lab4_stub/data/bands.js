@@ -82,6 +82,9 @@ export const create = async (
   return insertedBand;
 };
 
+/**
+ * @returns {[object]} list of all bands
+ */
 export const getAll = async () => {
   const bandCollection = await bands();
   const bandList = await bandCollection.find({}).toArray();
@@ -93,6 +96,10 @@ export const getAll = async () => {
   });
 };
 
+/**
+ * @param {string} id band id to get
+ * @returns band object corresponding to id
+ */
 export const get = async (id) => {
   helpers.errorIfNullOrEmpty(id, "id");
   if (!helpers.isNonEmptyString(id, false) || !ObjectId.isValid(id.trim())) {
@@ -106,6 +113,10 @@ export const get = async (id) => {
   return band;
 };
 
+/**
+ * @param {string} id band id to be removed
+ * @returns `${deleted.movieName} has been successfully deleted!`
+ */
 export const remove = async (id) => {
   helpers.errorIfNullOrEmpty(id, "id");
   if (!helpers.isNonEmptyString(id, false) || !ObjectId.isValid(id.trim())) {
@@ -124,4 +135,40 @@ export const remove = async (id) => {
   return `${deletionInfo.value.name} has been successfully deleted!`;
 };
 
-export const rename = async (id, newName) => {};
+/**
+ * renames the band
+ * @param {string} id band id
+ * @param {string} newName new name used for renaming the band
+ */
+export const rename = async (id, newName) => {
+  helpers.errorIfNullOrEmpty(id, "id");
+  if (!helpers.isNonEmptyString(id, false) || !ObjectId.isValid(id.trim())) {
+    helpers.throwError("id", "ObjectId string");
+  }
+  helpers.errorIfNullOrEmpty(newName, "newName");
+  if (!helpers.isNonEmptyString(newName, false)) {
+    helpers.throwError("newName", "string");
+  }
+  id = id.trim();
+  const band = await get(id);
+  newName = newName.trim();
+  if (newName === band.name) {
+    helpers.throwError("", "", "newName cant be same as old name");
+  }
+  let updatedBand = {
+    ...band,
+    name: newName,
+  };
+  delete updatedBand._id;
+  const bandCollection = await bands();
+  const updatedInfo = await bandCollection.findOneAndReplace(
+    { _id: new ObjectId(id) },
+    updatedBand
+  );
+
+  if (updatedInfo.lastErrorObject.n === 0) {
+    helpers.throwError("", "", "could not update post successfully");
+  }
+
+  return await get(id);
+};
