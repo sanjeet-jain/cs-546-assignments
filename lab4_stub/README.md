@@ -132,9 +132,9 @@ Would return and log:
 }
 ```
 
-* [ ] This band will be stored in the **bands** collection.
-* [ ] If the band cannot be created, the method should throw.
-* [ ] **Notice the output does not have ObjectId() around the ID field and no quotes around the key names, you need to display it as such.**
+* [x] This band will be stored in the **bands** collection.
+* [x] If the band cannot be created, the method should throw.
+* [x] **Notice the output does not have ObjectId() around the ID field and no quotes around the key names, you need to display it as such.**
 
 ### async getAll();
 
@@ -170,11 +170,11 @@ Would return and log:
 
 ### async get(id);
 
-* [ ] When given an id, this function will return a band from the database.
-* [ ] If no `id` is provided, the method should throw.
-* [ ] If the `id` provided is not a `string`, or is an  empty string, the method should throw.
-* [ ] If the `id`  provided is not a valid `ObjectId`, the method should throw
-* [ ] If the no band exists with that `id`, the method should throw.
+* [x] When given an id, this function will return a band from the database.
+* [x] If no `id` is provided, the method should throw.
+* [x] If the `id` provided is not a `string`, or is an  empty string, the method should throw.
+* [x] If the `id`  provided is not a valid `ObjectId`, the method should throw
+* [x] If the no band exists with that `id`, the method should throw.
 * [ ] For example, you would use this method as:
 <br>
     import \* as bands from "./bands.js";

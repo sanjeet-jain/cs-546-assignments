@@ -82,6 +82,11 @@ const helpers = {
     const regex = /^http:\/\/www\..{5,}\.com$/;
     return regex.test(url.trim());
   },
+  errorIfNotArray(input, arrayName = "") {
+    if (!Array.isArray(input)) {
+      throw this.throwError(arrayName, "array");
+    }
+  },
   throwError(
     variableName,
     invalidType = typeof variableName,
@@ -105,11 +110,15 @@ const helpers = {
       this.throwError(inputName, "Array");
     }
     if (
-      !temp.every((value) => {
+      !input.every((value) => {
         return this.isNonEmptyString(value, allowSpaces);
       })
     ) {
-      this.throwError(inputName, "string");
+      this.throwError(
+        inputName,
+        "array of strings",
+        `${inputName} must be an array of non-empty strings`
+      );
     }
     return true;
   },
