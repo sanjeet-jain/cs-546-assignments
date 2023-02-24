@@ -6,12 +6,12 @@ For this lab, we are going to make a few parts of a band database. You will crea
 
 You will:
 
-* [ ] Separate concerns into different modules.
-* [ ] Store the database connection in one module.
-* [ ] Define and store the database collections in another module.
-* [ ] Define your Data manipulation functions in another module.
-* [ ] Continue practicing the usage of **`async` / `await`** for asynchronous code
-* [ ] Continuing our exercises of linking these modules together as needed
+* [x] *Separate concerns into different modules.*
+* [x] *Store the database connection in one module.*
+* [x] *Define and store the database collections in another module.*
+* [x] *Define your Data manipulation functions in another module.*
+* [x] <em>Continue practicing the usage of</em> ***`async` / `await`*** <em>for asynchronous code</em>
+* [x] *Continuing our exercises of linking these modules together as needed*
 
 ## Packages you will use:
 
@@ -208,6 +208,7 @@ Would return and log:
     function myDBfunction(id) {
 
     ```
+    ```
     //check to make sure we have input at all
     if (!id) throw 'Id parameter must be supplied';
     
@@ -218,8 +219,10 @@ Would return and log:
     //if it fails, you will throw an error   if (!ObjectId.isValid(id) throw "ID is not a valid Object ID";
     console.log('Valid Object ID, now I can pass ObjectId(id) as the ID into my query.');
     ```
-
+    
     }
+    ```
+
 <br>
     //passing a valid string that can convert to an Object ID
     try {
@@ -253,7 +256,7 @@ Would return and log:
 
 ### async rename(id, newName)
 
-* [ ] This function will update the name of the band currently in the database.
+* [x] This function will update the name of the band currently in the database.
 * [x] If no `id` is provided, the method should throw.
 * [x] If the `id` provided is not a `string`, or is an empty string the method should throw.
 * [x] If the `id` provided is not a valid `ObjectId`, the method should throw.
@@ -261,21 +264,21 @@ Would return and log:
 * [x] If `newName`  is not a `string`, or an empty string, the method should throw.
 * [x] If the band cannot be updated (does not exist), the method should throw.
 * [x] if the `newName` is the same as the current value stored in the database, the method should throw.
-* [ ] If the update succeeds, return the entire band object as it is after it is updated.
+* [x] If the update succeeds, return the entire band object as it is after it is updated.
 <br>
     import \* as bands from "./bands.js";
 <br>
     async function main() {
     const renamedBeatles = await bands.rename("507f1f77bcf86cd799439012", "Lennon's Boys"); console.log(renamedBeatles); } main();
-* [ ] Would log the updated band:
+* [x] Would log the updated band:
 <br>
     {
     \_id: "507f1f77bcf86cd799439012",
     name: "Lennon's Boys",
     genre: ["Rock", "Pop", "Psychedelia"], website: "http://www.thebeatles.com", recordCompany: "Parlophone", groupMembers: ["John Lennon", "Paul McCartney", "George Harrison", "Ringo Starr"], yearBandWasFormed: 1960
     }
-* [ ] **Notice the output does not have ObjectId() around the ID field and no quotes around the key names, you need to display it as such.**
-* [ ] <strong>Important note</strong>:  The ID field that MongoDB generates is an `ObjectId`.  This function takes in a `string`representation of an ID as the `id` parameter.  You will need to convert it to an `ObjectId` in your function before you query the DB for the provided ID.  See example above in `getId()`.
+* [x] **Notice the output does not have ObjectId() around the ID field and no quotes around the key names, you need to display it as such.**
+* [x] <strong>Important note</strong>:  The ID field that MongoDB generates is an `ObjectId`.  This function takes in a `string`representation of an ID as the `id` parameter.  You will need to convert it to an `ObjectId` in your function before you query the DB for the provided ID.  See example above in `getId()`.
 
 ## app.js
 
@@ -286,23 +289,23 @@ Would return and log:
 * [x] 4\. Query all bands\, and log them all
 * [x] 5\. Create the 3rd band of your choice\.
 * [x] 6\. Log the newly created 3rd band\. \(Just that band\, not all bands\)
-* [ ] 7\. Rename the first band
+* [x] 7\. Rename the first band
 * [x] 8\. Log the first band with the updated name\.
 * [x] 9\. Remove the second band you created\.
 * [x] 10\. Query all bands\, and log them all
 * [x] 11\. Try to create a band with bad input parameters to make sure it throws errors\.
 * [x] 12\. Try to remove a band that does not exist to make sure it throws errors\.
-* [ ] 13\. Try to rename a band that does not exist to make sure it throws errors\.
-* [ ] 14\. Try to rename a band passing in invalid data for the `newName` parameter to make sure it throws errors.
+* [x] 13\. Try to rename a band that does not exist to make sure it throws errors\.
+* [x] 14\. Try to rename a band passing in invalid data for the `newName` parameter to make sure it throws errors.
 * [x] 15\. Try getting a band by ID that does not exist to make sure it throws errors\.
 
 ## General Requirements
 
-* [ ] 1\. You **must not submit** your node\_modules folder or package-lock.json
-* [ ] 2\. You **must remember** to save your dependencies to your package.json folder
-* [ ] 3\. You must do basic error checking in each function
-* [ ] 4\. Check for arguments existing and of proper type\.
-* [ ] 5\. Throw if anything is out of bounds \(ie\, trying to perform an incalculable math operation or accessing data that does not exist\)
-* [ ] 6\. If a function should return a promise\, you should mark the method as an `async` function and return the value. Any promises you use inside of that, you should *await* to get their result values. If the promise should reject, then you should throw inside of that promise in order to return a rejected promise automatically. Thrown exceptions will bubble up from any awaited call that throws as well, unless they are caught in the async method.
-* [ ] 7\. You **must remember** to update your package.json file to set `app.js` as your starting script!
-* [ ] 8\. You **must** submit a zip file named in the following format: `LastName_FirstName_CS546_SECTION.zip (ie. Hill_Patrick_CS546_WS.zip)`
+* [x] 1\. You **must not submit** your node\_modules folder or package-lock.json
+* [x] 2\. You **must remember** to save your dependencies to your package.json folder
+* [x] 3\. You must do basic error checking in each function
+* [x] 4\. Check for arguments existing and of proper type\.
+* [x] 5\. Throw if anything is out of bounds \(ie\, trying to perform an incalculable math operation or accessing data that does not exist\)
+* [x] 6\. If a function should return a promise\, you should mark the method as an `async` function and return the value. Any promises you use inside of that, you should *await* to get their result values. If the promise should reject, then you should throw inside of that promise in order to return a rejected promise automatically. Thrown exceptions will bubble up from any awaited call that throws as well, unless they are caught in the async method.
+* [x] 7\. You **must remember** to update your package.json file to set `app.js` as your starting script!
+* [x] 8\. You **must** submit a zip file named in the following format: `LastName_FirstName_CS546_SECTION.zip (ie. Hill_Patrick_CS546_WS.zip)`
