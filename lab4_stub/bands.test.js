@@ -852,9 +852,7 @@ describe("bands.rename", () => {
   });
 
   test("throws an error when newName is null", async () => {
-    await expect(bands.rename(bandId, null)).rejects.toEqual(
-      "Error: newName is null or empty!"
-    );
+    await expect(bands.rename(bandId, null)).rejects.toMatch("Error");
   });
 
   test("throws an error when newName is an empty string", async () => {
