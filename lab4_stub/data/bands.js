@@ -1,5 +1,5 @@
 // TODO: Export and implement the following functions in ES6 format
-const create = async (
+export const create = async (
   name,
   genre,
   website,
@@ -8,10 +8,10 @@ const create = async (
   yearBandWasFormed
 ) => {};
 
-const getAll = async () => {};
+export const getAll = async () => {};
 
-const get = async (id) => {};
+export const get = async (id) => {};
 
-const remove = async (id) => {};
+export const remove = async (id) => {};
 
-const rename = async (id, newName) => {};
+export const rename = async (id, newName) => {};
