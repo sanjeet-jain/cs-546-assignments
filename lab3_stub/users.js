@@ -55,19 +55,7 @@ export const sameGenre = async (genre) => {
     throw "Error: numbers of users with the same genre are less than 2";
   }
   //returns top 50
-  return result
-    .sort((a, b) => {
-      const [aFirst, aLast] = a.split(" ");
-      const [bFirst, bLast] = b.split(" ");
-      if (aLast < bLast) {
-        return -1;
-      } else if (aLast > bLast) {
-        return 1;
-      } else {
-        return aFirst.localeCompare(bFirst);
-      }
-    })
-    .slice(0, 50);
+  return result.sort().slice(0, 50);
 };
 
 /**
@@ -120,7 +108,7 @@ export const referMovies = async (id) => {
           })
       );
     })
-    .map((movie) => movie.title.trim());
+    .map((movie) => movie.title);
 
   return filteredMovieData;
 };
