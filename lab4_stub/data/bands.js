@@ -82,7 +82,16 @@ export const create = async (
   return insertedBand;
 };
 
-export const getAll = async () => {};
+export const getAll = async () => {
+  const bandCollection = await bands();
+  const bandList = await bandCollection.find({}).toArray();
+  return bandList.map((band) => {
+    return {
+      ...band,
+      _id: band._id.toString(),
+    };
+  });
+};
 
 export const get = async (id) => {
   helpers.errorIfNullOrEmpty(id, "id");

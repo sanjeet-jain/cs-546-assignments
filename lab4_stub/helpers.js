@@ -78,9 +78,18 @@ const helpers = {
       return false;
     }
   },
+
+  /**
+   *
+   * @param {string} url
+   * @returns {boolean}
+   */
   isValidUrl(url) {
-    const regex = /^http:\/\/www\..{5,}\.com$/;
-    return regex.test(url.trim());
+    if (url.trim().startsWith("http://www.") && url.trim().endsWith(".com")) {
+      return true;
+    } else {
+      return false;
+    }
   },
   errorIfNotArray(input, arrayName = "") {
     if (!Array.isArray(input)) {

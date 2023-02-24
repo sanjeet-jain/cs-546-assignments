@@ -7,7 +7,7 @@ let bandId;
 const dumbExample = {
   name: "   Dumb a$$ title with spaces at the end and start :)   ",
   genre: [" DuMb Genre With SPaces "],
-  website: " http:// dumb website with space in the middle .com ",
+  website: " http://www. dumb website with space in the middle .com ",
   recordCompany: " dumb stupid lab 3 test case with stupid space ",
   groupMembers: [" PatriCk AI "],
   yearBandWasFormed: 2023,
@@ -223,7 +223,7 @@ describe("band.js create Invalid Tests", () => {
       bands.create(
         "Led Zeppelin",
         ["Hard rock", "Blues rock", "Heavy metal"],
-        "www.ledzeppelin.com",
+        "http:// www.ledzeppelin.com",
         "Atlantic Records",
         ["Jimmy Page", "Robert Plant", "John Paul Jones", "John Bonham"],
         1968
@@ -531,6 +531,27 @@ describe("band.js create Valid Tests", () => {
     expect(newBand.recordCompany).toBe("EMI");
     expect(newBand.website).toBe("http://www.pinkfloyd.com");
     expect(newBand.yearBandWasFormed).toBe(1965);
+
+    expect(typeof newBand).toEqual("object");
+    expect(newBand).toHaveProperty("_id");
+    expect(typeof newBand._id).toEqual("string");
+    expect(newBand).toHaveProperty("name");
+    expect(typeof newBand.name).toEqual("string");
+    expect(newBand).toHaveProperty("genre");
+    expect(Array.isArray(newBand.genre)).toBe(true);
+    expect(newBand.genre.every((g) => typeof g === "string")).toBe(true);
+    expect(newBand).toHaveProperty("website");
+    expect(typeof newBand.website).toEqual("string");
+
+    expect(newBand).toHaveProperty("recordCompany");
+    expect(typeof newBand.recordCompany).toEqual("string");
+    expect(newBand).toHaveProperty("groupMembers");
+    expect(Array.isArray(newBand.groupMembers)).toBe(true);
+    expect(newBand.groupMembers.every((gm) => typeof gm === "string")).toBe(
+      true
+    );
+    expect(newBand).toHaveProperty("yearBandWasFormed");
+    expect(typeof newBand.yearBandWasFormed).toEqual("number");
   });
 });
 
@@ -569,6 +590,26 @@ describe("band.js get Valid Tests", () => {
     expect(newBand.recordCompany).toBe("EMI");
     expect(newBand.website).toBe("http://www.pinkfloyd.com");
     expect(newBand.yearBandWasFormed).toBe(1965);
+    expect(typeof newBand).toEqual("object");
+    expect(newBand).toHaveProperty("_id");
+    expect(typeof newBand._id).toEqual("string");
+    expect(newBand).toHaveProperty("name");
+    expect(typeof newBand.name).toEqual("string");
+    expect(newBand).toHaveProperty("genre");
+    expect(Array.isArray(newBand.genre)).toBe(true);
+    expect(newBand.genre.every((g) => typeof g === "string")).toBe(true);
+    expect(newBand).toHaveProperty("website");
+    expect(typeof newBand.website).toEqual("string");
+
+    expect(newBand).toHaveProperty("recordCompany");
+    expect(typeof newBand.recordCompany).toEqual("string");
+    expect(newBand).toHaveProperty("groupMembers");
+    expect(Array.isArray(newBand.groupMembers)).toBe(true);
+    expect(newBand.groupMembers.every((gm) => typeof gm === "string")).toBe(
+      true
+    );
+    expect(newBand).toHaveProperty("yearBandWasFormed");
+    expect(typeof newBand.yearBandWasFormed).toEqual("number");
   });
   test("should return a band when given a valid id", async () => {
     const newBand = await bands.get(bandId);
@@ -579,6 +620,27 @@ describe("band.js get Valid Tests", () => {
     expect(newBand.recordCompany).toEqual(dumbExample.recordCompany);
     expect(newBand.website).toEqual(dumbExample.website);
     expect(newBand.yearBandWasFormed).toEqual(dumbExample.yearBandWasFormed);
+
+    expect(typeof newBand).toEqual("object");
+    expect(newBand).toHaveProperty("_id");
+    expect(typeof newBand._id).toEqual("string");
+    expect(newBand).toHaveProperty("name");
+    expect(typeof newBand.name).toEqual("string");
+    expect(newBand).toHaveProperty("genre");
+    expect(Array.isArray(newBand.genre)).toBe(true);
+    expect(newBand.genre.every((g) => typeof g === "string")).toBe(true);
+    expect(newBand).toHaveProperty("website");
+    expect(typeof newBand.website).toEqual("string");
+
+    expect(newBand).toHaveProperty("recordCompany");
+    expect(typeof newBand.recordCompany).toEqual("string");
+    expect(newBand).toHaveProperty("groupMembers");
+    expect(Array.isArray(newBand.groupMembers)).toBe(true);
+    expect(newBand.groupMembers.every((gm) => typeof gm === "string")).toBe(
+      true
+    );
+    expect(newBand).toHaveProperty("yearBandWasFormed");
+    expect(typeof newBand.yearBandWasFormed).toEqual("number");
   });
 });
 
@@ -646,5 +708,120 @@ describe("band.js remove Tests", () => {
     await expect(bands.remove(nonExistentId)).rejects.toEqual(
       `Error: ${nonExistentId} not found for deletion`
     );
+  });
+});
+
+describe("getAll", () => {
+  test("returns an empty array when there are no bands in the collection", async () => {
+    await bandCollection.deleteMany({});
+
+    const result = await bands.getAll();
+    expect(result).toEqual([]);
+  });
+
+  test("returns an array of one band when there is one band in the collection", async () => {
+    const result = await bands.getAll();
+    expect(result.length).toEqual(1);
+    expect(result[0]._id).toEqual(bandId);
+    expect(result[0].name).toEqual(dumbExample.name);
+    expect(result[0].genre).toEqual(dumbExample.genre);
+    expect(result[0].groupMembers).toEqual(dumbExample.groupMembers);
+    expect(result[0].recordCompany).toEqual(dumbExample.recordCompany);
+    expect(result[0].website).toEqual(dumbExample.website);
+    expect(result[0].yearBandWasFormed).toEqual(dumbExample.yearBandWasFormed);
+  });
+
+  test("returns an array of multiple bands when there are multiple bands in the collection", async () => {
+    await bandCollection.deleteMany({});
+    const dumbExample1 = await bands.create(
+      "Pink Floyd Alternative",
+      ["Progressive Rock", "Psychedelic rock", "Classic Rock"],
+      "http://www.pinkfloyd.com",
+      "EMI",
+      [
+        "Roger Waters",
+        "David Gilmour",
+        "Nick Mason",
+        "Richard Wright",
+        "Sid Barrett",
+      ],
+      1965
+    );
+    const dumbExample2 = await bands.create(
+      "Pink Floyd Alternative",
+      ["Progressive Rock", "Psychedelic rock", "Classic Rock"],
+      "http://www.pinkfloyd.com",
+      "EMI",
+      [
+        "Roger Waters",
+        "David Gilmour",
+        "Nick Mason",
+        "Richard Wright",
+        "Sid Barrett",
+      ],
+      1965
+    );
+    const dumbExample3 = await bands.create(
+      "Pink Floyd Alternative",
+      ["Progressive Rock", "Psychedelic rock", "Classic Rock"],
+      "http://www.pinkfloyd.com",
+      "EMI",
+      [
+        "Roger Waters",
+        "David Gilmour",
+        "Nick Mason",
+        "Richard Wright",
+        "Sid Barrett",
+      ],
+      1965
+    );
+    const result = await bands.getAll();
+    expect(result.length).toEqual(3);
+    result.forEach((element) => {
+      expect(typeof element).toEqual("object");
+      expect(element).toHaveProperty("_id");
+      expect(typeof element._id).toEqual("string");
+      expect(element).toHaveProperty("name");
+      expect(typeof element.name).toEqual("string");
+      expect(element).toHaveProperty("genre");
+      expect(Array.isArray(element.genre)).toBe(true);
+      expect(element.genre.every((g) => typeof g === "string")).toBe(true);
+      expect(element).toHaveProperty("website");
+      expect(typeof element.website).toEqual("string");
+
+      expect(element).toHaveProperty("recordCompany");
+      expect(typeof element.recordCompany).toEqual("string");
+      expect(element).toHaveProperty("groupMembers");
+      expect(Array.isArray(element.groupMembers)).toBe(true);
+      expect(element.groupMembers.every((gm) => typeof gm === "string")).toBe(
+        true
+      );
+      expect(element).toHaveProperty("yearBandWasFormed");
+      expect(typeof element.yearBandWasFormed).toEqual("number");
+    });
+
+    expect(result[0]._id).toEqual(dumbExample1._id);
+    expect(result[0].name).toEqual(dumbExample1.name);
+    expect(result[0].genre).toEqual(dumbExample1.genre);
+    expect(result[0].groupMembers).toEqual(dumbExample1.groupMembers);
+    expect(result[0].recordCompany).toEqual(dumbExample1.recordCompany);
+    expect(result[0].website).toEqual(dumbExample1.website);
+    expect(result[0].yearBandWasFormed).toEqual(dumbExample1.yearBandWasFormed);
+
+    expect(result[1]._id).toEqual(dumbExample2._id);
+    expect(result[1].name).toEqual(dumbExample2.name);
+    expect(result[1].genre).toEqual(dumbExample2.genre);
+    expect(result[1].groupMembers).toEqual(dumbExample2.groupMembers);
+    expect(result[1].recordCompany).toEqual(dumbExample2.recordCompany);
+    expect(result[1].website).toEqual(dumbExample2.website);
+    expect(result[1].yearBandWasFormed).toEqual(dumbExample2.yearBandWasFormed);
+
+    expect(result[2]._id).toEqual(dumbExample3._id);
+    expect(result[2].name).toEqual(dumbExample3.name);
+    expect(result[2].genre).toEqual(dumbExample3.genre);
+    expect(result[2].groupMembers).toEqual(dumbExample3.groupMembers);
+    expect(result[2].recordCompany).toEqual(dumbExample3.recordCompany);
+    expect(result[2].website).toEqual(dumbExample3.website);
+    expect(result[2].yearBandWasFormed).toEqual(dumbExample3.yearBandWasFormed);
   });
 });
