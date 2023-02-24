@@ -17,3 +17,25 @@
 15. Try getting a band by ID that does not exist to make sure it throws errors.
 
 */
+
+import * as bands from "./data/bands.js";
+
+async function main() {
+  const pinkFloyd = await bands.create(
+    "Pink Floyd Alternative",
+    ["Progressive Rock", "Psychedelic rock", "Classic Rock"],
+    "http://www.pinkfloyd.com",
+    "EMI",
+    [
+      "Roger Waters",
+      "David Gilmour",
+      "Nick Mason",
+      "Richard Wright",
+      "Sid Barrett",
+    ],
+    1965
+  );
+  console.log(pinkFloyd);
+}
+
+main();
