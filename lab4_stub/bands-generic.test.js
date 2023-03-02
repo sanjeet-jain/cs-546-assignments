@@ -200,7 +200,7 @@ describe("band.js create Invalid Tests", () => {
       bands.create(
         "Pink Floyd",
         ["Progressive Rock", "Psychedelic rock", "Classic Rock"],
-        "pinkfloyd.com",
+        "HTTPS://WwW.pinkfloyd.com",
         "EMI",
         [
           "Roger Waters",
