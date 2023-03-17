@@ -1,0 +1,31 @@
+{
+  "name": "cs-546-lab-6",
+  "version": "1.0.0",
+  "description": "cs-546-lab-6 for cs-546 SIT",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "test": "jest"
+  },
+  "author": "Sanjeet Vinod Jain 20012768",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^5.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@types/jest": "^29.4.0",
+    "cookiejar": "^2.1.4",
+    "jest": "^29.4.3",
+    "superagent": "^8.0.9",
+    "supertest": "^6.3.3"
+  },
+  "jest": {
+    "testMatch": [
+      "<rootDir>/*.test.js"
+    ]
+  }
+}
