@@ -1,8 +1,10 @@
 // Import the express router as shown in the lecture code
 // Note: please do not forget to export the router!
+import { Router } from "express";
+const router = Router();
 
 router
-  .route('/')
+  .route("/")
   .get(async (req, res) => {
     //code here for GET
   })
@@ -11,7 +13,7 @@ router
   });
 
 router
-  .route('/:id')
+  .route("/:id")
   .get(async (req, res) => {
     //code here for GET
   })
@@ -21,3 +23,5 @@ router
   .put(async (req, res) => {
     //code here for PUT
   });
+
+export default router;

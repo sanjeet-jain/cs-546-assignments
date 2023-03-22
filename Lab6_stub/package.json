@@ -5,6 +5,7 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
+    "dev": "nodemon app.js",
     "seed": "node seed.js",
     "start": "node app.js",
     "test": "jest"
@@ -13,7 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "mongodb": "^5.1.0"
+    "mongodb": "^5.1.0",
+    "nodemon": "^2.0.21"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",

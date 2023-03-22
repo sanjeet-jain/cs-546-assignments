@@ -1,38 +1,48 @@
-import { dbConnection, closeConnection } from "../config/mongoConnection.js";
-import users from "../data/users.js";
-import posts from "../data/posts.js";
+import { dbConnection, closeConnection } from "./config/mongoConnection.js";
+import * as albums from "./data/albums.js";
+import * as bands from "./data/bands.js";
+async function main() {
+  const db = await dbConnection();
+  await db.dropDatabase();
 
-const db = await dbConnection();
-await db.dropDatabase();
+  const band = {
+    title: "Pink Floyd",
+    genre: ["Progressive Rock", "Psychedelic Rock", "Classic Rock"],
+    website: "http://www.pinkfloyd.com",
+    recordCompany: "EMI",
+    groupMembers: [
+      "Roger Waters",
+      "David Gilmour",
+      "Nick Mason",
+      "Richard Wright",
+      "Sid Barrett",
+    ],
+    yearBandWasFormed: 1965,
+  };
 
-const patrick = await users.addUser("Patrick", "Hill");
-const pid = patrick._id.toString();
-const aiden = await users.addUser("Aiden", "Hill");
-const aid = aiden._id.toString();
-await posts.addPost("Hello, class!", "Today we are creating a blog!", pid);
-await posts.addPost(
-  "Using the seed",
-  "We use the seed to have some initial data so we can just focus on servers this week",
-  pid
-);
+  let insertedBand = await bands.create(
+    band.title,
+    band.genre,
+    band.website,
+    band.recordCompany,
+    band.groupMembers,
+    band.yearBandWasFormed
+  );
+  console.log(await bands.get(insertedBand._id));
+  insertedBand = await bands.update(
+    insertedBand._id,
+    "Pink Floyd 2",
+    band.genre,
+    band.website,
+    band.recordCompany,
+    band.groupMembers,
+    band.yearBandWasFormed
+  );
+  console.log(await bands.get(insertedBand._id));
 
-await posts.addPost(
-  "Using routes",
-  "The purpose of today is to simply look at some GET routes",
-  pid
-);
+  console.log("Done seeding database");
 
-await posts.addPost("Aiden's first post", "This is aiden's first post", aid, [
-  "toys",
-]);
-await posts.addPost("Aiden's second post", "This is aiden's second post", aid, [
-  "aiden",
-]);
-await posts.addPost("Aiden's third post", "This is aiden's thrid post", aid, [
-  "aiden",
-  "kid",
-]);
+  await closeConnection();
+}
 
-console.log("Done seeding database");
-
-await closeConnection();
+await main();
