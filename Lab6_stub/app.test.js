@@ -99,5 +99,6 @@ describe("POST /bands", () => {
     expect(Array.isArray(bands.albums)).toBeTruthy();
 
     expect(bands.albums.length).toBe(0);
+    expect(bands).toMatchObject(requestBody);
   });
 });

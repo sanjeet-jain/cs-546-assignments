@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon app.js",
-    "seed": "node seed.js",
+    "seed": "node -e \"import('./seed.js').then(seed => seed.seed());\"",
     "start": "node app.js",
     "test": "jest --detectOpenHandles"
   },
