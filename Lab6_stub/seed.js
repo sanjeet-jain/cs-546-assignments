@@ -3,11 +3,8 @@ import * as albums from "./data/albums.js";
 import * as bands from "./data/bands.js";
 
 export async function runSetup() {
-  const db = await dbConnection();
-  await db.dropDatabase();
-
   const band = {
-    title: "Pink Floyd",
+    name: "Pink Floyd",
     genre: ["Progressive Rock", "Psychedelic Rock", "Classic Rock"],
     website: "http://www.pinkfloyd.com",
     recordCompany: "EMI",
@@ -22,7 +19,7 @@ export async function runSetup() {
   };
 
   let insertedBand = await bands.create(
-    band.title,
+    band.name,
     band.genre,
     band.website,
     band.recordCompany,
@@ -66,9 +63,13 @@ export async function runSetup() {
     album.tracks,
     4.55
   );
-
-  console.dir(await bands.getAll(), { depth: null });
+  const data = await bands.getAll();
   console.log("Done seeding database");
+  return JSON.stringify(data);
+}
+export async function seed() {
+  const db = await dbConnection();
+  await db.dropDatabase();
+  await runSetup();
   await closeConnection();
 }
-// await runSetup();

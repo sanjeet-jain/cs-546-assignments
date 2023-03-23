@@ -11,14 +11,14 @@ router
     //code here for GET
     try {
       const returnList = await bandsData.getAll();
-      res.json(returnList);
+      return res.json(returnList);
     } catch (error) {
-      res.status(500).json({ error: e });
+      return res.status(500).json({ error: e });
     }
   })
   .post(async (req, res) => {
     //code here for POST
-    const bandsPostData = req.body;
+    const bandsPostData = req.body.requestBody;
     if (!bandsPostData || Object.keys(bandsPostData).length === 0) {
       return res
         .status(400)
@@ -35,7 +35,7 @@ router
         bandsPostData.groupMembers,
         bandsPostData.yearBandWasFormed
       );
-    } catch (error) {
+    } catch (e) {
       return res.status(400).json({ error: e });
     }
 
@@ -56,9 +56,9 @@ router
         groupMembers,
         yearBandWasFormed
       );
-      res.json(newBand);
+      return res.json(newBand);
     } catch (e) {
-      res.status(500).json({ error: e });
+      return res.status(500).json({ error: e });
     }
   });
 
@@ -66,6 +66,17 @@ router
   .route("/:id")
   .get(async (req, res) => {
     //code here for GET
+    let id = "";
+    try {
+      id = helpers.validateId(req.params.id);
+    } catch (e) {
+      return res.status(400).json({ error: e });
+    }
+    try {
+      let band = await bandsData.get(id);
+    } catch (e) {
+      return res.status(404).json({ error: "User not found" });
+    }
   })
   .delete(async (req, res) => {
     //code here for DELETE
