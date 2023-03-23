@@ -290,5 +290,34 @@ const helpers = {
     }
     return date;
   },
+  areObjectsEqual(obj1, obj2) {
+    const keys1 = Object.keys(obj1);
+    const keys2 = Object.keys(obj2);
+
+    if (keys1.length !== keys2.length) {
+      return false;
+    }
+
+    for (let key of keys1) {
+      const val1 = obj1[key];
+      const val2 = obj2[key];
+
+      if (typeof val1 !== typeof val2) {
+        return false;
+      }
+
+      if (typeof val1 === "object") {
+        if (!this.areObjectsEqual(val1, val2)) {
+          return false;
+        }
+      } else {
+        if (val1 !== val2) {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  },
 };
 export { helpers as default };

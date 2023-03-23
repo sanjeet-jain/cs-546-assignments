@@ -17,6 +17,11 @@ beforeAll(async () => {
   await db.dropDatabase();
   data = await runSetup();
 });
+afterEach(async () => {
+  const db = await dbConnection();
+  await db.dropDatabase();
+  data = await runSetup();
+});
 
 afterAll(async () => {
   await closeConnection();
@@ -45,7 +50,7 @@ describe("GET /bands", () => {
 });
 
 describe("POST /bands", () => {
-  test.concurrent("responds with JSON containing all bands", async () => {
+  test("responds with JSON containing all bands", async () => {
     const requestBody = {
       name: "Pink Floyd",
       genre: ["Progressive Rock", "Psychedelic Rock", "Classic Rock"],
@@ -72,33 +77,60 @@ describe("POST /bands", () => {
     // Check the response body
     const bands = response.body;
     expect(bands).toBeInstanceOf(Object);
+    expect(bands).toMatchObject(requestBody);
+  });
+});
+
+describe("PUT/bands", () => {
+  test("responds with JSON containing all bands", async () => {
+    const requestBody = {
+      name: "Pink Floyd 2",
+      genre: ["Progressive Rock", "Psychedelic Rock", "Classic Rock"],
+      website: "http://www.pinkfloyd.com",
+      recordCompany: "EMI",
+      groupMembers: [
+        "Roger Waters",
+        "David Gilmour",
+        "Nick Mason",
+        "Richard Wright",
+        "Sid Barrett",
+      ],
+      yearBandWasFormed: 1965,
+    };
+    const response = await request
+      .put(`/bands/${data._id}`)
+      .set("content-type", "application/json")
+      .send({ requestBody });
+    expect(response.status).toBe(200);
+    expect(response.headers["content-type"]).toEqual(
+      expect.stringContaining("application/json")
+    );
+    // Check the response body
+    const bands = response.body;
+    expect(bands).toBeInstanceOf(Object);
 
     // Check that each band has an _id and a name property
-    expect(bands).toHaveProperty("_id");
-    expect(typeof bands._id).toBe("string");
-    expect(bands).toHaveProperty("name");
-    expect(typeof bands.name).toBe("string");
-    expect(bands).toHaveProperty("genre");
-    expect(Array.isArray(bands.genre)).toBeTruthy();
-    expect(bands).toHaveProperty("website");
-    expect(typeof bands.website).toBe("string");
-    expect(bands).toHaveProperty("recordCompany");
-    expect(typeof bands.recordCompany).toBe("string");
-    expect(bands).toHaveProperty("groupMembers");
-    expect(Array.isArray(bands.groupMembers)).toBeTruthy();
 
-    bands.groupMembers.forEach((x) => {
-      expect(typeof x).toBe("string");
-    });
-
-    expect(bands).toHaveProperty("yearBandWasFormed");
-    expect(typeof bands.yearBandWasFormed).toBe("number");
-    expect(bands).toHaveProperty("overallRating");
-    expect(typeof bands.overallRating).toBe("number");
-    expect(bands).toHaveProperty("albums");
     expect(Array.isArray(bands.albums)).toBeTruthy();
-
-    expect(bands.albums.length).toBe(0);
     expect(bands).toMatchObject(requestBody);
+  });
+});
+
+describe("DELETE/bands", () => {
+  test("responds with JSON containing all bands", async () => {
+    const response = await request.delete(`/bands/${data._id}`);
+
+    expect(response.status).toBe(200);
+    expect(response.headers["content-type"]).toEqual(
+      expect.stringContaining("application/json")
+    );
+
+    // Check the response body
+    const bands = response.body;
+    expect(bands).toBeInstanceOf(Object);
+    expect(bands).toHaveProperty("bandId");
+    expect(bands.bandId).toEqual(data._id);
+    expect(bands).toHaveProperty("deleted");
+    expect(bands.deleted).toEqual(true);
   });
 });

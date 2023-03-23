@@ -27,15 +27,6 @@ export async function runSetup() {
     band.yearBandWasFormed
   );
 
-  await bands.update(
-    insertedBand._id,
-    "Pink Floyd 2",
-    band.genre,
-    band.website,
-    band.recordCompany,
-    band.groupMembers,
-    band.yearBandWasFormed
-  );
   const album = {
     bandId: insertedBand._id,
     title: "Wish You Were Here 2",
@@ -65,7 +56,7 @@ export async function runSetup() {
   );
   const data = await bands.getAll();
   console.log("Done seeding database");
-  return JSON.stringify(data);
+  return data[0];
 }
 export async function seed() {
   const db = await dbConnection();

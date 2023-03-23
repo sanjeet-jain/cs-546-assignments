@@ -1,7 +1,6 @@
 import helpers from "../helpers.js";
 import { ObjectId } from "mongodb";
 import { bands } from "./../config/mongoCollections.js";
-
 /**
  *
  * @param {string} name name of the band
@@ -93,7 +92,7 @@ export const get = async (id) => {
 
 /**
  * @param {string} id band id to be removed
- * @returns `${deleted.movieName} has been successfully deleted!`
+ * @returns `${deleted.bandName} has been successfully deleted!`
  */
 export const remove = async (id) => {
   id = helpers.validateId(id);
@@ -111,7 +110,7 @@ export const remove = async (id) => {
 };
 /**
  *
- * @param {string:ObjectId} id objectId to be updated
+ * @param {string} id objectId to be updated
  * @param {string} name updated name of the band
  * @param {[string]} genre updated array of genre strings
  * @param {string} website updated url of website
@@ -156,6 +155,9 @@ export const update = async (
     groupMembers,
     yearBandWasFormed,
   };
+  if (helpers.areObjectsEqual(band, updatedBand)) {
+    helpers.throwError("", "", "same object passed for update with no changes");
+  }
   delete updatedBand._id;
   const bandCollection = await bands();
   const updatedInfo = await bandCollection.findOneAndReplace(
