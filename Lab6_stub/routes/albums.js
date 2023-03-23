@@ -3,6 +3,8 @@
 import { Router } from "express";
 const router = Router();
 
+import { albumsData } from "../data/index.js";
+
 router
   .route("/:bandId")
   .get(async (req, res) => {

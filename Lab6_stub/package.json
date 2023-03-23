@@ -8,7 +8,7 @@
     "dev": "nodemon app.js",
     "seed": "node seed.js",
     "start": "node app.js",
-    "test": "jest"
+    "test": "jest "
   },
   "author": "Sanjeet Vinod Jain 20012768",
   "license": "ISC",

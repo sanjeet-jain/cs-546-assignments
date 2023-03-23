@@ -64,14 +64,8 @@ export const getAll = async () => {
   const bandList = await bandCollection.find({}).toArray();
   return bandList.map((band) => {
     return {
-      ...band,
       _id: band._id.toString(),
-      albums: band.albums.map((album) => {
-        return {
-          ...album,
-          _id: album._id.toString(),
-        };
-      }),
+      name: band.name.toString(),
     };
   });
 };

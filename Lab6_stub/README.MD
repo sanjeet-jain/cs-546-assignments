@@ -188,6 +188,7 @@ GET /bands
 Responds with an array of all bands in the format of {"\_id": "band_id", "name": "band_name"} Note: Notice you are ONLY returning the band ID as a string, and band name
 
 [{ "_id": "603d965568567f396ca44a72","name": "Pink Floyd"},{ "_id": "704f456673467g306fc44c34","name": "Linkin Park"},.....]
+
 POST /bands
 Creates a band with the supplied data in the request body, and returns the new band (ALL FIELDS MUST BE PRESENT AND CORRECT TYPE).
 
