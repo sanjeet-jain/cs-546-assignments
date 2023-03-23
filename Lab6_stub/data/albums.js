@@ -94,7 +94,6 @@ export const get = async (albumId) => {
   return album.albums[0];
 };
 
-//TODO CHECk
 export const remove = async (albumId) => {
   albumId = helpers.validateId(albumId);
   const bandCollection = await bands();

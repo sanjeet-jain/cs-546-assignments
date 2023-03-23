@@ -1,6 +1,7 @@
 import { dbConnection, closeConnection } from "./config/mongoConnection.js";
 import * as albums from "./data/albums.js";
 import * as bands from "./data/bands.js";
+import { bandsData } from "./data/index.js";
 
 export async function runSetup() {
   const band = {
@@ -54,9 +55,9 @@ export async function runSetup() {
     album.tracks,
     4.55
   );
-  const data = await bands.getAll();
+
   console.log("Done seeding database");
-  return data[0];
+  return await bandsData.get(insertedBand._id);
 }
 export async function seed() {
   const db = await dbConnection();
