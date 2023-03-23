@@ -125,16 +125,4 @@ export const remove = async (albumId) => {
   );
 
   return bandsData.get(band._id.toString());
-  //   if (updatedBand.value) {
-  //     return {
-  //       ...updatedBand.value,
-  //       _id: updatedBand.value._id.toString(),
-  //       albums: updatedBand.value.albums.map((x) => {
-  //         return {
-  //           ...x,
-  //           _id: x._id.toString(),
-  //         };
-  //       }),
-  //     };
-  //   }
 };
