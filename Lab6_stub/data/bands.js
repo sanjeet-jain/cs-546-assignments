@@ -66,21 +66,35 @@ export const getAll = async () => {
     return {
       ...band,
       _id: band._id.toString(),
+      albums: band.albums.map((album) => {
+        return {
+          ...album,
+          _id: album._id.toString(),
+        };
+      }),
     };
   });
 };
 
 /**
  * @param {string} id band id to get
- * @returns band object corresponding to id
+ * @returns {object} band object corresponding to id
  */
 export const get = async (id) => {
   id = helpers.validateId(id);
   const bandCollection = await bands();
   const band = await bandCollection.findOne({ _id: new ObjectId(id) });
   helpers.errorIfNullOrEmpty(band, "band", `Band not found with id : ${id}`);
-  band._id = band._id.toString(); // Convert ObjectId to string
-  return band;
+  return {
+    ...band,
+    _id: band._id.toString(),
+    albums: band.albums.map((x) => {
+      return {
+        ...x,
+        _id: x._id.toString(),
+      };
+    }),
+  };
 };
 
 /**

@@ -15,7 +15,8 @@
 
 // \*/
 import { ObjectId } from "mongodb";
-
+// import { options } from "superagent";
+const currentYear = 2023;
 const helpers = {
   /**
    *  check if input is null.
@@ -153,43 +154,43 @@ const helpers = {
     groupMembers,
     yearBandWasFormed
   ) {
-    helpers.errorIfNullOrEmpty(name, "name");
-    helpers.errorIfNullOrEmpty(genre, "genre");
-    helpers.errorIfNullOrEmpty(website, "website");
-    helpers.errorIfNullOrEmpty(recordCompany, "recordCompany");
-    helpers.errorIfNullOrEmpty(groupMembers, "groupMembers");
-    helpers.errorIfNullOrEmpty(yearBandWasFormed, "yearBandWasFormed");
+    this.errorIfNullOrEmpty(name, "name");
+    this.errorIfNullOrEmpty(genre, "genre");
+    this.errorIfNullOrEmpty(website, "website");
+    this.errorIfNullOrEmpty(recordCompany, "recordCompany");
+    this.errorIfNullOrEmpty(groupMembers, "groupMembers");
+    this.errorIfNullOrEmpty(yearBandWasFormed, "yearBandWasFormed");
 
-    if (!helpers.isNonEmptyString(name, false)) {
-      helpers.throwError("name", "string");
+    if (!this.isNonEmptyString(name, false)) {
+      this.throwError("name", "string");
     }
-    if (!helpers.isNonEmptyString(website, false)) {
-      helpers.throwError("website", "string");
+    if (!this.isNonEmptyString(website, false)) {
+      this.throwError("website", "string");
     }
-    if (!helpers.isNonEmptyString(recordCompany, false)) {
-      helpers.throwError("recordCompany", "string");
+    if (!this.isNonEmptyString(recordCompany, false)) {
+      this.throwError("recordCompany", "string");
     }
-    helpers.errorIfNotArray(genre, "genre");
-    helpers.errorIfNotArray(groupMembers, "groupMembers");
+    this.errorIfNotArray(genre, "genre");
+    this.errorIfNotArray(groupMembers, "groupMembers");
 
-    helpers.checkIfItemsAreString(genre, "genre", false);
-    helpers.checkIfItemsAreString(groupMembers, "groupMembers", false);
+    this.checkIfItemsAreString(genre, "genre", false);
+    this.checkIfItemsAreString(groupMembers, "groupMembers", false);
 
-    if (!helpers.isValidUrl(website)) {
-      helpers.throwError(
+    if (!this.isValidUrl(website)) {
+      this.throwError(
         "website",
         "string",
         "Website must be a valid URL starting with http://www. and ending in .com and have at least 5 characters in-between"
       );
     }
     if (typeof yearBandWasFormed !== "number") {
-      helpers.throwError("yearBandWasFormed", "number");
+      this.throwError("yearBandWasFormed", "number");
     }
-    if (yearBandWasFormed < 1900 || yearBandWasFormed > 2023) {
-      helpers.throwError(
+    if (yearBandWasFormed < 1900 || yearBandWasFormed > currentYear) {
+      this.throwError(
         "yearBandWasFormed",
         "number",
-        "yearBandWasFormed is not between 1900 to 2023"
+        "yearBandWasFormed is not between 1900 to " + currentYear
       );
     }
     name = name.trim();
@@ -207,13 +208,87 @@ const helpers = {
     };
   },
 
+  /**
+   *
+   * @param {string} bandId ObjectId of the band
+   * @param {string} title title of album
+   * @param {string} releaseDate date string in format MM/DD/YYY
+   * @param {[string]} tracks string list of tracks in the albumb
+   * @param {number} rating rating for the albumb (between 1 to 5 and floats are 1 decimal precision)
+   * @returns {Object} returns validated inputs as an object {bandId, title, releaseDate, tracks, rating}
+   */
+  validateAlbumObject(bandId, title, releaseDate, tracks, rating) {
+    this.errorIfNullOrEmpty(bandId, "bandId");
+    this.errorIfNullOrEmpty(title, "title");
+    this.errorIfNullOrEmpty(releaseDate, "releaseDate");
+    this.errorIfNullOrEmpty(tracks, "tracks");
+    this.errorIfNullOrEmpty(rating, "rating");
+    bandId = this.validateId(bandId);
+    if (!this.isNonEmptyString(title, false)) {
+      this.throwError("title", "string");
+    }
+    if (!this.isNonEmptyString(releaseDate, false)) {
+      this.throwError("releaseDate", "string");
+    }
+
+    releaseDate = releaseDate.trim();
+    const date = this.validateDateString(releaseDate);
+    if (date.getFullYear() < 1900 || date.getFullYear() > currentYear + 1) {
+      this.throwError(
+        "Error: entered released date is not within years 1900 to " +
+          (currentYear + 1)
+      );
+    }
+
+    this.errorIfNotArray(tracks, "tracks");
+    this.checkIfItemsAreString(tracks, "tracks", false);
+    if (typeof rating !== "number") {
+      this.throwError("rating", "number");
+    }
+    if (tracks.length < 3) {
+      this.throwError("there need to be atleast 3 tracks in the list");
+    }
+    rating = Number(rating.toFixed(1));
+    if (rating < 1 || rating > 5) {
+      this.throwError("rating is not between 1 to 5");
+    }
+
+    title = title.trim();
+    return { bandId, title, releaseDate, tracks, rating };
+  },
+  /**
+   *
+   * @param {string} id object id to be validated
+   * @returns trimmed object id as string
+   */
   validateId(id) {
-    helpers.errorIfNullOrEmpty(id, "id");
-    if (!helpers.isNonEmptyString(id, false) || !ObjectId.isValid(id.trim())) {
-      helpers.throwError("id", "ObjectId string");
+    this.errorIfNullOrEmpty(id, "id");
+    if (!this.isNonEmptyString(id, false) || !ObjectId.isValid(id.trim())) {
+      this.throwError("id", "ObjectId string");
     }
     id = id.trim();
     return id;
+  },
+  /**
+   *
+   * @param {string} dateString input datestring to be validated ( should be of form MM/DD//YYY )
+   * @returns {Date} date object of the dateString
+   */
+  validateDateString(dateString) {
+    const date = new Date(dateString);
+    let text = date.toLocaleDateString("en-us", {
+      day: "numeric",
+      month: "numeric",
+      year: "numeric",
+    });
+    if (text === "Invalid Date") {
+      this.throwError(
+        "dateString",
+        "dateString",
+        "dateString given is not a valid date"
+      );
+    }
+    return date;
   },
 };
 export { helpers as default };
