@@ -68,7 +68,7 @@ describe("POST /bands", () => {
     const response = await request
       .post("/bands")
       .set("content-type", "application/json")
-      .send({ requestBody });
+      .send({ ...requestBody });
 
     expect(response.status).toBe(200);
     expect(response.headers["content-type"]).toEqual(
@@ -100,7 +100,7 @@ describe("PUT/bands", () => {
     const response = await request
       .put(`/bands/${data._id}`)
       .set("content-type", "application/json")
-      .send({ requestBody });
+      .send({ ...requestBody });
     expect(response.status).toBe(200);
     expect(response.headers["content-type"]).toEqual(
       expect.stringContaining("application/json")
@@ -202,7 +202,7 @@ describe("POST /albums/bandId", () => {
     const response = await request
       .post(`/albums/${data._id}`)
       .set("content-type", "application/json")
-      .send({ requestBody });
+      .send({ ...requestBody });
 
     expect(response.status).toBe(200);
     expect(response.headers["content-type"]).toEqual(

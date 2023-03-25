@@ -25,7 +25,7 @@ router
   })
   .post(async (req, res) => {
     //code here for POST
-    const bandsPostData = req.body.requestBody;
+    const bandsPostData = req.body;
     if (!bandsPostData || Object.keys(bandsPostData).length === 0) {
       return res
         .status(400)
@@ -110,7 +110,7 @@ router
       return res.status(400).json({ error: e });
     }
 
-    const bandsPostData = req.body.requestBody;
+    const bandsPostData = req.body;
     if (!bandsPostData || Object.keys(bandsPostData).length === 0) {
       return res
         .status(400)

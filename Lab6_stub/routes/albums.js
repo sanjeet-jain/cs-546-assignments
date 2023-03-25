@@ -24,7 +24,7 @@ router
   })
   .post(async (req, res) => {
     //code here for POST
-    const albumsPostData = req.body.requestBody;
+    const albumsPostData = req.body;
     if (!albumsPostData || Object.keys(albumsPostData).length === 0) {
       return res
         .status(400)
