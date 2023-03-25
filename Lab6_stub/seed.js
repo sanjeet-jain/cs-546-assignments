@@ -53,7 +53,7 @@ export async function runSetup() {
     "sadfsadf",
     album.releaseDate,
     album.tracks,
-    4.55
+    4.5
   );
 
   console.log("Done seeding database");

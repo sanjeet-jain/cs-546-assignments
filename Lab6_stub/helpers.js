@@ -248,6 +248,9 @@ const helpers = {
     if (tracks.length < 3) {
       this.throwError("there need to be atleast 3 tracks in the list");
     }
+    if (rating !== Number(rating.toFixed(1))) {
+      this.throwError("rating is not of format X.X number");
+    }
     rating = Number(rating.toFixed(1));
     if (rating < 1 || rating > 5) {
       this.throwError("rating is not between 1 to 5");
