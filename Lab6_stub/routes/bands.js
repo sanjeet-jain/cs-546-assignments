@@ -11,7 +11,14 @@ router
     //code here for GET
     try {
       const returnList = await bandsData.getAll();
-      return res.json(returnList);
+      return res.json(
+        returnList.map((band) => {
+          return {
+            _id: band._id.toString(),
+            name: band.name,
+          };
+        })
+      );
     } catch (error) {
       return res.status(500).json({ error: e });
     }
