@@ -83,15 +83,16 @@ export const getAll = async (bandId) => {
 export const get = async (albumId) => {
   albumId = helpers.validateId(albumId);
   const bandCollection = await bands();
-  const album = await bandCollection.findOne(
-    { albums: { $elemMatch: { _id: new ObjectId(albumId) } } },
-    { "albums.$": 1 }
-  );
-  if (!album) {
-    throw `Album with ID ${albumId} not found`;
+  const band = await bandCollection.findOne({
+    albums: { $elemMatch: { _id: new ObjectId(albumId) } },
+  });
+  if (!band) {
+    throw `band with albumID ${albumId} not found`;
   }
-  album.albums[0]._id = album.albums[0]._id.toString();
-  return album.albums[0];
+  const albumsList = await getAll(band._id.toString());
+  return albumsList.find((x) => {
+    return x._id.toString() === albumId;
+  });
 };
 
 export const remove = async (albumId) => {

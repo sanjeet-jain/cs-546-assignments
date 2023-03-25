@@ -214,3 +214,17 @@ describe("POST /albums/bandId", () => {
     expect(albums).toMatchObject(data);
   });
 });
+
+describe("GET /albums/album/id", () => {
+  test("responds with JSON containing all albums", async () => {
+    const response = await request.get(`/albums/album/${data.albums[1]._id}`);
+    expect(response.status).toBe(200);
+    expect(response.headers["content-type"]).toEqual(
+      expect.stringContaining("application/json")
+    );
+    // Check the response body
+    const albums = response.body;
+    expect(albums).toBeInstanceOf(Object);
+    expect(albums).toMatchObject(data.albums[1]);
+  });
+});
