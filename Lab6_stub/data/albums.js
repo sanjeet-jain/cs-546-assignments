@@ -46,10 +46,11 @@ export const create = async (bandId, title, releaseDate, tracks, rating) => {
   }
   band.albums.push(album);
 
-  band.overallRating = band.albums.reduce((avg, x) => {
+  let newOverallRating = band.albums.reduce((avg, x) => {
     avg += x.rating / band.albums.length;
     return avg;
   }, 0);
+  band.overallRating = Number(newOverallRating.toFixed(1));
   delete band._id;
   const bandCollection = await bands();
   const updatedInfo = await bandCollection.findOneAndReplace(
@@ -117,7 +118,7 @@ export const remove = async (albumId) => {
     {
       $pull: { albums: { _id: new ObjectId(albumId) } },
       $set: {
-        overallRating: newOverallRating,
+        overallRating: Number(newOverallRating.toFixed(1)),
       },
     },
     {
