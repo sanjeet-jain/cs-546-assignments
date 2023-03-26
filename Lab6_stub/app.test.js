@@ -168,7 +168,7 @@ describe("GET /albums/album/id", () => {
 describe("DELETE /albums/album/id", () => {
   test("responds with JSON containing all albums", async () => {
     const response = await request.delete(
-      `/albums/album/${data.albums[0]._id}`
+      `/albums/album/${data.albums[1]._id}`
     );
     expect(response.status).toBe(200);
     expect(response.headers["content-type"]).toEqual(
@@ -178,7 +178,7 @@ describe("DELETE /albums/album/id", () => {
     const bands = response.body;
     expect(bands).toBeInstanceOf(Object);
     expect(bands).toHaveProperty("albumId");
-    expect(bands.albumId).toEqual(data.albums[0]._id);
+    expect(bands.albumId).toEqual(data.albums[1]._id);
     expect(bands).toHaveProperty("deleted");
     expect(bands.deleted).toEqual(true);
   });
@@ -187,7 +187,6 @@ describe("DELETE /albums/album/id", () => {
 describe("POST /albums/bandId", () => {
   test("responds with JSON containing all albums", async () => {
     const requestBody = {
-      bandId: data._id,
       title: "Wish You Were Here 2",
       releaseDate: "12/12/1975",
       tracks: [

@@ -61,7 +61,7 @@ export const create = async (bandId, title, releaseDate, tracks, rating) => {
   if (updatedInfo.lastErrorObject.n === 0) {
     helpers.throwError("", "", "could not update post successfully");
   }
-  band = updatedInfo.value;
+  band = await bandsData.get(bandId);
 
   return band;
 };

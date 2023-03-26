@@ -24,6 +24,8 @@ router
   })
   .post(async (req, res) => {
     //code here for POST
+    let bandId = "";
+
     const albumsPostData = req.body;
     if (!albumsPostData || Object.keys(albumsPostData).length === 0) {
       return res
@@ -32,9 +34,11 @@ router
     }
     let validObject = {};
     try {
+      bandId = helpers.validateId(req.params.bandId);
+
       //validation
       validObject = helpers.validateAlbumObject(
-        albumsPostData.bandId,
+        bandId,
         albumsPostData.title,
         albumsPostData.releaseDate,
         albumsPostData.tracks,
@@ -44,7 +48,7 @@ router
       return res.status(400).json({ error: e });
     }
     try {
-      const { bandId, title, releaseDate, tracks, rating } = validObject;
+      const { title, releaseDate, tracks, rating } = validObject;
       const newAlbum = await albumsData.create(
         bandId,
         title,
