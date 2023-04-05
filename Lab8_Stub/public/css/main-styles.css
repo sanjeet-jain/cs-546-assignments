@@ -6,3 +6,54 @@
 #searchVenueTerm:hover {
   border-color: blue;
 }
+
+img {
+  min-width: none;
+  max-width: 30%;
+}
+a:hover {
+  color: green;
+}
+input:hover.btn {
+  background-color: green !important;
+}
+
+main {
+  margin-top: 10vh;
+  height: 100%;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  text-align: center;
+}
+ol {
+  text-align: inherit;
+  list-style-type: none;
+}
+
+ol > li > a {
+  text-decoration: none;
+}
+
+.error {
+  color: red;
+  font-size: 2rem;
+  font-weight: 1000;
+}
+
+body {
+  height: 70vh;
+}
+
+footer {
+  color: slategray;
+  text-align: center;
+}
+
+footer > a {
+  text-decoration: none;
+}
+
+.not-found {
+  background-color: gold;
+  width: 100%;
+}

@@ -5,8 +5,8 @@ const router = Router();
 
 import axios from "axios";
 
-const apiKey = "7elxdku9GGG5k8j0Xm8KWdANDgecHMV01";
-const baseUrl = `https://app.ticketmaster.com/discovery/v2/venues?apikey=${apiKey}`;
+const apiKey = "7elxdku9GGG5k8j0Xm8KWdANDgecHMV0";
+const baseUrl = `https://app.ticketmaster.com/discovery/v2/venues?apikey=${apiKey}&countryCode=US`;
 
 router.route("/").get(async (req, res) => {
   //code here for GET
@@ -22,12 +22,13 @@ router.route("/searchvenues").post(async (req, res) => {
     req.body.searchVenueTerm.trim() === ""
   ) {
     return res.status(400).render("error", {
+      title: "Error",
       error: Error(
         "Error: 400 bad request, Please give an input in the search field"
       ),
     });
   }
-  let searchVenueTerm = "";
+  const searchVenueTerm = req.body.searchVenueTerm;
 
   try {
     const response = await axios.get(
@@ -48,9 +49,7 @@ router.route("/searchvenues").post(async (req, res) => {
       venues: result,
     });
   } catch (error) {
-    res.status(404).render("error", {
-      error: error,
-    });
+    res.status(404).render("error", { title: "Error", error: error });
   }
 });
 
@@ -58,6 +57,7 @@ router.route("/venuedetails/:id").get(async (req, res) => {
   //code here for GET
   if (!req?.params?.id || typeof req.params.id !== "string") {
     return res.status(400).render("error", {
+      title: "Error",
       error: Error(
         "Error: 400 bad request, Please give an input in the search field"
       ),
@@ -78,9 +78,7 @@ router.route("/venuedetails/:id").get(async (req, res) => {
       venue: venue,
     });
   } catch (error) {
-    res.status(404).render("error", {
-      error: error,
-    });
+    res.status(404).render("error", { title: "Error", error: error });
   }
 });
 

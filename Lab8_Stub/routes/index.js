@@ -7,7 +7,10 @@ const constructorMethod = (app) => {
   app.use("*", async (req, res) => {
     res
       .status(404)
-      .render("error", { error: Error("Erro: 404 page not found") });
+      .render("error", {
+        title: "Error",
+        error: Error("Erro: 404 page not found"),
+      });
   });
 };
 
