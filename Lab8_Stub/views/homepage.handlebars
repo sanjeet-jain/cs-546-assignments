@@ -16,3 +16,34 @@ the title set as the <title> element of the HTML document and as an h1 in your d
     searchVenueTerm.
 
     }}
+
+<div class="text-center container w-50">
+      <h1>{{title}}</h1>
+
+  <p>A website for finding venues for events using tickermaster
+    API, Simply type a venue name you want to search, it doesnt need to be exact and it will display links to each venue!</p>
+  <form id="search-form" class="search-form" method="post" action="/searchvenues">
+    <div class="form-floating  mb-3">
+
+      <input
+        class="form-control"
+        type="text"
+        id="searchVenueTerm"
+        name="searchVenueTerm"
+        aria-describedby="searchsearchVenueTerm_help_id"
+        placeholder="Search Term"
+      />
+      <label class="form-label" for="searchVenueTerm">Search for a venue:</label>
+      <small id="searchsearchVenueTerm_help_id" class="form-text text-muted">
+        Please Enter what you want to search for</small>
+      <div id="searchsearchVenueTerm_error" class="invalid-feedback">
+
+      </div>
+    </div>
+      <input
+        class="w-50 btn btn-lg btn-primary"
+        type="submit"
+        value="Search"
+      ></input>
+  </form>
+</div>

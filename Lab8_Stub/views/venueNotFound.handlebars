@@ -1,4 +1,16 @@
 {{!
-This page will be rendered when no matches are found in 'POST http://localhost:3000/searchvenues'.
+This page will be rendered when no matches are found in 'POST
+http://localhost:3000/searchvenues'.
 You will render this page with the HTML paragraph defined in the lab assignment.
 }}
+
+{{#if searchVenueTerm}}
+  <p class="not-found">We're sorry, but no results were found for
+    {{searchVenueTerm}}.</p>
+{{else}}
+  {{#if id}}
+    <p class="not-found">a venue with that id does not exist id:{{id}}.</p>
+  {{/if}}
+{{/if}}
+
+<a href="/">Make another search</a>
