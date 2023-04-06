@@ -5,7 +5,7 @@ const router = Router();
 
 import axios from "axios";
 
-const apiKey = "7elxdku9GGG5k8j0Xm8KWdANDgecHMV0";
+const apiKey = "8e9n1lX0yzuidf7pam9z4Z00wybdIGXJ";
 const baseUrl = `https://app.ticketmaster.com/discovery/v2/venues?apikey=${apiKey}&countryCode=US`;
 
 router.route("/").get(async (req, res) => {
