@@ -40,6 +40,7 @@ router.route("/searchvenues").post(async (req, res) => {
     });
     if (!Array.isArray(result) || result.length === 0) {
       return res.status(404).render("venueNotFound", {
+        title: "Venue Not Found",
         searchVenueTerm: searchVenueTerm,
       });
     }
@@ -72,6 +73,7 @@ router.route("/venuedetails/:id").get(async (req, res) => {
     const venue = response.data?._embedded?.venues;
     if (!Array.isArray(venue) || venue.length === 0) {
       return res.status(404).render("venueNotFound", {
+        title: "Venue Not Found",
         id: id,
       });
     }
