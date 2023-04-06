@@ -50,33 +50,19 @@ the title set as the <title> element of the HTML document and as an h1 in your
     <br />
     {{/each}}
     {{else}}
-    <img {{#if ../this.name}} alt="{{../this.name}}" {{else}} alt="N/A" {{/if}}  src="/public/images/No_Image_Available.jpg"  />
+    <img {{#if ../this.name}} alt="{{../this.name}}" {{else}} alt="N/A" {{/if}}
+      src="/public/images/No_Image_Available.jpg" />
     <br />
     {{/if}}
     {{#if this.url}}
     <a target="_blank" href="{{this.url}}">Venue Information on Ticketmaster</a>
     {{else}}
-    <a>N/A</a>
+    <a target="_self" href="#">N/A</a>
     {{/if}}
-    {{#if this.address.line1}}
-    {{#if this.city.name}}
-    {{#if this.state.stateCode}}
-    {{#if this.postalCode}}
-    <address>Address:
-      {{this.address.line1}}, {{this.city.name}}, {{this.state.stateCode}}
-      {{this.postalCode}}</address>
-    {{else}}
-    <address>Address: "N/A"</address>
-    {{/if}}
-    {{else}}
-    <address>Address: "N/A"</address>
-    {{/if}}
-    {{else}}
-    <address>Address: "N/A"</address>
-    {{/if}}
-    {{else}}
-    <address>Address: "N/A"</address>
-    {{/if}}
+    <address>Address: {{#if this.address.line1}}{{this.address.line1}}{{else}}N/A{{/if}}, {{#if
+      this.city.name}}{{this.city.name}}{{else}}N/A{{/if}}, {{#if
+      this.state.stateCode}}{{this.state.stateCode}}{{else}}N/A{{/if}} {{#if
+      this.postalCode}}{{this.postalCode}}{{else}}N/A{{/if}} </address>
     {{#if this.boxOfficeInfo.phoneNumberDetail}}
     <address>Phone: {{this.boxOfficeInfo.phoneNumberDetail}}</address>
     {{else}}

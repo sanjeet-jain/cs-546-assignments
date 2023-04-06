@@ -55,15 +55,17 @@ router.route("/searchvenues").post(async (req, res) => {
 
 router.route("/venuedetails/:id").get(async (req, res) => {
   //code here for GET
-  if (!req?.params?.id || typeof req.params.id !== "string") {
+  if (
+    !req?.params?.id ||
+    typeof req.params.id !== "string" ||
+    req.params.id.trim() === ""
+  ) {
     return res.status(400).render("error", {
       title: "Error",
-      error: Error(
-        "Error: 400 bad request, Please give an input in the search field"
-      ),
+      error: Error("Error: 400 bad request, Please give a valid event id"),
     });
   }
-  const id = req.params.id;
+  const id = req.params.id.trim();
 
   try {
     const response = await axios.get(baseUrl.concat(`&id=${id}`));
@@ -71,6 +73,11 @@ router.route("/venuedetails/:id").get(async (req, res) => {
     if (!Array.isArray(venue) || venue.length === 0) {
       return res.status(404).render("venueNotFound", {
         id: id,
+      });
+    }
+    if (venue[0].postalCode === "00000") {
+      venue.forEach((venue) => {
+        venue.postalCode = null;
       });
     }
     res.render("venueByID", {
