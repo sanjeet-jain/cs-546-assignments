@@ -77,11 +77,7 @@ router.route("/venuedetails/:id").get(async (req, res) => {
         id: id,
       });
     }
-    if (venue[0].postalCode === "00000") {
-      venue.forEach((venue) => {
-        venue.postalCode = null;
-      });
-    }
+
     res.render("venueByID", {
       title: "Venue Details",
       venue: venue,

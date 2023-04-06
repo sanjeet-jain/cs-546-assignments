@@ -41,12 +41,13 @@ ol > li > a {
 }
 
 body {
-  height: 70vh;
+  height: 70%;
 }
 
 footer {
   color: slategray;
   text-align: center;
+  height: 10%;
 }
 
 footer > a {
