@@ -6,7 +6,8 @@ const router = Router();
 import axios from "axios";
 
 const apiKey = "8e9n1lX0yzuidf7pam9z4Z00wybdIGXJ";
-const baseUrl = `https://app.ticketmaster.com/discovery/v2/venues?apikey=${apiKey}&countryCode=US`;
+const baseUrl = `https://app.ticketmaster.com/discovery/v2/venues`;
+const apiKeyUrl = `?apikey=${apiKey}&countryCode=US`;
 
 router.route("/").get(async (req, res) => {
   //code here for GET
@@ -32,7 +33,7 @@ router.route("/searchvenues").post(async (req, res) => {
 
   try {
     const response = await axios.get(
-      baseUrl.concat(`&keyword=${searchVenueTerm}`, `&size=10`)
+      baseUrl.concat(apiKeyUrl, `&keyword=${searchVenueTerm}`, `&size=10`)
     );
     const venues = response.data?._embedded?.venues;
     const result = venues?.map((venue) => {
@@ -69,9 +70,9 @@ router.route("/venuedetails/:id").get(async (req, res) => {
   const id = req.params.id.trim();
 
   try {
-    const response = await axios.get(baseUrl.concat(`&id=${id}`));
-    const venue = response.data?._embedded?.venues;
-    if (!Array.isArray(venue) || venue.length === 0) {
+    const response = await axios.get(baseUrl.concat(`/${id}`, apiKeyUrl));
+    const venue = response?.data;
+    if (!venue) {
       return res.status(404).render("venueNotFound", {
         title: "Venue Not Found",
         id: id,
@@ -83,7 +84,10 @@ router.route("/venuedetails/:id").get(async (req, res) => {
       venue: venue,
     });
   } catch (error) {
-    res.status(404).render("error", { title: "Error", error: error });
+    return res.status(404).render("venueNotFound", {
+      title: "Venue Not Found",
+      id: id,
+    });
   }
 });
 
