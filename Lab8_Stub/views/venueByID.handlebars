@@ -39,32 +39,32 @@ the title set as the <title> element of the HTML document and as an h1 in your
   {{#each venue}}
   <div>
     {{#if this.name}}
-    <h2>{{this.name}}</h2>
+    <h2>{{{this.name}}}</h2>
     {{else}}
     <h2>N/A</h2>
     {{/if}}
     {{#if this.images}}
     {{#each this.images}}
-    <img {{#if ../this.name}} alt="{{../this.name}}" {{else}} alt="N/A" {{/if}} {{#if this.url}} src="{{this.url}}"
+    <img {{#if ../this.name}} alt="{{{../this.name}}}" {{else}} alt="N/A" {{/if}} {{#if this.url}} src="{{{this.url}}}"
       {{else}} src="/public/images/No_Image_Available.jpg" {{/if}} />
     <br />
     {{/each}}
     {{else}}
-    <img {{#if ../this.name}} alt="{{../this.name}}" {{else}} alt="N/A" {{/if}}
+    <img {{#if ../this.name}} alt="{{{../this.name}}}" {{else}} alt="N/A" {{/if}}
       src="/public/images/No_Image_Available.jpg" />
     <br />
     {{/if}}
     {{#if this.url}}
-    <a target="_blank" href="{{this.url}}">Venue Information on Ticketmaster</a>
+    <a target="_blank" href="{{{this.url}}}">Venue Information on Ticketmaster</a>
     {{else}}
     <a target="_self" href="#">N/A</a>
     {{/if}}
-    <address>Address: {{#if this.address.line1}}{{this.address.line1}}{{else}}N/A{{/if}}, {{#if
-      this.city.name}}{{this.city.name}}{{else}}N/A{{/if}}, {{#if
-      this.state.stateCode}}{{this.state.stateCode}}{{else}}N/A{{/if}} {{#if
-      this.postalCode}}{{this.postalCode}}{{else}}N/A{{/if}} </address>
+    <address>Address: {{#if this.address.line1}}{{{this.address.line1}}}{{else}}N/A{{/if}}, {{#if
+      this.city.name}}{{{this.city.name}}}{{else}}N/A{{/if}}, {{#if
+      this.state.stateCode}}{{{this.state.stateCode}}}{{else}}N/A{{/if}} {{#if
+      this.postalCode}}{{{this.postalCode}}}{{else}}N/A{{/if}} </address>
     {{#if this.boxOfficeInfo.phoneNumberDetail}}
-    <address>Phone: {{this.boxOfficeInfo.phoneNumberDetail}}</address>
+    <address>Phone: {{{this.boxOfficeInfo.phoneNumberDetail}}}</address>
     {{else}}
     <address>Phone: N/A</address>
     {{/if}}
