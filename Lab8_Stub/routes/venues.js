@@ -62,9 +62,9 @@ router.route("/venuedetails/:id").get(async (req, res) => {
     typeof req.params.id !== "string" ||
     req.params.id.trim() === ""
   ) {
-    return res.status(400).render("error", {
-      title: "Error",
-      error: Error("Error: 400 bad request, Please give a valid event id"),
+    return res.status(404).render("venueNotFound", {
+      title: "Venue Not Found",
+      id: id,
     });
   }
   const id = req.params.id.trim();
