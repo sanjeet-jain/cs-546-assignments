@@ -199,10 +199,114 @@ If the user does not have a value for the input when they submit, you should not
 
 function formSubmitEventListener() {
   const form = document.getElementById("text_input_form");
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-  });
+  const result = document.getElementById("results");
+  form.addEventListener(
+    "submit",
+    (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const textInput = event?.target?.text_input;
+      const lowerCaseTextInput = textInput?.value?.toLowerCase();
+      if (
+        lowerCaseTextInput === undefined ||
+        lowerCaseTextInput === null ||
+        lowerCaseTextInput === ""
+      ) {
+        textInput.setCustomValidity("invalid-input");
+        event.target.classList.add("was-validated");
+      } else {
+        textInput.setCustomValidity("");
+        const dl = document.createElement("dl");
+
+        // Original Input:
+        let dt = document.createElement("dt");
+        dt.innerText = "Original Input:";
+        let dd = document.createElement("dd");
+        dd.innerText = textInput.value;
+        dl.appendChild(dt);
+        dl.appendChild(dd);
+
+        // Total Letters
+        dt = document.createElement("dt");
+        dt.innerText = "Total Letters";
+        dd = document.createElement("dd");
+        dd.innerText = lowerCaseTextInput.match(/[a-z]/g)?.length || 0;
+        dl.appendChild(dt);
+        dl.appendChild(dd);
+
+        // Total Non-Letters
+        dt = document.createElement("dt");
+        dt.innerText = "Total Non-Letters";
+        dd = document.createElement("dd");
+        dd.innerText = lowerCaseTextInput.match(/[^a-z]/g)?.length || 0;
+        dl.appendChild(dt);
+        dl.appendChild(dd);
+
+        // Total Vowels
+        dt = document.createElement("dt");
+        dt.innerText = "Total Vowels";
+        dd = document.createElement("dd");
+        dd.innerText = lowerCaseTextInput.match(/[aeiou]/g)?.length || 0;
+        dl.appendChild(dt);
+        dl.appendChild(dd);
+
+        // Total Consonants
+        dt = document.createElement("dt");
+        dt.innerText = "Total Consonants";
+        dd = document.createElement("dd");
+        dd.innerText =
+          lowerCaseTextInput.match(/[b-df-hj-np-tv-z]/g)?.length || 0;
+        dl.appendChild(dt);
+        dl.appendChild(dd);
+
+        // Total Words
+        dt = document.createElement("dt");
+        dt.innerText = "Total Words";
+        dd = document.createElement("dd");
+        dd.innerText = lowerCaseTextInput.match(/[a-z]+/g)?.length || 0;
+        dl.appendChild(dt);
+        dl.appendChild(dd);
+
+        // Unique Words
+
+        dt = document.createElement("dt");
+        dt.innerText = "Unique Words";
+        dd = document.createElement("dd");
+        dd.innerText =
+          Object.keys(
+            lowerCaseTextInput.match(/[a-z]+/g)?.reduce((obj, x) => {
+              obj[x] = 1;
+              return obj;
+            }, {}) || {}
+          )?.length || 0;
+        dl.appendChild(dt);
+        dl.appendChild(dd);
+
+        // Long Words
+        dt = document.createElement("dt");
+        dt.innerText = "Long Words";
+        dd = document.createElement("dd");
+        dd.innerText = lowerCaseTextInput.match(/([a-z]{6,})+/g)?.length || 0;
+        dl.appendChild(dt);
+        dl.appendChild(dd);
+
+        // Short Words
+        dt = document.createElement("dt");
+        dt.innerText = "Short Words";
+        dd = document.createElement("dd");
+        dd.innerText =
+          lowerCaseTextInput
+            .match(/[a-z]+/g)
+            ?.filter((x) => x.length <= 3 && x.length >= 1)?.length || 0;
+        dl.appendChild(dt);
+        dl.appendChild(dd);
+
+        result.appendChild(dl);
+        textInput.value = "";
+      }
+    },
+    false
+  );
 }
 
 formSubmitEventListener();

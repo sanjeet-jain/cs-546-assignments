@@ -1,3 +1,26 @@
 /*
 You will style your page using at least 5 CSS selectors for general CSS styling. You will place the CSS in its own file. 
 */
+form {
+  height: 25vh;
+}
+#results {
+  margin: auto;
+  overflow-y: scroll;
+  height: 60vh;
+}
+
+body {
+  height: 90vh;
+}
+
+footer {
+  height: 5vh;
+  text-align: center;
+}
+
+dl {
+  border-bottom: black;
+  border-style: groove;
+  padding: 1rem;
+}

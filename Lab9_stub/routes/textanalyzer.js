@@ -4,3 +4,17 @@ Your server this week should not be doing any of the processing! Your server onl
 
 you just need one route to send the static homepage.html file
 */
+
+import path from "path";
+import { fileURLToPath } from "url";
+import Router from "express";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const router = new Router();
+
+router.get("/", async (req, res) => {
+  res.status(200).sendFile(path.join(__dirname, "../static/homepage.html"));
+});
+
+export default router;

@@ -6,8 +6,7 @@ Your server this week should not be doing any of the processing! Your server onl
 import express from "express";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-import exphbs from "express-handlebars";
-import configRoutes from "./routes/index";
+import configRoutes from "./routes/index.js";
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -15,25 +14,9 @@ const __dirname = dirname(__filename);
 
 const publicDir = express.static(`${__dirname}/public`);
 
-const rewriteUnsupportedBrowserMethods = (req, res, next) => {
-  // If the user posts to the server with a property called _method, rewrite the request's method
-  // To be that method; so if they post _method=PUT you can now allow browsers to POST to a route that gets
-  // rewritten in this middleware to a PUT route
-  if (req.body && req.body._method) {
-    req.method = req.body._method;
-    delete req.body._method;
-  }
-
-  // let the next middleware run:
-  next();
-};
-
 app.use("/public", publicDir);
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(rewriteUnsupportedBrowserMethods);
 
-app.engine("handlebars", exphbs.engine({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 configRoutes(app);

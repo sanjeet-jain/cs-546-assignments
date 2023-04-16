@@ -11,6 +11,14 @@
     "sourceType": "module"
   },
   "rules": {
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "import/extensions": [
+      "off",
+      "ignorePackages",
+      {
+        "js": "never",
+        "mjs": "never"
+      }
+    ]
   }
 }
