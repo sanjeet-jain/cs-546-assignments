@@ -3,3 +3,30 @@
 login form handlebar template
 
 }}
+
+<form class="needs-validation" id="login-form" novalidate>
+  <div class="form-floating mb-3">
+    <input required type="email" class="form-control" name="emailAddressInput" id="emailAddressInput"
+      placeholder="abc@abc.com" pattern="^[a-zA-Z]+[._%+-]*[a-zA-Z0-9]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$" />
+    <label for="emailAddressInput">Email</label>
+    <small id="email_help" class="form-text text-muted">
+      Please Enter Email Here</small>
+    <div class="invalid-feedback" id="password_error">
+      {{#if errorMessages.emailAddress}}{{errorMessages.emailAddress}}{{else}}Please Enter an Email Address{{/if}}
+    </div>
+  </div>
+  <div class="form-floating mb-3">
+    <input required type="password" class="form-control" name="passwordInput" id="passwordInput" pattern="" />
+    <label for="passwordInput">Password</label>
+    <small id="password_help" class="form-text text-muted">
+      Please Enter Password Here, it should container 1 number 1 uppercase and 1
+      special symbol</small>
+    <div class="invalid-feedback" id="password_error">
+      {{#if errorMessages.password}}{{errorMessages.password}}{{else}}Please Enter a password{{/if}}
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br />
+<a id="signup_link" class="link-secondary" href="/register">Click here to
+  register!</a>

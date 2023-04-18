@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // Setup server, session and middleware here.
 
 /*
@@ -47,3 +48,116 @@ An example would be:
 
 
 */
+import express from "express";
+import session from "express-session";
+import dayjs from "dayjs";
+import exphbs from "express-handlebars";
+import * as path from "path";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+import configRoutes from "./routes/index.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const app = express();
+const handlebarsInstance = exphbs.create({
+  defaultLayout: "main",
+  layoutsDir: "views/layouts",
+  helpers: {},
+});
+
+app.use("/public", express.static(path.join(__dirname, "/public")));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.engine("handlebars", handlebarsInstance.engine);
+app.set("view engine", "handlebars");
+app.use(
+  session({
+    name: "AwesomeWebApp",
+    secret: "This is a secret.. shhh don't tell anyone",
+    saveUninitialized: false,
+    resave: false,
+    cookie: { maxAge: 60000 },
+  })
+);
+
+app.get("/", (req, res) => {
+  if (req.session?.user) {
+    if (req.session.user?.role === "admin") {
+      return res.redirect("/admin");
+    }
+    if (req.session.user?.role === "user") {
+      return res.redirect("/protected");
+    }
+  }
+  return res.redirect("/login");
+});
+app.get("/login", (req, res, next) => {
+  if (req.session?.user) {
+    if (req.session.user?.role === "admin") {
+      return res.redirect("/admin");
+    }
+    if (req.session.user?.role === "user") {
+      return res.redirect("/protected");
+    }
+  }
+  return next();
+});
+
+app.get("/register", (req, res, next) => {
+  if (req.session?.user) {
+    if (req.session.user?.role === "admin") {
+      return res.redirect("/admin");
+    }
+    if (req.session.user?.role === "user") {
+      return res.redirect("/protected");
+    }
+  }
+  return next();
+});
+
+app.get("/protected", (req, res, next) => {
+  if (!req.session?.user) {
+    return res.redirect("/login");
+  }
+  return next();
+});
+
+app.get("/admin", (req, res, next) => {
+  if (!req.session?.user) {
+    return res.redirect("/login");
+  }
+  if (req.session.user?.role !== "admin") {
+    return res.redirect(403, "/error");
+  }
+  return next();
+});
+
+app.get("/logout", (req, res, next) => {
+  if (!req.session?.user) {
+    return res.redirect("/login");
+  }
+  return next();
+});
+
+app.use("*", async (req, res, next) => {
+  let typeofuser = "";
+  if (req.session.user) {
+    typeofuser = "(Authenticated User)";
+  } else {
+    typeofuser = "(Non Authenticated User)";
+  }
+  // log the info
+  console.log(`${dayjs().format()} ${req.method} / ${req.path}  ${typeofuser}`);
+  next();
+});
+
+configRoutes(app);
+
+app.listen(3000, () => {
+  console.log("We've now got a server!");
+  console.log("Your routes will be running on http://localhost:3000");
+});
