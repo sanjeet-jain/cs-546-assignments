@@ -1,7 +1,7 @@
 {
-  "name": "cs-546-lab-9",
+  "name": "cs-546-lab-90",
   "version": "1.0.0",
-  "description": "cs-546-lab-9 for cs-546 SIT",
+  "description": "cs-546-lab-10 for cs-546 SIT",
   "main": "app.js",
   "type": "module",
   "scripts": {
@@ -16,7 +16,8 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "express": "^4.18.2",
-    "express-session": "^1.17.3"
+    "express-session": "^1.17.3",
+    "mongodb": "^5.2.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
