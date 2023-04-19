@@ -29,19 +29,19 @@ export const createUser = async (
   try {
     emailAddress = helpers.checkEmailAddress(emailAddress, "Last Name");
   } catch (e) {
-    errorMessages.emailAddress = e.message;
+    errorMessages.emailAddressInput = e.message;
   }
   try {
     password = helpers.checkPassword(emailAddress, "Last Name");
   } catch (e) {
-    errorMessages.password = e.message;
+    errorMessages.passwordInput = e.message;
   }
   try {
     role = helpers.checkRole(role, "Last Name");
   } catch (e) {
     errorMessages.role = e.message;
   }
-  if (Object.keys(errorMessages) > 0) {
+  if (Object.keys(errorMessages).length > 0) {
     errorMessages.status = 400;
     throw errorMessages;
   }
@@ -75,17 +75,17 @@ export const createUser = async (
 export const checkUser = async (emailAddress, password) => {
   const errorMessages = {};
   try {
-    emailAddress = helpers.checkEmailAddress(emailAddress, "Last Name");
+    emailAddress = helpers.checkEmailAddress(emailAddress, "Email Address");
   } catch (e) {
-    errorMessages.emailAddress = e.message;
+    errorMessages.emailAddressInput = e.message;
   }
   try {
-    password = helpers.checkPassword(emailAddress, "Last Name");
+    password = helpers.checkPassword(password, "Password");
   } catch (e) {
-    errorMessages.password = e.message;
+    errorMessages.passwordInput = e.message;
   }
 
-  if (Object.keys(errorMessages) > 0) {
+  if (Object.keys(errorMessages).length > 0) {
     errorMessages.status = 400;
     throw errorMessages;
   }
@@ -97,13 +97,13 @@ export const checkUser = async (emailAddress, password) => {
     error.status = 400;
     throw error;
   }
-  const isPassValid = bcrypt.compare(password, user.password);
+  const isPassValid = bcrypt.compare(password, user.passwordInput);
   if (!isPassValid) {
     const error = Error("Either the email address or password is invalid");
     error.status = 400;
     throw error;
   }
-  delete user.password;
+  delete user.passwordInput;
   delete user._id;
   return user;
 };

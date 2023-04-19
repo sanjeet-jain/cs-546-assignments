@@ -76,7 +76,7 @@ app.engine("handlebars", handlebarsInstance.engine);
 app.set("view engine", "handlebars");
 app.use(
   session({
-    name: "AwesomeWebApp",
+    name: "AuthCookie",
     secret: "This is a secret.. shhh don't tell anyone",
     saveUninitialized: false,
     resave: false,

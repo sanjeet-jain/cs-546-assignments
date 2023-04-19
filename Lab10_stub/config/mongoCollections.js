@@ -18,4 +18,6 @@ const getCollectionFn = (collection) => {
 /* Now, you can list your collections here: 
 NOTE: YOU WILL NEED TO CHANGE THE CODE BELOW AND UNCOMMENT IT TO HAVE THE COLLECTION(S) REQUIRED BY THE ASSIGNMENT */
 // eslint-disable-next-line import/prefer-default-export
-export const users = getCollectionFn("users");
+const users = getCollectionFn("users");
+
+export default users;

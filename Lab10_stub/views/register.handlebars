@@ -3,3 +3,58 @@
 registration handelbars
 
 }}
+
+<form class="needs-validation {{#if errorMessages}}was-validated{{/if}}" id="registration-form" novalidate>
+    <div class="form-floating mb-3">
+        <input required type="text" class="form-control" name="firstNameInput" id="firstNameInput"
+            aria-describedby="firstName_help" placeholder="First Name" pattern="^(?=.{2,25}$)(?![\d ])[\w\s]+$"
+            value="{{errorContent.firstNameInput}}" />
+        <label for="firstNameInput">First Name</label>
+        <small id="firstName_help" class="form-text text-muted">
+            Please First Name Here</small>
+        <div class="invalid-feedback" id="password_error">
+            {{#if errorMessages.firstNameInput}}{{errorMessages.firstNameInput}}{{/if}}
+        </div>
+    </div>
+    {{!-- email --}}
+    <div class="form-floating mb-3">
+        <input required type="email" class="form-control" name="emailAddressInput" id="emailAddressInput"
+            aria-describedby="email_help" placeholder="abc@abc.com"
+            pattern="^[a-zA-Z]+[\._%+\-]*[a-zA-Z0-9]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}$"
+            value="{{errorContent.emailAddressInput}}" />
+        <label for="emailAddressInput">Email</label>
+        <small id="email_help" class="form-text text-muted">
+            Please Enter Email Here</small>
+        <div class="invalid-feedback" id="password_error">
+            {{#if errorMessages.emailAddressInput}}{{errorMessages.emailAddressInput}}{{/if}}
+        </div>
+    </div>
+    {{!-- password --}}
+    <div class="form-floating mb-3">
+        <input required type="password" class="form-control" name="passwordInput" id="passwordInput"
+            pattern="^(?=.{8,})(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*_=+.\/?<>])[^\s]*$"
+            value="{{errorContent.passwordInput}}" />
+        <label for="passwordInput">Password</label>
+        <small id="password_help" class="form-text text-muted">
+            Please Enter Password Here, it should container 1 number 1 uppercase and 1
+            special symbol</small>
+        <div class="invalid-feedback" id="password_error">{{#if
+            errorMessages.passwordInput}}{{errorMessages.passwordInput}}{{/if}}</div>
+    </div>
+    {{!-- confirm --}}
+    <div class="form-floating mb-3">
+        <input required type="password" class="form-control" name="confirmPasswordInput" id="confirmPasswordInput"
+            pattern="^(?=.{8,})(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*_=+.\/?<>])[^\s]*$"
+            value="{{errorContent.confirmPasswordInput}}" />
+        <label for="confirmPasswordInput">Password</label>
+        <small id="confirm_password_help" class="form-text text-muted">
+            Please Re Enter Password Here, it should container 1 number 1 uppercase and 1
+            special symbol</small>
+        <div class="invalid-feedback" id="confirm_password_error">{{#if
+            errorMessages.confirmPasswordInput}}{{errorMessages.confirmPasswordInput}}{{/if}}</div>
+    </div>
+    <div class="invalid-feedback" id="form_error">{{#if
+        errorMessages.message}}{{errorMessages.message}}{{/if}}</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

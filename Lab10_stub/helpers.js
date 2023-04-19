@@ -18,7 +18,7 @@ const helpers = {
 
   checkEmailAddress(_email, inputName) {
     const email = this.validateStringInput(_email, inputName);
-    const regex = "^[a-zA-Z]+[._%+-]*[a-zA-Z0-9]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$";
+    const regex = /^[a-zA-Z]+[._%+-]*[a-zA-Z0-9]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
     if (!email.toLowerCase().match(regex)) {
       throw new Error(`${inputName} is not an email`);
     }
@@ -28,11 +28,11 @@ const helpers = {
     const password = this.validateStringInput(_password, inputName);
     if (
       !password.match(
-        /^(?=.{8,})(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;'",.\/?><`~\\\-])[^\s]*$/
+        /^(?=.{8,})(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*_=+./?<>])[^\s]*$/
       )
     ) {
       throw new Error(
-        `${inputName} can not contain whitespaces and needs to be minimum 8 characters`
+        `${inputName} can not contain whitespaces \n needs to be minimum 8 characters \n needs to have 1 capital letter \n needs to have 1 number \n needs to have 1 special character`
       );
     }
     return password;
