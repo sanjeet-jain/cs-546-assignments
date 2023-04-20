@@ -8,8 +8,7 @@
     "dev": "nodemon app.js",
     "start": "node app.js",
     "lint": "eslint .",
-    "lintfix": "eslint --fix .",
-    "format": "prettier --write ."
+    "seed": "node -e \"import('./seed.js').then(seed => seed.seed());\""
   },
   "author": "Sanjeet Vinod Jain 20012768",
   "license": "ISC",

@@ -1,7 +1,5 @@
 import { dbConnection } from "./mongoConnection.js";
 
-/* This will allow you to have one reference to each collection per app */
-/* Feel free to copy and paste this this */
 const getCollectionFn = (collection) => {
   let _col;
 
@@ -15,9 +13,5 @@ const getCollectionFn = (collection) => {
   };
 };
 
-/* Now, you can list your collections here: 
-NOTE: YOU WILL NEED TO CHANGE THE CODE BELOW AND UNCOMMENT IT TO HAVE THE COLLECTION(S) REQUIRED BY THE ASSIGNMENT */
-// eslint-disable-next-line import/prefer-default-export
-const users = getCollectionFn("users");
-
-export default users;
+// Now, you can list your collections here:
+export const users = getCollectionFn("users");

@@ -3,3 +3,14 @@
 If the user is logged in , and 'GET /protected' endpoint is called, you will render this view based on the specs.
 
 }}
+
+Welcome {{firstName}}, the time is now: {{currentTime}}. Your role in the system is: {{role}}.
+<br />
+<img src="https://media.tenor.com/j70PlLBeyqgAAAAC/wonder-woman-wonder-woman-movie.gif" class="img-fluid rounded-top"
+    alt="Protected By her <3">
+<br />
+
+{{#if (eq role "admin")}}
+<a href="/admin" target="_self">/admin</a>
+{{/if}}
+<br />

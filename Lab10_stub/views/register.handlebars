@@ -4,7 +4,9 @@ registration handelbars
 
 }}
 
-<form class="needs-validation {{#if errorMessages}}was-validated{{/if}}" id="registration-form" novalidate>
+<form method="POST" action="/register" class="needs-validation {{#if errorMessages}}was-validated{{/if}}"
+    id="registration-form" novalidate>
+    {{!-- first name --}}
     <div class="form-floating mb-3">
         <input required type="text" class="form-control" name="firstNameInput" id="firstNameInput"
             aria-describedby="firstName_help" placeholder="First Name" pattern="^(?=.{2,25}$)(?![\d ])[\w\s]+$"
@@ -12,8 +14,34 @@ registration handelbars
         <label for="firstNameInput">First Name</label>
         <small id="firstName_help" class="form-text text-muted">
             Please First Name Here</small>
-        <div class="invalid-feedback" id="password_error">
+        <div class="invalid-feedback" id="firstNameInput_error">
             {{#if errorMessages.firstNameInput}}{{errorMessages.firstNameInput}}{{/if}}
+        </div>
+    </div>
+    {{!-- last name --}}
+    <div class="form-floating mb-3">
+        <input required type="text" class="form-control" name="lastNameInput" id="lastNameInput"
+            aria-describedby="lastName_help" placeholder="Last Name" pattern="^(?=.{2,25}$)(?![\d ])[\w\s]+$"
+            value="{{errorContent.lastNameInput}}" />
+        <label for="lastNameInput">Last Name</label>
+        <small id="lastName_help" class="form-text text-muted">
+            Please Last Name Here</small>
+        <div class="invalid-feedback" id="lastNameInput_error">
+            {{#if errorMessages.lastNameInput}}{{errorMessages.lastNameInput}}{{/if}}
+        </div>
+    </div>
+    {{!-- role --}}
+    <div class="mb-3">
+        <select required class="form-select form-select-lg" name="roleInput" id="roleInput"
+            aria-describedby="roleInput_help">
+            <option value="">Select A Role</option>
+            <option {{#if (eq errorContent.roleInput "admin" )}}selected{{/if}} value="admin">Admin</option>
+            <option {{#if (eq errorContent.roleInput "user" )}}selected{{/if}} value="user">User</option>
+        </select>
+        <small id="roleInput_help" class="form-text text-muted">
+            Please Last Name Here</small>
+        <div class="invalid-feedback" id="roleInput_error">
+            {{#if errorMessages.roleInput}}{{errorMessages.roleInput}}{{/if}}
         </div>
     </div>
     {{!-- email --}}
@@ -25,7 +53,7 @@ registration handelbars
         <label for="emailAddressInput">Email</label>
         <small id="email_help" class="form-text text-muted">
             Please Enter Email Here</small>
-        <div class="invalid-feedback" id="password_error">
+        <div class="invalid-feedback" id="emailAddressInput_error">
             {{#if errorMessages.emailAddressInput}}{{errorMessages.emailAddressInput}}{{/if}}
         </div>
     </div>
@@ -33,28 +61,29 @@ registration handelbars
     <div class="form-floating mb-3">
         <input required type="password" class="form-control" name="passwordInput" id="passwordInput"
             pattern="^(?=.{8,})(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*_=+.\/?<>])[^\s]*$"
-            value="{{errorContent.passwordInput}}" />
+            value="{{errorContent.passwordInput}}" aria-describedby="password_help" />
         <label for="passwordInput">Password</label>
         <small id="password_help" class="form-text text-muted">
             Please Enter Password Here, it should container 1 number 1 uppercase and 1
             special symbol</small>
-        <div class="invalid-feedback" id="password_error">{{#if
+        <div class="invalid-feedback" id="passwordInput_error">{{#if
             errorMessages.passwordInput}}{{errorMessages.passwordInput}}{{/if}}</div>
     </div>
     {{!-- confirm --}}
     <div class="form-floating mb-3">
         <input required type="password" class="form-control" name="confirmPasswordInput" id="confirmPasswordInput"
             pattern="^(?=.{8,})(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*_=+.\/?<>])[^\s]*$"
-            value="{{errorContent.confirmPasswordInput}}" />
-        <label for="confirmPasswordInput">Password</label>
+            value="{{errorContent.confirmPasswordInput}}" aria-describedby="confirm_password_help" />
+        <label for="confirmPasswordInput">Re Enter Password</label>
         <small id="confirm_password_help" class="form-text text-muted">
             Please Re Enter Password Here, it should container 1 number 1 uppercase and 1
             special symbol</small>
-        <div class="invalid-feedback" id="confirm_password_error">{{#if
+        <div class="invalid-feedback" id="confirmPasswordInput_error">{{#if
             errorMessages.confirmPasswordInput}}{{errorMessages.confirmPasswordInput}}{{/if}}</div>
     </div>
-    <div class="invalid-feedback" id="form_error">{{#if
-        errorMessages.message}}{{errorMessages.message}}{{/if}}</div>
-    </div>
+    {{#if errorMessages.message}}
+    <div class="alert alert-danger" id="form_error">{{errorMessages.message}}</div>
+    {{/if}}
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+<a href="/login" target="_self">Already have an account? Click here to log-in</a>

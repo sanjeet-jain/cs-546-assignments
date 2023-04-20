@@ -26,6 +26,10 @@ don't forget to include your css and your client-side script file references in 
   </main>
   <footer>
     <!-- place footer here -->
+
+    {{#if session}}
+    <a href="/logout" target="_self">Logout</a>
+    {{/if}}
   </footer>
   <script src="/public/js/lab10.js"></script>
   <!-- Bootstrap JavaScript Libraries -->

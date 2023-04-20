@@ -8,31 +8,30 @@ login form handlebar template
   <div class="form-floating mb-3">
     <input required type="email" class="form-control" name="emailAddressInput" id="emailAddressInput"
       aria-describedby="email_help" placeholder="abc@abc.com"
-      pattern="/^[a-zA-Z]+[\._%+\-]*[a-zA-Z0-9]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}$/"
+      pattern="^[a-zA-Z]+[\._%+\-]*[a-zA-Z0-9]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}$"
       value="{{errorContent.emailAddressInput}}" />
     <label for="emailAddressInput">Email</label>
     <small id="email_help" class="form-text text-muted">
       Please Enter Email Here</small>
-    <div class="invalid-feedback" id="password_error">
+    <div class="invalid-feedback" id="emailAddressInput_error">
       {{#if errorMessages.emailAddressInput}}{{errorMessages.emailAddressInput}}{{/if}}
     </div>
   </div>
   <div class="form-floating mb-3">
     <input required type="password" class="form-control" name="passwordInput" id="passwordInput"
-      pattern="/^(?=.{8,})(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*_=+.\/?<>])[^\s]*$/"
-      value="{{errorContent.passwordInput}}" />
+      pattern="^(?=.{8,})(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*_=+.\/?<>])[^\s]*$" value="{{errorContent.passwordInput}}" />
     <label for="passwordInput">Password</label>
     <small id="password_help" class="form-text text-muted">
       Please Enter Password Here, it should container 1 number 1 uppercase and 1
       special symbol</small>
-    <div class="invalid-feedback" id="password_error">{{#if
+    <div class="invalid-feedback" id="passwordInput_error">{{#if
       errorMessages.passwordInput}}{{errorMessages.passwordInput}}{{/if}}</div>
   </div>
-  <div class="invalid-feedback" id="form_error">{{#if
-    errorMessages.message}}{{errorMessages.message}}{{/if}}</div>
-  </div>
+  {{#if errorMessages.message}}
+  <div class="alert alert-danger" id="form_error">{{errorMessages.message}}</div>
+  {{/if}}
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 <br />
-<a id="signup_link" class="link-secondary" href="/register">Click here to
+<a href="/register">Click here to
   register!</a>
