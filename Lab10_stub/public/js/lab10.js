@@ -89,7 +89,11 @@ function checkRegistrationInputValidations(event) {
   }
 
   // check if both pass are same
-  if (passwordInput.value !== confirmPasswordInput) {
+  if (
+    passwordInputError.innerText === "" &&
+    confirmPasswordInputError.innerText === "" &&
+    passwordInput.value !== confirmPasswordInput.value
+  ) {
     passwordInput.setCustomValidity("patternMismatch");
     confirmPasswordInput.setCustomValidity("patternMismatch");
     passwordInputError.innerText = "Passwords dont match";
