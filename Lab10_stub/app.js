@@ -50,11 +50,11 @@ An example would be:
 */
 import express from "express";
 import session from "express-session";
-import dayjs from "dayjs";
 import exphbs from "express-handlebars";
 import * as path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import configMiddleWares from "./middleware.js";
 import configRoutes from "./routes/index.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -87,90 +87,7 @@ app.use(
     cookie: { maxAge: 1800000 },
   })
 );
-
-app.get("/", (req, res) => {
-  if (req.session?.user) {
-    // add session to response so we can get it in each handlebar as well
-    res.locals.session = req.session.user;
-    if (req.session.user?.role === "admin") {
-      return res.redirect("/admin");
-    }
-    if (req.session.user?.role === "user") {
-      return res.redirect("/protected");
-    }
-  }
-  return res.redirect("/login");
-});
-app.get("/login", (req, res, next) => {
-  if (req.session?.user) {
-    if (req.session.user?.role === "admin") {
-      return res.redirect("/admin");
-    }
-    if (req.session.user?.role === "user") {
-      return res.redirect("/protected");
-    }
-  }
-  return next();
-});
-
-app.get("/register", (req, res, next) => {
-  if (req.session?.user) {
-    if (req.session.user?.role === "admin") {
-      return res.redirect("/admin");
-    }
-    if (req.session.user?.role === "user") {
-      return res.redirect("/protected");
-    }
-  }
-  return next();
-});
-
-app.get("/protected", (req, res, next) => {
-  if (!req.session?.user) {
-    return res.redirect("/login");
-  }
-  return next();
-});
-
-app.get("/admin", (req, res, next) => {
-  if (!req.session?.user) {
-    return res.redirect("/login");
-  }
-  if (req.session.user?.role !== "admin") {
-    req.session.redirected = true;
-    return res.status(403).redirect("/error");
-  }
-  return next();
-});
-app.get("/error", (req, res, next) => {
-  if (!req.session?.user || !req.session.redirected) {
-    return res.redirect("/");
-  }
-  req.session.redirect = false;
-  return next();
-});
-
-app.get("/logout", (req, res, next) => {
-  if (!req.session?.user) {
-    return res.redirect("/login");
-  }
-  return next();
-});
-
-app.use("*", async (req, res, next) => {
-  let typeofuser = "";
-  if (req.session.user) {
-    typeofuser = "(Authenticated User)";
-    res.locals.session = req.session.user;
-    // todo extend cookie
-  } else {
-    typeofuser = "(Non Authenticated User)";
-  }
-  // log the info
-  console.log(`${dayjs().format()} ${req.method} / ${req.path}  ${typeofuser}`);
-  next();
-});
-
+configMiddleWares(app);
 configRoutes(app);
 
 app.listen(3000, () => {

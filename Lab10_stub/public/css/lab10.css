@@ -2,6 +2,7 @@
 
 main {
   width: 50vw;
+  height: 80vh;
 }
 body {
   height: 90vh;
@@ -11,7 +12,7 @@ body {
 }
 img {
   width: 40vw;
-  height: 40vh;
+  max-height: 40vh;
 }
 button:hover {
   background-color: green !important;

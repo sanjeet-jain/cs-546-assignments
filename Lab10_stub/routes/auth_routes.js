@@ -137,7 +137,14 @@ router
     try {
       const user = await usersDataFunctions.checkUser(emailAddress, password);
       req.session.user = { ...user };
-      return res.status(200).redirect("/");
+      if (req.session?.user) {
+        if (req.session.user?.role === "admin") {
+          return res.redirect("/admin");
+        }
+        if (req.session.user?.role === "user") {
+          return res.redirect("/protected");
+        }
+      }
     } catch (error) {
       return res.status(error.status).render("login", {
         title: "Login",
