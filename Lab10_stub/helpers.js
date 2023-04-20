@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 // You can add and export any helper functions you want here. If you aren't using any, then you can just leave this file as is.
 
 const helpers = {
@@ -10,9 +11,9 @@ const helpers = {
         `${inputName} allows only alphabets with or without spaces`
       );
     }
-    if (!input.match(/^(?=.{2,25}$)(?![\d ])[\w\s]+$/gi)) {
+    if (!input.match(/^(?=.{2,25}$)(?![\d ])[\w\s]+$/i)) {
       throw new Error(
-        `${inputName} allows only alphabets with or without spaces`
+        `${inputName} allows only alphabets with or without spaces and  must be between 2 to 25 characters including spaces`
       );
     }
     if (input.length > 25 || input.length < 2) {
@@ -27,13 +28,13 @@ const helpers = {
     try {
       const email = this.validateStringInput(_email, inputName);
       const regex =
-        /^[a-zA-Z]+[._%+-]*[a-zA-Z0-9]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/;
+        /^[a-zA-Z]+[\._%+\-]*[a-zA-Z0-9]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}$/;
       if (!email.toLowerCase().match(regex)) {
-        throw new Error(`${inputName} is not an email`);
+        throw new Error("Not a valid Email");
       }
       return email.toLowerCase();
     } catch (e) {
-      throw new Error(`${inputName} is not an email`);
+      throw new Error("Not a valid Email");
     }
   },
   checkPassword(_password, inputName) {
@@ -41,7 +42,7 @@ const helpers = {
       const password = this.validateStringInput(_password, inputName);
       if (
         !password.match(
-          /^(?=.{8,})(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*_=+./?<>])[^\s]*$/
+          /^(?=.{8,})(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*_=+\.\/?<>\-])[^\s]*$/
         )
       ) {
         throw new Error();
@@ -49,7 +50,7 @@ const helpers = {
       return password;
     } catch (e) {
       throw new Error(
-        `${inputName} can not contain whitespaces \n needs to be minimum 8 characters \n needs to have 1 capital letter \n needs to have 1 number \n needs to have 1 special character`
+        "Password can not contain whitespaces \n needs to be minimum 8 characters \n needs to have 1 capital letter \n needs to have 1 number \n needs to have 1 special character"
       );
     }
   },
@@ -61,7 +62,7 @@ const helpers = {
       }
       return role;
     } catch (e) {
-      throw new Error(`Invalid Role`);
+      throw new Error("Invalid Role");
     }
   },
   validateStringInput(_input, inputname) {

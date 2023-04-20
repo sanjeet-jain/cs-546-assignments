@@ -4,7 +4,8 @@ login form handlebar template
 
 }}
 
-<form class="needs-validation {{#if errorMessages}}was-validated{{/if}}" id="login-form" novalidate>
+<form method="POST" action="/login" class="needs-validation {{#if errorMessages}}was-validated{{/if}}" id="login-form"
+  novalidate>
   <div class="form-floating mb-3">
     <input required type="email" class="form-control" name="emailAddressInput" id="emailAddressInput"
       aria-describedby="email_help" placeholder="abc@abc.com"
