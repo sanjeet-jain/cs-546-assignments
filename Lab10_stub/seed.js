@@ -14,7 +14,7 @@ async function runSetup() {
     "Sanjeet Admin",
     "Jain",
     "sjain68Admin@stevens.edu",
-    "#Checkout123",
+    "HorsePull748*%",
     "admin"
   );
 
