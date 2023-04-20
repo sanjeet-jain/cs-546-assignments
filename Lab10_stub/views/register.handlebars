@@ -10,7 +10,7 @@ registration handelbars
     <div class="form-floating mb-3">
         <input required type="text" class="form-control" name="firstNameInput" id="firstNameInput"
             aria-describedby="firstName_help" placeholder="First Name" pattern="^(?=.{2,25}$)(?![\d ])[\w\s]+$"
-            value="{{errorContent.firstNameInput}}" />
+            minlength="2" maxlength="25" value="{{errorContent.firstNameInput}}" />
         <label for="firstNameInput">First Name</label>
         <small id="firstName_help" class="form-text text-muted">
             Please First Name Here</small>
@@ -22,7 +22,7 @@ registration handelbars
     <div class="form-floating mb-3">
         <input required type="text" class="form-control" name="lastNameInput" id="lastNameInput"
             aria-describedby="lastName_help" placeholder="Last Name" pattern="^(?=.{2,25}$)(?![\d ])[\w\s]+$"
-            value="{{errorContent.lastNameInput}}" />
+            value="{{errorContent.lastNameInput}}" minlength="2" maxlength="25" />
         <label for="lastNameInput">Last Name</label>
         <small id="lastName_help" class="form-text text-muted">
             Please Last Name Here</small>
@@ -61,7 +61,7 @@ registration handelbars
     <div class="form-floating mb-3">
         <input required type="password" class="form-control" name="passwordInput" id="passwordInput"
             pattern="^(?=.{8,})(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*_=+.\/?<>])[^\s]*$"
-            value="{{errorContent.passwordInput}}" aria-describedby="password_help" />
+            value="{{errorContent.passwordInput}}" aria-describedby="password_help" minlength="8" />
         <label for="passwordInput">Password</label>
         <small id="password_help" class="form-text text-muted">
             Please Enter Password Here, it should container 1 number 1 uppercase and 1
@@ -73,7 +73,7 @@ registration handelbars
     <div class="form-floating mb-3">
         <input required type="password" class="form-control" name="confirmPasswordInput" id="confirmPasswordInput"
             pattern="^(?=.{8,})(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*_=+.\/?<>])[^\s]*$"
-            value="{{errorContent.confirmPasswordInput}}" aria-describedby="confirm_password_help" />
+            value="{{errorContent.confirmPasswordInput}}" aria-describedby="confirm_password_help" minlength="8" />
         <label for="confirmPasswordInput">Re Enter Password</label>
         <small id="confirm_password_help" class="form-text text-muted">
             Please Re Enter Password Here, it should container 1 number 1 uppercase and 1
