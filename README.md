@@ -37,14 +37,15 @@ Week Topic(s)
 
 ## Project
 
-Proposal : Score ( 100/100)  
-DB Proposal : Score ( 100/100)  
-Pitch Presentation : Score ( 100/100)  
-Walkthrough Presentation : Score ( 100/100)  
-Result and code : Score ( 97/100)
-https://www.youtube.com/watch?v=o209sK6-WPA&ab_channel=Jain_S
-https://www.youtube.com/watch?v=PUucsGUEUDY&ab_channel=Jain_S
-https://timewise.herokuapp.com/
-https://github.com/sanjeet-jain/cs-546-group-24-project
+- Proposal : Score ( 100/100)
+- DB Proposal : Score ( 100/100)
+- Pitch Presentation : Score ( 100/100)
+- Walkthrough Presentation : Score ( 100/100)
+- Result and code : Score ( 97/100)
+
+- https://www.youtube.com/watch?v=o209sK6-WPA&ab_channel=Jain_S
+- https://www.youtube.com/watch?v=PUucsGUEUDY&ab_channel=Jain_S
+- https://timewise.herokuapp.com/
+- https://github.com/sanjeet-jain/cs-546-group-24-project
 
 **Final Grade:** 97.39% (A)
